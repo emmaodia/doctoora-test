@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { registrations: "registrations" }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  resources :onboarding, only: [:new, :create]
+  get '/onboarding/new/additional_info' => "onboarding#additional_info"
+  post '/onboarding/create' => "onboarding#submit_additional_info"
 
   # Example resource route with options:
   #   resources :products do

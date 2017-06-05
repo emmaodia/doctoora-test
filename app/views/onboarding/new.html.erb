@@ -1,0 +1,70 @@
+<div class="col-md-6 col-md-offset-3">
+
+	<h2>Let's build a profile</h2>
+
+	<%= form_for @user, url: onboarding_index_path, method: :post do |f| %>
+			
+		<div class="form-group">
+			<%= f.label :date_of_birth, :class => "control-label" %>
+			<%= f.date_select :dob, :start_year => Date.current.year, :end_year => 1920, :class => "form-control"%>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :gender, :class => "control-label" %>
+			<%= f.select :gender, ["Male", "Female"], :class => "form-control"%>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :ethnicity, :class => "control-label" %>
+			<%= f.select :ethnicity, ["Black", "Asian", "Caucasian", "Latin American", "Other"], :class => "form-control"%>
+		</div>
+
+		<h3>Location</h3>
+
+		<div class="form-group">
+			<%= f.label :house, :class => "control-label" %>
+			<%= f.text_field :house, :class => "form-control"%>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :town, :class => "control-label" %>
+			<%= f.text_field :town, :class => "form-control"%>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :postcode, :class => "control-label" %>
+			<%= f.text_field :postcode, :class => "form-control"%>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :country, :class => "control-label" %>
+			<%= f.country_select :country%>
+		</div>
+
+		<h3> Health Profile </h3>
+
+		<div class="form-group">
+			<%= f.label :height, :class => "control-label" %>
+			<%= f.text_field :height, :class => "form-control", :placeholder => "cm" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :weight, :class => "control-label" %>
+			<%= f.text_field :weight, :class => "form-control", :placeholder => "kg" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :bmi, :class => "control-label" %>
+			<%= f.text_field :bmi, :class => "form-control"%>
+		</div>
+
+		<h3>Vaccinations</h3>
+
+		<div class="form-group">
+			<%= f.label :vaccinations, :class => "control-label" %>
+			<%= f.text_area :vaccinations, :class => "form-control", :placeholder => "What vaccinations have you had?" %>
+		</div>
+
+		<%= f.submit "Continue", :class => "btn btn-default" %>
+	<% end %>
+</div>
