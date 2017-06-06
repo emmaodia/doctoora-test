@@ -5,3 +5,10 @@ LOG:  redo is not required
 LOG:  MultiXact member wraparound protections are now enabled
 LOG:  database system is ready to accept connections
 LOG:  autovacuum launcher started
+LOG:  database system was interrupted; last known up at 2017-06-05 16:43:26 BST
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  invalid record length at 0/19E7A60: wanted 24, got 0
+LOG:  redo is not required
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  autovacuum launcher started
+LOG:  database system is ready to accept connections

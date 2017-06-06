@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
+/* PROFILE PAGE */
+
+.profile div{
+	width: 100%;
+}
+.profile-title{
+	float: left;
+	width: 50%;
+}
+.profile-info{
+	float: right;
+	width: 50%;
+}
