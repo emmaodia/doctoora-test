@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get '/onboarding/new/additional_info' => "onboarding#additional_info"
   post '/onboarding/create' => "onboarding#submit_additional_info"
 
-  get '/profile' => "profile#show"
+  resources :profile, only: [:show, :edit, :update]
 
   # Example resource route with options:
   #   resources :products do

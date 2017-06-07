@@ -3,7 +3,7 @@
 	<div>
 		<span>
 			<h3>Me</h3>
-			<i class="glyphicon glyphicon-pencil profile-info"></i>
+			<%= link_to "edit", edit_profile_path(current_user) %>
 		</span>
 
 		<div>
@@ -44,7 +44,6 @@
 
 			<span>
 				<h3>Existing Conditions</h3>
-				<i class="glyphicon glyphicon-pencil profile-info"></i>
 			</span>
 
 			<% if !current_user.conditions? %>
@@ -62,7 +61,6 @@
 
 			<span>
 				<h3>Vaccinations</h3>
-				<i class="glyphicon glyphicon-pencil profile-info"></i>
 			</span>
 
 			<% if !current_user.vaccinations? %>
@@ -75,13 +73,11 @@
 
 		<div>
 			<h3>Allergies</h3>
-			<i class="glyphicon glyphicon-pencil profile-info"></i>
 			<button class="btn btn-primary">Add</button>
 		</div>
 
 		<div>
 			<h3>Medication</h3>
-			<i class="glyphicon glyphicon-pencil profile-info"></i>
 			<button class="btn btn-primary">Add</button>
 		</div>
 

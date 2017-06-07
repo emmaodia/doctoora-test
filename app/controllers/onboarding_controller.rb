@@ -43,10 +43,6 @@ class OnboardingController < ApplicationController
 
 	private
 
-	def onboarding_params
-		return [:dob, :gender, :ethnicity, :house, :town, :postcode, :country, :height, :weight, :bmi, :vaccinations]
-	end
-
 	def assign_values params, user
 		params.each do |param|
 			key = param[0]

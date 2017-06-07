@@ -4,4 +4,21 @@ class ProfileController < ApplicationController
 		@user = User.find(current_user.id)
 	end
 
+	def edit
+		@user_profile = User.find(params[:id])
+	end
+
+	def update
+		@user_profile = User.find(params[:id])
+    	@user_profile.update(profile_params)
+
+    	redirect_to profile_path(params[:id])
+	end
+
+	private
+
+	def profile_params
+		params.require(:user).permit(:dob, :gender, :ethnicity, :house, :town, :postcode, :country, :height, :weight, :bmi, :vaccinations)
+	end
+
 end
