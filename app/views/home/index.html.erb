@@ -1,1 +1,8 @@
 <%= render 'shared/nav' %>
+
+<h1> DOCTOORA </h1>
+
+<% if user_signed_in? %>
+	<li><%= link_to "Book a consultation", new_consultation_path %></li>
+
+<% end %>

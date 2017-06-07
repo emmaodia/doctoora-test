@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   resources :profile, only: [:show, :edit, :update]
 
+  resources :consultation
+
   # Example resource route with options:
   #   resources :products do
   #     member do
