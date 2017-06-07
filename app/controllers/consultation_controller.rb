@@ -1,5 +1,9 @@
 class ConsultationController < ApplicationController
 
+	def index
+		@consultations = current_user.consultations.all.order(date: :desc)
+	end
+
 	def new
 		@consultation = current_user.consultations.new
 	end
