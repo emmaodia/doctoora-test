@@ -1,0 +1,11 @@
+<%= render 'shared/nav' %>
+
+<div>
+	<% @plans.each do |plan| %>
+		<div>
+			<h4><%= plan.title %></h4>
+			<p><%= plan.description %></p>
+			<p><%= plan.price %></p>
+		</div>
+	<% end %>
+</div>

@@ -21,6 +21,8 @@ Rails.application.routes.draw do
 
   resources :consultation
 
+  get '/plans' => "plans#index"
+
   # Example resource route with options:
   #   resources :products do
   #     member do
