@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   resources :consultation
 
   get '/plans' => "plans#index"
+  get '/plan/:id/purchase' => "plans#purchase", as: :purchase_plan
+  get 'plans/confirm' => 'plans#confirm_plan'
 
   # Example resource route with options:
   #   resources :products do

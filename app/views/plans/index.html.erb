@@ -6,6 +6,7 @@
 			<h4><%= plan.title %></h4>
 			<p><%= plan.description %></p>
 			<p><%= plan.price %></p>
+			<%= link_to "Buy Plan", purchase_plan_path(plan) %>
 		</div>
 	<% end %>
 </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170607015126) do
+ActiveRecord::Schema.define(version: 20170607025149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,17 @@ ActiveRecord::Schema.define(version: 20170607015126) do
   end
 
   add_index "plans", ["user_id"], name: "index_plans_on_user_id", using: :btree
+
+  create_table "transactions", force: :cascade do |t|
+    t.integer  "amount"
+    t.integer  "plan_id"
+    t.integer  "user_id"
+    t.string   "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "transactions", ["user_id"], name: "index_transactions_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -72,11 +83,15 @@ ActiveRecord::Schema.define(version: 20170607015126) do
     t.string   "recreational_drug"
     t.string   "tobacco"
     t.string   "sexual_activity"
+    t.integer  "plan_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["plan_id"], name: "index_users_on_plan_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "consultations", "users"
   add_foreign_key "plans", "users"
+  add_foreign_key "transactions", "users"
+  add_foreign_key "users", "plans"
 end
