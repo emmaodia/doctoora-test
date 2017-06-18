@@ -1,1 +1,1 @@
-require 'dotenv/load'
+require 'dotenv/load' if Rails.env == "development"
