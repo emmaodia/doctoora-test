@@ -5,6 +5,7 @@
 	<div>
 		<span>
 			<h3>Me</h3>
+			<%= image_tag current_user.avatar.url, :class => "profile-image" %>
 			<%= link_to "edit", edit_profile_path(current_user) %>
 		</span>
 

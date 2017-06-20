@@ -30,3 +30,10 @@ LOG:  using stale statistics instead of current ones because stats collector is 
 LOG:  using stale statistics instead of current ones because stats collector is not responding
 FATAL:  lock file "postmaster.pid" already exists
 HINT:  Is another postmaster (PID 768) running in data directory "/usr/local/var/postgres"?
+LOG:  database system was interrupted; last known up at 2017-06-18 05:38:00 BST
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  invalid record length at 0/1AAB478: wanted 24, got 0
+LOG:  redo is not required
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  autovacuum launcher started
+LOG:  database system is ready to accept connections

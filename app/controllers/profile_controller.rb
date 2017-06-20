@@ -11,14 +11,14 @@ class ProfileController < ApplicationController
 	def update
 		@user_profile = User.find(params[:id])
     	@user_profile.update(profile_params)
-
+    	flash[:notice] = "Profile edited successfully"
     	redirect_to profile_path(params[:id])
 	end
 
 	private
 
 	def profile_params
-		params.require(:user).permit(:dob, :gender, :ethnicity, :house, :town, :postcode, :country, :height, :weight, :bmi, :vaccinations)
+		params.require(:user).permit(:dob, :gender, :ethnicity, :house, :town, :postcode, :country, :height, :weight, :bmi, :vaccinations, :avatar)
 	end
 
 end

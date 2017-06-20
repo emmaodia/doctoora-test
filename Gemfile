@@ -40,6 +40,8 @@ gem 'bootstrap-datepicker-rails'
 gem 'httparty'
 gem 'json'
 
+gem "paperclip", "~> 5.0.0"
+
 gem 'rails_12factor', group: :production
 
 group :development, :test do
