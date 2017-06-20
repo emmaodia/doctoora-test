@@ -10,6 +10,10 @@
 			<h4>Professional</h4> <%= consultation.professional %>
 			<h4>Tool</h4> <%= consultation.tool %>
 		</div>
+		<div>
+			<% if consultation.tool == "In-app call" %>
+				<%= link_to "Start Consultation", consultation_path(consultation) %>
+			<% end %>
+		</div>
 	<% end %>
 </div>
-	
