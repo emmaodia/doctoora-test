@@ -10,6 +10,7 @@ class ProfileController < ApplicationController
 
 	def update
 		@user_profile = User.find(params[:id])
+		@user_profile.bmi = ((profile_params[:weight].to_i/profile_params[:height].to_f)/profile_params[:height].to_f)
     	@user_profile.update(profile_params)
     	flash[:notice] = "Profile edited successfully"
     	redirect_to profile_path(params[:id])

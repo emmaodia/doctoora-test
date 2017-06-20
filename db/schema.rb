@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170618041513) do
+ActiveRecord::Schema.define(version: 20170620143155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20170618041513) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "user_id"
+    t.string   "status"
   end
 
   add_index "consultations", ["user_id"], name: "index_consultations_on_user_id", using: :btree
@@ -37,10 +38,7 @@ ActiveRecord::Schema.define(version: 20170618041513) do
     t.integer  "price"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "user_id"
   end
-
-  add_index "plans", ["user_id"], name: "index_plans_on_user_id", using: :btree
 
   create_table "transactions", force: :cascade do |t|
     t.integer  "amount"
@@ -73,9 +71,9 @@ ActiveRecord::Schema.define(version: 20170618041513) do
     t.string   "town"
     t.string   "postcode"
     t.string   "country"
-    t.integer  "height"
+    t.float    "height"
     t.integer  "weight"
-    t.integer  "bmi"
+    t.float    "bmi"
     t.text     "vaccinations"
     t.text     "conditions"
     t.string   "dietary_restrictions"
@@ -95,7 +93,6 @@ ActiveRecord::Schema.define(version: 20170618041513) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "consultations", "users"
-  add_foreign_key "plans", "users"
   add_foreign_key "transactions", "users"
   add_foreign_key "users", "plans"
 end

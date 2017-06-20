@@ -10,6 +10,7 @@ class OnboardingController < ApplicationController
 
 		#save dob as an array and remove it from the params to be iterated over
 		user.dob = Date.civil(parameters["dob(1i)"].to_i,parameters["dob(2i)"].to_i,parameters["dob(3i)"].to_i)
+		user.bmi = ((parameters["weight"].to_i/parameters["height"].to_f)/parameters["height"].to_f)
 
 		(0..2).each do
 			parameters.shift
