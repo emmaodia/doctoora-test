@@ -1,0 +1,77 @@
+<div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+            <a href="/">
+                DOCTOORA
+            </a>
+        </li>
+        <li>
+            <% if user_signed_in? %>
+                <%= link_to "Book a consultation", new_consultation_path %>
+            <% end %>
+        </li>
+        <li>
+        	<a href="/" class="selected">
+        		<i class="glyphicon glyphicon-home"></i>
+        		<p>HOME</p>
+        	</a>
+        </li>
+        <li>
+            <% if user_signed_in? %>
+            	<%= image_tag current_user.avatar.url, :class => "profile-image" %>
+            	<p>Welcome, <%= current_user.email %></p>
+            <% end %>
+        </li>
+        <li>
+            <% if user_signed_in? %>
+                <%= link_to "Patient Profile", profile_path(current_user.id) %>
+            <% end %>
+        </li>
+        <li>
+            <a href="#">Messages</a>
+        </li>
+        <li>
+            <a href="#">Family</a>
+        </li>
+        <li>
+            <a href="#">Knowledge Base</a>
+        </li>
+        <li>
+            <a href="#">Communities</a>
+        </li>
+        <li>
+            <a href="#">Topics</a>
+        </li>
+        <li>
+            <a href="#">Care Team</a>
+        </li>
+
+        <div id="refer">
+        	<li>
+        		<a href="#">Refer Someone</a>
+        	</li>
+        </div>
+
+        <div id="glyphs">
+            <% if user_signed_in? %>
+            	<li><%= link_to destroy_user_session_path, method: :delete do%>
+                    <span class="glyphicon glyphicon-off"></span>
+                <% end %>   
+                </li>
+            <% else %>
+                <li><%= link_to new_user_session_path do%>
+                    <span class="glyphicon glyphicon-off"></span>
+                <% end %>   
+                </li>
+            <% end %>
+        	<li><i class="glyphicon glyphicon-cog"></i></li>
+        	<li><i class="glyphicon glyphicon-blackboard"></i></li>
+        </div>
+    </ul>
+</div>
+
+<script>
+	$('a').click(function(){
+		$(this).css('background', '#f3904c');
+	})
+</script>

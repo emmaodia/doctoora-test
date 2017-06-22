@@ -25,12 +25,21 @@ class ConsultationController < ApplicationController
 	end
 
 	def edit
+		@consultation = Consultation.find(params[:id])
 	end
 
 	def update
+		@consultation = Consultation.find(params[:id])
+    	@consultation.update(consultation_params)
+
+    	redirect_to consultation_index_path
 	end
 
 	def destroy
+		@consultation = consultation.find(params[:id])
+    	@consultation.destroy
+    	flash[:notice] = "Your consultation has been deleted successfully"
+    	redirect_to consultation_index_path
 	end
 
 	private

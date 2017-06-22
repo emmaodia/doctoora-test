@@ -1,6 +1,7 @@
+<%= render 'shared/sidebar' %>
 <%= render 'shared/nav' %>
 
-<div class="col-md-4 col-md-offset-4">
+<div class="col-md-4">
 	<%= form_for @user_profile, url: profile_path(@user_profile), method: :put, html: { multipart: true } do |f| %>
 
 		<h2> Edit Profile</h2>

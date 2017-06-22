@@ -44,6 +44,8 @@ gem "paperclip", "~> 5.0.0"
 
 gem 'haikunator'
 
+gem 'aws-sdk', '~>2.3'
+
 gem 'rails_12factor', group: :production
 
 group :development, :test do

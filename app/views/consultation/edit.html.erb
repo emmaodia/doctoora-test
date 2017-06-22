@@ -1,9 +1,11 @@
 <%= render 'shared/sidebar' %>
 <%= render 'shared/nav' %>
 
+<h1> Edit Consultation </h1>
+
 <div class="col-md-4">
 
-	<%= form_for @consultation, url: consultation_index_path do |f| %>
+	<%= form_for @consultation do |f| %>
 
 		<h2>Book a consultation</h2>
 

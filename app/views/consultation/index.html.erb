@@ -1,3 +1,4 @@
+<%= render 'shared/sidebar' %>
 <%= render 'shared/nav' %>
 
 <h1> Your Consultations </h1>
@@ -15,5 +16,7 @@
 				<%= link_to "Start Consultation", consultation_path(consultation) %>
 			<% end %>
 		</div>
+		<p><%= link_to "edit", edit_consultation_path(consultation) %></p>
+		<p><%= link_to "delete", consultation_path(consultation), method: :destroy, :confirm => 'Are you sure?' %>
 	<% end %>
 </div>
