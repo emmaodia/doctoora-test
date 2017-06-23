@@ -1,4 +1,15 @@
 <%= render 'shared/sidebar' %>
 <%= render 'shared/nav' %>
 
-<h1> DOCTOORA </h1>
+<div>
+	<h4>Trending in the health communities you follow...</h4>
+	<div style="width: 100%; padding-bottom: 25%" data-simple-slider>
+		<img src="https://unsplash.it/640/160?random=1"/>
+		<img src="https://unsplash.it/640/160?random=2"/>
+		<img src="https://unsplash.it/640/160?random=3"/>
+	</div>
+</div>
+
+<script>
+	simpleslider.getSlider();
+</script>
