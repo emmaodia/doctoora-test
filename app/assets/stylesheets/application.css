@@ -148,8 +148,20 @@ body {
 
 #bootstrap-overrides .navbar {
 	background: rgba(11, 50, 89, 1);
+	margin-top: -0.75px;
+	margin-left: -20px;
 }
 
 #bootstrap-overrides .navbar-nav li a, #bootstrap-overrides .navbar-nav li p {
+	color: #fff;
+}
+
+
+
+/* Profile Page */
+.edit-link {
+	color: #fff;
+	text-decoration: none;
+} .edit-link:hover {
 	color: #fff;
 }

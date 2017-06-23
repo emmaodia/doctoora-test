@@ -63,6 +63,16 @@
 		</div>
 
 		<div class="form-group">
+			<%= f.label :allergies, :class => "control-label"%>
+			<%= f.text_field :allergies, :class => "form-control", :placeholder => "Do you suffer from any allergies?" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :medication, :class => "control-label" %>
+			<%= f.text_field :medication, :class => "form-control", :placeholder => "Are you currently receiving any medication?"%>
+		</div>
+
+		<div class="form-group">
 			<%= f.label "Upload an image of yourself (>2mb)", :class => "control-label" %>
 			<%= f.file_field :avatar, :class => "form-control" %>
 		</div>
@@ -70,7 +80,7 @@
 		<div class="large-size">
 		</div>
 
-		<%= f.submit "Continue", :class => "btn btn-primary" %>
+		<%= f.submit "Update Profile", :class => "btn btn-primary" %>
 		
 	<% end %>
 </div>

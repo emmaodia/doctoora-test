@@ -3,90 +3,12 @@
 
 <div class="col-md-6 profile">
 
-	<!-- <div>
-		<div>
-			<h5>Email</h5>
-			<p class="profile-info"><%= @user.email %></p>
-		</div>
-
-		<div>
-			<h5>Gender</h5>
-			<p class="profile-info"><%= @user.gender %></p>
-		</div>
-
-		<div>
-			<h5>Ethnicity</h5>
-			<p class="profile-info"><%= @user.ethnicity %></p>
-		</div>
-
-		<div>
-			<h5>Height</h5>
-			<p class="profile-info"><%= @user.height %></p>
-		</div>
-
-		<div>
-			<h5>Weight</h5>
-			<p class="profile-info"><%= @user.weight %></p>
-		</div>
-
-		<div>
-			<h5>BMI</h5>
-			<p class="profile-info"><%= @user.bmi.round(2) %></p>
-		</div>
-
-	</div>
-
-	<div>
-
-		<div>
-
-			<span>
-				<h3>Existing Conditions</h3>
-			</span>
-
-			<% if !current_user.conditions? %>
-				<p>Conditions that have affected more than one person in your family</p>
-			<% else %>
-				<p><%= current_user.conditions %></p>
-			<% end %>
-			<button class="btn btn-primary">Add</button>
-
-			<p>Long lasting conditions</p>
-			<button class="btn btn-primary">Add</button>
-		</div>
-
-		<div>
-
-			<span>
-				<h3>Vaccinations</h3>
-			</span>
-
-			<% if !current_user.vaccinations? %>
-				<p>To the best of your knowledge what vaccinations have you had, from childhood to now</p>
-			<% else %>
-				<p><%= current_user.vaccinations %></p>
-			<% end %>
-			<button class="btn btn-primary">Add</button>
-		</div>
-
-		<div>
-			<h3>Allergies</h3>
-			<button class="btn btn-primary">Add</button>
-		</div>
-
-		<div>
-			<h3>Medication</h3>
-			<button class="btn btn-primary">Add</button>
-		</div>
-
-	</div> -->
-
 	<div class="table-responsive">
 		<table class="table">
 			<thead>
 				<tr>
 					<th>Me</th>
-					<th><i class="glyphicon glyphicon-pencil"></i></th>
+					<th><%= link_to "edit", edit_profile_path(current_user.id) %></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -127,27 +49,27 @@
 		<p>Conditions that affect or have affected more than
 		one person in your family</p>
 		<p><%= @user.conditions if @user.conditions%></p>
-		<button class="btn btn-primary">Add</button>
+		<%= link_to "Add", edit_profile_path(current_user.id), :class => "btn btn-primary" %>
 
 		<h3>Long lasting Conditions</h3>
-		<button class="btn btn-primary">Add</button>
+		<%= link_to "Add", edit_profile_path(current_user.id), :class => "btn btn-primary" %>
 	</div>
 
 	<div>
 		<h3>Vaccination</h3>
 		<p>To the best of your knowledge what vaccinations have you had, from childhood till now?</p>
 		<p><%= @user.vaccinations if @user.vaccinations %></p>
-		<button class="btn btn-primary">Add</button>
+		<%= link_to "Add", edit_profile_path(current_user.id), :class => "btn btn-primary" %>
 	</div>
 
 	<div>
 		<h3>Allergies</h3>
-		<button class="btn btn-primary">Add</button>
+		<%= link_to "Add", edit_profile_path(current_user.id), :class => "btn btn-primary" %>
 	</div>
 
 	<div>
 		<h3>Medication</h3>
-		<button class="btn btn-primary">Add</button>
+		<%= link_to "Add", edit_profile_path(current_user.id), :class => "btn btn-primary" %>
 	</div>
 
 </div>
