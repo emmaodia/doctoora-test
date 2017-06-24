@@ -169,7 +169,15 @@ body {
 /* Home Page */
 
 .search-form {
-	width: 51.5%;
+	width: 100%;
+}
+
+.slider img {
+	width: 100%;
+}
+
+.form {
+	margin-top: 5%;
 }
 
 /* Profile Page */
@@ -178,4 +186,9 @@ body {
 	text-decoration: none;
 } .edit-link:hover {
 	color: #fff;
+}
+
+/* Plan Page */
+.plan {
+	border: 1px dashed #202020;
 }
