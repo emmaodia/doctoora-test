@@ -154,6 +154,11 @@ body {
 	padding-bottom: 3em;
 }
 
+.devise-logo {
+	width: 15em;
+	margin-left: 2.5em;
+}
+
 /* Navbar */
 
 #bootstrap-overrides .navbar {
