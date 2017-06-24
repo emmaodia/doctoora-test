@@ -4,10 +4,10 @@
 		  	<ul class="nav navbar-nav">
 		  		<li><a href="/plans">Health Market Place <i class="glyphicon glyphicon-shopping-cart"></i></a></li>
 		  		<% if user_signed_in? %>
-		  			<li id="greeting"><a>Good Morning <%= current_user.first_name %></a></li>
+		  			<li id="greeting" class="nav-link"><a>Good Morning <%= current_user.first_name %></a></li>
 		  		<% else %>
-		  			<li><%= link_to "Log In", new_user_session_path %></li>
-		  			<li><%= link_to "Sign Up", new_user_registration_path %></li>
+		  			<li class="nav-link"><%= link_to "Log In", new_user_session_path %></li>
+		  			<li class="nav-link"><%= link_to "Sign Up", new_user_registration_path %></li>
 		  		<% end %>
 		  	</ul>
 		</div>

@@ -104,10 +104,6 @@ body {
     text-decoration: none;
     color: #fff;
     background: #f3904c;
-} #greeting {
-	padding-top: 15px;
-} #greeting a:hover {
-	background: #4692ce !important;
 }
 
 .sidebar-nav li a:active,
@@ -169,6 +165,12 @@ body {
 
 #bootstrap-overrides .navbar-nav li a, #bootstrap-overrides .navbar-nav li p {
 	color: #fff;
+}
+
+.nav-link {
+	padding-top: 15px;
+} #greeting a:hover {
+	background: #4692ce !important;
 }
 
 /* Home Page */
