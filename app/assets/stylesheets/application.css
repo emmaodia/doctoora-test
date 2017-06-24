@@ -67,7 +67,7 @@ body {
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
-    background: rgba(11, 50, 89, 1);
+    background: #4692ce;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -100,10 +100,14 @@ body {
 	color: #fff;
 }
 
-.sidebar-nav li a:hover {
+.sidebar-nav li a:hover, #bootstrap-overrides .navbar-nav li a:hover {
     text-decoration: none;
     color: #fff;
     background: #f3904c;
+} #greeting {
+	padding-top: 15px;
+} #greeting a:hover {
+	background: #4692ce !important;
 }
 
 .sidebar-nav li a:active,
@@ -144,10 +148,16 @@ body {
 	display: inline-block;
 }
 
+#logo {
+	width: 8.5em;
+	margin-top: .25em;
+	padding-bottom: 3em;
+}
+
 /* Navbar */
 
 #bootstrap-overrides .navbar {
-	background: rgba(11, 50, 89, 1);
+	background: #4692ce;
 	margin-top: -0.75px;
 	margin-left: -20px;
 }
@@ -161,8 +171,6 @@ body {
 .search-form {
 	width: 51.5%;
 }
-
-
 
 /* Profile Page */
 .edit-link {
