@@ -18,7 +18,7 @@
         </li>
         <li>
             <% if user_signed_in? %>
-            	<%= image_tag current_user.avatar.url, :class => "profile-image" %>
+            	<%= image_tag current_user.avatar.url(:medium), :class => "profile-image" %>
             	<p>Welcome <%= current_user.first_name %></p>
             <% end %>
         </li>
