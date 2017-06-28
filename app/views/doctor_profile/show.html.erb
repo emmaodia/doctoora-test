@@ -1,0 +1,48 @@
+<%= render 'shared/sidebar' %>
+<%= render 'shared/nav' %>
+
+<div class="col-md-6 profile">
+
+	<div class="table-responsive">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Me</th>
+					<th><%= link_to "edit", edit_profile_path(current_doctor.id) %></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Name</td>
+					<td>Dr <%= @doctor.first_name %> <%= @doctor.last_name %></td>
+				</tr>
+				<tr>
+					<td>Gender</td>
+					<td><%= @doctor.gender %></td>
+				</tr>
+				<tr>
+					<td>Date of birth</td>
+					<td><%= @doctor.dob %></td>
+				</tr>
+				<tr>
+					<td>Ethnicity</td>
+					<td><%= @doctor.ethnicity %></td>
+				</tr>
+				<tr>
+					<td>Location</td>
+					<td><%= @doctor.town %></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div>
+		<h3>Credentials</h3>
+		<p>MDCN Annual Practicing License</p>
+		<p>NYSC Certificate</p>
+		<p>University Certificate</p>
+		<p>Post-NYSC Years of Experience</p>
+		<p>Proof of Identity</p>
+	</div>
+
+</div>

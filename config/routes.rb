@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   post 'doctor/onboarding/create' => "doctor_onboarding#submit_documents"
 
   resources :profile, only: [:show, :edit, :update]
+  resources :doctor_profile, only: [:show, :edit, :update]
 
   resources :consultation
 

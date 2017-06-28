@@ -20,7 +20,7 @@
         </li>
         <li>
             <% if doctor_signed_in? %>
-                <%= link_to "Doctor Profile", profile_path(current_doctor.id) %>
+                <%= link_to "Doctor Profile", doctor_profile_path(current_doctor.id) %>
             <% end %>
         </li>
         <li>
