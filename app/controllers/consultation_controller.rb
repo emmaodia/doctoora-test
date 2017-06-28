@@ -6,6 +6,10 @@ class ConsultationController < ApplicationController
 
 	def new
 		@consultation = current_user.consultations.new
+		@doctors = []
+		Doctor.all.each do |doctor|
+			@doctors << "Dr " + doctor.first_name + " " + doctor.last_name
+		end
 	end
 
 	def create

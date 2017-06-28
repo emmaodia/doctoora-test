@@ -34,7 +34,7 @@
 
 		<div class="form-group">
 			<%= f.label "Choose an available professional", :class => "control-label" %>
-			<%= f.select :professional, ["Doctor A", "Doctor B", "Doctor C"], :class => "form-control" %>
+			<%= f.select :professional, [@doctors], :class => "form-control" %>
 		</div>
 
 		<%= f.submit "Continue", :class => "btn btn-primary" %>
