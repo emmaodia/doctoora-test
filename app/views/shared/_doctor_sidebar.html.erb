@@ -6,9 +6,7 @@
             </a>
         </li>
         <li>
-            <% if user_signed_in? %>
-                <%= link_to "Book a consultation", new_consultation_path %>
-            <% end %>
+           <p>Status: Available</p>
         </li>
         <li>
         	<a href="/" class="selected">
@@ -16,24 +14,26 @@
         	</a>
         </li>
         <li>
-            <% if user_signed_in? %>
-            	<%= image_tag current_user.avatar.url(:medium), :class => "profile-image" %>
-            	<p>Welcome <%= current_user.first_name %></p>
+            <% if doctor_signed_in? %>
+            	<p>Welcome Dr <%= current_doctor.first_name %></p>
             <% end %>
         </li>
         <li>
-            <% if user_signed_in? %>
-                <%= link_to "Patient Profile", profile_path(current_user.id) %>
+            <% if doctor_signed_in? %>
+                <%= link_to "Doctor Profile", profile_path(current_doctor.id) %>
             <% end %>
+        </li>
+        <li>
+            <a href="#">Appointments</a>
         </li>
         <li>
             <a href="#">Messages</a>
         </li>
         <li>
-            <a href="#">Family</a>
+            <a href="#">Patients</a>
         </li>
         <li>
-            <a href="#">Knowledge Base</a>
+            <a href="#">Care Team</a>
         </li>
         <li>
             <a href="#">Communities</a>
@@ -42,7 +42,7 @@
             <a href="#">Topics</a>
         </li>
         <li>
-            <a href="#">Care Team</a>
+            <a href="#">Decision Support Tools</a>
         </li>
 
         <div id="refer">
@@ -52,13 +52,8 @@
         </div>
 
         <div id="glyphs">
-            <% if user_signed_in? %>
-            	<li><%= link_to destroy_user_session_path, method: :delete do%>
-                    <span class="glyphicon glyphicon-off"></span>
-                <% end %>   
-                </li>
-            <% else %>
-                <li><%= link_to new_user_session_path do%>
+            <% if doctor_signed_in? %>
+            	<li><%= link_to destroy_doctor_session_path, method: :delete do%>
                     <span class="glyphicon glyphicon-off"></span>
                 <% end %>   
                 </li>

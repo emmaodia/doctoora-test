@@ -35,7 +35,7 @@ class DoctorOnboardingController < ApplicationController
 		assign_values params["doctor"], doctor
 
 		if doctor.save
-			redirect_to root_path
+			redirect_to doctors_path
 		else
 			flash[:notice] = "There was an error saving your information"
 			render 'upload_documents'
