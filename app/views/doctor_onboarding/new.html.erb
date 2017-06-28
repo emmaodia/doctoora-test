@@ -1,0 +1,62 @@
+<div class="col-md-6 col-md-offset-1">
+
+	<h2>Let's build a profile</h2>
+
+	<%= form_for @doctor, url: doctor_onboarding_index_path, html: { multipart: true }, method: :post do |f| %>
+			
+		<div class="form-group">
+			<%= f.label :date_of_birth, :class => "control-label" %>
+			<%= f.date_select :dob, :start_year => Date.current.year, :end_year => 1920, :class => "form-control"%>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :gender, :class => "control-label" %>
+			<%= f.select :gender, ["Male", "Female"], :class => "form-control"%>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :ethnicity, :class => "control-label" %>
+			<%= f.select :ethnicity, ["Black", "Asian", "Caucasian", "Latin American", "Other"], :class => "form-control"%>
+		</div>
+
+		<h3>Location</h3>
+
+		<div class="form-group">
+			<%= f.label :house, :class => "control-label" %>
+			<%= f.text_field :house, :class => "form-control"%>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :town, :class => "control-label" %>
+			<%= f.text_field :town, :class => "form-control"%>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :postcode, :class => "control-label" %>
+			<%= f.text_field :postcode, :class => "form-control", :placeholder => "Enter N/A if none" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :country, :class => "control-label" %>
+			<%= f.country_select :country%>
+		</div>
+
+		<div class="large-size">
+		</div>
+
+		<%= f.submit "Continue", :class => "btn btn-primary" %>
+	<% end %>
+</div>
+
+<script>
+	$('input:file').change(function(){
+		var file = this.files[0];
+			if(file.size > 2000000){
+				$('.large-size').html('<p class="notice">Your profile image cannot be larger than 2MB. Please choose a smaller image</p>')
+				$(':input[type="submit"]').prop('disabled', true);
+			} else {
+				$('.notice').remove();
+				$(':input[type="submit"]').prop('disabled', false);
+			}
+	});
+</script>

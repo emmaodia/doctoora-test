@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :doctors, controllers: { registrations: "doctor_registrations" }
   devise_for :users, controllers: { registrations: "registrations" }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -16,6 +17,10 @@ Rails.application.routes.draw do
   resources :onboarding, only: [:new, :create]
   get '/onboarding/new/additional_info' => "onboarding#additional_info"
   post '/onboarding/create' => "onboarding#submit_additional_info"
+
+  resources :doctor_onboarding, only: [:new, :create]
+  get 'doctor/onboarding/new/upload_documents' => "doctor_onboarding#upload_documents"
+  post 'doctor/onboarding/create' => "doctor_onboarding#submit_documents"
 
   resources :profile, only: [:show, :edit, :update]
 

@@ -57,6 +57,10 @@
                     <span class="glyphicon glyphicon-off"></span>
                 <% end %>   
                 </li>
+            <% elsif doctor_signed_in? %>
+                <li><%= link_to destroy_doctor_session_path, method: :delete do%>
+                    <span class="glyphicon glyphicon-off"></span>
+                <% end %>
             <% else %>
                 <li><%= link_to new_user_session_path do%>
                     <span class="glyphicon glyphicon-off"></span>
