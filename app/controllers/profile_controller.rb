@@ -1,11 +1,13 @@
 class ProfileController < ApplicationController
 
 	def show
-		@user = User.find(current_user.id)
+		@user = User.find(params[:id] || current_user.id)
 	end
 
 	def edit
-		@user_profile = User.find(params[:id])
+		if user_signed_in?
+			@user_profile = User.find(params[:id])
+		end
 	end
 
 	def update

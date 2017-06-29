@@ -33,6 +33,8 @@ Rails.application.routes.draw do
   get 'plans/confirm' => 'plans#confirm_plan'
 
   resources :doctor_consultation
+  post 'consultation/:id/accept' => "doctor_consultation#accept_consultation"
+  post 'consultation/:id/reject' => "doctor_consultation#reject_consultation"
 
   # Example resource route with options:
   #   resources :products do

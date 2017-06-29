@@ -1,26 +1,30 @@
-<%= render 'shared/sidebar' %>
-<%= render 'shared/nav' %>
-
-<div>
-	<h4>Trending in the health communities you follow...</h4>
-	<div style="width: 100%; padding-bottom: 25%" class="slider" data-simple-slider>
-		<img src="https://unsplash.it/640/160?random=1"/>
-		<img src="https://unsplash.it/640/160?random=2"/>
-		<img src="https://unsplash.it/640/160?random=3"/>
+<% if user_signed_in? %>
+	<div>
+		<h4>Trending in the health communities you follow...</h4>
+		<div style="width: 100%; padding-bottom: 25%" class="slider" data-simple-slider>
+			<img src="https://unsplash.it/640/160?random=1"/>
+			<img src="https://unsplash.it/640/160?random=2"/>
+			<img src="https://unsplash.it/640/160?random=3"/>
+		</div>
 	</div>
-</div>
 
-<div class="form">
-	<form class="search-form">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Tell us your symptoms">
-        </div>
-        <button type="submit" class="btn btn-primary">Talk to a doctor >> </button>
-    </form>
-</div>
+	<div class="form">
+		<form class="search-form">
+	        <div class="form-group">
+	          <input type="text" class="form-control" placeholder="Tell us your symptoms">
+	        </div>
+	        <button type="submit" class="btn btn-primary">Talk to a doctor >> </button>
+	    </form>
+	</div>
 
-<%= link_to "out", destroy_doctor_session_path, method: :delete %>
+	<%= link_to "out", destroy_doctor_session_path, method: :delete %>
 
-<script>
-	simpleslider.getSlider();
-</script>
+	<script>
+		simpleslider.getSlider();
+	</script>
+<% else %>
+	<%= link_to "Log in as a patient", new_user_session_path %><br />
+	<%= link_to "Log in as a doctor", new_doctor_session_path %><br />
+	<%= link_to "Sign up as a patient", new_user_registration_path %><br />
+	<%= link_to "Sign up as a doctor", new_doctor_registration_path %><br />
+<% end %>

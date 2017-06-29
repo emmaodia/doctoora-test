@@ -1,6 +1,3 @@
-<%= render 'shared/sidebar' %>
-<%= render 'shared/nav' %>
-
 <div class="col-md-6 profile">
 
 	<div class="table-responsive">
@@ -8,7 +5,7 @@
 			<thead>
 				<tr>
 					<th>Me</th>
-					<th><%= link_to "edit", edit_profile_path(current_user.id) %></th>
+					<th><%= link_to "edit", edit_profile_path(@user) %></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -49,27 +46,27 @@
 		<p>Conditions that affect or have affected more than
 		one person in your family</p>
 		<p><%= @user.conditions if @user.conditions%></p>
-		<%= link_to "Add", edit_profile_path(current_user.id), :class => "btn btn-primary" %>
+		<%= link_to "Add", edit_profile_path(@user), :class => "btn btn-primary" %>
 
 		<h3>Long lasting Conditions</h3>
-		<%= link_to "Add", edit_profile_path(current_user.id), :class => "btn btn-primary" %>
+		<%= link_to "Add", edit_profile_path(@user), :class => "btn btn-primary" %>
 	</div>
 
 	<div>
 		<h3>Vaccination</h3>
 		<p>To the best of your knowledge what vaccinations have you had, from childhood till now?</p>
 		<p><%= @user.vaccinations if @user.vaccinations %></p>
-		<%= link_to "Add", edit_profile_path(current_user.id), :class => "btn btn-primary" %>
+		<%= link_to "Add", edit_profile_path(@user), :class => "btn btn-primary" %>
 	</div>
 
 	<div>
 		<h3>Allergies</h3>
-		<%= link_to "Add", edit_profile_path(current_user.id), :class => "btn btn-primary" %>
+		<%= link_to "Add", edit_profile_path(@user), :class => "btn btn-primary" %>
 	</div>
 
 	<div>
 		<h3>Medication</h3>
-		<%= link_to "Add", edit_profile_path(current_user.id), :class => "btn btn-primary" %>
+		<%= link_to "Add", edit_profile_path(@user), :class => "btn btn-primary" %>
 	</div>
 
 </div>
