@@ -16,4 +16,6 @@ class Doctor < ActiveRecord::Base
   validates_attachment_content_type :post_nysc, content_type: 'application/pdf'
   validates_attachment_content_type :id_proof, content_type: 'application/pdf'
 
+  has_many :consultations
+
 end

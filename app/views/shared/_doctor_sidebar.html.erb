@@ -14,17 +14,13 @@
         	</a>
         </li>
         <li>
-            <% if doctor_signed_in? %>
-            	<p>Welcome Dr <%= current_doctor.first_name %></p>
-            <% end %>
+            <p>Welcome Dr <%= current_doctor.first_name %></p>
         </li>
         <li>
-            <% if doctor_signed_in? %>
-                <%= link_to "Doctor Profile", doctor_profile_path(current_doctor.id) %>
-            <% end %>
+            <%= link_to "Doctor Profile", doctor_profile_path(current_doctor.id) %>
         </li>
         <li>
-            <a href="#">Appointments</a>
+        <%= link_to "Appointments", doctor_consultation_index_path %>
         </li>
         <li>
             <a href="#">Messages</a>

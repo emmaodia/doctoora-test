@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :doctors, controllers: { registrations: "doctor_registrations" }
+  devise_for :doctors, controllers: { registrations: "doctor_registrations", sessions: "doctor_sessions" }
   devise_for :users, controllers: { registrations: "registrations" }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -31,6 +31,8 @@ Rails.application.routes.draw do
   get '/plans' => "plans#index"
   get '/plan/:id/purchase' => "plans#purchase", as: :purchase_plan
   get 'plans/confirm' => 'plans#confirm_plan'
+
+  resources :doctor_consultation
 
   # Example resource route with options:
   #   resources :products do

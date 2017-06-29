@@ -1,0 +1,22 @@
+<%= render 'shared/doctor_sidebar' %>
+<%= render 'shared/nav' %>
+
+<h1> Your Consultations </h1>
+
+<div>
+	<% @consultations.each do |consultation| %>
+		<div>
+			<h4>Consultation date</h4> <%= consultation.date %>
+			<h4>Consultation time</h4> <%= consultation.start_time %>
+			<h4>Professional</h4> <%= consultation.professional %>
+			<h4>Tool</h4> <%= consultation.tool %>
+		</div>
+		<div>
+			<% if consultation.tool == "In-app call" %>
+				<%= link_to "Start Consultation", consultation_path(consultation) %>
+			<% end %>
+		</div>
+		<p><%= link_to "edit", edit_consultation_path(consultation) %></p>
+		<p><%= link_to "delete", consultation_path(consultation), method: :destroy, :confirm => 'Are you sure?' %>
+	<% end %>
+</div>

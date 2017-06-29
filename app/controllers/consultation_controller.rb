@@ -6,14 +6,11 @@ class ConsultationController < ApplicationController
 
 	def new
 		@consultation = current_user.consultations.new
-		@doctors = []
-		Doctor.all.each do |doctor|
-			@doctors << "Dr " + doctor.first_name + " " + doctor.last_name
-		end
 	end
 
 	def create
 		@consultation = current_user.consultations.new(consultation_params)
+		@consultation.doctor_id = consultation_params[:professional]
 
 		if @consultation.save
 			flash[:notice] = "Your consultation has been booked and will be verified"

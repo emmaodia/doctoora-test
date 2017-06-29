@@ -39,3 +39,12 @@ LOG:  autovacuum launcher started
 LOG:  database system is ready to accept connections
 ERROR:  cached plan must not change result type
 STATEMENT:  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1
+LOG:  database system was interrupted; last known up at 2017-06-28 21:29:45 BST
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  invalid record length at 0/1C74DC0: wanted 24, got 0
+LOG:  redo is not required
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+ERROR:  type "reference" does not exist at character 42
+STATEMENT:  ALTER TABLE "consultations" ADD "doctor" reference
