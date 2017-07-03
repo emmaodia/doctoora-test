@@ -13,7 +13,7 @@
 		</div>
 		<div>
 			<% if consultation.tool == "In-app call" %>
-				<%= link_to "Start Consultation", consultation_path(consultation) %>
+				<%= link_to "Start Consultation", consultation_path(consultation, :user_id => consultation.user_id)%>
 			<% end %>
 		</div>
 		<p><%= link_to "accept", doctors_path %></p>

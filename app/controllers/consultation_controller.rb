@@ -23,6 +23,8 @@ class ConsultationController < ApplicationController
 
 	def show
 		@room_name = generate_room_name
+		user = User.find(params[:user_id])
+		#send_user_room_name user, @room_name
 	end
 
 	def edit
@@ -52,6 +54,10 @@ class ConsultationController < ApplicationController
 	def generate_room_name
 		#using the Haikunator gem
 		Haikunator.haikunate
+	end
+
+	def send_user_room_name user, roomname
+
 	end
 
 end

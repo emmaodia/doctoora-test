@@ -48,3 +48,4 @@ LOG:  database system is ready to accept connections
 LOG:  autovacuum launcher started
 ERROR:  type "reference" does not exist at character 42
 STATEMENT:  ALTER TABLE "consultations" ADD "doctor" reference
+FATAL:  database "simple_messages_app_development" does not exist
