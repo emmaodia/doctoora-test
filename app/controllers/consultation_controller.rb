@@ -24,7 +24,7 @@ class ConsultationController < ApplicationController
 	def show
 		@room_name = generate_room_name
 		user = User.find(params[:user_id])
-		#send_user_room_name user, @room_name
+		send_user_room_name user, @room_name
 	end
 
 	def edit
@@ -57,7 +57,12 @@ class ConsultationController < ApplicationController
 	end
 
 	def send_user_room_name user, roomname
-
+		if Conversation.between(current_doctor.id, user.id).present?
+			conversation = Conversation.between(current_doctor.id, user.id).first
+ 		else
+  			conversation = Conversation.create!(sender_id: current_doctor.id, recipient_id: user.id)
+ 		end
+		conversation.messages.create!(body: "Your room name is #{roomname}", user_id: current_doctor.id)
 	end
 
 end

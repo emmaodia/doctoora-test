@@ -49,3 +49,20 @@ LOG:  autovacuum launcher started
 ERROR:  type "reference" does not exist at character 42
 STATEMENT:  ALTER TABLE "consultations" ADD "doctor" reference
 FATAL:  database "simple_messages_app_development" does not exist
+ERROR:  insert or update on table "messages" violates foreign key constraint "fk_rails_273a25a7a6"
+DETAIL:  Key (user_id)=(5) is not present in table "users".
+STATEMENT:  INSERT INTO "messages" ("body", "user_id", "conversation_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"
+LOG:  autovacuum launcher shutting down
+LOG:  received smart shutdown request
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2017-07-03 19:10:05 BST
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  autovacuum launcher started
+LOG:  database system is ready to accept connections
+ERROR:  insert or update on table "messages" violates foreign key constraint "fk_rails_273a25a7a6"
+DETAIL:  Key (user_id)=(5) is not present in table "users".
+STATEMENT:  INSERT INTO "messages" ("body", "user_id", "conversation_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"
+ERROR:  insert or update on table "messages" violates foreign key constraint "fk_rails_273a25a7a6"
+DETAIL:  Key (user_id)=(5) is not present in table "users".
+STATEMENT:  INSERT INTO "messages" ("body", "user_id", "conversation_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"

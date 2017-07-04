@@ -36,6 +36,10 @@ Rails.application.routes.draw do
   post 'consultation/:id/accept' => "doctor_consultation#accept_consultation"
   post 'consultation/:id/reject' => "doctor_consultation#reject_consultation"
 
+  resources :conversations do
+    resources :messages
+  end
+
   # Example resource route with options:
   #   resources :products do
   #     member do
