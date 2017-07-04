@@ -1,10 +1,12 @@
 <ul>
 	<% @conversations.each do |conversation| %>
 		<li>
+		<h5><%= get_sender conversation %></h5>
 		<ul>
 		<% conversation.messages.each do |message| %>
 				<li>
-					<%= message.body %>
+					<h6><%= message.created_at.strftime("%m/%d/%y at %l:%M %p") %></h6>
+					<p>Your room name is <%= link_to message.body, "http://appear.in/#{message.body}", target: "_blank" %></p>
 				</li>
 		<% end %>
 		</ul>

@@ -8,7 +8,6 @@ class ConversationsController < ApplicationController
 			@conversations = Conversation.where("recipient_id=?", current_user.id)
 		elsif doctor_signed_in?
 			@conversations = Conversation.where("sender_id=?", current_doctor.id)
-			p @conversations
 		end
 
  	end

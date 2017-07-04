@@ -62,7 +62,8 @@ class ConsultationController < ApplicationController
  		else
   			conversation = Conversation.create!(sender_id: current_doctor.id, recipient_id: user.id)
  		end
-		conversation.messages.create!(body: "Your room name is #{roomname}", messageable_id: current_doctor.id, messageable_type: :Doctor)
+		conversation.messages.create!(body: roomname, 
+			messageable_id: current_doctor.id, messageable_type: :Doctor)
 	end
 
 end
