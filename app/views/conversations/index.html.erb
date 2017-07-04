@@ -1,0 +1,13 @@
+<ul>
+	<% @conversations.each do |conversation| %>
+		<li>
+		<ul>
+		<% conversation.messages.each do |message| %>
+				<li>
+					<%= message.body %>
+				</li>
+		<% end %>
+		</ul>
+		</li>
+	<% end %>
+</ul>

@@ -17,5 +17,6 @@ class Doctor < ActiveRecord::Base
   validates_attachment_content_type :id_proof, content_type: 'application/pdf'
 
   has_many :consultations
+  has_many :messages, as: :messageable
 
 end

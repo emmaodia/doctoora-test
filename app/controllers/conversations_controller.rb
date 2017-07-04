@@ -1,11 +1,17 @@
 class ConversationsController < ApplicationController
 
-	before_action :authenticate_user || :authenticate_doctor
+	# before_action :authenticate_user || :authenticate_doctor
 	
-	# def index
-	# 	@users = User.all
-	# 	@conversations = Conversation.all
- # 	end
+	def index
+		@users = User.all
+		if user_signed_in?
+			@conversations = Conversation.where("recipient_id=?", current_user.id)
+		elsif doctor_signed_in?
+			@conversations = Conversation.where("sender_id=?", current_doctor.id)
+			p @conversations
+		end
+
+ 	end
 
 	def create
 		if Conversation.between(params[:sender_id],params[:recipient_id]).present?
