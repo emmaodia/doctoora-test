@@ -1,0 +1,34 @@
+class PatientReviewsController < ApplicationController
+
+	def index
+	end
+
+	def new
+		@user = User.find(params[:user_id])
+		@user_name = @user.first_name + " " + @user.last_name
+		@review = PatientReview.new
+	end
+
+	def create
+		user = User.find(params[:user_id])
+		patient_review = user.patient_reviews.new(patient_review_params)
+
+		if patient_review.save
+			flash[:notice] = "Review submitted for patient"
+			redirect_to doctors_path
+		else
+			flash[:notice] = "Your patient review could not be submitted"
+			redirect_to 'new'
+		end
+	end
+
+	def destroy
+	end
+
+	private
+
+	def patient_review_params
+		params.permit(:review)
+	end
+
+end

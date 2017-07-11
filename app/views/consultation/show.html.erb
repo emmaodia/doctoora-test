@@ -3,5 +3,9 @@
 </div>
 
 <div>
-	<%= link_to "End Consultation", consultation_index_path %>
+	<% if user_signed_in? %>
+		<%= link_to "End Consultation", consultation_index_path %>
+	<% elsif doctor_signed_in? %>
+		<%= link_to "End Consultation", new_user_patient_review_path(params[:user_id]) %>
+	<% end %>
 </div>
