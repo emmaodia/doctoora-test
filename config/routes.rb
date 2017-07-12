@@ -46,6 +46,8 @@ Rails.application.routes.draw do
 
   resources :patient_reviews, only: [:index]
 
+  get '/knowledgebase' => 'home#knowledgebase'
+
   # Example resource route with options:
   #   resources :products do
   #     member do
