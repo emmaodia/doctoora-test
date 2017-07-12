@@ -1,0 +1,6 @@
+<%= @doctors.each do |doctor| %>
+	<img src=<%= doctor.avatar.url(:medium) %> class="profile-image" />
+	<h4>Dr. <%= doctor.first_name %> <%= doctor.last_name %></h4>
+	<h5><%= doctor.town.capitalize %></h5>
+	<h5><%= doctor.specialization %></h5>
+<% end %>

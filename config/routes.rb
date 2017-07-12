@@ -47,6 +47,8 @@ Rails.application.routes.draw do
   resources :patient_reviews, only: [:index]
 
   get '/knowledgebase' => 'home#knowledgebase'
+  get '/search' => 'home#new_search'
+  post '/search' => 'home#search_results'
 
   # Example resource route with options:
   #   resources :products do

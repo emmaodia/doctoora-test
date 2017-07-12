@@ -24,4 +24,15 @@ class Doctor < ActiveRecord::Base
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
   validates_attachment_size :avatar, less_than: 2.megabytes
 
+  def self.search location, specialization
+    where("lower(town) LIKE ?", "%#{location}%".downcase)
+    where("lower(specialization) LIKE ?", "%#{specialization}".downcase)
+  end
+
+  private
+
+    def lower string
+      return string.downcase
+    end
+
 end

@@ -1,0 +1,12 @@
+<h2> Doctors Search </h2>
+<%= form_tag(search_path, :method => "post", :class => "navbar-form navbar-left") do %>
+	<%= label_tag 'location' %>
+	</br>
+	<%= text_field_tag :location, params[:location], :class => "form-control search-form" %>
+	</br>
+	<%= label_tag 'specialization' %>
+	<br/>
+	<%= text_field_tag :specialization, params[:specialization], :class => "form-control search-form" %>
+	<br/>
+	<button type="submit" class="btn btn-primary">Search</button>
+<% end %>
