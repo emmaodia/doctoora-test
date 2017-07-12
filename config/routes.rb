@@ -41,8 +41,10 @@ Rails.application.routes.draw do
   end
 
   resources :users do
-    resources :patient_reviews, only: [:index, :new, :create]
+    resources :patient_reviews, only: [:new, :create]
   end
+
+  resources :patient_reviews, only: [:index]
 
   # Example resource route with options:
   #   resources :products do

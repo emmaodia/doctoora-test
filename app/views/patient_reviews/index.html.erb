@@ -1,0 +1,25 @@
+<% @patients.each do |patient| %>
+	<div>
+		<img src=<%= patient.avatar %> id="logo"/>
+		<h4><%= patient.first_name %> <%= patient.last_name %></h4>
+		<button class="view-record btn btn-primary" value="<%= patient.id %>">View Records</button>
+		<div id="patient-record-<%= patient.id%>" class="patient-records">
+			<ul>
+				<% patient.patient_reviews.each do |review| %>
+					<li>
+						<h5><%= review.created_at.strftime("%m/%d/%y at %l:%M %p") %></h5>
+						<p><%= review.review %></p>
+					</li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+<% end %>
+
+<script>
+	var patientID;
+	$('.view-record').click(function(){
+		patientID = $(this).val();
+		$('#patient-record-'+patientID).toggle();
+	})
+</script>

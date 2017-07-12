@@ -1,6 +1,13 @@
 class PatientReviewsController < ApplicationController
 
 	def index
+		@patients = []
+		reviews  = PatientReview.all.order(:user_id)
+
+		reviews.each do |review|
+			@patients << User.find(review.user_id)
+			@patients.uniq!
+		end
 	end
 
 	def new
@@ -28,7 +35,7 @@ class PatientReviewsController < ApplicationController
 	private
 
 	def patient_review_params
-		params.permit(:review)
+		params.require(:patient_review).permit(:review)
 	end
 
 end

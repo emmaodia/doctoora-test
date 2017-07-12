@@ -200,3 +200,8 @@ body {
 .plan {
 	border: 1px dashed #202020;
 }
+
+/* Patients Page */
+.patient-records {
+    display: none;
+}
