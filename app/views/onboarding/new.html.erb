@@ -19,6 +19,11 @@
 			<%= f.select :ethnicity, ["Black", "Asian", "Caucasian", "Latin American", "Other"], :class => "form-control"%>
 		</div>
 
+		<div class="form-group">
+			<%= f.label :phone_number, :class => "control-label" %>
+			<%= f.text_field :phone, :class => "form-control", :placeholder => "Format: 08012345678. We will only show this to doctors for consultation purposes" %>
+		</div>
+
 		<h3>Location</h3>
 
 		<div class="form-group">

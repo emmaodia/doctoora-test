@@ -4,6 +4,6 @@ module ProfileHelper
 		if !current_user
 			return false
 		end
-		return current_user.id == params[:id]
+		return current_user.id == params[:id].to_i
 	end
 end
