@@ -8,6 +8,8 @@
 			<%= f.text_area :review, :class => "form-control", :placeholder => "What is your assessment of the patient?" %>
 		</div>
 
+		<%= f.hidden_field :doctor_id, :value => current_doctor.id %>
+
 		<%= f.submit :class => "btn btn-block btn-success" %>
 	<% end %>
 

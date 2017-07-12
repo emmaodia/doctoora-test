@@ -18,5 +18,6 @@ class Doctor < ActiveRecord::Base
 
   has_many :consultations
   has_many :messages, as: :messageable
+  has_many :patient_reviews
 
 end

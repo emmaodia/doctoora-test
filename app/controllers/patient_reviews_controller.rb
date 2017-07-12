@@ -2,7 +2,7 @@ class PatientReviewsController < ApplicationController
 
 	def index
 		@patients = []
-		reviews  = PatientReview.all.order(:user_id)
+		reviews  = PatientReview.where("doctor_id=?", current_doctor.id)
 
 		reviews.each do |review|
 			@patients << User.find(review.user_id)
@@ -35,7 +35,7 @@ class PatientReviewsController < ApplicationController
 	private
 
 	def patient_review_params
-		params.require(:patient_review).permit(:review)
+		params.require(:patient_review).permit(:review, :doctor_id)
 	end
 
 end
