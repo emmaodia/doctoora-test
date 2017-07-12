@@ -5,9 +5,7 @@ class ProfileController < ApplicationController
 	end
 
 	def edit
-		if user_signed_in?
-			@user_profile = User.find(params[:id])
-		end
+		@user_profile = User.find(params[:id])
 	end
 
 	def update
