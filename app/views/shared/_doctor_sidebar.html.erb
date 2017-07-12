@@ -14,6 +14,7 @@
         	</a>
         </li>
         <li>
+            <%= image_tag current_doctor.avatar.url(:medium), :class => "profile-image" %>
             <p>Welcome Dr <%= current_doctor.first_name %></p>
         </li>
         <li>

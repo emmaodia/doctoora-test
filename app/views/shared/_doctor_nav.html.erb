@@ -3,9 +3,7 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		  	<ul class="nav navbar-nav">
 		  		<li><a href="/plans">Health Market Place <i class="glyphicon glyphicon-shopping-cart"></i></a></li>
-		  		<% if doctor_signed_in? %>
-		  			<li id="greeting" class="nav-link"><a>Good Morning Dr <%= current_doctor.first_name %></a></li>
-		  		<% end %>
+		  		<li id="greeting" class="nav-link"><a>Good Morning Dr <%= current_doctor.first_name %></a></li>
 		  	</ul>
 		</div>
 	</div>
