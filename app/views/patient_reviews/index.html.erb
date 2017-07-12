@@ -1,7 +1,7 @@
 <% @patients.each do |patient| %>
 	<div>
 		<img src=<%= patient.avatar %> id="logo"/>
-		<h4><%= patient.first_name %> <%= patient.last_name %></h4>
+		<a href="/profile/<%= patient.id %>"><h4><%= patient.first_name %> <%= patient.last_name %></h4></a>
 		<button class="view-record btn btn-primary" value="<%= patient.id %>">View Records</button>
 		<div id="patient-record-<%= patient.id%>" class="patient-records">
 			<ul>
