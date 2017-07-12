@@ -4,8 +4,10 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th>Me</th>
-					<th><%= link_to "edit", edit_doctor_profile_path(current_doctor.id) %></th>
+					<% if my_profile? %>
+						<th>Me</th>
+						<th><%= link_to "edit", edit_doctor_profile_path(current_doctor.id) %></th>
+					<% end %>
 				</tr>
 			</thead>
 			<tbody>
