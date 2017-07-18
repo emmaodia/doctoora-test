@@ -10,9 +10,11 @@ class ConsultationController < ApplicationController
 
 	def create
 		@consultation = current_user.consultations.new(consultation_params)
+		p @consultation.date
 		@consultation.doctor_id = consultation_params[:professional]
 
 		if @consultation.save
+			p @consultation.date
 			flash[:notice] = "Your consultation has been booked and will be verified"
 			redirect_to root_path
 		else
@@ -52,7 +54,6 @@ class ConsultationController < ApplicationController
 	end
 
 	def generate_room_name
-		#using the Haikunator gem
 		Haikunator.haikunate
 	end
 

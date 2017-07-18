@@ -21,7 +21,7 @@
 
 		<div class="form-group">
 			<%= f.label "Pick a date", :class => "control-label" %>
-			<%= f.text_field :date, data:{ provide:'datepicker' } %>
+			<%= f.text_field :date, :id => "datepicker", :class => "form-control" %>
 		</div>
 
 		<div class="form-group">
@@ -39,3 +39,9 @@
 	<% end %>
 
 </div>
+
+<script>
+	$("#datepicker").datepicker({
+    	format: "dd/mm/yyyy"
+    });
+</script>

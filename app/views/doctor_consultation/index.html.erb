@@ -3,8 +3,8 @@
 <div>
 	<% @consultations.each do |consultation| %>
 		<div>
-			<h4>Consultation date</h4> <%= consultation.date %>
-			<h4>Consultation time</h4> <%= consultation.start_time %>
+			<h4>Consultation date</h4> <%= consultation.date.strftime("%m/%d/%y") %>
+			<h4>Consultation time</h4> <%= consultation.start_time.strftime("%H:%M") %>
 			<h4>Patient</h4>
 			<%= link_to profile_path(consultation.user_id) do%>
 				<%= get_patient_name(consultation.user_id) %>
