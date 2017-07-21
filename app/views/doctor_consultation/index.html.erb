@@ -1,22 +1,25 @@
 <h1> Your Consultations </h1>
 
 <div>
-	<% @consultations.each do |consultation| %>
-		<div>
-			<h4>Consultation date</h4> <%= consultation.date.strftime("%m/%d/%y") %>
-			<h4>Consultation time</h4> <%= consultation.start_time.strftime("%H:%M") %>
-			<h4>Patient</h4>
-			<%= link_to profile_path(consultation.user_id) do%>
-				<%= get_patient_name(consultation.user_id) %>
-			<% end %>
-			<h4>Tool</h4> <%= consultation.tool %>
-		</div>
-		<div>
-			<% if consultation.tool == "In-app call" %>
-				<%= link_to "Start Consultation", consultation_path(consultation, :user_id => consultation.user_id)%>
-			<% end %>
-		</div>
-		<!-- <p><%= link_to "accept", doctors_path %></p>
-		<p><%= link_to "reject", doctors_path %> </p> -->
+	<%= month_calendar events: @consultations do |date, consultations| %>
+	  <%= date %>
+
+	  <% consultations.each do |consultation| %>
+	    <div>
+	    	<button class="link-button" value="<%= consultation %>"><%= get_patient_name(consultation.user_id) %></button>
+	    </div>
+	  <% end %>
 	<% end %>
 </div>
+
+<div>
+	
+</div>
+
+<script>
+	var consultation;
+	$('.link-button').click(function(){
+		consultation = $(this).val;
+		console.log(consultation);
+	})
+</script>
