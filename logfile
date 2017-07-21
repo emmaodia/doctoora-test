@@ -105,3 +105,37 @@ LOG:  redo is not required
 LOG:  MultiXact member wraparound protections are now enabled
 LOG:  autovacuum launcher started
 LOG:  database system is ready to accept connections
+ERROR:  column "start_time" cannot be cast automatically to type timestamp without time zone
+HINT:  You might need to specify "USING start_time::timestamp without time zone".
+STATEMENT:  ALTER TABLE "consultations" ALTER COLUMN "start_time" TYPE timestamp
+ERROR:  column "start_time" is of type timestamp without time zone but expression is of type time without time zone at character 181
+HINT:  You will need to rewrite or cast the expression.
+STATEMENT:  INSERT INTO "consultations" ("discipline", "service", "tool", "date", "professional", "start_time", "user_id", "doctor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"
+ERROR:  cached plan must not change result type
+STATEMENT:  SELECT "consultations".* FROM "consultations" WHERE "consultations"."doctor_id" = $1
+ERROR:  cached plan must not change result type
+STATEMENT:  SELECT "consultations".* FROM "consultations" WHERE "consultations"."doctor_id" = $1
+LOG:  using stale statistics instead of current ones because stats collector is not responding
+LOG:  using stale statistics instead of current ones because stats collector is not responding
+LOG:  using stale statistics instead of current ones because stats collector is not responding
+LOG:  using stale statistics instead of current ones because stats collector is not responding
+LOG:  autovacuum launcher shutting down
+LOG:  received smart shutdown request
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2017-07-20 00:37:26 BST
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  autovacuum launcher started
+LOG:  database system is ready to accept connections
+ERROR:  relation "pictures" does not exist
+STATEMENT:  ALTER TABLE "pictures" ADD "upload_file_name" character varying
+ERROR:  relation "pictures" does not exist
+STATEMENT:  ALTER TABLE "pictures" ADD "upload_file_name" character varying
+ERROR:  cached plan must not change result type
+STATEMENT:  SELECT "rewards".* FROM "rewards" WHERE "rewards"."project_id" = $1
+ERROR:  cached plan must not change result type
+STATEMENT:  SELECT "rewards".* FROM "rewards" WHERE "rewards"."project_id" = $1
+ERROR:  cached plan must not change result type
+STATEMENT:  SELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1
+ERROR:  cached plan must not change result type
+STATEMENT:  SELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1

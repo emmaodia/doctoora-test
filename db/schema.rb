@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 20170712194229) do
     t.string   "service"
     t.string   "tool"
     t.date     "date"
-    t.time     "start_time"
     t.time     "end_time"
     t.string   "professional"
     t.datetime "created_at",   null: false
@@ -29,6 +28,7 @@ ActiveRecord::Schema.define(version: 20170712194229) do
     t.integer  "user_id"
     t.string   "status"
     t.integer  "doctor_id"
+    t.time     "start_time"
   end
 
   add_index "consultations", ["doctor_id"], name: "index_consultations_on_doctor_id", using: :btree

@@ -9,17 +9,24 @@ class ConsultationController < ApplicationController
 	end
 
 	def create
-		@consultation = current_user.consultations.new(consultation_params)
-		p @consultation.date
-		@consultation.doctor_id = consultation_params[:professional]
+		doctor = Doctor.find(consultation_params[:professional])
 
-		if @consultation.save
-			p @consultation.date
-			flash[:notice] = "Your consultation has been booked and will be verified"
-			redirect_to root_path
-		else
-			flash[:notice] = "There was an error creating your consultation"
+		if is_doctor_booked? doctor, params
+			flash[:notice] = "Dr #{doctor.first_name} #{doctor.last_name} is already booked for this time"
+			@consultation = current_user.consultations.new
 			render 'new'
+		else
+			@consultation = current_user.consultations.new(consultation_params)
+			@consultation.doctor_id = consultation_params[:professional]
+
+			if @consultation.save
+				flash[:notice] = "Your consultation has been booked and will be verified"
+				redirect_to root_path
+			else
+				flash[:notice] = "There was an error creating your consultation"
+				@consultation = current_user.consultations.new
+				render 'new'
+			end
 		end
 	end
 
@@ -65,6 +72,16 @@ class ConsultationController < ApplicationController
  		end
 		conversation.messages.create!(body: roomname, 
 			messageable_id: current_doctor.id, messageable_type: :Doctor)
+	end
+
+	def is_doctor_booked? doctor, current_consultation
+		doctor.consultations.each do |consultation|
+			if consultation.date == current_consultation[:date]
+				if consultation.start_time == current_consultation[:start_time]
+					return true
+				end
+			end
+		end
 	end
 
 end
