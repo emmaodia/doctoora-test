@@ -6,20 +6,24 @@
 
 	  <% consultations.each do |consultation| %>
 	    <div>
-	    	<button class="link-button" value="<%= consultation %>"><%= get_patient_name(consultation.user_id) %></button>
+	    	<button class="link-button" value="<%= consultation.id %>"><%= get_patient_name(consultation.user_id) %></button>
 	    </div>
+
+	    <div id="consultation-<%= consultation.id%>" class="patient-records">
+	    	<h3><%= get_patient_name(consultation.user_id) %></h3>
+			<p><%= consultation.date_and_time.strftime("%m/%d/%y at %l:%M %p") %></p>
+			<p><%= consultation.service %></p>
+			<p><%= consultation.discipline %></p>
+		</div>
 	  <% end %>
 	<% end %>
-</div>
 
-<div>
-	
 </div>
 
 <script>
-	var consultation;
+	var consultationID;
 	$('.link-button').click(function(){
-		consultation = $(this).val;
-		console.log(consultation);
+		consultationID = $(this).val();
+		$('#consultation-'+consultationID).toggle();
 	})
 </script>

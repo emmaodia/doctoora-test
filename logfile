@@ -139,3 +139,5 @@ ERROR:  cached plan must not change result type
 STATEMENT:  SELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1
 ERROR:  cached plan must not change result type
 STATEMENT:  SELECT  "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT 1
+LOG:  using stale statistics instead of current ones because stats collector is not responding
+LOG:  using stale statistics instead of current ones because stats collector is not responding
