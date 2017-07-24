@@ -10,7 +10,7 @@
 	    </div>
 
 	    <div id="consultation-<%= consultation.id%>" class="patient-records">
-	    	<h3><%= get_patient_name(consultation.user_id) %></h3>
+	    	<h5><%= get_patient_name(consultation.user_id) %></h5>
 			<p><%= consultation.date_and_time.strftime("%m/%d/%y at %l:%M %p") %></p>
 			<p><%= consultation.service %></p>
 			<p><%= consultation.discipline %></p>
