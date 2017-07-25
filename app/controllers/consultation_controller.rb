@@ -4,8 +4,14 @@ class ConsultationController < ApplicationController
 		@consultations = current_user.consultations.all.order(date: :desc)
 	end
 
+	def type_select
+		@specializations = Consultation::SPECIALIZATIONS
+	end
+
 	def new
 		@consultation = current_user.consultations.new
+		@specialization = params[:type].capitalize
+		@doctors = Doctor.get_professional_type @specialization
 	end
 
 	def create

@@ -26,7 +26,9 @@ Rails.application.routes.draw do
   resources :profile, only: [:show, :edit, :update]
   resources :doctor_profile, only: [:show, :edit, :update]
 
-  resources :consultation
+  get '/consultation/type' => "consultation#type_select"
+  get '/consultation/new/:type' => "consultation#new", as: :new_consultation
+  resources :consultation, except: :new
 
   get '/plans' => "plans#index"
   get '/plan/:id/purchase' => "plans#purchase", as: :purchase_plan

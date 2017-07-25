@@ -1,0 +1,5 @@
+<h4>What kind of consultation would you like to book</h4>
+
+<% @specializations.each do |specialization| %>
+	<%= link_to specialization, new_consultation_path(specialization.downcase) %>
+<% end %>

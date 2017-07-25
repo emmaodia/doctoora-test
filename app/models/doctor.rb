@@ -29,6 +29,10 @@ class Doctor < ActiveRecord::Base
     where("lower(specialization) LIKE ?", "%#{specialization}".downcase)
   end
 
+  def self.get_professional_type type
+    Doctor.where("specialization = ?", type)
+  end
+
   private
 
     def lower string

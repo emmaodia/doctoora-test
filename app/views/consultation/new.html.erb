@@ -10,8 +10,7 @@
 		</div>
 
 		<div class="form-group">
-			<%= f.label "Choose a service", :class => "control-label" %>
-			<%= f.select :service, ["Medical", "Fitness", "Nutritional"], :class => "form-control" %>
+			<%= f.hidden_field :service, value: @specialization %>
 		</div>
 
 		<div class="form-group">
@@ -31,7 +30,7 @@
 
 		<div class="form-group">
 			<%= f.label "Choose an available professional", :class => "control-label" %>
-			<%= f.select :professional, Doctor.all.collect {|d| [ "Dr " + d.first_name + " " + d.last_name, d.id ] }, :class => "form-control" %>
+			<%= f.select :professional, @doctors.collect {|d| [ "Dr " + d.first_name + " " + d.last_name, d.id ] }, :class => "form-control", required: true %>
 		</div>
 
 		<%= f.submit "Continue", :class => "btn btn-primary" %>
@@ -41,8 +40,13 @@
 </div>
 
 <script>
+	var professionalType;
+
 	$("#datepicker").datepicker({
     	format: "dd/mm/yyyy",
     	startDate: '0'
     });
+    $('#consultation_service').change(function(){
+    	professionalType = $(this).val();
+    })
 </script>
