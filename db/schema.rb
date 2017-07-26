@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170721200714) do
+ActiveRecord::Schema.define(version: 20170726152334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,15 +21,14 @@ ActiveRecord::Schema.define(version: 20170721200714) do
     t.string   "service"
     t.string   "tool"
     t.date     "date"
+    t.time     "time"
     t.time     "end_time"
     t.string   "professional"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.integer  "user_id"
     t.string   "status"
     t.integer  "doctor_id"
-    t.time     "start_time"
-    t.datetime "date_and_time"
   end
 
   add_index "consultations", ["doctor_id"], name: "index_consultations_on_doctor_id", using: :btree
@@ -107,25 +106,6 @@ ActiveRecord::Schema.define(version: 20170721200714) do
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
   add_index "messages", ["messageable_type", "messageable_id"], name: "index_messages_on_messageable_type_and_messageable_id", using: :btree
 
-  create_table "patient_records", force: :cascade do |t|
-    t.float    "height"
-    t.integer  "weight"
-    t.float    "bmi"
-    t.text     "vaccinations"
-    t.text     "conditions"
-    t.text     "dietary_restrictions"
-    t.text     "alcohol_consumption"
-    t.text     "recreatioal_drug_use"
-    t.boolean  "tobacco_use"
-    t.text     "sexual_activity"
-    t.text     "allergies"
-    t.text     "medication"
-    t.text     "lasting_conditions"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-    t.date     "dob"
-  end
-
   create_table "patient_reviews", force: :cascade do |t|
     t.text     "review"
     t.integer  "user_id"
@@ -196,7 +176,6 @@ ActiveRecord::Schema.define(version: 20170721200714) do
     t.text     "lasting_conditions"
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "status"
     t.string   "phone"
   end
 

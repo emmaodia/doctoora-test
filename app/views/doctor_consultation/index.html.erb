@@ -6,14 +6,13 @@
 
 	  <% consultations.each do |consultation| %>
 	    <div>
-	    	<button class="link-button" value="<%= consultation.id %>"><%= get_patient_name(consultation.user_id) %></button>
+	    	<%= consultation.time.strftime("%H:%M") %> <button class="link-button" value="<%= consultation.id %>"><%= get_patient_name(consultation.user_id) %></button>
 	    </div>
 
 	    <div id="consultation-<%= consultation.id%>" class="patient-records">
-	    	<h5><%= get_patient_name(consultation.user_id) %></h5>
-			<p><%= consultation.date_and_time.strftime("%m/%d/%y at %l:%M %p") %></p>
 			<p><%= consultation.discipline %></p>
-			<p><%= consultation.service %>
+			<p><%= consultation.service %></p>
+			<p>
 			<% if consultation.tool == "In-app call" %>
 				<%= link_to "Start Consultation", consultation_path(consultation, :user_id => consultation.user_id)%>
 			<% end %>
