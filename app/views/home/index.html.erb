@@ -22,8 +22,13 @@
 	</script>
 <% elsif doctor_signed_in? %>
 <% else %>
-	<%= link_to "Log in as a patient", new_user_session_path %><br />
-	<%= link_to "Log in as a doctor", new_doctor_session_path %><br />
-	<%= link_to "Sign up as a patient", new_user_registration_path %><br />
-	<%= link_to "Sign up as a doctor", new_doctor_registration_path %><br />
+	<div class="col-md-offset-2">
+		<div>
+			<img src="/logo.png" id="home-logo"/>
+		</div>
+		<%= link_to "Log in as a patient", new_user_session_path, :class => "access-link" %><br />
+		<%= link_to "Log in as a doctor", new_doctor_session_path, :class => "access-link" %><br />
+		<%= link_to "Sign up as a patient", new_user_registration_path, :class => "access-link" %><br />
+		<%= link_to "Sign up as a doctor", new_doctor_registration_path, :class => "access-link" %><br />
+	</div>
 <% end %>

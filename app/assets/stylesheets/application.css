@@ -199,6 +199,41 @@ body {
 	margin-top: 5%;
 }
 
+.access-link {
+    background: #4692ce;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    border-radius: 0.25em;
+    display: inline-block;
+    height: 2.5em;
+    line-height: 2em;
+    width: 30em;
+    margin: 10px 0;
+}
+
+.access-link:hover {
+    background: #f3904c;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.access-link:active {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+#home-logo {
+    width: 30em;
+    margin-top: 5em;
+    margin-bottom: 2.5em;
+}
+
+/*Sign In/Up page */
+.access-form {
+    margin-top: 5em;
+}
+
 /* Profile Page */
 .edit-link {
 	color: #fff;
