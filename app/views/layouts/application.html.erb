@@ -17,17 +17,15 @@
 		 <div id="page-content-wrapper">
 	        <div class="container-fluid">
 	            <div class="row">
-	                <div class="col-lg-9">
-	                	<% if user_signed_in? %>
-	                		<%= render 'shared/nav' %>
-	                		<%= render 'shared/sidebar' %>
-	                	<% elsif doctor_signed_in? %>
-	                		<%= render 'shared/doctor_nav' %>
-	                		<%= render 'shared/doctor_sidebar' %>
-	                	<% end %>
-	                	<p class="notice"><%= notice %></p>
-	                    <%= yield %>
-	                </div>
+                	<% if user_signed_in? %>
+                		<%= render 'shared/nav' %>
+                		<%= render 'shared/sidebar' %>
+                	<% elsif doctor_signed_in? %>
+                		<%= render 'shared/doctor_nav' %>
+                		<%= render 'shared/doctor_sidebar' %>
+                	<% end %>
+                	<p class="notice"><%= notice %></p>
+                    <%= yield %>
 	            </div>
 	        </div>
 	    </div>

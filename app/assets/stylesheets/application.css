@@ -21,6 +21,11 @@ body {
     overflow-x: hidden;
  }
 
+button {
+    background: #4692ce;
+    color: white;
+ }
+
 .link-button{
      background:none!important;
      color:inherit;
@@ -46,7 +51,7 @@ body {
 #page-content-wrapper {
     width: 100%;
     position: absolute;
-    margin-left: 250px;
+    margin-left: 150px;
 }
 
 /* PROFILE PAGE */
@@ -73,13 +78,14 @@ body {
 #sidebar-wrapper {
     z-index: 1000;
     position: fixed;
-    top: 10px;
+    top: 66px;
     left: 250px;
-    width: 250px;
+    width: 150px;
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
-    background: #4692ce;
+    overflow-x: hidden;
+    background: url("/gradient.png");
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -167,24 +173,43 @@ body {
 	margin-left: 2.5em;
 }
 
+#home-link {
+    position: relative;
+    left: 2.25em;
+    margin-top: -15px;
+}
+
+#consultation-link {
+    background-color: #4692ce;
+    color: #fff;
+}
+
+.glyphicon-home {
+    padding-top: .5em;
+    margin-left: .5em;
+}
+
 /* Navbar */
 
 #bootstrap-overrides .navbar {
-	background: #4692ce;
-	margin-top: -0.75px;
-	margin-left: -20px;
+	background: #D2D7D3;
 }
 
 #bootstrap-overrides .navbar-nav li a, #bootstrap-overrides .navbar-nav li p {
 	color: #fff;
 }
 
-.nav-link {
-	padding-top: 15px;
-} #greeting a:hover {
-	background: #4692ce !important;
+#greeting p {
+	color: #4692ce !important;
+    padding-top: 30px;
+    padding-left: 15px;
 }
 
+#plans {
+    background-color: #4692ce;
+} #plans a:hover {
+    cursor: pointer;
+}
 /* Home Page */
 
 .search-form {
@@ -250,4 +275,16 @@ body {
 /* Patients Page */
 .patient-records {
     display: none;
+}
+
+/* Onboarding Form */
+.onboarding-form {
+    padding-bottom: 1em;
+    background: #f3904c !important;
+}
+.onboarding-form .form-control, .onboarding-form select, .onboarding-form textarea{
+    background-color: #D2D7D3;
+}
+.onboarding-form .control-label, .onboarding-form h2, .onboarding-form h3 {
+    color: #fff;
 }
