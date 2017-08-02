@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
 
 	def index
+		@notifications = current_user.notifications.last(5).reverse
 	end
 	
 	def knowledgebase

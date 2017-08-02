@@ -175,3 +175,7 @@ LOG:  redo is not required
 LOG:  MultiXact member wraparound protections are now enabled
 LOG:  autovacuum launcher started
 LOG:  database system is ready to accept connections
+ERROR:  cached plan must not change result type
+STATEMENT:  SELECT  "consultations".* FROM "consultations" WHERE "consultations"."id" = $1 LIMIT 1
+ERROR:  cached plan must not change result type
+STATEMENT:  SELECT "consultations".* FROM "consultations" WHERE "consultations"."doctor_id" = $1

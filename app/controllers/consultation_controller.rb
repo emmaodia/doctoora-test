@@ -36,9 +36,7 @@ class ConsultationController < ApplicationController
 	end
 
 	def show
-		@room_name = generate_room_name
-		user = User.find(params[:user_id])
-		send_user_room_name user, @room_name
+		@consultation = Consultation.find(params[:id])
 	end
 
 	def edit
@@ -63,20 +61,6 @@ class ConsultationController < ApplicationController
 
 	def consultation_params
 		params.require(:consultation).permit(:discipline, :service, :tool, :date, :time, :end_time, :professional)
-	end
-
-	def generate_room_name
-		Haikunator.haikunate
-	end
-
-	def send_user_room_name user, roomname
-		if Conversation.between(current_doctor.id, user.id).present?
-			conversation = Conversation.between(current_doctor.id, user.id).first
- 		else
-  			conversation = Conversation.create!(sender_id: current_doctor.id, recipient_id: user.id)
- 		end
-		conversation.messages.create!(body: roomname, 
-			messageable_id: current_doctor.id, messageable_type: :Doctor)
 	end
 
 	def is_doctor_booked? doctor, current_consultation

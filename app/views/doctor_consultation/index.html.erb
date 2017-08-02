@@ -12,9 +12,13 @@
 	    <div id="consultation-<%= consultation.id%>" class="patient-records">
 			<p><%= consultation.discipline %></p>
 			<p><%= consultation.service %></p>
-			<p>
-			<% if consultation.tool == "In-app call" %>
+			<% if !consultation.status %>
+				<p><span><%=link_to "approve", accept_consultation_path(consultation.id), method: :post %></span>  <span><%= link_to "reject", reject_consultation_path(consultation.id), method: :post %></span></p>
+				<p>
+			<% elsif consultation.status && consultation.tool == "In-app call" %>
 				<%= link_to "Start Consultation", consultation_path(consultation, :user_id => consultation.user_id)%>
+			<% else %>
+				<p>Begin the consultation using the desired method</p>
 			<% end %>
 			</p>
 		</div>
