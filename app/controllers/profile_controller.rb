@@ -1,6 +1,7 @@
 class ProfileController < ApplicationController
 
 	def show
+		@notifications = current_user.notifications.last(5).reverse
 		@user = User.find(params[:id] || current_user.id)
 	end
 

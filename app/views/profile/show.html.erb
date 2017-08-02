@@ -1,4 +1,4 @@
-<div class="col-md-6 profile">
+<div class="col-md-8 profile">
 
 	<div class="table-responsive">
 		<table class="table">
@@ -75,4 +75,8 @@
 		<%= link_to_if my_profile?, "Add", edit_profile_path(@user), :class => "btn btn-primary" %>
 	</div>
 
+</div>
+
+<div class="col-md-4">
+	<%= render "shared/activity_sidebar" %>
 </div>

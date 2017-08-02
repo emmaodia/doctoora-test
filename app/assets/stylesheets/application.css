@@ -19,6 +19,7 @@
 
 body {
     overflow-x: hidden;
+    font-family: 'Droid Sans', sans-serif !important;
  }
 
 button {
@@ -156,9 +157,9 @@ button {
 	border-right: none;
 }
 
-.sidebar-nav #glyphs {
+.sidebar-nav .glyphs {
 	margin-top: 50px;
-} .sidebar-nav #glyphs li {
+} .sidebar-nav .glyphs li {
 	display: inline-block;
 }
 
@@ -333,4 +334,18 @@ button {
 /* Calendar */
 .table {
     overflow: scroll;
+}
+
+/* Type Select */
+.specialization-link {
+    background-color: #4692ce;
+    width: 50px;
+    height: 200px;
+    margin: 2em;
+    border-radius: 0.5em;
+} .specialization-link p {
+    text-align: center;
+    color: #fff;
+    font-size: 22.5px;
+    padding-top: 50px;
 }
