@@ -179,3 +179,6 @@ ERROR:  cached plan must not change result type
 STATEMENT:  SELECT  "consultations".* FROM "consultations" WHERE "consultations"."id" = $1 LIMIT 1
 ERROR:  cached plan must not change result type
 STATEMENT:  SELECT "consultations".* FROM "consultations" WHERE "consultations"."doctor_id" = $1
+ERROR:  column "email" of relation "users" already exists
+STATEMENT:  ALTER TABLE "users" ADD "email" character varying DEFAULT '' NOT NULL
+LOG:  using stale statistics instead of current ones because stats collector is not responding
