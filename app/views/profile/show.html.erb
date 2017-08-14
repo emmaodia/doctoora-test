@@ -75,6 +75,19 @@
 		<%= link_to_if my_profile?, "Add", edit_profile_path(@user), :class => "btn btn-primary" %>
 	</div>
 
+	<div>
+		<h3>Patient Reviews</h3>
+		<ul>
+			<% @patient_reviews.each do |review| %>
+				<li>
+					<h5><%= review.created_at.strftime("%d/%m/%y") %></h5>
+					<p><%= get_doctor_name(review.doctor_id) %></p>
+					<p><%= review.review %></p>
+				</li>
+			<% end %>
+		</ul>
+	</div>
+
 </div>
 
 <div class="col-md-4">

@@ -9,7 +9,9 @@
         	</a>
         </li>
         <li>
-            <%= image_tag current_user.avatar.url(:medium), :class => "profile-image" %>
+            <%= link_to profile_path(current_user.id) do %>
+                <%= image_tag current_user.avatar.url(:medium), :class => "profile-image" %>
+            <% end %>
             <p>Welcome <%= current_user.first_name %></p>
         </li>
         <li>

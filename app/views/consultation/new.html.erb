@@ -6,14 +6,19 @@
 
 		<div class="form-group">
 			<%= f.label "Choose a consultation type", :class => "control-label" %>
-			<%= f.select :discipline, ["Telephone", "Video", "Clinic Visit", "Chat"], :class => "form-control" %>
+			<%= f.select :discipline, ["Video", "Clinic Visit", "Chat", "Home Visit"], :class => "form-control" %>
+		</div>
+
+		<div class="form-group address-box">
+			<%= f.label "Your Address", :class => "control-label" %>
+			<%= f.text_area :address, :class => "form-control" %>
 		</div>
 
 		<div class="form-group">
 			<%= f.hidden_field :service, value: @specialization %>
 		</div>
 
-		<div class="form-group">
+		<div class="form-group tool-box">
 			<%= f.label "Choose a service tool", :class => "control-label" %>
 			<%= f.select :tool, ["Private Number", "In-app call", "Skype"], :class => "form-control" %>
 		</div>
@@ -49,4 +54,15 @@
     $('#consultation_service').change(function(){
     	professionalType = $(this).val();
     })
+
+    $('#consultation_discipline').change(function(){
+    	if($(this).val() == 'Home Visit'){
+    		$('.address-box').css('display', 'block');
+    		$('.tool-box').css('display', 'none');
+    	} else {
+    		$('.address-box').css('display', 'none');
+    		$('.tool-box').css('display', 'block');
+    	}
+    });
+
 </script>

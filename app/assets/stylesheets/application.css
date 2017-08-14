@@ -349,3 +349,23 @@ button {
     font-size: 22.5px;
     padding-top: 50px;
 }
+
+/* Consultation Show Page */
+.end-consultation-link {
+    position: relative;
+    top: -40px;
+    left: -625px;
+    background: #4692ce;
+    color: #fff;
+    padding: 5px;
+    border-radius:0.2em;
+}
+
+/* Consultation Form */
+.address-box {
+    display: none;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}

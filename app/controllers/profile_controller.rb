@@ -3,6 +3,7 @@ class ProfileController < ApplicationController
 	def show
 		@notifications = current_user.notifications.last(5).reverse
 		@user = User.find(params[:id] || current_user.id)
+		@patient_reviews = @user.patient_reviews.all.order(created_at: :desc)
 	end
 
 	def edit
