@@ -182,3 +182,10 @@ STATEMENT:  SELECT "consultations".* FROM "consultations" WHERE "consultations".
 ERROR:  column "email" of relation "users" already exists
 STATEMENT:  ALTER TABLE "users" ADD "email" character varying DEFAULT '' NOT NULL
 LOG:  using stale statistics instead of current ones because stats collector is not responding
+LOG:  database system was interrupted; last known up at 2017-08-16 19:11:08 BST
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  invalid record length at 0/21001E8: wanted 24, got 0
+LOG:  redo is not required
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  autovacuum launcher started
+LOG:  database system is ready to accept connections

@@ -232,6 +232,12 @@ button {
     padding-left: 15px;
 }
 
+.navbar-logo {
+    float: left;
+    margin-left: -150px;
+    width: 150px;
+}
+
 #plans {
     background-color: #4692ce;
 } #plans a:hover {
