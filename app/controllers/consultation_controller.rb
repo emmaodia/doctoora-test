@@ -24,6 +24,8 @@ class ConsultationController < ApplicationController
 		else
 			@consultation = current_user.consultations.new(consultation_params)
 			@consultation.doctor_id = consultation_params[:professional]
+			@consultation.date_and_time = Time.new(@consultation.date.year, @consultation.date.month, @consultation.date.day,
+  									   			   @consultation.time.hour, @consultation.time.min).to_datetime
 			if @consultation.save
 				flash[:notice] = "Your consultation has been booked and will be verified"
 				redirect_to root_path
