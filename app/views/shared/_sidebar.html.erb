@@ -40,6 +40,17 @@
         	<li>
         		<a href="#">Refer Someone</a>
         	</li>
+            <% if user_signed_in? %>
+                <li><%= link_to destroy_user_session_path, method: :delete do%>
+                    <span class="glyphicon glyphicon-off"></span>
+                <% end %>   
+                </li>
+            <% else %>
+                <li><%= link_to new_user_session_path do%>
+                    <span class="glyphicon glyphicon-off"></span>
+                <% end %>   
+                </li>
+            <% end %>
         </div>
 
         <div class="glyphs">

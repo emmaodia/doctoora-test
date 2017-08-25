@@ -22,23 +22,28 @@
 		<h3>Lifestyle</h3>
 
 		<div class="form-group">
-			<%= f.select :dietary_restrictions, :class => "form-control"%>
+			<%= f.label "Diet", :class => "control-label" %>
+			<%= f.select :dietary_restrictions, ["Meat", "Fish", "Vegetarian"], :class => "form-control"%>
 		</div>
 
 		<div class="form-group">
-			<%= f.select :alcohol_consumption, :class => "form-control"%>
+			<%= f.label "Alcohol Drinking", :class => "control-label" %>
+			<%= f.select :alcohol_consumption, ["Daily", "Once a week", "Socially", "Never"], :class => "form-control"%>
 		</div>
 
 		<div class="form-group">
-			<%= f.select :recreational_drug, :class => "form-control"%>
+			<%= f.label "Recreational Drug Use", :class => "control-label" %>
+			<%= f.select :recreational_drug, ["Often", "Sporadically", "Rarely", "Never"], :class => "form-control"%>
 		</div>
 
 		<div class="form-group">
-			<%= f.select :tobacco, :class => "form-control"%>
+			<%= f.label "Smoking", :class => "control-label" %>
+			<%= f.select :tobacco, [">5 sticks per day", "1-5 sticks per day", "Socially", "Never"], :class => "form-control"%>
 		</div>
 
 		<div class="form-group">
-			<%= f.select :sexual_activity, :class => "form-control"%>
+			<%= f.label "Exercise", :class => "control-label" %>
+			<%= f.select :exercise, ["Daily", "1-3 times per week", "Rarely", "Never"], :class => "form-control"%>
 		</div>
 
 		<%= link_to "Skip", root_path %>
