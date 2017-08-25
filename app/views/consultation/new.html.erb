@@ -14,9 +14,16 @@
 			<%= f.text_area :address, :class => "form-control" %>
 		</div>
 
-		<div class="form-group">
-			<%= f.hidden_field :service, value: @specialization %>
-		</div>
+		<% if @specialization == nil %>
+			<div class="form-group">
+				<%= f.label "Specialization", :class => "control-label" %>
+				<%= f.select :service, ["Medical", "Fitness", "Nutritional"], :class => "form-control" %>
+			</div>
+		<% else %>
+			<div class="form-group">
+				<%= f.hidden_field :service, value: @specialization %>
+			</div>
+		<% end %>
 
 		<div class="form-group tool-box">
 			<%= f.label "Choose a service tool", :class => "control-label" %>

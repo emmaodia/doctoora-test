@@ -10,8 +10,17 @@ class ConsultationController < ApplicationController
 
 	def new
 		@consultation = current_user.consultations.new
-		@specialization = params[:type].capitalize
-		@doctors = Doctor.get_professional_type @specialization
+
+		if params[:type] == "care team"
+			@doctors = []
+			CareTeam.find_by_user_id(current_user.id).doctor_ids.each do |doctor_id|
+				@doctors << Doctor.find(doctor_id)
+			end
+			@specialization = nil
+		else
+			@specialization = params[:type].capitalize
+			@doctors = Doctor.get_professional_type @specialization
+		end
 	end
 
 	def create

@@ -2,11 +2,12 @@
 	<h2>What kind of consultation would you like to book?</h2>
 
 	<div class="row">
-	<% @specializations.each do |specialization| %>
-			<%= link_to new_consultation_path(specialization.downcase) do %>
-				<div class="col-md-3 specialization-link">
-					<p><%= specialization %></p>
-				</div>
-			<% end %>
-	<% end %>
+		<% @specializations.each do |specialization| %>
+				<%= link_to new_consultation_path(specialization.downcase) do %>
+					<div class="col-md-3 specialization-link">
+						<p><%= specialization %></p>
+					</div>
+				<% end %>
+		<% end %>
+	</div>
 </div>

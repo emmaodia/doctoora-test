@@ -6,5 +6,5 @@ class Consultation < ActiveRecord::Base
         self.date #this is for the simple_calendar, refer to documentation: https://github.com/excid3/simple_calendar
     end
 
-    SPECIALIZATIONS = ["Medical", "Fitness", "Nutritional"]
+    SPECIALIZATIONS = ["Medical", "Fitness", "Nutritional", "Care Team"]
 end
