@@ -1,0 +1,28 @@
+<div style="margin-left: 2em">
+	<div style="height: 200px">
+		<h2> Doctor Search </h2>
+		<%= form_tag(care_path, :method => "post", :class => "navbar-form navbar-left") do %>
+			<%= label_tag 'location' %>
+			</br>
+			<%= text_field_tag :location, params[:location], :class => "form-control search-form" %>
+			</br>
+			<%= label_tag 'specialization' %>
+			<br/>
+			<%= text_field_tag :specialization, params[:specialization], :class => "form-control search-form" %>
+			<br/>
+			<button type="submit" class="btn btn-primary">Search</button>
+		<% end %>
+	</div>
+
+	<div>
+		<h2> Your Care Team </h2>
+		<% @care_team_doctors.each do |doctor| %>
+			<div>
+				<%= image_tag doctor.avatar.url(:medium), :class => "profile-image" %>
+				<p><%= doctor.first_name %> <%= doctor.last_name %></p>
+				<p><%= doctor.specialization %></p>
+				<p><%= doctor.specialty %></p>
+			</div>
+		<% end %>
+	</div>
+</div>

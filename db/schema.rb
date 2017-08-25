@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170823185839) do
+ActiveRecord::Schema.define(version: 20170825145347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "care_teams", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "doctor_ids", default: [],              array: true
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "care_teams", ["user_id"], name: "index_care_teams_on_user_id", using: :btree
 
   create_table "consultations", force: :cascade do |t|
     t.string   "discipline"
@@ -192,12 +201,14 @@ ActiveRecord::Schema.define(version: 20170823185839) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "phone"
+    t.string   "exercise"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["plan_id"], name: "index_users_on_plan_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "care_teams", "users"
   add_foreign_key "consultations", "doctors"
   add_foreign_key "consultations", "users"
   add_foreign_key "messages", "conversations"

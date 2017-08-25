@@ -191,3 +191,17 @@ LOG:  autovacuum launcher started
 LOG:  database system is ready to accept connections
 ERROR:  cached plan must not change result type
 STATEMENT:  SELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = $1 LIMIT 1
+ERROR:  relation "care_teams" already exists
+STATEMENT:  CREATE TABLE "care_teams" ("id" serial primary key, "user_id" integer, "doctor_ids" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+ERROR:  relation "care_teams" already exists
+STATEMENT:  CREATE TABLE "care_teams" ("id" serial primary key, "user_id" integer, "doctor_ids" integer[] DEFAULT '{}', "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+ERROR:  relation "care_teams" already exists
+STATEMENT:  CREATE TABLE "care_teams" ("id" serial primary key, "user_id" integer, "doctor_ids" integer[] DEFAULT '{}', "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+ERROR:  database "doctoora_development" already exists
+STATEMENT:  CREATE DATABASE "doctoora_development" ENCODING = 'unicode'
+ERROR:  database "doctoora_test" already exists
+STATEMENT:  CREATE DATABASE "doctoora_test" ENCODING = 'unicode'
+ERROR:  cached plan must not change result type
+STATEMENT:  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1
+ERROR:  cached plan must not change result type
+STATEMENT:  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1

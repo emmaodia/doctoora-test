@@ -3,5 +3,5 @@
 	<a href="/doctor_profile/<%= doctor.id %>"><h4>Dr. <%= doctor.first_name %> <%= doctor.last_name %></h4></a>
 	<h5><%= doctor.town.capitalize %></h5>
 	<h5><%= doctor.specialization %></h5>
-	<%= link_to "Add to your care team", add_doctor_to_care_team_path %>
+	<%= link_to "Add to your care team", add_doctor_to_care_team_path(doctor.id), method: :post %>
 <% end %>
