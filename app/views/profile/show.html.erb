@@ -61,7 +61,11 @@
 	<div>
 		<h3>Vaccination</h3>
 		<p>To the best of your knowledge what vaccinations have you had, from childhood till now?</p>
-		<p><%= @user.vaccinations if @user.vaccinations %></p>
+		<% if @user.vaccinations %>
+			<% @user.vaccinations.each do |vacc| %>
+				<p><%= vacc %></p>
+			<% end %>
+		<% end %>
 		<%= link_to_if my_profile?, "Add", edit_profile_path(@user), :class => "btn btn-primary" %>
 	</div>
 

@@ -1,4 +1,4 @@
-<div class="col-md-4">
+<div class="col-md-6">
 	<%= form_for @user_profile, url: profile_path(@user_profile), method: :put, html: { multipart: true } do |f| %>
 
 		<h2> Edit Profile</h2>
@@ -59,9 +59,125 @@
 
 		<h3>Vaccinations</h3>
 
+		<p>Your Vaccinations: <%= @user_profile.vaccinations %></p>
+
 		<div class="form-group">
-			<%= f.label :vaccinations, :class => "control-label" %>
-			<%= f.text_area :vaccinations, :class => "form-control", :placeholder => "What vaccinations have you had?" %>
+			<div class="row">
+				<div class="col-md-4">
+					<p>
+						<%= f.check_box :vaccinations, {:multiple => true}, "Anthrax", nil %>
+						<%= f.label "Anthrax", :class => "control-label" %>
+					</p>
+					<p>
+						<%= f.check_box :vaccinations, {:multiple => true}, "Chicken Pox", nil %>
+						<%= f.label "Chicken Pox", :class => "control-label" %>
+					</p>
+					<p>
+						<%= f.check_box :vaccinations, {:multiple => true}, "Cholera", nil %>
+						<%= f.label "Cholera", :class => "control-label" %>
+					</p>
+					<p>
+						<%= f.check_box :vaccinations, {:multiple => true}, "Dengue Fever", nil %>
+						<%= f.label "Dengue Fever", :class => "control-label" %>
+					</p>
+					<p>
+						<%= f.check_box :vaccinations, {:multiple => true}, "DTP", nil %>
+						<%= f.label "DTP (Diphtheria, Tetanus, Pertussis)", :class => "control-label" %>
+					</p>
+					<p>
+						<%= f.check_box :vaccinations, {:multiple => true}, "Hepatitis A", nil %>
+						<%= f.label "Hepatitis A", :class => "control-label" %>
+					</p>
+					<p>
+						<%= f.check_box :vaccinations, {:multiple => true}, "Hepatitis B", nil %>
+						<%= f.label "Hepatitis B", :class => "control-label" %>
+					</p>
+					<p>
+						<%= f.check_box :vaccinations, {:multiple => true}, "Hepatitis E", nil %>
+						<%= f.label "Hepatitis A", :class => "control-label" %>
+					</p>
+					<p>
+						<%= f.check_box :vaccinations, {:multiple => true}, "Human Papilloma-Virus", nil %>
+						<%= f.label "Human Papilloma-Virus", :class => "control-label" %>
+					</p>
+					<p>
+						<%= f.check_box :vaccinations, {:multiple => true}, "Influenza", nil %>
+						<%= f.label "Influenza", :class => "control-label" %>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p>
+						<%= f.check_box :vaccinations, {:multiple => true}, "Japanese Encephalitis", nil %>
+						<%= f.label "Japanese Encephalitis", :class => "control-label" %>
+					</p>
+					<p>
+						<%= f.check_box :vaccinations, {:multiple => true}, "Malaria", nil %>
+						<%= f.label "Malaria", :class => "control-label" %>
+					</p>
+					<p>
+						<%= f.check_box :vaccinations, {:multiple => true}, "Meningococcal Disease", nil %>
+						<%= f.label "Meningococcal Disease", :class => "control-label" %>
+					</p>
+					<p>
+						<%= f.check_box :vaccinations, {:multiple => true}, "MMR", nil %>
+						<%= f.label "MMR (Measles, Mumps, Rubella)", :class => "control-label" %>
+					</p>
+					<p>
+						<%= f.check_box :vaccinations, {:multiple => true}, "Pneumococcal Disease", nil %>
+						<%= f.label "Pneumococcal Disease", :class => "control-label" %>
+					</p>
+					<p>
+						<%= f.check_box :vaccinations, {:multiple => true}, "Poliomyelitis", nil %>
+						<%= f.label "Poliomyelitis", :class => "control-label" %>
+					</p>
+					<p>
+						<%= f.check_box :vaccinations, {:multiple => true}, "Q Fever", nil %>
+						<%= f.label "Q Fever", :class => "control-label" %>
+					</p>
+					<p>
+						<%= f.check_box :vaccinations, {:multiple => true}, "Rabies", nil %>
+						<%= f.label "Rabies", :class => "control-label" %>
+					</p>
+					<p>
+						<%= f.check_box :vaccinations, {:multiple => true}, "Rotavirus Gastroenteritis", nil %>
+						<%= f.label "Rotavirus Gastroenteritis", :class => "control-label" %>
+					</p>
+					<p>
+						<%= f.check_box :vaccinations, {:multiple => true}, "Rubella", nil %>
+						<%= f.label "Rubella", :class => "control-label" %>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p>
+						<%= f.check_box :vaccinations, {:multiple => true}, "Smallpox", nil %>
+						<%= f.label "Smallpox", :class => "control-label" %>
+					</p>
+					<p>
+						<%= f.check_box :vaccinations, {:multiple => true}, "Tetanus Toxiod Booster", nil %>
+						<%= f.label "Tetanus Toxiod Booster", :class => "control-label" %>
+					</p>
+					<p>
+						<%= f.check_box :vaccinations, {:multiple => true}, "Tick-borne Encephalitis", nil %>
+						<%= f.label "Tick-borne Encephalitis", :class => "control-label" %>
+					</p>
+					<p>
+						<%= f.check_box :vaccinations, {:multiple => true}, "Tuberculosis", nil %>
+						<%= f.label "Tuberculosis", :class => "control-label" %>
+					</p>
+					<p>
+						<%= f.check_box :vaccinations, {:multiple => true}, "Typhoid Fever", nil %>
+						<%= f.label "Typhoid Fever", :class => "control-label" %>
+					</p>
+					<p>
+						<%= f.check_box :vaccinations, {:multiple => true}, "Varicella and Herpes Zoster (Shingles)", nil %>
+						<%= f.label "Varicella and Herpes Zoster (Shingles)", :class => "control-label" %>
+					</p>
+					<p>
+						<%= f.check_box :vaccinations, {:multiple => true}, "Yellow fever", nil %>
+						<%= f.label "Yellow fever", :class => "control-label" %>
+					</p>
+				</div>
+			</div>
 		</div>
 
 		<div class="form-group">

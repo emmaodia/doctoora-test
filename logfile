@@ -205,3 +205,10 @@ ERROR:  cached plan must not change result type
 STATEMENT:  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1
 ERROR:  cached plan must not change result type
 STATEMENT:  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1
+LOG:  database system was interrupted; last known up at 2017-08-25 16:47:05 BST
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  invalid record length at 0/22B2FC0: wanted 24, got 0
+LOG:  redo is not required
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  autovacuum launcher started
+LOG:  database system is ready to accept connections

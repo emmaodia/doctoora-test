@@ -327,12 +327,12 @@ button {
 
 /* Onboarding Form */
 .onboarding-form {
+    margin-top: -15px;
     padding-bottom: 1em;
     background: #f3904c !important;
+    border-radius: 0.2em;
 }
-.onboarding-form .form-control, .onboarding-form select, .onboarding-form textarea{
-    background-color: #D2D7D3;
-}
+
 .onboarding-form .control-label, .onboarding-form h2, .onboarding-form h3 {
     color: #fff;
 }
