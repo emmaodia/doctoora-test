@@ -236,6 +236,7 @@ button {
     float: left;
     margin-left: -150px;
     width: 150px;
+    position: fixed;
 }
 
 #plans {
