@@ -2,8 +2,10 @@ class CareTeamController < ApplicationController
 
 	def new_search
 		@care_team_doctors = []
-		CareTeam.find_by_user_id(current_user.id).doctor_ids.each do |doctor_id|
-			@care_team_doctors << Doctor.find(doctor_id)
+		if current_user.care_team
+			CareTeam.find_by_user_id(current_user.id).doctor_ids.each do |doctor_id|
+				@care_team_doctors << Doctor.find(doctor_id)
+			end
 		end
 	end
 

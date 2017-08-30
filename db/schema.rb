@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170825145347) do
+ActiveRecord::Schema.define(version: 20170830195218) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(version: 20170825145347) do
     t.datetime "avatar_updated_at"
     t.string   "specialization"
     t.string   "specialty"
+    t.boolean  "verified"
   end
 
   add_index "doctors", ["email"], name: "index_doctors_on_email", unique: true, using: :btree
