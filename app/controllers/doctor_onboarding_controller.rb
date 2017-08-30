@@ -22,7 +22,7 @@ class DoctorOnboardingController < ApplicationController
 		assign_values parameters, doctor
 		
 		if doctor.save
-			redirect_to doctor_onboarding_new_upload_documents_path
+			redirect_to doctors_path
 		else
 			flash[:notice] = "There was an error saving your information"
 			render 'new'
@@ -35,10 +35,11 @@ class DoctorOnboardingController < ApplicationController
 
 	def submit_documents
 		doctor = Doctor.find(current_doctor.id)
-		assign_values params["doctor"], doctor
+		doctor.update(doctor_params)
 
 		if doctor.save
-			redirect_to doctors_path
+			flash[:notice] = "Thanks for uploading your documents. They will be verified and you will be contacted soon"
+			redirect_to root_path
 		else
 			flash[:notice] = "There was an error saving your information"
 			render 'upload_documents'
@@ -52,6 +53,10 @@ class DoctorOnboardingController < ApplicationController
 			key = param[0]
 			user[key] = param[1]
 		end
+	end
+
+	def doctor_params
+		params.require(:doctor).permit(:mdcn, :nysc, :uni_cert, :post_nysc, :id_proof)
 	end
 
 end

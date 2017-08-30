@@ -1,51 +1,58 @@
-<div class="col-md-6 profile">
+<% if @doctor.verified %>
+	<div class="col-md-6 profile">
 
-	<div class="table-responsive">
-		<table class="table">
-			<thead>
-				<tr>
-					<% if my_profile? %>
-						<th>Me</th>
-						<th><%= link_to "edit", edit_doctor_profile_path(current_doctor.id) %></th>
-					<% end %>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>Name</td>
-					<td>Dr <%= @doctor.first_name %> <%= @doctor.last_name %></td>
-				</tr>
-				<tr>
-					<td>Gender</td>
-					<td><%= @doctor.gender %></td>
-				</tr>
-				<tr>
-					<td>Date of birth</td>
-					<td><%= @doctor.dob %></td>
-				</tr>
-				<tr>
-					<td>Ethnicity</td>
-					<td><%= @doctor.ethnicity %></td>
-				</tr>
-				<tr>
-					<td>Specialization</td>
-					<td><%= @doctor.specialization %></td>
-				</tr>
-				<tr>
-					<td>Location</td>
-					<td><%= @doctor.town %></td>
-				</tr>
-			</tbody>
-		</table>
+		<div class="table-responsive">
+			<table class="table">
+				<thead>
+					<tr>
+						<% if my_profile? %>
+							<th>Me</th>
+							<th><%= link_to "edit", edit_doctor_profile_path(current_doctor.id) %></th>
+						<% end %>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Name</td>
+						<td>Dr <%= @doctor.first_name %> <%= @doctor.last_name %></td>
+					</tr>
+					<tr>
+						<td>Gender</td>
+						<td><%= @doctor.gender %></td>
+					</tr>
+					<tr>
+						<td>Date of birth</td>
+						<td><%= @doctor.dob %></td>
+					</tr>
+					<tr>
+						<td>Ethnicity</td>
+						<td><%= @doctor.ethnicity %></td>
+					</tr>
+					<tr>
+						<td>Specialization</td>
+						<td><%= @doctor.specialization %></td>
+					</tr>
+					<tr>
+						<td>Location</td>
+						<td><%= @doctor.town %></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
+<% end %>
 
-	<div>
-		<h3>Credentials</h3>
-		<p>MDCN Annual Practicing License</p>
-		<p>NYSC Certificate</p>
-		<p>University Certificate</p>
-		<p>Post-NYSC Years of Experience</p>
-		<p>Proof of Identity</p>
-	</div>
+<div>
+	<h3>Credentials</h3>
+	<p>MDCN Annual Practicing License: <%= file_uploaded? @doctor.mdcn_file_name %></p>
 
+	<p>NYSC Certificate: <%= file_uploaded? @doctor.nysc_file_name %></p>
+
+	<p>University Certificate: <%= file_uploaded? @doctor.uni_cert_file_name %></p>
+
+	<p>Post-NYSC Years of Experience: <%= file_uploaded? @doctor.post_nysc_file_name %></p>
+
+	<p>Proof of Identity: <%= file_uploaded? @doctor.id_proof_file_name %></p>
+
+	<%= link_to "Edit Certificates", doctor_onboarding_new_upload_documents_path %>
 </div>

@@ -27,6 +27,14 @@
 		simpleslider.getSlider();
 	</script>
 <% elsif doctor_signed_in? %>
+	<% if !current_doctor.verified %>
+		<div>
+			<p>Your application is being verified and you will be notified soon.</p>
+
+			<p><%= link_to "view profile", doctor_profile_path(current_doctor) %></p>
+			<p><%= link_to "edit certificates", doctor_onboarding_new_upload_documents_path %></p>
+		</div>
+	<% end %>
 <% else %>
 	<div class="col-md-4">
 		<div>

@@ -1,57 +1,96 @@
-<div id="sidebar-wrapper">
-    <ul class="sidebar-nav">
-        <li>
-           <p>Status: Available</p>
-        </li>
-        <li>
-        	<a href="/" class="selected">
-        		<i class="glyphicon glyphicon-home"></i><p id="home-link">HOME</p>
-        	</a>
-        </li>
-        <li>
-            <%= image_tag current_doctor.avatar.url(:medium), :class => "profile-image" %>
-            <p>Welcome Dr <%= current_doctor.first_name %></p>
-        </li>
-        <li>
-            <%= link_to "Doctor Profile", doctor_profile_path(current_doctor.id) %>
-        </li>
-        <li>
-        <%= link_to "Appointments", doctor_consultation_index_path %>
-        </li>
-        <li>
-            <%= link_to "Messages", conversations_path %>
-        </li>
-        <li>
-            <%= link_to "Patients", patient_reviews_path %>
-        </li>
-        <li>
-            <a href="#">Care Team</a>
-        </li>
-        <li>
-            <a href="#">Communities</a>
-        </li>
-        <li>
-            <a href="#">Topics</a>
-        </li>
-        <li>
-            <a href="#">Decision Support Tools</a>
-        </li>
+<% if current_doctor.verified %>
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li>
+               <p>Status: Available</p>
+            </li>
+            <li>
+            	<a href="/" class="selected">
+            		<i class="glyphicon glyphicon-home"></i><p id="home-link">HOME</p>
+            	</a>
+            </li>
+            <li>
+                <%= link_to doctor_profile_path(current_doctor.id) do %>
+                    <%= image_tag current_doctor.avatar.url(:medium), :class => "profile-image" %>
+                <% end %>
+                <p>Welcome Dr <%= current_doctor.first_name %></p>
+            </li>
+            <li>
+                <%= link_to "Doctor Profile", doctor_profile_path(current_doctor.id) %>
+            </li>
+            <li>
+            <%= link_to "Appointments", doctor_consultation_index_path %>
+            </li>
+            <li>
+                <%= link_to "Messages", conversations_path %>
+            </li>
+            <li>
+                <%= link_to "Patients", patient_reviews_path %>
+            </li>
+            <li>
+                <a href="#">Care Team</a>
+            </li>
+            <li>
+                <a href="#">Communities</a>
+            </li>
+            <li>
+                <a href="#">Topics</a>
+            </li>
+            <li>
+                <a href="#">Decision Support Tools</a>
+            </li>
 
-        <div id="refer">
-        	<li>
-        		<a href="#">Refer Someone</a>
-        	</li>
-        </div>
+            <div id="refer">
+            	<li>
+            		<a href="#">Refer Someone</a>
+            	</li>
+            </div>
 
-        <div id="glyphs">
-            <% if doctor_signed_in? %>
-            	<li><%= link_to destroy_doctor_session_path, method: :delete do%>
-                    <span class="glyphicon glyphicon-off"></span>
-                <% end %>   
+            <div id="glyphs">
+                <% if doctor_signed_in? %>
+                	<li><%= link_to destroy_doctor_session_path, method: :delete do%>
+                        <span class="glyphicon glyphicon-off"></span>
+                    <% end %>   
+                    </li>
+                <% end %>
+            	<li><i class="glyphicon glyphicon-cog"></i></li>
+            	<li><i class="glyphicon glyphicon-blackboard"></i></li>
+            </div>
+        </ul>
+    </div>
+<% else %>
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li>
+                <a href="/" class="selected">
+                    <i class="glyphicon glyphicon-home"></i><p id="home-link">HOME</p>
+                </a>
+            </li>
+            <li>
+                <%= link_to doctor_profile_path(current_doctor.id) do %>
+                    <%= image_tag current_doctor.avatar.url(:medium), :class => "profile-image" %>
+                <% end %>
+                <p>Welcome Dr <%= current_doctor.first_name %></p>
+            </li>
+            <li>
+                <%= link_to "Doctor Profile", doctor_profile_path(current_doctor.id) %>
+            </li>
+            <div id="refer">
+                <li>
+                    <a href="#">Refer Someone</a>
                 </li>
-            <% end %>
-        	<li><i class="glyphicon glyphicon-cog"></i></li>
-        	<li><i class="glyphicon glyphicon-blackboard"></i></li>
-        </div>
-    </ul>
-</div>
+            </div>
+
+            <div id="glyphs">
+                <% if doctor_signed_in? %>
+                    <li><%= link_to destroy_doctor_session_path, method: :delete do%>
+                        <span class="glyphicon glyphicon-off"></span>
+                    <% end %>   
+                    </li>
+                <% end %>
+                <li><i class="glyphicon glyphicon-cog"></i></li>
+                <li><i class="glyphicon glyphicon-blackboard"></i></li>
+            </div>
+        </ul>
+    </div>
+<% end %>
