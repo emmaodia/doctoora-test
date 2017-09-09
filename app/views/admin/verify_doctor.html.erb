@@ -1,0 +1,28 @@
+<h2>Doctor: <%= @doctor.first_name %> <%= @doctor.last_name %></h2>
+
+<div>
+	<h3>MDCN</h3>
+	<iframe src="<%= @doctor.mdcn.url %>"></iframe>
+</div>
+
+<div>
+	<h3>NYSC Certificate</h3>
+	<iframe src="<%= @doctor.nysc.url %>"></iframe>
+</div>
+
+<div>
+	<h3>University Certificate</h3>
+	<iframe src="<%= @doctor.uni_cert.url %>"></iframe>
+</div>
+
+<div>
+	<h3>Post NYSC Certificate</h3>
+	<iframe src="<%= @doctor.post_nysc.url %>"></iframe>
+</div>
+
+<div>
+	<h3>Proof of ID</h3>
+	<iframe src="<%= @doctor.id_proof.url %>"></iframe>
+</div>
+
+<%= link_to "verify", verify_path, method: :post %>

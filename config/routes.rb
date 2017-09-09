@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :admins, { registrations: "admin_registrations", sessions: "admin_sessions"}
   devise_for :doctors, controllers: { registrations: "doctor_registrations", sessions: "doctor_sessions" }
   devise_for :users, controllers: { registrations: "registrations" }
   # The priority is based upon order of creation: first created -> highest priority.
@@ -7,6 +8,12 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
   get 'doctors' => 'doctors#index'
+
+  get 'admin' => 'admin#index', as: :admin
+  get 'admin/doctors' => 'admin#verify_doctors', as: :verify_doctors
+  get 'admin/doctors/:id' => 'admin#verify_doctor', as: :verify_doctor
+  post 'admin/doctors/:id/verify' => 'admin#verify', as: :verify
+  get 'admin/plans' => 'admin#manage_plans', as: :manage_plans
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

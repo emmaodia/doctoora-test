@@ -212,3 +212,12 @@ LOG:  redo is not required
 LOG:  MultiXact member wraparound protections are now enabled
 LOG:  autovacuum launcher started
 LOG:  database system is ready to accept connections
+ERROR:  relation "admins" does not exist at character 24
+STATEMENT:  SELECT "admins".* FROM "admins"
+LOG:  using stale statistics instead of current ones because stats collector is not responding
+LOG:  using stale statistics instead of current ones because stats collector is not responding
+LOG:  using stale statistics instead of current ones because stats collector is not responding
+LOG:  autovacuum launcher shutting down
+LOG:  received smart shutdown request
+LOG:  shutting down
+LOG:  database system is shut down
