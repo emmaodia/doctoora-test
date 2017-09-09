@@ -5,10 +5,7 @@
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<%= link_to verify_doctor_path(doctor) do %>
-					<%= doctor.first_name %> <%= doctor.last_name %>
-					<%= doctor.specialization %>
-					<%= doctor.specialty %>
-					<%= doctor.town %>
+					<%= doctor.email %>
 				<% end %>
 			</div>
 		</div>
