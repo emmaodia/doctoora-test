@@ -13,7 +13,10 @@ Rails.application.routes.draw do
   get 'admin/doctors' => 'admin#verify_doctors', as: :verify_doctors
   get 'admin/doctors/:id' => 'admin#verify_doctor', as: :verify_doctor
   post 'admin/doctors/:id/verify' => 'admin#verify', as: :verify
-  get 'admin/plans' => 'admin#manage_plans', as: :manage_plans
+
+  get 'admin/plans' => 'admin#plans', as: :admin_plans
+  get 'admin/plans/new' => 'admin#new_plan', as: :new_plan
+  post 'admin/plans/new' => 'admin#create_plan'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

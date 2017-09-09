@@ -1,0 +1,15 @@
+<h2>Plans</h2>
+
+<%= link_to "add plan", new_plan_path %>
+
+<div class="row">
+	<div class="panel panel-default">
+		<div class="panel-body col-md-4">
+			<% @plans.each do |plan| %>
+				<%= plan.title %>
+				<%= plan.description %>
+				<%= plan.price %>
+			<% end %>
+		</div>
+	</div>
+</div>
