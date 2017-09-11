@@ -25,6 +25,7 @@ class ConsultationController < ApplicationController
 		else
 			@specialization = params[:type].capitalize
 			@doctors = Doctor.get_professional_type @specialization
+			p @doctors
 		end
 	end
 

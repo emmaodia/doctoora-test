@@ -63,6 +63,7 @@ Rails.application.routes.draw do
   get '/care' => 'care_team#new_search'
   post '/care' => 'care_team#search_results'
   post '/care/add/:doctor_id' => 'care_team#add_doctor', as: :add_doctor_to_care_team
+  get '/doctors/:id/care' => 'care_team#doctor', as: :doctor_care_team
 
   # Example resource route with options:
   #   resources :products do

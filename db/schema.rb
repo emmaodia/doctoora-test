@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170830212510) do
+ActiveRecord::Schema.define(version: 20170911161950) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,17 @@ ActiveRecord::Schema.define(version: 20170830212510) do
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
+
+  create_table "care_team_doctor_statuses", force: :cascade do |t|
+    t.integer  "care_team_id"
+    t.integer  "doctor_id"
+    t.boolean  "joined"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "care_team_doctor_statuses", ["care_team_id"], name: "index_care_team_doctor_statuses_on_care_team_id", using: :btree
+  add_index "care_team_doctor_statuses", ["doctor_id"], name: "index_care_team_doctor_statuses_on_doctor_id", using: :btree
 
   create_table "care_teams", force: :cascade do |t|
     t.integer  "user_id"
@@ -227,6 +238,8 @@ ActiveRecord::Schema.define(version: 20170830212510) do
   add_index "users", ["plan_id"], name: "index_users_on_plan_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "care_team_doctor_statuses", "care_teams"
+  add_foreign_key "care_team_doctor_statuses", "doctors"
   add_foreign_key "care_teams", "users"
   add_foreign_key "consultations", "doctors"
   add_foreign_key "consultations", "users"

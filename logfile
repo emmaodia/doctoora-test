@@ -228,3 +228,6 @@ LOG:  redo is not required
 LOG:  MultiXact member wraparound protections are now enabled
 LOG:  autovacuum launcher started
 LOG:  database system is ready to accept connections
+ERROR:  operator does not exist: text == unknown at character 64
+HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
+STATEMENT:  SELECT "doctors".* FROM "doctors" WHERE (lower(specialization) == 'lagos' and lower(town) == 'medical')  ORDER BY created_at DESC

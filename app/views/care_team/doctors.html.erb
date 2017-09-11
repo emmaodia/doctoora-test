@@ -1,0 +1,7 @@
+<h2>Your Pending Care Team Requests</h2>
+
+<% @care_team_requests.each do |team| %>
+	<ul>
+		<li><%= team.id %></li>
+	</ul>
+<% end %>
