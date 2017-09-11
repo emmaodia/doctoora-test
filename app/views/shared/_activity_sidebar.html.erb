@@ -1,13 +1,23 @@
 <div id="activity-wrapper">
-	<h5>RECENT ACTIVITY</h5>
+	<h3>RECENT ACTIVITY</h3>
 	<div class="notification">
 		<ul>
-			<% @notifications.each do |notification| %>
-				<li>
-					<img src="<%= get_doctor_avatar(notification.doctor_id) %>" class="notification_image"/>
-					<%= get_doctor_name(notification.doctor_id) + " " + notification.notification %>
-					<p><%= time_ago_in_words(notification.created_at) %> ago</p>
-				</li>
+			<% if user_signed_in? && current_user.notifications.length > 0 %>
+				<% current_user.notifications.last(5).reverse each do |notification| %>
+					<li>
+						<img src="<%= get_doctor_avatar(notification.doctor_id) %>" class="notification_image"/>
+						<%= get_doctor_name(notification.doctor_id) + " " + notification.notification %>
+						<p><%= time_ago_in_words(notification.created_at) %> ago</p>
+					</li>
+				<% end %>
+			<% elsif doctor_signed_in? && current_doctor.notifications.length > 0 %>
+				<% current_doctor.notifications.last(5).reverse each do |notification| %>
+					<li>
+						<img src="<%= get_doctor_avatar(notification.doctor_id) %>" class="notification_image"/>
+						<%= get_doctor_name(notification.doctor_id) + " " + notification.notification %>
+						<p><%= time_ago_in_words(notification.created_at) %> ago</p>
+					</li>
+				<% end %>
 			<% end %>
 		</ul>
 	</div>

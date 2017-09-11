@@ -19,10 +19,6 @@
 		</div>
 	</div>
 	
-	<div class="col-md-4">
-		<%= render "shared/activity_sidebar" %>
-	</div>
-	
 	<script>
 		simpleslider.getSlider();
 	</script>
@@ -33,6 +29,17 @@
 
 			<p><%= link_to "view profile", doctor_profile_path(current_doctor) %></p>
 			<p><%= link_to "edit certificates", doctor_onboarding_new_upload_documents_path %></p>
+		</div>
+	<% else %>
+		<div class="col-md-8">
+			<div>
+				<h4>Your Medical Feed</h4>
+				<div style="width: 100%; padding-bottom: 25%" class="slider" data-simple-slider>
+					<img src="https://unsplash.it/640/160?random=1"/>
+					<img src="https://unsplash.it/640/160?random=2"/>
+					<img src="https://unsplash.it/640/160?random=3"/>
+				</div>
+			</div>
 		</div>
 	<% end %>
 <% elsif admin_signed_in? %>

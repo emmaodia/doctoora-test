@@ -61,7 +61,7 @@
 	<div>
 		<h3>Vaccination</h3>
 		<p>To the best of your knowledge what vaccinations have you had, from childhood till now?</p>
-		<% if @user.vaccinations %>
+		<% if @user.vaccinations && @user.vaccinations != ""%>
 			<% @user.vaccinations.each do |vacc| %>
 				<p><%= vacc %></p>
 			<% end %>
@@ -92,8 +92,4 @@
 		</ul>
 	</div>
 
-</div>
-
-<div class="col-md-4">
-	<%= render "shared/activity_sidebar" %>
 </div>
