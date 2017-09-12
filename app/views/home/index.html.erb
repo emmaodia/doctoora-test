@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-	<div class="col-md-8">
+	<div>
 		<div>
 			<h4>Trending in the health communities you follow...</h4>
 			<div style="width: 100%; padding-bottom: 25%" class="slider" data-simple-slider>
@@ -31,7 +31,7 @@
 			<p><%= link_to "edit certificates", doctor_onboarding_new_upload_documents_path %></p>
 		</div>
 	<% else %>
-		<div class="col-md-8">
+		<div>
 			<div>
 				<h4>Your Medical Feed</h4>
 				<div style="width: 100%; padding-bottom: 25%" class="slider" data-simple-slider>
@@ -41,6 +41,10 @@
 				</div>
 			</div>
 		</div>
+
+		<script>
+			simpleslider.getSlider();
+		</script>
 	<% end %>
 <% elsif admin_signed_in? %>
 	<div>

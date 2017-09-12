@@ -231,3 +231,16 @@ LOG:  database system is ready to accept connections
 ERROR:  operator does not exist: text == unknown at character 64
 HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
 STATEMENT:  SELECT "doctors".* FROM "doctors" WHERE (lower(specialization) == 'lagos' and lower(town) == 'medical')  ORDER BY created_at DESC
+LOG:  database system was interrupted; last known up at 2017-09-11 17:57:49 BST
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  invalid record length at 0/23396A8: wanted 24, got 0
+LOG:  redo is not required
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  autovacuum launcher started
+LOG:  database system is ready to accept connections
+ERROR:  update or delete on table "doctors" violates foreign key constraint "fk_rails_b1f629cdac" on table "consultations"
+DETAIL:  Key (id)=(1) is still referenced from table "consultations".
+STATEMENT:  DELETE FROM "doctors" WHERE "doctors"."id" = $1
+ERROR:  update or delete on table "doctors" violates foreign key constraint "fk_rails_b1f629cdac" on table "consultations"
+DETAIL:  Key (id)=(1) is still referenced from table "consultations".
+STATEMENT:  DELETE FROM "doctors" WHERE "doctors"."id" = $1

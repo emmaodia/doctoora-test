@@ -38,7 +38,6 @@ class DoctorOnboardingController < ApplicationController
 		doctor.update(doctor_params)
 
 		if doctor.save
-			flash[:notice] = "Thanks for uploading your documents. They will be verified and you will be contacted soon"
 			redirect_to root_path
 		else
 			flash[:notice] = "There was an error saving your information"

@@ -16,7 +16,7 @@ class Doctor < ActiveRecord::Base
   validates_attachment_content_type :post_nysc, content_type: 'application/pdf'
   validates_attachment_content_type :id_proof, content_type: 'application/pdf'
 
-  has_many :consultations
+  has_many :consultations, dependent: :destroy
   has_many :messages, as: :messageable
   has_many :patient_reviews
   has_many :notifications
