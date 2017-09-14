@@ -65,6 +65,9 @@ Rails.application.routes.draw do
   post '/care/add/:doctor_id' => 'care_team#add_doctor', as: :add_doctor_to_care_team
   get '/doctors/:id/care' => 'care_team#doctor', as: :doctor_care_team
 
+  post 'doctors/care/request/:request_id/accept' => 'care_team#accept_care_team_request', as: :accept_care_team_request
+  post 'doctors/care/request/:request_id/reject' => 'care_team#reject_care_team_request', as: :reject_care_team_request
+
   # Example resource route with options:
   #   resources :products do
   #     member do

@@ -244,3 +244,13 @@ STATEMENT:  DELETE FROM "doctors" WHERE "doctors"."id" = $1
 ERROR:  update or delete on table "doctors" violates foreign key constraint "fk_rails_b1f629cdac" on table "consultations"
 DETAIL:  Key (id)=(1) is still referenced from table "consultations".
 STATEMENT:  DELETE FROM "doctors" WHERE "doctors"."id" = $1
+ERROR:  syntax error at or near ")" at character 126
+STATEMENT:  SELECT "care_team_doctor_statuses".* FROM "care_team_doctor_statuses" WHERE (joined = false AND doctor_id = params[:doctor_id)
+ERROR:  column "params" does not exist at character 109
+STATEMENT:  SELECT "care_team_doctor_statuses".* FROM "care_team_doctor_statuses" WHERE (joined = false AND doctor_id = params[:doctor_id])
+ERROR:  column "params" does not exist at character 109
+STATEMENT:  SELECT "care_team_doctor_statuses".* FROM "care_team_doctor_statuses" WHERE (joined = false AND doctor_id = params[:doctor_id])
+ERROR:  missing FROM-clause entry for table "current_doctor" at character 109
+STATEMENT:  SELECT "care_team_doctor_statuses".* FROM "care_team_doctor_statuses" WHERE (joined = false AND doctor_id = current_doctor.id)
+ERROR:  column "params" does not exist at character 109
+STATEMENT:  SELECT "care_team_doctor_statuses".* FROM "care_team_doctor_statuses" WHERE (joined = false AND doctor_id = params[:doctor_id])

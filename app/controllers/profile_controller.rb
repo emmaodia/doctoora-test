@@ -1,7 +1,7 @@
 class ProfileController < ApplicationController
 
 	def show
-		@notifications = current_user.notifications.last(5).reverse
+		@notifications = current_user.notifications.last(5).reverse if current_user
 		@user = User.find(params[:id] || current_user.id)
 		@patient_reviews = @user.patient_reviews.all.order(created_at: :desc)
 	end

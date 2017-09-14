@@ -1,0 +1,17 @@
+<h2>Your Pending Care Team Requests</h2>
+
+<% @care_team_requests.each do |request| %>
+	<% @care_team_user = get_care_team_user request.care_team_id %>
+	<ul>
+		<li>
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<h3><a href="/profile/<%= @care_team_user[:id]%>"><%= @care_team_user[:name] %></h3></a>
+					<p>Paragraph will show doctors that belong to this care team</p>
+					<%= link_to "Accept Request", accept_care_team_request_path(request.id), method: :post %>
+					<%= link_to "Reject Request", reject_care_team_request_path(request.id), method: :post %>
+				</div>
+			</div>
+		</li>
+	</ul>
+<% end %>

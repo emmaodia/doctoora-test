@@ -26,7 +26,7 @@ class Doctor < ActiveRecord::Base
   validates_attachment_size :avatar, less_than: 2.megabytes
 
   def self.search location, specialization
-    where("lower(specialization) LIKE? and lower(town) LIKE ?", "%#{specialization}".downcase, "%#{location}".downcase)
+    where("lower(specialization) LIKE ? and lower(town) LIKE ?", "%#{specialization}".downcase, "%#{location}".downcase)
   end
 
   def self.get_professional_type type
