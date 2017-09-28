@@ -6,10 +6,10 @@
 			<h4>Consultation date</h4> <%= consultation.date %>
 			<h4>Consultation time</h4> <%= consultation.time %>
 			<h4>Professional</h4> <%= consultation.professional %>
-			<h4>Tool</h4> <%= consultation.tool %>
+			<h4>Medium</h4> <%= consultation.tool %>
 		</div>
 		<div>
-			<% if consultation.tool == "In-app call" %>
+			<% if consultation.tool == "Video call" %>
 				<%= link_to "Start Consultation", consultation_path(consultation) %>
 			<% end %>
 		</div>

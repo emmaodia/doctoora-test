@@ -15,9 +15,9 @@
 			<% if !consultation.status %>
 				<p><span><%=link_to "approve", accept_consultation_path(consultation.id), method: :post %></span>  <span><%= link_to "reject", reject_consultation_path(consultation.id), method: :post %></span></p>
 				<p>
-			<% elsif consultation.status && consultation.tool == "In-app call" && consultation.date_and_time.today? %>
+			<% elsif consultation.status && consultation.tool == "Video call" && consultation.date_and_time.today? %>
 				<%= link_to "Start Consultation", consultation_path(consultation, :user_id => consultation.user_id)%>
-			<% elsif consultation.status && consultation.tool == "In-app call" %>
+			<% elsif consultation.status && consultation.tool == "Video call" %>
 				<p>Video call on day of consultation</p>
 			<% else %>
 				<p>Begin the consultation using the desired method</p>

@@ -1,7 +1,6 @@
 class CreateConsultations < ActiveRecord::Migration
   def change
     create_table :consultations do |t|
-      t.string :discipline
       t.string :service
       t.string :tool
       t.date :date
