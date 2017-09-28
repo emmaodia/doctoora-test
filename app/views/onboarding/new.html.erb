@@ -181,7 +181,7 @@
 		</div>
 
 		<div class="form-group">
-			<%= f.label "Upload an image of yourself (>2mb)", :class => "control-label" %>
+			<%= f.label "Upload an image of yourself (>10mb)", :class => "control-label" %>
 			<%= f.file_field :avatar, :class => "form-control" %>
 		</div>
 
@@ -196,7 +196,7 @@
 	$('input:file').change(function(){
 		var file = this.files[0];
 			if(file.size > 10000000){
-				$('.large-size').html('<p class="notice">Your profile image cannot be larger than 2MB. Please choose a smaller image</p>')
+				$('.large-size').html('<p class="notice">Your profile image cannot be larger than 10mb. Please choose a smaller image</p>')
 				$(':input[type="submit"]').prop('disabled', true);
 			} else {
 				$('.notice').remove();
