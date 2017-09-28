@@ -40,10 +40,11 @@
         	<li>
         		<%= link_to "Refer Someone", refer_path %>
         	</li>
-            <% if user_signed_in? %>
+            <% if user_signed_in? %> <!-- sidebar visible if not signed in? -->
                 <li><%= link_to destroy_user_session_path, method: :delete do%>
                     <span class="glyphicon glyphicon-off"></span>
-                <% end %>   
+                <% end %>
+                <li><i class="glyphicon glyphicon-blackboard"></i></li>   
                 </li>
             <% else %>
                 <li><%= link_to new_user_session_path do%>
@@ -53,6 +54,7 @@
             <% end %>
         </div>
 
+        <!--
         <div class="glyphs">
             <% if user_signed_in? %>
             	<li><%= link_to destroy_user_session_path, method: :delete do%>
@@ -65,8 +67,8 @@
                 <% end %>   
                 </li>
             <% end %>
-        	<li><i class="glyphicon glyphicon-cog"></i></li>
         	<li><i class="glyphicon glyphicon-blackboard"></i></li>
         </div>
+        -->
     </ul>
 </div>
