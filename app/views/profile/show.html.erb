@@ -76,6 +76,7 @@
 
 	<div>
 		<h3>Medication</h3>
+		<p><%= @user.medication if @user.medication%></p>
 		<%= link_to_if my_profile?, "Add", edit_profile_path(@user), :class => "btn btn-primary" %>
 	</div>
 

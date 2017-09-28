@@ -254,3 +254,18 @@ ERROR:  missing FROM-clause entry for table "current_doctor" at character 109
 STATEMENT:  SELECT "care_team_doctor_statuses".* FROM "care_team_doctor_statuses" WHERE (joined = false AND doctor_id = current_doctor.id)
 ERROR:  column "params" does not exist at character 109
 STATEMENT:  SELECT "care_team_doctor_statuses".* FROM "care_team_doctor_statuses" WHERE (joined = false AND doctor_id = params[:doctor_id])
+LOG:  database system was interrupted; last known up at 2017-09-14 02:32:12 BST
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  invalid record length at 0/23547E8: wanted 24, got 0
+LOG:  redo is not required
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  autovacuum launcher started
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher shutting down
+LOG:  received smart shutdown request
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2017-09-28 17:45:57 BST
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  autovacuum launcher started
+LOG:  database system is ready to accept connections
