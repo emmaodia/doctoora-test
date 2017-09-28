@@ -59,6 +59,8 @@ Rails.application.routes.draw do
   resources :patient_reviews, only: [:index]
 
   get '/knowledgebase' => 'home#knowledgebase'
+  get 'refer' => 'home#render_refer_form'
+  post 'refer' => 'home#refer'
 
   get '/care' => 'care_team#new_search'
   post '/care' => 'care_team#search_results'
