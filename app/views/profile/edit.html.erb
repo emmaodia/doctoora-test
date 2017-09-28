@@ -206,7 +206,7 @@
 <script>
 	$('input:file').change(function(){
 		var file = this.files[0];
-			if(file.size > 2000000){
+			if(file.size > 10000000){
 				$('.large-size').html('<p class="notice">Your profile image cannot be larger than 2MB. Please choose a smaller image</p>')
 				$(':input[type="submit"]').prop('disabled', true);
 			} else {
