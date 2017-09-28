@@ -3,9 +3,10 @@
         <li id="consultation-link">
             <%= link_to "Book a consultation", consultation_type_path %>
         </li>
+
         <li>
-        	<a href="/" class="selected">
-        		<i class="glyphicon glyphicon-home"></i><p id="home-link">HOME</p>
+        	<a href="/" class="selected icon-home">
+        		<img src="<%= asset_path( 'icons/home.svg' ) %>" class="sidebar-icon" /><p id="home-link">HOME</p>
         	</a>
         </li>
         <li>
@@ -15,37 +16,34 @@
             <p>Welcome <%= current_user.first_name %></p>
         </li>
         <li>
+            <img src="<%= asset_path( 'icons/profile.svg' ) %>" class="sidebar-icon" />
             <%= link_to "Patient Profile", profile_path(current_user.id) %>
         </li>
         <li>
+            <img src="<%= asset_path( 'icons/message.svg' ) %>" class="sidebar-icon" />
             <%= link_to "Messages", conversations_path %>
         </li>
         <li>
-            <a href="#">Family</a>
-        </li>
-        <li>
+            <img src="<%= asset_path( 'icons/knowledgebase.png' ) %>" class="sidebar-icon" />
             <%= link_to "Knowledge Base", knowledgebase_path  %>
         </li>
         <li>
-            <a href="#">Communities</a>
-        </li>
-        <li>
-            <a href="#">Topics</a>
-        </li>
-        <li>
+            <img src="<%= asset_path( 'icons/careteam.svg' ) %>" class="sidebar-icon" />
             <%= link_to "Care Team", care_path %>
         </li>
 
         <div id="refer">
         	<li>
+                <img src="<%= asset_path( 'icons/refer.svg' ) %>" class="sidebar-icon" />
         		<%= link_to "Refer Someone", refer_path %>
         	</li>
             <% if user_signed_in? %> <!-- sidebar visible if not signed in? -->
-                <li><%= link_to destroy_user_session_path, method: :delete do%>
-                    <span class="glyphicon glyphicon-off"></span>
-                <% end %>
-                <li><i class="glyphicon glyphicon-blackboard"></i></li>   
-                </li>
+                <div class="white-icons">
+                    <li><%= link_to destroy_user_session_path, method: :delete do%>
+                        <img src="<%= asset_path( 'icons/logout.png' ) %>" class="sidebar-icon" />
+                    <% end %></li>
+                    <li><img src="<%= asset_path( 'icons/faq.png' ) %>" class="sidebar-icon" /></li>
+                </div> 
             <% else %>
                 <li><%= link_to new_user_session_path do%>
                     <span class="glyphicon glyphicon-off"></span>

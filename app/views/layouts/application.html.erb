@@ -26,7 +26,7 @@
                 		<%= render 'shared/doctor_sidebar' %>
                 	<% end %>
                 	<p class="notice"><%= notice %></p>
-                  <div class="col-md-8">
+                  <div class="col-md-8 main-area">
                     <%= yield %>
                   </div>
                   <% unless request.env['PATH_INFO'] == '/' && !(user_signed_in? || doctor_signed_in?) %>
