@@ -5,7 +5,7 @@
 		  	<ul class="nav navbar-nav">
 		  		<li id="plans"><a href="/plans">Health Market Place <i class="glyphicon glyphicon-shopping-cart"></i></a></li>
 		  		<% if user_signed_in? %>
-		  			<li id="greeting"><p>Good Morning, <%= current_user.first_name %>!</p></li>
+		  			<li id="greeting"><p><%= greet %>, <%= current_user.first_name %>!</p></li>
 		  		<% else %>
 		  			<li class="nav-link"><%= link_to "Log In", new_user_session_path %></li>
 		  			<li class="nav-link"><%= link_to "Sign Up", new_user_registration_path %></li>
