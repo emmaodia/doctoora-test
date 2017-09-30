@@ -14,7 +14,7 @@
 				<% current_doctor.notifications.last(5).reverse.each do |notification| %>
 					<li>
 						<img src="<%= get_doctor_avatar(notification.doctor_id) %>" class="notification_image"/>
-						<p>%= get_doctor_name(notification.doctor_id) + " " + notification.notification %></p>
+						<p><%= get_doctor_name(notification.doctor_id) + " " + notification.notification %></p>
 						<p><%= time_ago_in_words(notification.created_at) %> ago</p>
 					</li>
 				<% end %>

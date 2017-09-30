@@ -2,12 +2,12 @@
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li>
-               <p>Status: Available</p>
+               <img src="<%= asset_path( 'icons/online.svg' ) %>" class="sidebar-icon" /><p>Status: Available</p>
             </li>
             <li>
-            	<a href="/" class="selected">
-            		<i class="glyphicon glyphicon-home"></i><p id="home-link">HOME</p>
-            	</a>
+            	<a href="/" class="selected icon-home">
+                    <img src="<%= asset_path( 'icons/home.svg' ) %>" class="sidebar-icon" /><p>HOME</p>
+                </a>
             </li>
             <li>
                 <%= link_to doctor_profile_path(current_doctor.id) do %>
@@ -16,45 +16,41 @@
                 <p>Welcome Dr <%= current_doctor.first_name %></p>
             </li>
             <li>
+                <img src="<%= asset_path( 'icons/profile.svg' ) %>" class="sidebar-icon" />
                 <%= link_to "Doctor Profile", doctor_profile_path(current_doctor.id) %>
             </li>
             <li>
-            <%= link_to "Appointments", doctor_consultation_index_path %>
+                <img src="<%= asset_path( 'icons/Topics.svg' ) %>" class="sidebar-icon" />
+                <%= link_to "Appointments", doctor_consultation_index_path %>
             </li>
             <li>
+                <img src="<%= asset_path( 'icons/message.svg' ) %>" class="sidebar-icon" />
                 <%= link_to "Messages", conversations_path %>
             </li>
             <li>
+                <img src="<%= asset_path( 'icons/Family.svg' ) %>" class="sidebar-icon" />
                 <%= link_to "Patients", patient_reviews_path %>
             </li>
             <li>
+                <img src="<%= asset_path( 'icons/careteam.svg' ) %>" class="sidebar-icon" />
                 <%= link_to "Care Team", doctor_care_team_path(current_doctor) %>
             </li>
-            <li>
-                <a href="#">Communities</a>
-            </li>
-            <li>
-                <a href="#">Topics</a>
-            </li>
-            <li>
-                <a href="#">Decision Support Tools</a>
-            </li>
-
+        
             <div id="refer">
             	<li>
-            		<a href="#">Refer Someone</a>
+            		<img src="<%= asset_path( 'icons/refer.svg' ) %>" class="sidebar-icon" />
+                    <%= link_to "Refer Someone", refer_path %>
             	</li>
             </div>
 
             <div id="glyphs">
                 <% if doctor_signed_in? %>
                 	<li><%= link_to destroy_doctor_session_path, method: :delete do%>
-                        <span class="glyphicon glyphicon-off"></span>
+                        <img src="<%= asset_path( 'icons/logout.png' ) %>" class="sidebar-icon" />
                     <% end %>   
                     </li>
                 <% end %>
-            	<li><i class="glyphicon glyphicon-cog"></i></li>
-            	<li><i class="glyphicon glyphicon-blackboard"></i></li>
+            	<li><img src="<%= asset_path( 'icons/faq.png' ) %>" class="sidebar-icon" /></li>
             </div>
         </ul>
     </div>

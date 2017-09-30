@@ -3,8 +3,8 @@
 	<div class="container-fluid">
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		  	<ul class="nav navbar-nav">
-		  		<li><a href="/plans">Health Market Place <i class="glyphicon glyphicon-shopping-cart"></i></a></li>
-		  		<li id="greeting"><p>Good Morning Dr <%= current_doctor.first_name %></p></li>
+		  		<li id="plans"><a href="/plans">Health Market Place <i class="glyphicon glyphicon-shopping-cart"></i></a></li>
+		  		<li id="greeting"><p><%= greet %>, Dr. <%= current_doctor.first_name %>!</p></li>
 		  	</ul>
 		</div>
 	</div>
