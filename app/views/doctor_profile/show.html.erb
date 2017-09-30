@@ -5,8 +5,8 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<% if my_profile? %>
-							<th>Me</th>
+						<th>Me</th>
+						<% if my_doctor_profile? %>
 							<th><%= link_to "edit", edit_doctor_profile_path(current_doctor.id) %></th>
 						<% end %>
 					</tr>
@@ -39,6 +39,8 @@
 				</tbody>
 			</table>
 		</div>
+
+		<%= link_to "Edit Doctor Profile" , edit_doctor_profile_path(current_doctor.id) if my_doctor_profile? %>
 	</div>
 <% end %>
 
@@ -54,5 +56,5 @@
 
 	<p>Proof of Identity: <%= file_uploaded? @doctor.id_proof_file_name %></p>
 
-	<%= link_to "Edit Certificates", doctor_onboarding_new_upload_documents_path %>
+	<%= link_to "Edit Certificates", doctor_onboarding_new_upload_documents_path if my_doctor_profile? %>
 </div>

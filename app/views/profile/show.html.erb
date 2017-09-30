@@ -4,8 +4,8 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th>Me</th>
 					<% if my_profile? %>
+						<th>Me</th>
 						<th><%= link_to "edit", edit_profile_path(@user) %></th>
 					<% end %>
 				</tr>

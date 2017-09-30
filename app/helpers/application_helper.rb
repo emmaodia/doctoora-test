@@ -30,4 +30,13 @@ module ApplicationHelper
 		end
 	end
 
+	def my_doctor_profile?
+		#initially put this in doctor_profile_helper but it was not working
+		#so I'm just dumping it here (for now)
+		if !current_doctor
+			return false
+		end
+		return current_doctor.id == params[:id].to_i
+	end
+
 end
