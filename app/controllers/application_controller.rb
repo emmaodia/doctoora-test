@@ -5,8 +5,8 @@ class ApplicationController < ActionController::Base
 
   	protected
 
-  	def notify! user_id, notifier_id, notification_text
-		Notification.create!(user_id: user_id, doctor_id: notifier_id, notification: notification_text)
+  	def notify! user_id, notifier_id, notification_text, dr_notification_text
+		Notification.create!(user_id: user_id, doctor_id: notifier_id, notification: notification_text, dr_notification_msg: dr_notification_text)
   	end
 
  #  	def send_message sender_id, recipient_id, message

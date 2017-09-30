@@ -20,7 +20,11 @@ class CareTeamController < ApplicationController
 			care_team.save
 		end
 
-		send_doctor_care_team_request care_team.id, params[:doctor_id]
+		doctor_id = params[:doctor_id]
+
+		send_doctor_care_team_request care_team.id, doctor_id
+		#notification and flash message sent in through this function (below)
+
 		redirect_to care_path
 	end
 
@@ -38,13 +42,13 @@ class CareTeamController < ApplicationController
 		care_team.save
 		
 		flash[:notice] = "You have successfully accepted the care team request"
-		notify! care_team.user_id, current_doctor.id, "New doctor added to your care team"
+		notify! care_team.user_id, current_doctor.id, "You have added a new doctor to your care team:", "You have accepted a care team request from"
 		redirect_to doctor_care_team_path(current_doctor)
 	end
 
 	def reject_care_team_request
 		flash[:notice] = "You have successfully rejected the care team request"
-		notify! care_team.user_id, current_doctor.id, "Unfortunately doctor has rejected your care team request"
+		notify! care_team.user_id, current_doctor.id, "Unfortunately doctor has rejected your care team request:", "You have rejected a care team request"
 		redirect_to doctor_care_team_path(current_doctor)
 	end
 
@@ -55,7 +59,7 @@ class CareTeamController < ApplicationController
 
 		if care_team_req.save
 			flash[:notice] = "Your Care Team Request has been successfully sent"
-			notify! current_user.id, doctor_id, notification: "New care team request sent"
+			notify! current_user.id, doctor_id, "Care team request sent to", "You have received a care team request from"
 		end
 	end
 end

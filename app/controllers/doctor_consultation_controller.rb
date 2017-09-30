@@ -12,7 +12,8 @@ class DoctorConsultationController < ApplicationController
 		consultation.room_name = generate_room_name
 		consultation.save
 
-		notify! consultation.user_id, current_doctor.id, "approved your consultation booking"
+		notify! consultation.user_id, current_doctor.id, "Your consultation booking has been approved by", 
+		"You have approved a consultation for"
 
 		redirect_to doctor_consultation_index_path
 	end
@@ -23,7 +24,8 @@ class DoctorConsultationController < ApplicationController
 		consultation.status = :rejected
 		flash["notice"] = "Consultation has been rejected. The patient will be notified"
 
-		notify! consultation.user_id, consultation.doctor_id, "rejected your consultation booking" #notify before doctor set to nil
+		notify! consultation.user_id, consultation.doctor_id, "Your consultation booking has been rejected by", 
+		"You have rejected a consultation for" #notify before doctor set to nil
 
 		consultation.doctor_id = nil
 		consultation.save

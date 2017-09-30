@@ -5,7 +5,7 @@
 	  <%= date %>
 
 	  <% consultations.each do |consultation| %>
-	    <div>
+	    <div class="patient-appointment">
 	    	<%= consultation.time.strftime("%H:%M") %> <button class="link-button" value="<%= consultation.id %>"><%= get_patient_name(consultation.user_id) %></button>
 	    </div>
 
