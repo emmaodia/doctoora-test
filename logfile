@@ -274,3 +274,17 @@ STATEMENT:  SELECT "notifications".* FROM "notifications" WHERE "notifications".
 ERROR:  update or delete on table "care_teams" violates foreign key constraint "fk_rails_10b391fad9" on table "care_team_doctor_statuses"
 DETAIL:  Key (id)=(3) is still referenced from table "care_team_doctor_statuses".
 STATEMENT:  DELETE FROM "care_teams" WHERE "care_teams"."id" = $1
+ERROR:  function is_today(timestamp without time zone) does not exist at character 54
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+STATEMENT:  SELECT "consultations".* FROM "consultations" WHERE (is_today(date_and_time) == 't' AND doctor_id = 6)
+ERROR:  function is_today(timestamp without time zone) does not exist at character 54
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+STATEMENT:  SELECT "consultations".* FROM "consultations" WHERE (is_today(date_and_time) = 't' AND doctor_id = 6)
+ERROR:  function is_today(timestamp without time zone) does not exist at character 54
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+STATEMENT:  SELECT "consultations".* FROM "consultations" WHERE (is_today(date_and_time) == 't' AND doctor_id = 6)
+ERROR:  function is_today(timestamp without time zone) does not exist at character 54
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+STATEMENT:  SELECT "consultations".* FROM "consultations" WHERE (is_today(date_and_time) == 't' AND doctor_id = 6)
+ERROR:  column "accepted" does not exist at character 129
+STATEMENT:  SELECT "consultations".* FROM "consultations" WHERE (date_and_time >= '2017-10-01 01:14:23.331581' AND user_id = 1 AND status = accepted)

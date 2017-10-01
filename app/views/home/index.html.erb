@@ -7,25 +7,8 @@
 					<p>You have no upcoming appointments. <a href="/consultation/type">Book a consultation
 					today</a></p>
 				<% else %>
-					<% @upcoming_appointments.each do |appointment| %>
-						<div class="panel panel-default col-md-6">
-							<div class="panel-heading">
-								<h3><%= appointment.tool %></h3>
-							</div>
-							<div class="panel-body">
-								<p><b>Doctor:</b> <%= get_doctor_name appointment.professional %></p>
-								<p><b>Date: </b><%= appointment.date_and_time.to_date.to_formatted_s(:long) %></p>
-								<p><b>Time: </b><%= appointment.date_and_time.strftime("%I:%M %p") %></p>
-							</div>
-						</div>	
-					<% end %>
-				<% end %>
-
-				<h1>Past Appointments</h1>
-					<% if @past_appointments == [] %>
-						<p>You have no past appointments. <a href="/consultation/type">Book your first consultation on Doctoora today</a></p>
-					<% else %>
-						<% @past_appointments.each do |appointment| %>
+					<div class="row">
+						<% @upcoming_appointments.each do |appointment| %>
 							<div class="panel panel-default col-md-6">
 								<div class="panel-heading">
 									<h3><%= appointment.tool %></h3>
@@ -37,6 +20,27 @@
 								</div>
 							</div>	
 						<% end %>
+					</div>
+				<% end %>
+
+				<h1>Past Appointments</h1>
+					<% if @past_appointments == [] %>
+						<p>You have no past appointments. <a href="/consultation/type">Book your first consultation on Doctoora today</a></p>
+					<% else %>
+						<div class="row">
+							<% @past_appointments.each do |appointment| %>
+								<div class="panel panel-default col-md-6">
+									<div class="panel-heading">
+										<h3><%= appointment.tool %></h3>
+									</div>
+									<div class="panel-body">
+										<p><b>Doctor:</b> <%= get_doctor_name appointment.professional %></p>
+										<p><b>Date: </b><%= appointment.date_and_time.to_date.to_formatted_s(:long) %></p>
+										<p><b>Time: </b><%= appointment.date_and_time.strftime("%I:%M %p") %></p>
+									</div>
+								</div>	
+							<% end %>
+						</div>
 					<% end %>
 			</div>
 		</div>
@@ -61,19 +65,26 @@
 		</div>
 	<% else %>
 		<div>
-			<div>
-				<h4>Your Medical Feed</h4>
-				<div style="width: 100%; padding-bottom: 25%" class="slider" data-simple-slider>
-					<img src="https://unsplash.it/640/160?random=1"/>
-					<img src="https://unsplash.it/640/160?random=2"/>
-					<img src="https://unsplash.it/640/160?random=3"/>
+			<h1>Today's Confirmed Appointments</h1>
+			<% if @upcoming_appointments == [] %>
+				<p>You have no appointments scheduled for today. <a href="/doctor_consultation">View your calendar.</a></p>
+			<% else %>
+				<div class="row">
+					<% @upcoming_appointments.each do |appointment| %>
+						<div class="panel panel-default col-md-6">
+							<div class="panel-heading">
+								<h3><%= get_patient_name appointment.user_id %></h3>
+							</div>
+							<div class="panel-body">
+								<p><b>Tool:</b> <%= appointment.tool %></p>
+								<p><b>Date: </b><%= appointment.date_and_time.to_date.to_formatted_s(:long) %></p>
+								<p><b>Time: </b><%= appointment.date_and_time.strftime("%I:%M %p") %></p>
+							</div>
+						</div>	
+					<% end %>
 				</div>
-			</div>
+			<% end %>
 		</div>
-
-		<script>
-			simpleslider.getSlider();
-		</script>
 	<% end %>
 <% elsif admin_signed_in? %>
 	<div>

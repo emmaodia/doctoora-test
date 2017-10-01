@@ -3,8 +3,12 @@ class HomeController < ApplicationController
 	def index
 		if user_signed_in?
 			@user = current_user
-			@past_appointments = Consultation.where("date_and_time <= ? AND user_id = ?", Time.now, @user.id)
-			@upcoming_appointments = Consultation.where("date_and_time >= ? AND user_id = ?", Time.now, @user.id)
+			@past_appointments = Consultation.where("date_and_time <= ? AND user_id = ? AND status = ?", Time.now, @user.id, "accepted")
+			@upcoming_appointments = Consultation.where("date_and_time >= ? AND user_id = ? AND status = ?", Time.now, @user.id, "accepted")
+		elsif doctor_signed_in?
+			@doctor = current_doctor
+			date = Date.today
+			@upcoming_appointments = @doctor.consultations.where('date_and_time >= ? AND status =?', Time.zone.now.beginning_of_day, "accepted")
 		end
 	end
 	
@@ -25,6 +29,13 @@ class HomeController < ApplicationController
 		mail.deliver_now
 
 		redirect_to '/'
+	end
+
+	private
+
+	def is_today appt_time
+		p appt_time.today?
+		return appt_time.today?
 	end
 	
 end
