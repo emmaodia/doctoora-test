@@ -31,11 +31,15 @@ class HomeController < ApplicationController
 		redirect_to '/'
 	end
 
-	private
-
-	def is_today appt_time
-		p appt_time.today?
-		return appt_time.today?
+	def noted
+		p "in here"
+		notification = Notification.find(params[:id])
+		if user_signed_in?
+			notification.user_noted = true
+		else
+			notification.doctor_noted = true
+		end
+		notification.save
 	end
-	
+
 end

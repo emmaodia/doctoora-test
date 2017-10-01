@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170930230013) do
+ActiveRecord::Schema.define(version: 20171001023448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -156,6 +156,8 @@ ActiveRecord::Schema.define(version: 20170930230013) do
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.string   "dr_notification_msg"
+    t.boolean  "user_noted"
+    t.boolean  "doctor_noted"
   end
 
   add_index "notifications", ["doctor_id"], name: "index_notifications_on_doctor_id", using: :btree

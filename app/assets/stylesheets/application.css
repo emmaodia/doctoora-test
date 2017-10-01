@@ -309,6 +309,12 @@ button {
     padding-bottom: 6em;
 }
 
+.glyphicon-remove-circle {
+    cursor: pointer;
+    font-size: 1em;
+    color: #c76c4e;
+}
+
 /*Sign In/Up page */
 .access-form {
     margin-top: 5em;

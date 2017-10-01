@@ -288,3 +288,7 @@ HINT:  No function matches the given name and argument types. You might need to 
 STATEMENT:  SELECT "consultations".* FROM "consultations" WHERE (is_today(date_and_time) == 't' AND doctor_id = 6)
 ERROR:  column "accepted" does not exist at character 129
 STATEMENT:  SELECT "consultations".* FROM "consultations" WHERE (date_and_time >= '2017-10-01 01:14:23.331581' AND user_id = 1 AND status = accepted)
+ERROR:  cached plan must not change result type
+STATEMENT:  SELECT "notifications".* FROM "notifications" WHERE "notifications"."user_id" = $1
+ERROR:  cached plan must not change result type
+STATEMENT:  SELECT "notifications".* FROM "notifications" WHERE "notifications"."doctor_id" = $1
