@@ -42,6 +42,8 @@ class ConsultationController < ApplicationController
   									   			   @consultation.time.hour, @consultation.time.min).to_datetime
 			if @consultation.save
 				flash[:notice] = "Your consultation has been booked and will be verified"
+				notify! current_user.id, @consultation.professional.to_i, "You have requested a consultation with",
+				"You have received a new consultation request from"
 				redirect_to root_path
 			else
 				flash[:notice] = "There was an error creating your consultation"
