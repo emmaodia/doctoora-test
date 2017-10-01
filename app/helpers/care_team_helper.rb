@@ -8,7 +8,12 @@ module CareTeamHelper
 		return {id: team.user_id, name: team_username}
 	end
 
-	def get_care_team_doctors
+	def get_care_team care_team_id
+		return CareTeam.find care_team_id
+	end
+
+	def get_doctor_info doctor_id
+		return Doctor.find doctor_id
 	end
 
 end

@@ -1,3 +1,25 @@
+<h2> Your Care Teams </h2>
+
+<div>
+	<% @doctor_care_teams.each do |care_team| %>
+		<% team = get_care_team care_team.care_team_id %>
+		<% team_user_id = team.user_id %>
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<a href="/profile/<%= team_user_id %>"><h3><%= get_patient_name team_user_id %></a>'s care team</h3>
+				<h4>Doctors in this care team</h4>
+				<% team.doctor_ids.each do |id| %>
+					<% doctor = get_doctor_info id %>
+					<a href="/doctor_profile/<%= id %>"><h4><%= get_doctor_name id %></h4></a>
+					<p><%= doctor.town %></p>
+					<p><%= doctor.specialization %></p>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+</div>
+
+
 <h2>Pending Care Team Requests</h2>
 
 <% if @care_team_requests.length == 0 %>
@@ -11,7 +33,16 @@
 			<div class="panel panel-default">
 				<div class="panel-body">
 					<h3><a href="/profile/<%= @care_team_user[:id]%>"><%= @care_team_user[:name] %></a>'s care team</h3>
-					<h4> Doctors in this care team</h4>
+					<div>
+						<% team = get_care_team request.care_team_id %>
+						<h4> Doctors in this care team</h4>
+						<% team.doctor_ids.each do |id| %>
+							<% doctor = get_doctor_info id %>
+							<a href="/doctor_profile/<%= id %>"><h4><%= get_doctor_name id %></h4></a>
+							<p><%= doctor.town %></p>
+							<p><%= doctor.specialization %></p>
+						<% end %>
+					</div>
 					<%= link_to "Accept Request", accept_care_team_request_path(request.id), method: :post %>
 					<%= link_to "Reject Request", reject_care_team_request_path(request.id), method: :post %>
 				</div>

@@ -30,6 +30,7 @@ class CareTeamController < ApplicationController
 
 	def doctor
 		@care_team_requests = CareTeamDoctorStatus.where("joined = ? AND doctor_id = ?", false, params[:id])
+		@doctor_care_teams = CareTeamDoctorStatus.where("joined = ? AND doctor_id = ?", true, params[:id])
 	end
 
 	def accept_care_team_request
