@@ -292,3 +292,12 @@ ERROR:  cached plan must not change result type
 STATEMENT:  SELECT "notifications".* FROM "notifications" WHERE "notifications"."user_id" = $1
 ERROR:  cached plan must not change result type
 STATEMENT:  SELECT "notifications".* FROM "notifications" WHERE "notifications"."doctor_id" = $1
+LOG:  received smart shutdown request
+LOG:  autovacuum launcher shutting down
+LOG:  shutting down
+LOG:  database system is shut down
+LOG:  database system was shut down at 2017-10-01 18:34:12 BST
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  autovacuum launcher started
+LOG:  database system is ready to accept connections
+LOG:  using stale statistics instead of current ones because stats collector is not responding
