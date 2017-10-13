@@ -52,6 +52,14 @@ class AdminController < ApplicationController
 		end
 	end
 
+	def view_patients
+		@patients = User.all
+	end
+
+	def view_doctors
+		@doctors = Doctor.all
+	end
+
 	private
 
 	def plan_params

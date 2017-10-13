@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   get 'admin/plans/new' => 'admin#new_plan', as: :new_plan
   post 'admin/plans/new' => 'admin#create_plan'
 
+  get 'admin/view/patients' => 'admin#view_patients', as: :admin_patients_view
+  get 'admin/view/doctors' => 'admin#view_doctors', as: :admin_doctors_view
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

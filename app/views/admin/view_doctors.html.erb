@@ -1,0 +1,23 @@
+<div>
+	<%= link_to "admin home", admin_path %>
+</div>
+
+<h2> All Doctoora Health Professionals </h2>
+
+<div class="row">
+	<div class="panel panel-default">
+		<div class="panel-body col-md-4">
+			<% @doctors.each do |doctor| %>
+				<h4><%= doctor.first_name %> <%= doctor.last_name %></h4>
+				<p><%= doctor.email %></p>
+				<p>Joined: <%= doctor.created_at %></p>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<style>
+  #activity-wrapper {
+    display: none;
+  }
+</style>
