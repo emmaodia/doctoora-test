@@ -2,7 +2,11 @@ class PlansController < ApplicationController
 	include PaystackHelper
 
 	def index
-		@plans = Plan.all
+		if user_signed_in?
+			@plans = Plan.where('category = ?', 'Patient')
+		elsif doctor_signed_in?
+			@plans = Plan.where('category = ?', 'Doctor')
+		end
 	end
 
 	def purchase

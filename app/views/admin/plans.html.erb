@@ -1,14 +1,19 @@
-<h2>Plans</h2>
+<div>
+	<%= link_to "admin home", admin_path %>
+</div>
 
-<%= link_to "add plan", new_plan_path %>
+<h2>Marketplace Items</h2>
+
+<%= link_to "add item", new_plan_path %>
 
 <div class="row">
 	<div class="panel panel-default">
 		<div class="panel-body col-md-4">
 			<% @plans.each do |plan| %>
-				<%= plan.title %>
-				<%= plan.description %>
-				<%= plan.price %>
+				<h4><%= plan.title %></h4>
+				<h5><%= plan.category %></h5>
+				<p><%= plan.description %></p>
+				<p>₦<%= plan.price %></p>
 			<% end %>
 		</div>
 	</div>

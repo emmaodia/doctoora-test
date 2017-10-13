@@ -1,10 +1,10 @@
 <div>
 	<% @plans.each do |plan| %>
-		<div class="col-md-4 panel panel-default">
+		<div class="col-md-6 panel panel-default">
 			<h4><%= plan.title %></h4>
 			<p><%= plan.description %></p>
 			<p><%= plan.price %></p>
-			<%= link_to "Buy Plan", purchase_plan_path(plan) %>
+			<%= link_to "Buy Item", purchase_plan_path(plan) %>
 		</div>
 	<% end %>
 </div>
