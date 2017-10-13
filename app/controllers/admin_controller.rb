@@ -57,7 +57,7 @@ class AdminController < ApplicationController
 	end
 
 	def view_doctors
-		@doctors = Doctor.all
+		@doctors = Doctor.where('verified = ?', true)
 	end
 
 	private
