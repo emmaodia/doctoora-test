@@ -1,8 +1,20 @@
 class AdminController < ApplicationController
 
-	before_action :authenticate_admin!
+	before_action :authenticate_admin!, except: [:render_activation_form, :activate]
 
 	def index
+	end
+
+	def render_activation_form
+		render 'activate'
+	end
+
+	def activate
+		if params[:password] == ENV['ACTIVATION_PASSWORD']
+			redirect_to new_admin_registration_path
+		else
+			flash[:notice] = "Incorrect Password"
+		end
 	end
 
 	def verify_doctors

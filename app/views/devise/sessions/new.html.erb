@@ -28,6 +28,10 @@
     </div>
   <% end %>
 
+  <% if resource_name == :admin %>
+    <%= link_to "sign up as new admin", admin_activate_path %><br />
+  <% end %>
+
   <!-- <%= render "devise/shared/links" %> -->
 </div>
 

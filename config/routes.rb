@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'doctors' => 'doctors#index'
 
+  get 'admin/activate' => 'admin#render_activation_form'
+  post 'admin/activate' => 'admin#activate'
+  
   get 'admin' => 'admin#index', as: :admin
   get 'admin/doctors' => 'admin#verify_doctors', as: :verify_doctors
   get 'admin/doctors/:id' => 'admin#verify_doctor', as: :verify_doctor
