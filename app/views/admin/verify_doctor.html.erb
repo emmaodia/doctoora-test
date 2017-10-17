@@ -4,34 +4,58 @@
 
 <h2><%= @doctor.email %></h2>
 
-<div class="row">
-	<div class="col-md-6">
+<div>
+	<div>
 		<h3>MDCN</h3>
-		<iframe src="<%= @doctor.mdcn.url %>" width="450px" height="800px"></iframe>
+		<% if file_uploaded? @doctor.mdcn_file_name %>
+			<iframe src="<%= serve_over_https @doctor.mdcn.url %>" width="800px" height="950px"></iframe>
+		<% else %>
+			<p style="color: red"> File has not been uploaded </p>
+		<% end %>
 	</div>
 
-	<div class="col-md-6">
+	<div>
 		<h3>NYSC Certificate</h3>
-		<iframe src="<%= @doctor.nysc.url %>" width="450px" height="800px"></iframe>
+		<% if file_uploaded? @doctor.nysc_file_name %>
+			<iframe src="<%= serve_over_https @doctor.nysc.url %>" width="800px" height="950px"></iframe>
+		<% else %>
+			<p style="color: red"> File has not been uploaded </p>
+		<% end %>
 	</div>
 
-	<div class="col-md-6">
+	<div>
 		<h3>University Certificate</h3>
-		<iframe src="<%= @doctor.uni_cert.url %>" width="450px" height="800px"></iframe>
+		<% if file_uploaded? @doctor.uni_cert_file_name %>
+			<iframe src="<%= serve_over_https @doctor.uni_cert.url %>" width="800px" height="950px"></iframe>
+		<% else %>
+			<p style="color: red"> File has not been uploaded </p>
+		<% end %>
 	</div>
 
-	<div class="col-md-6">
+	<div>
 		<h3>Post NYSC Certificate</h3>
-		<iframe src="<%= @doctor.post_nysc.url %>" width="450px" height="800px"></iframe>
+		<% if file_uploaded? @doctor.post_nysc_file_name %>
+			<iframe src="<%= serve_over_https @doctor.post_nysc.url %>" width="800px" height="950px"></iframe>
+		<% else %>
+			<p style="color: red"> File has not been uploaded </p>
+		<% end %>
 	</div>
 
-	<div class="col-md-6">
+	<div>
 		<h3>Proof of ID</h3>
-		<iframe src="<%= @doctor.id_proof.url %>" width="450px" height="800px"></iframe>
+		<% if file_uploaded? @doctor.id_proof_file_name %>
+			<iframe src="<%= serve_over_https @doctor.id_proof.url %>" width="800px" height="950px"></iframe>
+		<% else %>
+			<p style="color: red"> File has not been uploaded </p>
+		<% end %>
 	</div>
 </div>
 
-<button class="btn btn-success btn-block" style="color: white"><%= link_to "Verify Doctor", verify_path, method: :post %></button>
+<%= link_to verify_path, method: :post do%>
+	<button class="btn btn-success btn-block" style="color: white;">
+		Verify Doctor
+	</button>
+<% end %>
 
 <style>
   #activity-wrapper {

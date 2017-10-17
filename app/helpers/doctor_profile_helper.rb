@@ -1,6 +1,6 @@
 module DoctorProfileHelper
 
-	def file_uploaded? file_name
+	def doc_file_uploaded? file_name
 		if file_name != nil
 			return "Uploaded!"
 		else

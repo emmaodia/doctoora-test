@@ -30,7 +30,7 @@ class AdminController < ApplicationController
 		doctor.verified = true
 		doctor.save
 		flash["notice"] = "Doctor has now been verified"
-		redirect_to admin_path
+		redirect_to verify_doctors_path
 	end
 
 	def plans
