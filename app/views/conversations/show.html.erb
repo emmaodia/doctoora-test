@@ -1,0 +1,25 @@
+<div>
+	<ul>
+		<% @conversation.messages.each do |message| %>
+				<li>
+					<% p message %>
+					<p><%= message.body %></p>
+					<h6><%= message.created_at %></h6>
+				</li>
+		<% end %>
+	</ul>
+</div>
+
+<div>
+	<%= form_for [@conversation, @message], html: {:class => "ui reply form"}, url: conversation_messages_path(@conversation), method: :post do |f| %>
+
+		<div class="form-group">
+			<%= f.text_area :body, :class => "form-control" %>
+		</div>
+
+		<div class="form-group">
+	   		<%= f.submit "Send", :class => "btn btn-primary" %>
+	   	</div>
+
+	<% end %>
+</div>

@@ -26,6 +26,11 @@ class ConversationsController < ApplicationController
  		# redirect_to conversation_messages_path(@conversation)
 	end
 
+	def show
+		@conversation = Conversation.find(params[:id])
+		@message = @conversation.messages.new
+	end
+
 	private
  	
  	def conversation_params

@@ -310,3 +310,18 @@ LOG:  autovacuum launcher started
 LOG:  database system is ready to accept connections
 ERROR:  column "patient" does not exist at character 49
 STATEMENT:  SELECT "plans".* FROM "plans" WHERE (category = Patient)
+LOG:  database system was interrupted; last known up at 2017-10-18 18:49:47 BST
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  invalid record length at 0/23C2AD0: wanted 24, got 0
+LOG:  redo is not required
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  autovacuum launcher started
+LOG:  database system is ready to accept connections
+LOG:  using stale statistics instead of current ones because stats collector is not responding
+LOG:  database system was interrupted; last known up at 2017-10-24 13:47:54 BST
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  invalid record length at 0/23C52E0: wanted 24, got 0
+LOG:  redo is not required
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  autovacuum launcher started
+LOG:  database system is ready to accept connections
