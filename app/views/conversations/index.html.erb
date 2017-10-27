@@ -1,9 +1,13 @@
 <ul>
 	<% @conversations.each do |conversation| %>
-		<div>
-			<%= link_to conversation_path(conversation) do %>
-				<h4><%= get_sender conversation %></h4>
-			<% end %>
+		<div class="messaging-main-area">
+			<div class="message-body">
+				<%= link_to conversation_path(conversation) do%>
+					<h4><%= get_sender conversation %></h4>
+					<p><%= conversation.messages.last.body %></p>
+					<p><%= conversation.messages.last.created_at.strftime("%m/%d/%y at %l:%M %p") %></p>
+				<% end %>
+			</div>
 		</div>
 	<% end %>
 </ul>

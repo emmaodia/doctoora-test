@@ -1,8 +1,11 @@
+<div style="margin-bottom: 1em">
+	<%= link_to "<< messages", conversations_path %>
+</div>
+
 <div>
 	<ul>
 		<% @conversation.messages.each do |message| %>
 				<li>
-					<% p message %>
 					<p><%= message.body %></p>
 					<h6><%= message.created_at %></h6>
 				</li>

@@ -397,3 +397,23 @@ button {
 .link-button:hover {
     border-bottom:2px solid #c76c4e; 
 }
+
+/* Messaging */
+.message-body:hover {
+    background-color: #4193c9;
+    opacity: 0.8;
+}
+
+.message-body a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.message-body {
+    border-top: dotted 1px #333;
+    border-bottom: dotted 1px #333;
+    border-radius: 0.2em;
+    margin-left: -50px;
+    margin-bottom: 1em;
+    width: 107.5%;
+}
