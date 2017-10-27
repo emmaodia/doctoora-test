@@ -32,14 +32,8 @@ class HomeController < ApplicationController
 	end
 
 	def noted
-		p "in here"
-		notification = Notification.find(params[:id])
-		if user_signed_in?
-			notification.user_noted = true
-		else
-			notification.doctor_noted = true
-		end
-		notification.save
+		Notification.find(params[:id]).delete
+		redirect_to :back
 	end
 
 end
