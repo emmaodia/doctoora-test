@@ -20,18 +20,14 @@ class ConversationsController < ApplicationController
  	end
 
 	def create
-		sender = params[:sender_id]
-		recipient = params[:recipient_id]
-
-		p params[:sender_id]
- 		p params[:recipient_id]
- 		p params[:body]
+		sender = params["conversation"]["sender_id"]
+		recipient = params["conversation"]["recipient_id"]
 
 		if Conversation.between(sender, recipient).present?
 			@conversation = Conversation.between(sender,
      		recipient).first
  		else
-  			@conversation = Conversation.create!(conversation_params)
+  			@conversation = Conversation.create!(sender_id: sender.to_i, recipient_id: recipient.to_i)
  		end
 
  		@conversation.messages.create(body: params[:body])
