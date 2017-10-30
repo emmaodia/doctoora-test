@@ -39,4 +39,16 @@ module ApplicationHelper
 		return current_doctor.id == params[:id].to_i
 	end
 
+	def unread_messages? id
+		conversations = Conversation.where("recipient_id=?", id) || Conversation.where("sender_id=?", id)
+
+		conversations.all.each do |conversation|
+			if conversation.unread_messages == true
+				return true
+			end
+		end
+
+		return false
+	end
+
 end

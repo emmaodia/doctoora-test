@@ -28,6 +28,9 @@ class ConversationsController < ApplicationController
 
 	def show
 		@conversation = Conversation.find(params[:id])
+		@conversation.unread_messages = false
+		@conversation.save
+
 		@message = @conversation.messages.new
 	end
 

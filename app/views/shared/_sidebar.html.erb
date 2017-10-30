@@ -20,8 +20,13 @@
             <%= link_to "Patient Profile", profile_path(current_user.id) %>
         </li>
         <li>
-            <img src="<%= asset_path( 'icons/message.svg' ) %>" class="sidebar-icon" />
-            <%= link_to "Messages", conversations_path %>
+            <% if unread_messages? current_user.id || current_doctor.id %>
+                <img src="<%= asset_path( 'icons/message-with-notification.svg' ) %>" class="sidebar-icon" />
+                <%= link_to "Messages", conversations_path %>
+            <% else %>
+                <img src="<%= asset_path( 'icons/message.svg' ) %>" class="sidebar-icon" />
+                <%= link_to "Messages", conversations_path %>
+            <% end %>
         </li>
         <li>
             <img src="<%= asset_path( 'icons/knowledgebase.png' ) %>" class="sidebar-icon" />
