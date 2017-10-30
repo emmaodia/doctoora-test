@@ -12,9 +12,20 @@ class ConversationsController < ApplicationController
 
  	end
 
+ 	def new
+ 		@doctors = Doctor.where("verified=?", true)
+ 		@patients = User.all
+
+ 		@conversation = Conversation.new
+ 	end
+
 	def create
 		sender = params[:sender_id]
 		recipient = params[:recipient_id]
+
+		p params[:sender_id]
+ 		p params[:recipient_id]
+ 		p params[:body]
 
 		if Conversation.between(sender, recipient).present?
 			@conversation = Conversation.between(sender,
@@ -23,7 +34,9 @@ class ConversationsController < ApplicationController
   			@conversation = Conversation.create!(conversation_params)
  		end
 
- 		# redirect_to conversation_messages_path(@conversation)
+ 		@conversation.messages.create(body: params[:body])
+
+ 		redirect_to conversations_path
 	end
 
 	def show

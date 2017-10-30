@@ -1,0 +1,31 @@
+<div>
+	<%= form_for @conversation, url: conversations_path, method: :post do |f| %>
+
+		<div class="form-group">
+			<%= f.label "Message Recipient", :class => "control-label" %>
+			<div>
+				<% if user_signed_in? %>
+					<%= f.select :sender_id, @doctors.collect {|d| [ "Dr " + d.first_name + " " + d.last_name, d.id ] }, :class => "form-control", required: true %>
+					<%= f.hidden_field :recipient_id, value: current_user.id %>
+				<% elsif doctor_signed_in? %>
+					<%= f.select :recipient_id, @patients.collect {|pa| [ pa.first_name + " " + pa.last_name, pa.id ] }, :class => "form-control", required: true %>
+					<%= f.hidden_field :sender_id, value: current_doctor.id %>
+				<% end %>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<%= f.label "Message Body", :class => "control-label" %>
+			<div>
+				<textarea name="body">
+				</textarea>
+			</div>
+		</div>
+
+		<div class="form-group">
+		</div>
+
+		<%= f.submit "Create Conversation", :class => "btn btn-primary" %>
+
+	<% end %>
+</div>
