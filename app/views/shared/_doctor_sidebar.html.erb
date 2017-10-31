@@ -9,7 +9,7 @@
                     <img src="<%= asset_path( 'icons/home.svg' ) %>" class="sidebar-icon" /><p>HOME</p>
                 </a>
             </li>
-            <li>
+            <li id="sidebar-image">
                 <%= link_to doctor_profile_path(current_doctor.id) do %>
                     <%= image_tag current_doctor.avatar.url(:medium), :class => "profile-image" %>
                 <% end %>
@@ -63,22 +63,24 @@
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li>
-                <a href="/" class="selected">
-                    <i class="glyphicon glyphicon-home"></i><p id="home-link">HOME</p>
+                <a href="/" class="selected icon-home">
+                    <img src="<%= asset_path( 'icons/home.svg' ) %>" class="sidebar-icon" /><p>HOME</p>
                 </a>
             </li>
-            <li>
+            <li id="sidebar-image">
                 <%= link_to doctor_profile_path(current_doctor.id) do %>
                     <%= image_tag current_doctor.avatar.url(:medium), :class => "profile-image" %>
                 <% end %>
                 <p>Welcome Dr <%= current_doctor.first_name %></p>
             </li>
             <li>
+                <img src="<%= asset_path( 'icons/profile.svg' ) %>" class="sidebar-icon" />
                 <%= link_to "Doctor Profile", doctor_profile_path(current_doctor.id) %>
             </li>
             <div id="refer">
                 <li>
-                    <a href="#">Refer Someone</a>
+                    <img src="<%= asset_path( 'icons/refer.svg' ) %>" class="sidebar-icon" />
+                    <%= link_to "Refer Someone", refer_path %>
                 </li>
             </div>
 

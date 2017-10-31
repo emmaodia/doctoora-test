@@ -2,7 +2,8 @@
 	<%= link_to "admin home", admin_path %>
 </div>
 
-<h2><%= @doctor.email %></h2>
+<h2> <%= get_doctor_name @doctor.id %></h2>
+<h3><a href="mailto:<%= @doctor.email %>"><%= @doctor.email %></a></h3>
 
 <div>
 	<div>

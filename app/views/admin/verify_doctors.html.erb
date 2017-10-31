@@ -9,7 +9,7 @@
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<%= link_to verify_doctor_path(doctor) do %>
-					<%= doctor.email %>
+					<%= get_doctor_name doctor.id %>
 				<% end %>
 			</div>
 		</div>

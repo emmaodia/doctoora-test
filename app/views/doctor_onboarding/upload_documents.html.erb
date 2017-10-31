@@ -29,7 +29,9 @@
 			<%= f.file_field :id_proof, :class => "form-control", :required => true %>
 		</div>
 
-		<%= link_to "Exit", doctors_path %>
+		<p><i>All fields are required</i></p>
+
+		<%= link_to "Exit", root_path, :class => "btn btn-primary" %>
 		<%= f.submit "Continue to complete", :class => "btn btn-primary" %>
 
 	<% end %>
