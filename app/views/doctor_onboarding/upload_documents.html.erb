@@ -6,27 +6,27 @@
 			
 		<div class="form-group">
 			<%= f.label "MDCN Annual Practicing Licence", :class => "control-label" %>
-			<%= f.file_field :mdcn, :class => "form-control" %>
+			<%= f.file_field :mdcn, :class => "form-control", :required => true %>
 		</div>
 
 		<div class="form-group">
 			<%= f.label "NYSC Certificate", :class => "control-label" %>
-			<%= f.file_field :nysc, :class => "form-control" %>
+			<%= f.file_field :nysc, :class => "form-control", :required => true %>
 		</div>
 
 		<div class="form-group">
 			<%= f.label "University Certificate", :class => "control-label" %>
-			<%= f.file_field :uni_cert, :class => "form-control" %>
+			<%= f.file_field :uni_cert, :class => "form-control", :required => true %>
 		</div>
 
 		<div class="form-group">
 			<%= f.label "Post NYSC years of experience", :class => "control-label" %>
-			<%= f.file_field :post_nysc, :class => "form-control" %>
+			<%= f.file_field :post_nysc, :class => "form-control", :required => true %>
 		</div>
 
 		<div class="form-group">
 			<%= f.label "Proof of Identity", :class => "control-label" %>
-			<%= f.file_field :id_proof, :class => "form-control" %>
+			<%= f.file_field :id_proof, :class => "form-control", :required => true %>
 		</div>
 
 		<%= link_to "Exit", doctors_path %>
