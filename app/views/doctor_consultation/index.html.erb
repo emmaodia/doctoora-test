@@ -19,6 +19,8 @@
 				<%= link_to "Start Consultation", consultation_path(consultation, :user_id => consultation.user_id)%>
 			<% elsif consultation.status && consultation.tool == "Video Call" %>
 				<p>Video call on day of consultation</p>
+			<% elsif consultation.status && consultation.tool == "Phone Call" %>
+				<p><i class="glyphicon glyphicon-earphone" style="color: #333; font-size: 15px"></i> <%= user_phone_number consultation.user_id %></p>
 			<% else %>
 				<p>Begin the consultation using the desired method</p>
 			<% end %>

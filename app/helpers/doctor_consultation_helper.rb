@@ -17,4 +17,13 @@ module DoctorConsultationHelper
 		return [consultation.date, consultation.time]
 	end
 
+	def user_phone_number id
+		number = User.find(id).phone
+		if number != ""
+			return number
+		else
+			return "Patient has no registered phone number"
+		end
+	end
+
 end
