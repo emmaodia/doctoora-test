@@ -9,11 +9,11 @@
         		<img src="<%= asset_path( 'icons/home.svg' ) %>" class="sidebar-icon" /><p>HOME</p>
         	</a>
         </li>
-        <li>
+        <li id="sidebar-image">
             <%= link_to profile_path(current_user.id) do %>
                 <%= image_tag current_user.avatar.url(:medium), :class => "profile-image" %>
             <% end %>
-            <p>Welcome <%= current_user.first_name %></p>
+            <p>   Welcome <%= current_user.first_name %></p>
         </li>
         <li>
             <img src="<%= asset_path( 'icons/profile.svg' ) %>" class="sidebar-icon" />
