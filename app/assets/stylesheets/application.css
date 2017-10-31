@@ -429,3 +429,19 @@ button {
     margin-bottom: 1em;
     width: 107.5%;
 }
+
+.doctor-message {
+    background: #4193c9;
+    color: #fff;
+    padding: .5em;
+}
+
+.patient-message {
+    background: #2ecc71;
+    color: #fff;
+    padding: .5em;
+}
+
+.conversation {
+    list-style-type: none
+}

@@ -2,13 +2,30 @@
 	<%= link_to "<< messages", conversations_path %>
 </div>
 
+<div style="margin-bottom: 2em">
+	<% if user_signed_in? %>
+		<h2><a href="/doctor_profile/<%= @conversation.sender_id %>"><%= get_doctor_name @conversation.sender_id %></a></h2>
+	<% else %>
+		<h2><a href="/profile/<%= @conversation.recipient_id %>"><%= get_patient_name @conversation.recipient_id %></a></h2>
+	<% end %>
+</div>
+
 <div>
-	<ul>
+	<ul class="conversation">
 		<% @conversation.messages.each do |message| %>
-				<li>
-					<p><%= message.body %></p>
-					<h6><%= message.created_at %></h6>
-				</li>
+				<% if message.user_class == "Doctor" %>
+					<li class="doctor-message">
+						<p><u><%= get_sender_first_name message %></u></p>
+						<p><%= message.body %></p>
+						<h6><%= message.created_at.strftime("%m/%d/%y at %l:%M %p") %></h6>
+					</li>
+				<% elsif message.user_class == "User" %>
+					<li class="patient-message">
+						<p><u><%= get_sender_first_name message %></u></p>
+						<p><%= message.body %></p>
+						<h6><%= message.created_at.strftime("%m/%d/%y at %l:%M %p") %></h6>
+					</li>
+				<% end %>
 		<% end %>
 	</ul>
 </div>

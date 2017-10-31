@@ -335,3 +335,5 @@ LOG:  database system is ready to accept connections
 ERROR:  column conversations.user_id does not exist at character 53
 STATEMENT:  SELECT "conversations".* FROM "conversations" WHERE "conversations"."user_id" = $1
 LOG:  using stale statistics instead of current ones because stats collector is not responding
+ERROR:  cached plan must not change result type
+STATEMENT:  SELECT  "messages".* FROM "messages" WHERE "messages"."conversation_id" = $1  ORDER BY "messages"."id" DESC LIMIT 1

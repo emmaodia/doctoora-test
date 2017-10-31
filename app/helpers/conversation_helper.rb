@@ -10,4 +10,12 @@ module ConversationHelper
 		end	
 	end
 
+	def get_sender_first_name message
+		if message.user_class == "Doctor"
+			return "Dr. " + Doctor.find(message.user_id).first_name
+		elsif message.user_class == "Patient"
+			return User.find(message.user_id).first_name
+		end
+	end
+
 end
