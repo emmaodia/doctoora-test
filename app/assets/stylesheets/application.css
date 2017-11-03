@@ -434,12 +434,14 @@ button {
     background: #4193c9;
     color: #fff;
     padding: .5em;
+    margin: .5em 0;
 }
 
 .patient-message {
     background: #2ecc71;
     color: #fff;
     padding: .5em;
+    margin: .5em 0;
 }
 
 .conversation {

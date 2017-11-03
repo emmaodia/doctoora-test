@@ -19,7 +19,7 @@
 						<p><%= message.body %></p>
 						<h6><%= message.created_at.strftime("%m/%d/%y at %l:%M %p") %></h6>
 					</li>
-				<% elsif message.user_class == "User" %>
+				<% elsif message.user_class == "Patient" %>
 					<li class="patient-message">
 						<p><u><%= get_sender_first_name message %></u></p>
 						<p><%= message.body %></p>
@@ -36,6 +36,14 @@
 		<div class="form-group">
 			<%= f.text_area :body, :class => "form-control" %>
 		</div>
+
+		<% if doctor_signed_in? %>
+			<%= f.hidden_field :user_class, value: "Doctor" %>
+			<%= f.hidden_field :user_id, value: current_doctor.id %>
+		<% elsif user_signed_in? %>
+			<%= f.hidden_field :user_class, value: "Patient" %>
+			<%= f.hidden_field :user_id, value: current_user.id %>
+		<% end %>
 
 		<div class="form-group">
 	   		<%= f.submit "Send", :class => "btn btn-primary" %>

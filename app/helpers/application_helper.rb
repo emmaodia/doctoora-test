@@ -40,15 +40,28 @@ module ApplicationHelper
 	end
 
 	def unread_messages? id
-		conversations = Conversation.where("recipient_id=?", id) || Conversation.where("sender_id=?", id)
+		if current_doctor
+			conversations = Conversation.where("sender_id=?", current_doctor.id)
 
-		conversations.all.each do |conversation|
-			if conversation.unread_messages == true
-				return true
+			conversations.all.each do |conversation|
+				if conversation.sender_unread_messages == true
+					return true
+				end
 			end
-		end
 
+		elsif current_user
+			conversations = Conversation.where("recipient_id=?", current_user.id)
+
+			conversations.all.each do |conversation|
+				if conversation.unread_messages == true
+					return true
+				end
+			end
+
+		end
+			
 		return false
+
 	end
 
 end

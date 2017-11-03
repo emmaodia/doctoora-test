@@ -3,7 +3,6 @@
         <li id="consultation-link">
             <%= link_to "Book a consultation", consultation_type_path %>
         </li>
-
         <li>
         	<a href="/" class="selected icon-home">
         		<img src="<%= asset_path( 'icons/home.svg' ) %>" class="sidebar-icon" /><p>HOME</p>
@@ -13,7 +12,7 @@
             <%= link_to profile_path(current_user.id) do %>
                 <%= image_tag current_user.avatar.url(:medium), :class => "profile-image" %>
             <% end %>
-            <p>   Welcome <%= current_user.first_name %></p>
+            <p>Welcome <%= current_user.first_name %></p>
         </li>
         <li>
             <img src="<%= asset_path( 'icons/profile.svg' ) %>" class="sidebar-icon" />

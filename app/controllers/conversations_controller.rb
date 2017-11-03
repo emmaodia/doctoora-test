@@ -30,19 +30,19 @@ class ConversationsController < ApplicationController
   			@conversation = Conversation.create!(sender_id: sender.to_i, recipient_id: recipient.to_i)
  		end
 
- 		if doctor_signed_in?
- 			@conversation.messages.create(body: params[:body], user_class: "Doctor", user_id: current_doctor.id)
- 		else
- 			@conversation.messages.create(body: params[:body], user_class: "User", user_id: current_user.id)
- 		end
-
  		redirect_to conversations_path
 	end
 
 	def show
 		@conversation = Conversation.find(params[:id])
-		@conversation.unread_messages = false
-		@conversation.save
+
+		if user_signed_in?
+			@conversation.unread_messages = false
+			@conversation.save
+		elsif doctor_signed_in?
+			@conversation.sender_unread_messages = false
+			@conversation.save
+		end
 
 		@message = @conversation.messages.new
 	end

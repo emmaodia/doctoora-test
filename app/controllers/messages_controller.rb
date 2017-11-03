@@ -32,12 +32,19 @@ class MessagesController < ApplicationController
 	def create
  		@message = @conversation.messages.new(message_params)
  		if @message.save
-        redirect_to conversation_path(@conversation)
+      if doctor_signed_in?
+        @conversation.unread_messages = true
+        @conversation.save
+      elsif user_signed_in?
+        @conversation.sender_unread_messages = true
+        @conversation.save
+      end
+      redirect_to conversation_path(@conversation)
  		end
 	end
 
 	private
 		def message_params
-  			params.require(:message).permit(:body)
+  			params.require(:message).permit(:body, :user_class, :user_id)
  		end
 end

@@ -337,3 +337,19 @@ STATEMENT:  SELECT "conversations".* FROM "conversations" WHERE "conversations".
 LOG:  using stale statistics instead of current ones because stats collector is not responding
 ERROR:  cached plan must not change result type
 STATEMENT:  SELECT  "messages".* FROM "messages" WHERE "messages"."conversation_id" = $1  ORDER BY "messages"."id" DESC LIMIT 1
+ERROR:  cached plan must not change result type
+STATEMENT:  SELECT  "conversations".* FROM "conversations" WHERE "conversations"."id" = $1 LIMIT 1
+LOG:  database system was interrupted; last known up at 2017-10-31 14:41:33 GMT
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  invalid record length at 0/2439260: wanted 24, got 0
+LOG:  redo is not required
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+LOG:  database system was interrupted; last known up at 2017-11-01 11:22:51 GMT
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  invalid record length at 0/243E6E0: wanted 24, got 0
+LOG:  redo is not required
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  autovacuum launcher started
+LOG:  database system is ready to accept connections
