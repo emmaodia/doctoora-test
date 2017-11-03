@@ -22,7 +22,7 @@ class PatientReviewsController < ApplicationController
 
 		if patient_review.save
 			flash[:notice] = "Review submitted for patient"
-			redirect_to doctors_path
+			redirect_to root_path
 		else
 			flash[:notice] = "Your patient review could not be submitted"
 			redirect_to 'new'

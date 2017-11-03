@@ -382,13 +382,9 @@ button {
 
 /* Consultation Show Page */
 .end-consultation-link {
-    position: relative;
-    top: -40px;
-    left: -625px;
-    background: #4692ce;
+    background-color: #cf6e4d;
     color: #fff;
-    padding: 5px;
-    border-radius:0.2em;
+    margin: 1.5em 0;
 }
 
 /* Consultation Form */
