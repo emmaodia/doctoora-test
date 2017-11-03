@@ -5,9 +5,9 @@ class ConversationsController < ApplicationController
 	def index
 		@users = User.all
 		if user_signed_in?
-			@conversations = Conversation.where("recipient_id=?", current_user.id)
+			@conversations = Conversation.where("recipient_id=?", current_user.id).order(created_at: :desc)
 		elsif doctor_signed_in?
-			@conversations = Conversation.where("sender_id=?", current_doctor.id)
+			@conversations = Conversation.where("sender_id=?", current_doctor.id).order(created_at: :desc)
 		end
 
  	end
@@ -30,11 +30,18 @@ class ConversationsController < ApplicationController
   			@conversation = Conversation.create!(sender_id: sender.to_i, recipient_id: recipient.to_i)
  		end
 
+ 		if doctor_signed_in?
+ 			@conversation.messages.create(body: params[:body], user_class: "Doctor", user_id: current_doctor.id)
+ 		elsif user_signed_in?
+ 			@conversation.messages.create(body: params[:body], user_class: "Patient", user_id: current_user.id)
+ 		end
+
  		redirect_to conversations_path
 	end
 
 	def show
 		@conversation = Conversation.find(params[:id])
+		@messages = @conversation.messages.order(created_at: :desc)
 
 		if user_signed_in?
 			@conversation.unread_messages = false

@@ -362,3 +362,5 @@ DETAIL:  Key (id)=(5) is still referenced from table "care_team_doctor_statuses"
 STATEMENT:  DELETE FROM "care_teams" WHERE "care_teams"."id" = $1
 ERROR:  cached plan must not change result type
 STATEMENT:  SELECT "notifications".* FROM "notifications" WHERE "notifications"."user_id" = $1
+ERROR:  cached plan must not change result type
+STATEMENT:  SELECT  "notifications".* FROM "notifications" WHERE "notifications"."user_id" = $1  ORDER BY "notifications"."id" DESC LIMIT 5
