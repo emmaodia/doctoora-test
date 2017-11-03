@@ -5,19 +5,9 @@ class ApplicationController < ActionController::Base
 
   	protected
 
-  	def notify! user_id, notifier_id, notification_text, dr_notification_text
-		Notification.create!(user_id: user_id, doctor_id: notifier_id, notification: notification_text, dr_notification_msg: dr_notification_text)
+  	def notify! user_id, notifier_id, notification_text, dr_notification_text, link, dr_link
+		Notification.create!(user_id: user_id, doctor_id: notifier_id, notification: notification_text,
+			dr_notification_msg: dr_notification_text, link: link, dr_link: dr_link)
   	end
-
- #  	def send_message sender_id, recipient_id, message
-	# 	if Conversation.between(current_doctor.id, user_id).present?
-	# 		conversation = Conversation.between(current_doctor.id, user_id).first
- # 		else
- #  			conversation = Conversation.create!(sender_id: current_doctor.id, recipient_id: user_id)
- # 		end
-
-	# 	conversation.messages.create!(body: message, 
-	# 		messageable_id: current_doctor.id, messageable_type: :Doctor)
-	# end
 
 end

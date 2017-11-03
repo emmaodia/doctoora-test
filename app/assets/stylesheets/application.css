@@ -230,6 +230,11 @@ button {
     margin-left: 2.25em;
 }
 
+.notification ul li a {
+    text-decoration: none;
+} .notification ul li a:hover {
+    color: #cf6e4d;
+}
 /* Navbar */
 
 #bootstrap-overrides .navbar {
