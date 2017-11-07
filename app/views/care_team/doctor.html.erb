@@ -1,3 +1,23 @@
+<div style="height: 100px">
+	<h2> Doctor Search </h2>
+	<%= form_tag(care_path, :method => "post", :class => "navbar-form navbar-left") do %>
+
+		<div class="form-group">
+			<%= label_tag 'location' %>
+			<%= text_field_tag :location, params[:location], :class => "form-control search-form" %>
+		</div>
+
+		<div class="form-group">
+			<%= label_tag 'specialization' %>
+			<%= text_field_tag :specialization, params[:specialization], :class => "form-control search-form" %>
+		</div>
+
+		<div class="form-group">
+			<button type="submit" class="btn btn-primary">Search</button>
+		</div>
+	<% end %>
+</div>
+
 <h2> Your Care Teams </h2>
 
 <div>
