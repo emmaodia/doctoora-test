@@ -10,6 +10,10 @@ class CareTeamController < ApplicationController
 	end
 
 	def search_results
+		if current_user.care_team
+			@care_team = CareTeam.find_by_user_id(current_user.id)
+		end
+		
 		@doctors = Doctor.search(params[:location], params[:specialization])
 	end
 
