@@ -364,3 +364,10 @@ ERROR:  cached plan must not change result type
 STATEMENT:  SELECT "notifications".* FROM "notifications" WHERE "notifications"."user_id" = $1
 ERROR:  cached plan must not change result type
 STATEMENT:  SELECT  "notifications".* FROM "notifications" WHERE "notifications"."user_id" = $1  ORDER BY "notifications"."id" DESC LIMIT 5
+LOG:  database system was interrupted; last known up at 2017-11-07 17:55:03 GMT
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  invalid record length at 0/248C0E8: wanted 24, got 0
+LOG:  redo is not required
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  autovacuum launcher started
+LOG:  database system is ready to accept connections
