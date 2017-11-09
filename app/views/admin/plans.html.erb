@@ -10,6 +10,7 @@
 	<div class="panel panel-default">
 		<div class="panel-body col-md-4">
 			<% @plans.each do |plan| %>
+				<img src=<%= plan.image %> width="500px"/>
 				<h4><%= plan.title %></h4>
 				<h5><%= plan.category %></h5>
 				<p><%= plan.description %></p>
