@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   get 'doctor/onboarding/new/upload_documents' => "doctor_onboarding#upload_documents"
   post 'doctor/onboarding/create' => "doctor_onboarding#submit_documents"
 
-  resources :profile, only: [:show, :edit, :update]
+  resources :profile
   resources :doctor_profile, only: [:show, :edit, :update]
 
   get '/consultation/type' => "consultation#type_select"

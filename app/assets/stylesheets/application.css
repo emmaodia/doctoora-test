@@ -448,3 +448,8 @@ button {
 .conversation {
     list-style-type: none
 }
+
+/* ADMIN PATIENT */
+.admin-patient {
+    margin: 2em 0;
+}

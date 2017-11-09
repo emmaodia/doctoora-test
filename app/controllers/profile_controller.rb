@@ -18,6 +18,13 @@ class ProfileController < ApplicationController
     	redirect_to profile_path(params[:id])
 	end
 
+	def destroy
+		@patient = User.find(params[:id])
+    	@patient.destroy
+    	flash[:notice] = "User account deleted successfully"
+    	redirect_to :back
+	end
+
 	private
 
 	def profile_params
