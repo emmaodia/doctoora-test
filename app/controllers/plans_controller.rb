@@ -11,8 +11,14 @@ class PlansController < ApplicationController
 
 	def purchase
 		amount = Plan.find(params[:id]).price
-		current_user.transactions.create(amount: amount, plan_id: params[:id], status: :processing)
-		redirect_to initialize_transaction amount
+		if user_signed_in?
+			current_user.transactions.create(amount: amount, plan_id: params[:id], status: :processing)
+			email = current_user.email
+		elsif doctor_signed_in?
+			current_doctor.transactions.create(amount: amount, plan_id: params[:id], status: :processing)
+			email = current_doctor.email
+		end
+		redirect_to initialize_transaction amount, email
 	end
 
 	def confirm_plan

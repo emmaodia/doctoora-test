@@ -3,7 +3,7 @@
 		<div class="col-md-6 panel panel-default">
 			<h4><%= plan.title %></h4>
 			<p><%= plan.description %></p>
-			<p><%= plan.price %></p>
+			<p>₦<%= plan.price %></p>
 			<%= link_to "Buy Item", purchase_plan_path(plan) %>
 		</div>
 	<% end %>

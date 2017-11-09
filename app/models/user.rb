@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :consultations
   has_many :messages, as: :messageable
-  has_many :transactions, dependent: :destroy
+  has_many :transactions
   has_many :patient_reviews, dependent: :destroy
   has_many :notifications, dependent: :destroy
   has_one :care_team, dependent: :destroy

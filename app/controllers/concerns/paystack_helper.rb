@@ -1,12 +1,12 @@
 module PaystackHelper
 
-	def initialize_transaction amount
+	def initialize_transaction amount, email
 
 		amount_in_kobo = amount*100
 
 		body = {
 			"amount" => amount_in_kobo.to_s,
-			"email" => current_user.email
+			"email" => email
 		}.to_json
 
 		headers = { 
