@@ -79,7 +79,8 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { :host => 'doctoora-prod.herokuapp.com' }
 
-  p "production init"
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
 
   config.paperclip_defaults = {
     storage: :s3,
