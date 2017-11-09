@@ -1,14 +1,21 @@
+<div style="margin-bottom: 3em">
+	<h2> Patient Reviews </h2>
+	<p> Here you can find the records and links to profiles of patients who have consulted with you </p>
+</div>
+
 <% @patients.each do |patient| %>
 	<div>
-		<img src=<%= patient.avatar %> id="logo"/>
+		<img src=<%= patient.avatar %>/>
 		<a href="/profile/<%= patient.id %>"><h4><%= patient.first_name %> <%= patient.last_name %></h4></a>
 		<button class="view-record btn btn-primary" value="<%= patient.id %>">View Records</button>
+		<%= link_to "View Profile", profile_path(patient), :class => "btn btn-primary" %>
 		<div id="patient-record-<%= patient.id%>" class="patient-records">
 			<ul>
 				<% patient.patient_reviews.each do |review| %>
 					<li>
-						<h5><%= review.created_at.strftime("%m/%d/%y at %l:%M %p") %></h5>
+						<h5><b><%= review.created_at.strftime("%m/%d/%y at %l:%M %p") %></b></h5>
 						<p><%= review.review %></p>
+						<p> Reviewed by <%= get_doctor_name review.doctor_id %> </p>
 					</li>
 				<% end %>
 			</ul>
