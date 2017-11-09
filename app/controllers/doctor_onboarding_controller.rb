@@ -4,30 +4,15 @@ class DoctorOnboardingController < ApplicationController
 		@doctor = Doctor.find(current_doctor.id)
 		
 		@specialty_list = ["Aesthetic Practitioner", "Cardiologist", "Cardiothoracic Surgery", "Dental", "Dermatology", 
-		"General Surgery", "Haematology", "Mental Health General Practitioner", "Nephrology", "Neurology", "Neurosurgery",
-		"Obstetrics and Gynecology", "Oncology", "Orthopadeic Surgery", "Paediatric Oncology", "Paediatric Surgery",
+		"General Practitioner", "General Surgery", "Haematology", "Mental Health General Practitioner", "Nephrology", "Neurology", "Neurosurgery",
+		"Obstetrics and Gynecology", "Oncology", "Orthopaedic Surgery", "Paediatric Oncology", "Paediatric Surgery",
 		"Paediatrics", "Psychiatry", "Renal Surgery", "Respirology", "Urology"]
 	end
 
 	def create
-		doctor = Doctor.find(current_doctor.id)
-		parameters = params["doctor"]
-
-		#save dob as an array and remove it from the params to be iterated over
-		doctor.dob = Date.civil(parameters["dob(1i)"].to_i,parameters["dob(2i)"].to_i,parameters["dob(3i)"].to_i)
-		
-		(0..2).each do
-			parameters.shift
-		end
-
-		assign_values parameters, doctor
-		
-		if doctor.save
-			redirect_to doctors_path
-		else
-			flash[:notice] = "There was an error saving your information"
-			render 'new'
-		end
+		@doctor = Doctor.find(current_doctor)
+    	@doctor.update(onboarding_params)
+    	redirect_to root_path
 	end
 
 	def upload_documents
@@ -48,11 +33,9 @@ class DoctorOnboardingController < ApplicationController
 
 	private
 
-	def assign_values params, user
-		params.each do |param|
-			key = param[0]
-			user[key] = param[1]
-		end
+	def onboarding_params
+		params.require(:doctor).permit(:dob, :gender, :ethnicity, :specialization, :specialty, 
+									   :house, :town, :postcode, :country, :height, :weight, :avatar)
 	end
 
 	def doctor_params

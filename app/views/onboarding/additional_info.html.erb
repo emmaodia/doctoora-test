@@ -46,8 +46,8 @@
 			<%= f.select :exercise, ["Daily", "1-3 times per week", "Rarely", "Never"], :class => "form-control"%>
 		</div>
 
-		<%= link_to "Skip", root_path %>
-		<%= link_to "Back", url_for(:back) %>
+		<%= link_to "Back", url_for(:back), :class => "btn btn-primary" %>
+		<%= link_to "Skip", root_path, :class => "btn btn-primary" %>
 
 		<%= f.submit "Submit", :class => "btn btn-primary" %>
 
