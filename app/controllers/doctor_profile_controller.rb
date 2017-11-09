@@ -6,6 +6,10 @@ class DoctorProfileController < ApplicationController
 
 	def edit
 		@doctor_profile = Doctor.find(params[:id])
+		@specialty_list = ["Aesthetic Practitioner", "Cardiologist", "Cardiothoracic Surgery", "Dental", "Dermatology", 
+		"General Practitioner", "General Surgery", "Haematology", "Mental Health General Practitioner", "Nephrology", "Neurology", "Neurosurgery",
+		"Obstetrics and Gynecology", "Oncology", "Orthopaedic Surgery", "Paediatric Oncology", "Paediatric Surgery",
+		"Paediatrics", "Psychiatry", "Renal Surgery", "Respirology", "Urology"]
 	end
 
 	def update
@@ -16,7 +20,8 @@ class DoctorProfileController < ApplicationController
 	end
 
 	def doctor_profile_params
-		params.require(:doctor).permit(:dob, :gender, :ethnicity, :house, :town, :postcode, :country, :avatar)
+		params.require(:doctor).permit(:dob, :gender, :specialization, :specialty, 
+			:ethnicity, :house, :town, :postcode, :country, :avatar)
 	end
 
 end
