@@ -40,7 +40,7 @@ Rails.application.routes.draw do
   post 'doctor/onboarding/create' => "doctor_onboarding#submit_documents"
 
   resources :profile
-  resources :doctor_profile, only: [:show, :edit, :update]
+  resources :doctor_profile, only: [:show, :edit, :update, :destroy]
 
   get '/consultation/type' => "consultation#type_select"
   get '/consultation/new/:type' => "consultation#new", as: :new_consultation
@@ -79,6 +79,8 @@ Rails.application.routes.draw do
   post 'notification/:id/noted' => 'home#noted', as: :noted
 
   resources :clinics
+
+  resources :cards
   # Example resource route with options:
   #   resources :products do
   #     member do

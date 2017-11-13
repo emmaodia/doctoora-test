@@ -1,0 +1,26 @@
+<div>
+	<%= link_to "admin home", admin_path %>
+</div>
+
+<div style="margin-top: 10px" >
+	<%= link_to "add card", new_card_path %>
+</div>
+
+<div>
+	<% @cards.each do |card| %>
+		<div class="panel panel-body">
+			<img src=<%= card.image %> />
+			<h3><a href=<%= card.link %>><%= card.title %></a></h3>
+			<p><%= card.body %></p>
+			<br>
+			<p><%= link_to "edit card", edit_card_path(card) %></p>
+			<p><%= link_to "delete card", card_path(card), method: :delete, data: { confirm: "Are you sure?" } %></p>
+		</div>
+	<% end %>
+</div>
+
+<style>
+  #activity-wrapper {
+    display: none;
+  }
+</style>

@@ -1,0 +1,35 @@
+<div style="margin-bottom: 10px">
+	<%= link_to "admin home", admin_path %>
+</div>
+
+<div>
+	<%= form_for @card do |f| %>
+		<div class="form-group">
+			<%= f.label "Title", :class => "control-label" %>
+			<%= f.text_field :title, :class => "form-control" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.label "URL", :class => "control-label" %>
+			<%= f.text_field :link, :class => "form-control" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.label "Body", :class => "control-label" %>
+			<%= f.text_area :body, :class => "form-control", placeholder: "You can expand this by dragging the lines on the bottom right" %>
+		</div>
+		
+		<div class="form-group">
+			<%= f.label "Image", :class => "control-label" %>
+			<%= f.file_field :image, :class => "form-control" %>
+		</div>
+
+		<%= f.submit "Submit", :class => "btn btn-primary" %>
+	<% end %>
+</div>
+
+<style>
+  #activity-wrapper {
+    display: none;
+  }
+</style>

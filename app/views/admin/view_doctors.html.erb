@@ -8,9 +8,13 @@
 	<div class="panel panel-default">
 		<div class="panel-body col-md-4">
 			<% @doctors.each do |doctor| %>
-				<h4><%= doctor.first_name %> <%= doctor.last_name %></h4>
-				<p><%= doctor.email %></p>
-				<p>Joined: <%= doctor.created_at %></p>
+				<div class="admin-doctor">
+					<h4><%= doctor.first_name %> <%= doctor.last_name %></h4>
+					<p><%= doctor.email %></p>
+					<p>Joined: <%= doctor.created_at %></p>
+					<p><%= link_to "view doctor profile", doctor_profile_path(doctor) %></p>
+					<p><%= link_to "delete doctor account", doctor_profile_path(doctor), method: :delete, data: { confirm: "Are you sure you want to delete this doctor's account?" } %></p>
+				</div>
 			<% end %>
 		</div>
 	</div>

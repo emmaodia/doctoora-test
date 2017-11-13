@@ -267,6 +267,10 @@ button {
 }
 /* Home Page */
 
+.card-image {
+    width: 100%;
+}
+
 .search-form {
 	width: 100%;
 }
@@ -454,6 +458,6 @@ button {
 }
 
 /* ADMIN */
-.admin-patient {
+.admin-patient, .admin-doctor {
     margin: 2em 0;
 }

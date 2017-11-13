@@ -12,8 +12,8 @@
 					<h4><%= patient.first_name %> <%= patient.last_name %></h4>
 					<p><%= patient.email %></p>
 					<p>Joined: <%= patient.created_at %></p>
-					<p><%= link_to "view user profile", profile_path(patient) %></p>
-					<p><%= link_to "delete user account", profile_path(patient), method: :delete, data: { confirm: "Are you sure you want to delete this user's account?" } %></p>
+					<p><%= link_to "view patient profile", profile_path(patient) %></p>
+					<p><%= link_to "delete patient account", profile_path(patient), method: :delete, data: { confirm: "Are you sure you want to delete this user's account?" } %></p>
 				</div>
 			<% end %>
 		</div>

@@ -19,6 +19,13 @@ class DoctorProfileController < ApplicationController
     	redirect_to doctor_profile_path(params[:id])
 	end
 
+	def destroy
+		@doctor = Doctor.find(params[:id])
+    	@doctor.destroy
+    	flash[:notice] = "Doctor account deleted successfully"
+    	redirect_to :back
+	end
+
 	def doctor_profile_params
 		params.require(:doctor).permit(:dob, :gender, :specialization, :specialty, 
 			:ethnicity, :house, :town, :postcode, :country, :avatar)

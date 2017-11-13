@@ -31,10 +31,10 @@ class ClinicsController < ApplicationController
 	end
 
 	def update
-		@clinic = clinic.find(params[:id])
+		@clinic = Clinic.find(params[:id])
     	@clinic.update(clinic_params)
 
-    	redirect_to clinic_path(params[:id])
+    	redirect_to clinics_path
 	end
 
 	def destroy
