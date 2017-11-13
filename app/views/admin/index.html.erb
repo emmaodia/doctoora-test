@@ -1,3 +1,5 @@
+<!-- this is in home/index.html.erb as well -->
+
 <div>
 	<h1>Welcome, Admin</h1>
 
@@ -6,6 +8,8 @@
 
 	<p><%= link_to "View Patients", admin_patients_view_path %></p>
 	<p><%= link_to "View Doctors", admin_doctors_view_path %></p>
+
+	<p><%= link_to "Clinics", clinics_path %></p>
 
 	<p><%= link_to "Admin Sign Out", destroy_admin_session_path, method: :delete %></p>
 </div>

@@ -1,0 +1,27 @@
+<div>
+	<% if admin_signed_in? %>
+		<%= link_to "admin home", admin_path %>
+		<style>
+		  #activity-wrapper {
+		    display: none;
+		  }
+		</style>
+	<% end %>
+</div>
+
+<div style="margin-top: 10px" >
+	<%= link_to "add clinic", new_clinic_path %>
+</div>
+
+<div class="row">
+	<% @clinics.each do |clinic| %>
+		<div class="panel panel-body">
+			<h3><%= clinic.name %></h3>
+			<p><%= clinic.address %></p>
+			<p><%= clinic.town %></p>
+			<p><%= clinic.phone %></p>
+			<br>
+			<p><%= link_to "delete clinic", clinic_path(clinic), method: :delete, data: { confirm: "Are you sure?" } %></p>
+		</div>
+	<% end %>
+</div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171109204949) do
+ActiveRecord::Schema.define(version: 20171113145126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,15 @@ ActiveRecord::Schema.define(version: 20171109204949) do
   end
 
   add_index "care_teams", ["user_id"], name: "index_care_teams_on_user_id", using: :btree
+
+  create_table "clinics", force: :cascade do |t|
+    t.string   "name"
+    t.text     "address"
+    t.string   "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "town"
+  end
 
   create_table "consultations", force: :cascade do |t|
     t.string   "discipline"

@@ -378,3 +378,5 @@ LOG:  redo is not required
 LOG:  MultiXact member wraparound protections are now enabled
 LOG:  autovacuum launcher started
 LOG:  database system is ready to accept connections
+ERROR:  value "08012345678" is out of range for type integer
+STATEMENT:  INSERT INTO "clinics" ("name", "address", "phone", "town", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"

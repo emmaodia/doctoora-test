@@ -77,6 +77,8 @@ Rails.application.routes.draw do
   post 'doctors/care/request/:request_id/reject' => 'care_team#reject_care_team_request', as: :reject_care_team_request
 
   post 'notification/:id/noted' => 'home#noted', as: :noted
+
+  resources :clinics
   # Example resource route with options:
   #   resources :products do
   #     member do
