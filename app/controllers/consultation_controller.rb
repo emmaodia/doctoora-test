@@ -41,7 +41,7 @@ class ConsultationController < ApplicationController
 			@consultation.date_and_time = Time.new(@consultation.date.year, @consultation.date.month, @consultation.date.day,
   									   			   @consultation.time.hour, @consultation.time.min).to_datetime
 			if @consultation.save
-				flash[:notice] = "Your consultation has been booked and will be verified"
+				flash[:notice] = "Your consultation request has been sent and will be verified"
 				notify! current_user.id, @consultation.professional.to_i, "You have requested a consultation with",
 				"You have received a new consultation request from", "/consultation", "/doctor_consultation"
 				redirect_to root_path

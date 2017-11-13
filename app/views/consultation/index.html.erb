@@ -10,8 +10,10 @@
 		    </div>
 
 		    <div id="consultation-<%= consultation.id%>" class="patient-records">
-				<p><%= consultation.discipline %></p>
 				<p><%= consultation.service %></p>
+				<% if consultation.status && consultation.tool == "Video Call" && consultation.date_and_time.today? %>
+					<%= link_to "Start Consultation", consultation_path(consultation)%>
+				<% end %>
 			</div>
 
 		<% end %>
