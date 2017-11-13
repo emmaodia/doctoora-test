@@ -14,6 +14,11 @@
 			<%= f.text_area :address, :class => "form-control" %>
 		</div>
 
+		<div class="form-group clinic-options">
+			<%= f.label "Preferred Clinic", :class => "control-label" %>
+			<%= f.select :clinic_id, @clinics.collect {|c| [ c.name + " " + c.address, c.id ] }, :class => "form-control", required: true, :class => "form-control", required: true %>
+		</div>
+
 		<% if @specialization == nil %>
 			<div class="form-group">
 				<%= f.label "Specialization", :class => "control-label" %>
@@ -60,10 +65,13 @@
     $('#consultation_tool').change(function(){
     	if($(this).val() == 'Home Visit'){
     		$('.address-box').css('display', 'block');
-    		$('.tool-box').css('display', 'none');
+    		$('.clinic-options').css('display', 'none');
+    	} else if($(this).val() == 'Clinic Visit'){
+    		$('.address-box').css('display', 'none');
+    		$('.clinic-options').css('display', 'block');
     	} else {
     		$('.address-box').css('display', 'none');
-    		$('.tool-box').css('display', 'block');
+    		$('.clinic-options').css('display', 'none');
     	}
     });
 

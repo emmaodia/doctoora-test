@@ -11,8 +11,11 @@
 
 		    <div id="consultation-<%= consultation.id%>" class="patient-records">
 				<p><%= consultation.service %></p>
+				<p><%= consultation.tool %></p>
 				<% if consultation.status && consultation.tool == "Video Call" && consultation.date_and_time.today? %>
 					<%= link_to "Start Consultation", consultation_path(consultation)%>
+				<% elsif consultation.tool == "Clinic Visit" %>
+					<%= get_clinic_address consultation.clinic_id %>
 				<% end %>
 			</div>
 

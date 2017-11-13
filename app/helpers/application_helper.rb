@@ -64,4 +64,9 @@ module ApplicationHelper
 
 	end
 
+	def get_clinic_address clinic_id
+		clinic = Clinic.find clinic_id
+		return clinic.name + " " + clinic.address
+	end
+
 end

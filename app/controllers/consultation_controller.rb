@@ -1,7 +1,7 @@
 class ConsultationController < ApplicationController
 
 	def index
-		@consultations = current_user.consultations.all.order(date: :desc)
+		@consultations = current_user.consultations.where("status = ?", "accepted").order(date: :desc)
 	end
 
 	def type_select
@@ -26,6 +26,8 @@ class ConsultationController < ApplicationController
 			@specialization = params[:type].capitalize
 			@doctors = Doctor.get_professional_type @specialization
 		end
+
+		@clinics = Clinic.all
 	end
 
 	def create
@@ -78,7 +80,7 @@ class ConsultationController < ApplicationController
 	private
 
 	def consultation_params
-		params.require(:consultation).permit(:discipline, :address, :service, :tool, :date, :time, :end_time, :professional)
+		params.require(:consultation).permit(:discipline, :address, :service, :tool, :date, :time, :end_time, :professional, :clinic_id)
 	end
 
 	def is_doctor_booked? doctor, current_consultation
