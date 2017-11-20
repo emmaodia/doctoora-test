@@ -5,7 +5,7 @@
 			<thead>
 				<tr>
 					<% if my_profile? %>
-						<th>Me</th>
+						<!-- <th>Me</th> -->
 						<th><%= link_to "edit", edit_profile_path(@user) %></th>
 					<% end %>
 				</tr>
@@ -41,7 +41,13 @@
 				</tr>
 				<tr>
 					<td>BMI</td>
-					<td><%= @user.bmi.round(2) %></td>
+					<td>
+						<% if @user.bmi %>
+							<%= @user.bmi.round(2) %>
+						<% else %>
+							<p> N/A </p>
+						<% end %>
+					</td>
 				</tr>
 			</tbody>
 		</table>
