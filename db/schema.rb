@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171113154634) do
+ActiveRecord::Schema.define(version: 20171121164328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,10 +101,12 @@ ActiveRecord::Schema.define(version: 20171113154634) do
   create_table "conversations", force: :cascade do |t|
     t.integer  "sender_id"
     t.integer  "recipient_id"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.boolean  "unread_messages",        default: true
     t.boolean  "sender_unread_messages", default: true
+    t.string   "sender_class"
+    t.string   "recipient_class",        default: "Patient"
   end
 
   create_table "doctors", force: :cascade do |t|
@@ -156,6 +158,7 @@ ActiveRecord::Schema.define(version: 20171113154634) do
     t.string   "specialization"
     t.string   "specialty"
     t.boolean  "verified"
+    t.string   "title",                  default: ""
   end
 
   add_index "doctors", ["email"], name: "index_doctors_on_email", unique: true, using: :btree

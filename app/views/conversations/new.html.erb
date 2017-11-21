@@ -5,7 +5,7 @@
 			<%= f.label "Message Recipient", :class => "control-label" %>
 			<div>
 				<% if user_signed_in? %>
-					<%= f.select :sender_id, @doctors.collect {|d| [ "Dr " + d.first_name + " " + d.last_name, d.id ] }, :class => "form-control", required: true %>
+					<%= f.select :sender_id, @doctors.collect {|d| [ d.title + " " + d.first_name + " " + d.last_name, d.id ] }, :class => "form-control", required: true %>
 					<%= f.hidden_field :recipient_id, value: current_user.id %>
 				<% elsif doctor_signed_in? %>
 					<%= f.select :recipient_id, @patients.collect {|pa| [ pa.first_name + " " + pa.last_name, pa.id ] }, :class => "form-control", required: true %>

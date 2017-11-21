@@ -380,3 +380,10 @@ LOG:  autovacuum launcher started
 LOG:  database system is ready to accept connections
 ERROR:  value "08012345678" is out of range for type integer
 STATEMENT:  INSERT INTO "clinics" ("name", "address", "phone", "town", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"
+LOG:  database system was interrupted; last known up at 2017-11-20 15:59:23 GMT
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  invalid record length at 0/25D0920: wanted 24, got 0
+LOG:  redo is not required
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started

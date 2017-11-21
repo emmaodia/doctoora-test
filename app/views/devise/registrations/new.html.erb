@@ -8,6 +8,13 @@
     <%= devise_error_messages! %>
 
     <% if resource.class != Admin %>
+      <% if resource.class == Doctor %>
+        <div class="form-group">
+          <%= f.label :title, :class => "control-label" %><br />
+          <%= f.select :title, ["Dr.", "Prof.", "Mr.", "Mrs.", "Ms."], :class => "form-control" %>
+        </div>
+      <% end %>
+
       <div class="form-group">
         <%= f.label :first_name, :class => "control-label" %><br />
         <%= f.text_field :first_name, :class => "form-control" %>

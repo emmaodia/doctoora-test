@@ -1,9 +1,9 @@
 <% if current_doctor.verified %>
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
-            <li>
+            <!-- <li>
                <img src="<%= asset_path( 'icons/online.svg' ) %>" class="sidebar-icon" /><p>Status: Available</p>
-            </li>
+            </li> -->
             <li>
             	<a href="/" class="selected icon-home">
                     <img src="<%= asset_path( 'icons/home.svg' ) %>" class="sidebar-icon" /><p>HOME</p>
@@ -13,7 +13,7 @@
                 <%= link_to doctor_profile_path(current_doctor.id) do %>
                     <%= image_tag current_doctor.avatar.url(:medium), :class => "profile-image" %>
                 <% end %>
-                <p>Welcome Dr <%= current_doctor.first_name %></p>
+                <p>Welcome <%= doctor.title %> <%= current_doctor.first_name %></p>
             </li>
             <li>
                 <img src="<%= asset_path( 'icons/profile.svg' ) %>" class="sidebar-icon" />
@@ -71,7 +71,7 @@
                 <%= link_to doctor_profile_path(current_doctor.id) do %>
                     <%= image_tag current_doctor.avatar.url(:medium), :class => "profile-image" %>
                 <% end %>
-                <p>Welcome Dr <%= current_doctor.first_name %></p>
+                <p>Welcome <%= current_doctor.title %> <%= current_doctor.first_name %></p>
             </li>
             <li>
                 <img src="<%= asset_path( 'icons/profile.svg' ) %>" class="sidebar-icon" />

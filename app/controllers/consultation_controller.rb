@@ -34,7 +34,7 @@ class ConsultationController < ApplicationController
 		doctor = Doctor.find(consultation_params[:professional])
 
 		if is_doctor_booked? doctor, consultation_params
-			flash[:notice] = "Dr #{doctor.first_name} #{doctor.last_name} is already booked for this time"
+			flash[:notice] = "#{doctor.title} #{doctor.first_name} #{doctor.last_name} is already booked for this time"
 			@consultation = current_user.consultations.new
 			render 'new'
 		else

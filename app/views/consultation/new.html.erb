@@ -42,7 +42,7 @@
 
 		<div class="form-group">
 			<%= f.label "Choose an available professional", :class => "control-label" %>
-			<%= f.select :professional, @doctors.collect {|d| [ "Dr " + d.first_name + " " + d.last_name, d.id ] }, :class => "form-control", required: true %>
+			<%= f.select :professional, @doctors.collect {|d| [ d.title + " " + d.first_name + " " + d.last_name, d.id ] }, :class => "form-control", required: true %>
 		</div>
 
 		<%= f.submit "Continue", :class => "btn btn-primary" %>
