@@ -9,8 +9,10 @@
 <div>
 	<% @cards.each do |card| %>
 		<div class="panel panel-body">
-			<img src=<%= card.image %> />
-			<h3><a href=<%= card.link %>><%= card.title %></a></h3>
+			<a href=<%= card.link %>>
+				<img src=<%= card.image %> class="card-image" />
+				<h3><%= card.title %></a></h3>
+			</a>
 			<p><%= card.body %></p>
 			<br>
 			<p><%= link_to "edit card", edit_card_path(card) %></p>

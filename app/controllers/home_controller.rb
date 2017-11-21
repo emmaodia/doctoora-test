@@ -2,7 +2,7 @@ class HomeController < ApplicationController
 
 	def index
 		if user_signed_in?
-			@cards = Card.all
+			@cards = Card.where('page = ?', 'Home')
 		elsif doctor_signed_in?
 			@doctor = current_doctor
 			date = Date.today
@@ -11,6 +11,7 @@ class HomeController < ApplicationController
 	end
 	
 	def knowledgebase
+		@cards = Card.where('page = ?', 'Knowledgebase')
 	end
 
 	def render_refer_form
