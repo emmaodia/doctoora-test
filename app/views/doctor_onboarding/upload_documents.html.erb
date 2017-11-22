@@ -5,7 +5,7 @@
 	<%= form_for @doctor, url: doctor_onboarding_create_path, method: :post do |f| %>
 			
 		<div class="form-group">
-			<%= f.label "MDCN Annual Practicing Licence", :class => "control-label" %>
+			<%= f.label "Degree Certification", :class => "control-label" %>
 			<%= f.file_field :mdcn, :class => "form-control", :required => true %>
 		</div>
 
@@ -17,11 +17,6 @@
 		<div class="form-group">
 			<%= f.label "University Certificate", :class => "control-label" %>
 			<%= f.file_field :uni_cert, :class => "form-control", :required => true %>
-		</div>
-
-		<div class="form-group">
-			<%= f.label "Post NYSC years of experience", :class => "control-label" %>
-			<%= f.file_field :post_nysc, :class => "form-control", :required => true %>
 		</div>
 
 		<div class="form-group">

@@ -7,7 +7,7 @@
 
 <div>
 	<div>
-		<h3>MDCN</h3>
+		<h3>Degree Certificate</h3>
 		<% if file_uploaded? @doctor.mdcn_file_name %>
 			<iframe src="<%= serve_over_https @doctor.mdcn.url %>" width="800px" height="950px"></iframe>
 		<% else %>
@@ -28,15 +28,6 @@
 		<h3>University Certificate</h3>
 		<% if file_uploaded? @doctor.uni_cert_file_name %>
 			<iframe src="<%= serve_over_https @doctor.uni_cert.url %>" width="800px" height="950px"></iframe>
-		<% else %>
-			<p style="color: red"> File has not been uploaded </p>
-		<% end %>
-	</div>
-
-	<div>
-		<h3>Post NYSC Certificate</h3>
-		<% if file_uploaded? @doctor.post_nysc_file_name %>
-			<iframe src="<%= serve_over_https @doctor.post_nysc.url %>" width="800px" height="950px"></iframe>
 		<% else %>
 			<p style="color: red"> File has not been uploaded </p>
 		<% end %>

@@ -50,13 +50,11 @@
 
 <div>
 	<h3>Credentials</h3>
-	<p>MDCN Annual Practicing License: <%= doc_file_uploaded? @doctor.mdcn_file_name %></p>
+	<p>Degree Certificate: <%= doc_file_uploaded? @doctor.mdcn_file_name %></p>
 
 	<p>NYSC Certificate: <%= doc_file_uploaded? @doctor.nysc_file_name %></p>
 
 	<p>University Certificate: <%= doc_file_uploaded? @doctor.uni_cert_file_name %></p>
-
-	<p>Post-NYSC Years of Experience: <%= doc_file_uploaded? @doctor.post_nysc_file_name %></p>
 
 	<p>Proof of Identity: <%= doc_file_uploaded? @doctor.id_proof_file_name %></p>
 
