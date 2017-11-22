@@ -370,6 +370,15 @@ button {
     color: #fff;
 }
 
+.height-conv-chart {
+    display: none;
+}
+
+#h-conv-chart {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 /* Calendar */
 .table {
     overflow: scroll;
