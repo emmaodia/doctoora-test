@@ -28,10 +28,17 @@ class PlansController < ApplicationController
 		transaction.save
 
 		user = User.find(current_user.id)
-		user.plan_id = transaction.plan_id
-		user.save
 
-		flash[:notice] = "Your have successfully purchased a plan"
+		if transaction.plan_id != nil
+			user.plan_id = transaction.plan_id
+			user.save
+			flash[:notice] = "You have successfully purchased a plan"
+		else
+			flash[:notice] = "Your consultation request has been sent and will be verified"
+			notify! current_user.id, @consultation.professional.to_i, "You have requested a consultation with",
+			"You have received a new consultation request from", "/consultation", "/doctor_consultation"
+		end
+
 		redirect_to root_path
 	end
 

@@ -44,6 +44,7 @@ Rails.application.routes.draw do
 
   get '/consultation/type' => "consultation#type_select"
   get '/consultation/new/:type' => "consultation#new", as: :new_consultation
+  get '/consultation/:id/pay' => "consultation#payment", as: :consultation_payment
   resources :consultation, except: :new
 
   get '/plans' => "plans#index"

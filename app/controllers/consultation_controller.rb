@@ -1,4 +1,5 @@
 class ConsultationController < ApplicationController
+	include PaystackHelper
 
 	def index
 		@consultations = current_user.consultations.where("status = ?", "accepted").order(date: :desc)
@@ -43,10 +44,7 @@ class ConsultationController < ApplicationController
 			@consultation.date_and_time = Time.new(@consultation.date.year, @consultation.date.month, @consultation.date.day,
   									   			   @consultation.time.hour, @consultation.time.min).to_datetime
 			if @consultation.save
-				flash[:notice] = "Your consultation request has been sent and will be verified"
-				notify! current_user.id, @consultation.professional.to_i, "You have requested a consultation with",
-				"You have received a new consultation request from", "/consultation", "/doctor_consultation"
-				redirect_to root_path
+				redirect_to consultation_payment_path(@consultation)
 			else
 				flash[:notice] = "There was an error creating your consultation"
 				@consultation = current_user.consultations.new
@@ -77,10 +75,19 @@ class ConsultationController < ApplicationController
     	redirect_to consultation_index_path
 	end
 
+	def payment
+		@consultation = Consultation.find(params[:id])
+		if @consultation.payment_method == "Credit Card"
+			amount = 5000
+			current_user.transactions.create(amount: amount, plan_id: nil, status: :processing)
+			redirect_to initialize_transaction amount, current_user.email
+		end
+	end
+
 	private
 
 	def consultation_params
-		params.require(:consultation).permit(:discipline, :address, :service, :tool, :date, :time, :end_time, :professional, :clinic_id)
+		params.require(:consultation).permit(:discipline, :address, :service, :tool, :date, :time, :end_time, :professional, :clinic_id, :payment_method)
 	end
 
 	def is_doctor_booked? doctor, current_consultation
