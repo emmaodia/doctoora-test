@@ -79,8 +79,11 @@ class ConsultationController < ApplicationController
 		@consultation = Consultation.find(params[:id])
 		if @consultation.payment_method == "Credit Card"
 			amount = 5000
-			current_user.transactions.create(amount: amount, plan_id: nil, status: :processing)
+			current_user.transactions.create(amount: amount, plan_id: nil, status: :processing, doctor_id: @consultation.doctor_id)
 			redirect_to initialize_transaction amount, current_user.email
+
+			#if transaction.plan_id is nil then transaction is a consultation booking and therefore
+			#transaction.doctor_id refers to the doctor the consultation is booked with
 		end
 	end
 

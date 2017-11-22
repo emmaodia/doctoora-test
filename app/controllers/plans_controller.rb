@@ -29,13 +29,17 @@ class PlansController < ApplicationController
 
 		user = User.find(current_user.id)
 
+		#if transaction.plan_id is nil then transaction is a consultation booking and therefore
+		#transaction.doctor_id refers to the doctor the consultation is booked with
+
 		if transaction.plan_id != nil
 			user.plan_id = transaction.plan_id
 			user.save
 			flash[:notice] = "You have successfully purchased a plan"
 		else
+			#redirected here from consultation_controller#payment
 			flash[:notice] = "Your consultation request has been sent and will be verified"
-			notify! current_user.id, @consultation.professional.to_i, "You have requested a consultation with",
+			notify! current_user.id, transaction.doctor_id, "You have requested a consultation with",
 			"You have received a new consultation request from", "/consultation", "/doctor_consultation"
 		end
 
