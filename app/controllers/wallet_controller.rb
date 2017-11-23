@@ -2,7 +2,7 @@ class WalletController < ApplicationController
 	include PaystackHelper
 
 	def show
-		@user = User.find params[:user_id]
+		@user = User.find params[:id]
 		@transaction = @user.transactions.new
 	end
 
