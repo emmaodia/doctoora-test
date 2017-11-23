@@ -1,0 +1,21 @@
+<div>
+	<%= link_to "back to your profile", profile_path(@user) %>
+</div>
+
+<div>
+	<h3> Your Wallet </h3>
+	<p>Wallet Balance: ₦ <%= @user.wallet.balance %></p>
+
+	<div class="col-md-4" style="margin-left: 0">
+		<h4>Top Up Your Wallet</h4>
+		<%= form_for @transaction, url: top_up_path(@user), method: :post do |f| %>
+			<div class="form-group">
+				<%= f.text_field :amount, :class => "form-control", :placeholder => "₦" %>
+				<%= f.hidden_field :purpose, value: :topup %>
+				</br>
+				<%= f.submit "Top Up", :class => "btn btn-primary" %>
+			</div>
+		<% end %>
+	</div>
+
+</div>

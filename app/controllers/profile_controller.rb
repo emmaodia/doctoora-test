@@ -1,4 +1,5 @@
 class ProfileController < ApplicationController
+	include PaystackHelper
 
 	def show
 		@notifications = current_user.notifications.last(5).reverse if current_user

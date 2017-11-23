@@ -77,14 +77,15 @@ class ConsultationController < ApplicationController
 
 	def payment
 		@consultation = Consultation.find(params[:id])
-		if @consultation.payment_method == "Credit Card"
-			amount = 5000
-			current_user.transactions.create(amount: amount, plan_id: nil, status: :processing, doctor_id: @consultation.professional.to_i)
-			
-			redirect_to initialize_transaction amount, current_user.email
 
-			#if transaction.plan_id is nil then transaction is a consultation booking and therefore
-			#transaction.doctor_id refers to the doctor the consultation is booked with
+		payment_method = @consultation.payment_method
+		amount = 5000
+
+		if payment_method == "Credit Card"
+			current_user.transactions.create(amount: amount, plan_id: nil, status: :processing, doctor_id: @consultation.professional.to_i, purpose: :consultation)
+			redirect_to initialize_transaction amount, current_user.email
+		elsif payment_method == "Doctoora Wallet"
+			redirect_to pay_from_wallet_path(amount)
 		end
 	end
 

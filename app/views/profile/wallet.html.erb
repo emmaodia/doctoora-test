@@ -1,0 +1,9 @@
+<%= form_for  do |f| %>
+		
+	<div class="form-group">
+		<%= f.label :amount, :class => "control-label" %>
+		<%= f.text_field :amount, :class => "form-control", :placeholder => "₦" %>
+	</div>
+
+	<%= f.submit "Top Up", :class => "btn btn-primary" %>
+<% end %>
