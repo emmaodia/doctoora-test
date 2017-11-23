@@ -29,16 +29,16 @@ class PlansController < ApplicationController
 
 		user = User.find(current_user.id)
 
-		if transaction.purpose == :consultation
+		if transaction.purpose == "consultation"
 			#redirected here from consultation_controller#payment
 			flash[:notice] = "Thank you. Your consultation request has been sent and will be verified"
 			notify! current_user.id, transaction.doctor_id, "You have requested a consultation with",
 			"You have received a new consultation request from", "/consultation", "/doctor_consultation"
-		elsif transaction.purpose == :purchase
+		elsif transaction.purpose == "purchase"
 			user.plan_id = transaction.plan_id
 			user.save
 			flash[:notice] = "You have successfully purchased a plan"
-		elsif transaction.purpose == :topup
+		elsif transaction.purpose == "topup"
 			wallet = user.wallet
 			wallet.balance += transaction.amount
 			wallet.save
