@@ -16,6 +16,7 @@
 						<h5><b><%= review.created_at.strftime("%m/%d/%y at %l:%M %p") %></b></h5>
 						<p><%= review.review %></p>
 						<p> Reviewed by <%= get_doctor_name review.doctor_id %> </p>
+						<%= link_to "view in detail", patient_review_path(review) %>
 					</li>
 				<% end %>
 			</ul>

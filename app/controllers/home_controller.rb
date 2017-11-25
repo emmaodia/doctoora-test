@@ -8,6 +8,7 @@ class HomeController < ApplicationController
 			date = Date.today
 			@upcoming_appointments = @doctor.consultations.where('date_and_time >= ? AND date_and_time <= ? AND status =?', Time.zone.now.beginning_of_day, Time.zone.now.end_of_day, "accepted")
 			@appointment_requests = @doctor.consultations.where('status = ?', 'pending')
+			@past_appointments = @doctor.consultations.where('date_and_time < ?', Time.zone.now.beginning_of_day)
 		end
 	end
 	

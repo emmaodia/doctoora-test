@@ -60,6 +60,29 @@
 					<% end %>
 				</div>
 			<% end %>
+
+			<% if !@past_appointments.empty? %>
+				<h1> Past Appointments </h1>
+				<div class="row">
+					<% @past_appointments.each do |appointment | %>
+						<div class="panel panel-default col-md-6">
+							<div class="panel-heading">
+								<h3><%= get_patient_name appointment.user_id %></h3>
+							</div>
+							<div class="panel-body">
+								<p><b>Tool:</b> <%= appointment.tool %></p>
+								<p><b>Date: </b><%= appointment.date_and_time.to_date.to_formatted_s(:long) %></p>
+								<p><b>Time: </b><%= appointment.date_and_time.strftime("%I:%M %p") %></p>
+							</div>
+							<% if !appointment.patient_reviews.empty? %>
+								<%= link_to "view consultation review", patient_reviews_path %>
+							<% else %>
+								<%= link_to "review this consultation", new_user_patient_review_path(appointment.user_id, appointment.id) %>
+							<% end %>
+						</div>
+					<% end %>
+				</div>
+			<% end %>
 		</div>
 	<% end %>
 <% elsif admin_signed_in? %>

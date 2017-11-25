@@ -396,3 +396,7 @@ LOG:  autovacuum launcher started
 LOG:  database system is ready to accept connections
 ERROR:  syntax error at or near "<=" at character 137
 STATEMENT:  SELECT "consultations".* FROM "consultations" WHERE "consultations"."doctor_id" = $1 AND (date_and_time >= '2017-11-25 00:00:00.000000' <= AND status ='accepted')
+ERROR:  cached plan must not change result type
+STATEMENT:  SELECT  "patient_reviews".* FROM "patient_reviews" WHERE "patient_reviews"."user_id" = $1  ORDER BY "patient_reviews"."id" DESC LIMIT 1
+ERROR:  cached plan must not change result type
+STATEMENT:  SELECT "patient_reviews".* FROM "patient_reviews" WHERE "patient_reviews"."user_id" = $1

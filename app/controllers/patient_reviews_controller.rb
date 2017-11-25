@@ -12,6 +12,7 @@ class PatientReviewsController < ApplicationController
 
 	def new
 		@user = User.find(params[:user_id])
+		@consultation_id = params[:consultation_id]
 		@latest_patient_review = @user.patient_reviews.last if @user.patient_reviews
 		@review = PatientReview.new
 
@@ -41,13 +42,18 @@ class PatientReviewsController < ApplicationController
 		end
 	end
 
+	def show
+		@review = PatientReview.find params[:id]
+		@review_user_id = User.find @review.user_id
+	end
+
 	def destroy
 	end
 
 	private
 
 	def patient_review_params
-		params.require(:patient_review).permit(:review, :doctor_id, :lga, :religion, :religion_detailed, :occupation,
+		params.require(:patient_review).permit(:review, :doctor_id, :consultation_id, :lga, :religion, :religion_detailed, :occupation,
 			:education, :hpi, :medical_history, :drug_history, :family_history, :surgical_history, :drug_reaction,
 			:allergic_reaction, :blood_transfusions, :smoking, :recent_travel, :travel_destination, :sexual_history)
 	end

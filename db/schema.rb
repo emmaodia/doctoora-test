@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171125192928) do
+ActiveRecord::Schema.define(version: 20171125204049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -220,8 +220,10 @@ ActiveRecord::Schema.define(version: 20171125192928) do
     t.string   "travel_destination"
     t.string   "sexual_history"
     t.string   "religion_detailed"
+    t.integer  "consultation_id"
   end
 
+  add_index "patient_reviews", ["consultation_id"], name: "index_patient_reviews_on_consultation_id", using: :btree
   add_index "patient_reviews", ["doctor_id"], name: "index_patient_reviews_on_doctor_id", using: :btree
   add_index "patient_reviews", ["user_id"], name: "index_patient_reviews_on_user_id", using: :btree
 
@@ -321,6 +323,7 @@ ActiveRecord::Schema.define(version: 20171125192928) do
   add_foreign_key "messages", "conversations"
   add_foreign_key "notifications", "doctors"
   add_foreign_key "notifications", "users"
+  add_foreign_key "patient_reviews", "consultations"
   add_foreign_key "patient_reviews", "doctors"
   add_foreign_key "patient_reviews", "users"
   add_foreign_key "transactions", "doctors"

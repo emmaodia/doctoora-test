@@ -64,10 +64,12 @@ Rails.application.routes.draw do
   end
 
   resources :users do
-    resources :patient_reviews, only: [:new, :create]
+    resources :patient_reviews, only: [:create]
   end
 
-  resources :patient_reviews, only: [:index]
+  get '/user/:user_id/consultation/:consultation_id/review' => "patient_reviews#new", as: :new_user_patient_review
+
+  resources :patient_reviews, only: [:index, :show]
 
   get '/knowledgebase' => 'home#knowledgebase'
   get 'refer' => 'home#render_refer_form'
