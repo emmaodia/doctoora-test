@@ -86,6 +86,10 @@ class ConsultationController < ApplicationController
 			redirect_to initialize_transaction amount, current_user.email
 		elsif payment_method == "Doctoora Wallet"
 			redirect_to pay_from_wallet_path(amount)
+		elsif payment_method == "Insurance"
+			Transaction.create!(user_id: current_user.id, doctor_id: @consultation.professional.to_i, amount: amount, purpose: :insurance, status: :processing)
+			flash[:notice] = "Thank you #{current_user.first_name}. Your consultation request has been sent and will be verified."
+			redirect_to root_path
 		end
 	end
 

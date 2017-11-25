@@ -60,6 +60,17 @@ class AdminController < ApplicationController
 		@doctors = Doctor.where('verified = ?', true)
 	end
 
+	def insurance
+		@transactions = Transaction.where('purpose = ? AND status = ?', 'insurance', 'processing')
+	end
+
+	def complete_insurance_payment
+		transaction = Transaction.find params[:id]
+		transaction.status = :complete
+		transaction.save
+		redirect_to admin_insurance_path
+	end
+
 	private
 
 	def plan_params

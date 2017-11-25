@@ -9,5 +9,4 @@ class ApplicationController < ActionController::Base
 		Notification.create!(user_id: user_id, doctor_id: notifier_id, notification: notification_text,
 			dr_notification_msg: dr_notification_text, link: link, dr_link: dr_link)
   	end
-
 end

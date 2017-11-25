@@ -1,0 +1,26 @@
+<div>
+	<%= link_to "admin home", admin_path %>
+</div>
+
+<h2> Pending Insurance Paymetns </h2>
+
+<div class="panel panel-body">
+	<% if @transactions.empty? %>
+		<p> Nothing here :) <a href="/admin">go home</a></p>
+	<% else %>
+		<% @transactions.each do |transaction| %>
+			<% doctor_id = transaction.doctor_id %>
+			<% user_id = transaction.user_id %>
+			<h3><a href="/profile/<%= user_id %>" target="_blank"><%= get_patient_name user_id %></a></h3>
+			<p>₦ <%= transaction.amount %></p>
+			<p>Owed for: Consultation with <a href="/doctor_profile/<%= doctor_id %>" target="_blank"><%= get_doctor_name doctor_id %></a></p>
+			<%= link_to "mark as paid", complete_insurance_payment_path(transaction), method: :post %>
+		<% end %>
+	<% end %>
+</div>
+
+<style>
+  #activity-wrapper {
+    display: none;
+  }
+</style>
