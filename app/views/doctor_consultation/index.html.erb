@@ -11,16 +11,16 @@
 
 	    <div id="consultation-<%= consultation.id%>" class="patient-records">
 			<p><%= consultation.tool %></p>
-			<% if !consultation.status %>
+			<% if consultation.status == "pending" %>
 				<p><span><%=link_to "approve", accept_consultation_path(consultation.id), method: :post %></span>  <span><%= link_to "reject", reject_consultation_path(consultation.id), method: :post %></span></p>
 				<p>
-			<% elsif consultation.status && consultation.tool == "Video Call" && consultation.date_and_time.today? %>
+			<% elsif consultation.status != "pending" && consultation.tool == "Video Call" && consultation.date_and_time.today? %>
 				<%= link_to "Start Consultation", consultation_path(consultation, :user_id => consultation.user_id)%>
-			<% elsif consultation.status && consultation.tool == "Video Call" %>
+			<% elsif consultation.status != "pending" && consultation.tool == "Video Call" %>
 				<p>Video call on day of consultation</p>
 			<% elsif consultation.status && consultation.tool == "Phone Call" %>
 				<p><i class="glyphicon glyphicon-earphone" style="color: #333; font-size: 15px"></i> <%= user_phone_number consultation.user_id %></p>
-			<% elsif consultation.status && consultation.tool == "Clinic Visit" %>
+			<% elsif consultation.status != "pending" && consultation.tool == "Clinic Visit" %>
 				<%= get_clinic_address consultation.clinic_id %>
 			<% else %>
 				<p>Begin the consultation using the desired method</p>

@@ -39,6 +39,27 @@
 					<% end %>
 				</div>
 			<% end %>
+
+			<% if !@appointment_requests.empty? %>
+				<h1>Pending Appointment Requests</h1>
+				<div class="row">
+					<% @appointment_requests.each do |request| %>
+						<div class="panel panel-default col-md-6">
+							<div class="panel-heading">
+								<h3><%= get_patient_name request.user_id %></h3>
+							</div>
+							<div class="panel-body">
+								<p><b>Tool:</b> <%= request.tool %></p>
+								<p><b>Date: </b><%= request.date_and_time.to_date.to_formatted_s(:long) %></p>
+								<p><b>Time: </b><%= request.date_and_time.strftime("%I:%M %p") %></p>
+								<div>
+									<p><span><%=link_to "approve", accept_consultation_path(request.id), method: :post %></span>  <span><%= link_to "reject", reject_consultation_path(request.id), method: :post %></span></p>
+								</div>
+							</div>
+						</div>
+					<% end %>
+				</div>
+			<% end %>
 		</div>
 	<% end %>
 <% elsif admin_signed_in? %>

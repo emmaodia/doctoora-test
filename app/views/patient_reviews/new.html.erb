@@ -1,16 +1,173 @@
-<div>
+<p>If you have already begun creating notes for the consultation please close this window and use that instead</p>
 
-	<h3>Patient review for <%= @user_name %></h3>
+<div>
+	<h2>Patient review for <%= get_patient_name @user.id %></h2>
+
+	<h4> Patient Biodata </h4>
+
+	<div class="form-group">
+		<label class="control-label">Last Name</label>
+		<input class="form-control" type="text" value=<%= @user.last_name %> readonly>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label">First Name</label>
+		<input class="form-control" type="text" value=<%= @user.first_name %> readonly>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label">Gender</label>
+		<input class="form-control" type="text" value=<%= @user.gender %> readonly>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label">Age</label>
+		<input class="form-control" type="text" value=<%= Date.today.year - @user.dob.year %> readonly>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label">Height(m)</label>
+		<input class="form-control" type="text" value=<%= @user.height %> readonly>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label">Weight(kg)</label>
+		<input class="form-control" type="text" value=<%= @user.weight %> readonly>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label">Address</label>
+		<input class="form-control" type="text" value=<%= get_user_address @user.house, @user.town %> readonly>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label">Phone</label>
+		<input class="form-control" type="text" value=<%= @user.phone %> readonly>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label">Email</label>
+		<input class="form-control" type="text" value=<%= @user.email %> readonly>
+	</div>
+
 
 	<%= form_for [@user, @review] do |f| %>
-		
+	
 		<div class="form-group">
-			<%= f.text_area :review, :class => "form-control", :placeholder => "What is your assessment of the patient?" %>
+			<%= f.label "Local Govt Area", :class => "control-label" %>
+			<%= f.select :lga, @lgas, :class => "form-control"%>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :religion, :class => "control-label" %>
+			<%= f.select :religion, @religions, :class => "form-control"%>
+		</div>
+
+		<div class="form-group">
+			<%= f.label "Religion Detailed", :class => "control-label" %>
+			<%= f.text_field :religion_detailed, :class => "form-control"%>
+		</div>
+
+		<div class="form-group">
+			<%= f.label "Occupation", :class => "control-label" %>
+			<%= f.select :occupation, @occupation, :class => "form-control"%>
+		</div>
+
+		<div class="form-group">
+			<%= f.label "Level of Education", :class => "control-label" %>
+			<%= f.select :education, @education, :class => "form-control"%>
+		</div>
+
+		<h4> Symptoms </h4>
+
+		<div class="form-group">
+			<%= f.label :hpi, :class => "control-label" %>
+			<%= f.text_area :hpi, :class => "form-control"%>
+		</div>
+
+		<h4> Medical History </h4>
+		<p> Please note: form fields with values here indicate details of the most recent report for the patient. You are meant to <b>add</b> the details of this consultation to these.</p>
+
+		<% if @latest_patient_review %>
+
+			<div class="form-group">
+				<%= f.label "Past Medical History", :class => "control-label" %>
+				<%= f.text_area :medical_history, value: @latest_patient_review.medical_history, :class => "form-control" %>
+			</div>
+
+			<div class="form-group">
+				<%= f.label "Past Drug History", :class => "control-label" %>
+				<%= f.text_area :drug_history, value: @latest_patient_review.drug_history, :class => "form-control"%>
+			</div>
+
+			<div class="form-group">
+				<%= f.label "Family History", :class => "control-label" %>
+				<%= f.text_area :family_history, value: @latest_patient_review.family_history, :class => "form-control"%>
+			</div>
+
+		<% else %>
+
+			<div class="form-group">
+				<%= f.label "Past Medical History", :class => "control-label" %>
+				<%= f.text_area :medical_history, :class => "form-control" %>
+			</div>
+
+			<div class="form-group">
+				<%= f.label "Past Drug History", :class => "control-label" %>
+				<%= f.text_area :drug_history, :class => "form-control"%>
+			</div>
+
+			<div class="form-group">
+				<%= f.label "Family History", :class => "control-label" %>
+				<%= f.text_area :family_history, :class => "form-control"%>
+			</div>
+
+		<% end %>
+
+		<div class="form-group">
+			<%= f.label "Past Surgical History", :class => "control-label" %>
+			<%= f.text_area :surgical_history, :class => "form-control"%>
+		</div>
+
+
+		<div class="form-group">
+			<%= f.label "Drug Reaction", :class => "control-label" %>
+			<%= f.text_area :drug_reaction, :class => "form-control"%>
+		</div>
+
+		<div class="form-group">
+			<%= f.label "Allergic Reaction", :class => "control-label" %>
+			<%= f.text_area :allergic_reaction, :class => "form-control"%>
+		</div>
+
+		<div class="form-group">
+			<%= f.label "Blood Transfusions", :class => "control-label" %>
+			<%= f.text_area :blood_transfusions, :class => "form-control"%>
+		</div>
+
+		<div class="form-group">
+			<%= f.label "Smoking", :class => "control-label" %>
+			<%= f.select :smoking, [">5 sticks per day", "1-5 sticks per day", "Socially", "Never"], value: @user.tobacco, :class => "form-control"%>
+		</div>
+
+		<div class="form-group">
+			<%= f.label "Recently Travlled?", :class => "control-label" %>
+			<%= f.select :recent_travel, ["Yes", "No"], value: @user.tobacco, :class => "form-control"%>
+		</div>
+
+		<p> If yes for travel</p>
+		<div class="form-group">
+			<%= f.label "Travel Destination", :class => "control-label" %>
+			<%= f.text_field :travel_destination, :class => "form-control"%>
+		</div>
+
+		<div class="form-group">
+			<%= f.label "Sexual History", :class => "control-label" %>
+			<%= f.text_field :sexual_history, value: @user.sexual_activity, :class => "form-control"%>
 		</div>
 
 		<%= f.hidden_field :doctor_id, :value => current_doctor.id %>
 
 		<%= f.submit :class => "btn btn-block btn-success" %>
 	<% end %>
-
 </div>

@@ -1,4 +1,6 @@
-<% if current_doctor.verified %>
+<% doctor = current_doctor %>
+
+<% if doctor.verified %>
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <!-- <li>
@@ -10,21 +12,21 @@
                 </a>
             </li>
             <li id="sidebar-image">
-                <%= link_to doctor_profile_path(current_doctor.id) do %>
-                    <%= image_tag current_doctor.avatar.url(:medium), :class => "profile-image" %>
+                <%= link_to doctor_profile_path(doctor.id) do %>
+                    <%= image_tag doctor.avatar.url(:medium), :class => "profile-image" %>
                 <% end %>
-                <p>Welcome <%= doctor.title %> <%= current_doctor.first_name %></p>
+                <p>Welcome <%= doctor.title %> <%= doctor.first_name %></p>
             </li>
             <li>
                 <img src="<%= asset_path( 'icons/profile.svg' ) %>" class="sidebar-icon" />
-                <%= link_to "Profile", doctor_profile_path(current_doctor.id) %>
+                <%= link_to "Profile", doctor_profile_path(doctor.id) %>
             </li>
             <li>
                 <img src="<%= asset_path( 'icons/Topics.svg' ) %>" class="sidebar-icon" />
                 <%= link_to "Appointments", doctor_consultation_index_path %>
             </li>
             <li>
-                <% if unread_messages? current_doctor.id %>
+                <% if unread_messages? doctor.id %>
                     <img src="<%= asset_path( 'icons/message-with-notification.svg' ) %>" class="sidebar-icon" />
                     <%= link_to "Messages", conversations_path %>
                 <% else %>
@@ -38,7 +40,7 @@
             </li>
             <li>
                 <img src="<%= asset_path( 'icons/careteam.svg' ) %>" class="sidebar-icon" />
-                <%= link_to "Care Team", doctor_care_team_path(current_doctor) %>
+                <%= link_to "Care Team", doctor_care_team_path(doctor) %>
             </li>
         
             <div id="refer">
@@ -68,14 +70,14 @@
                 </a>
             </li>
             <li id="sidebar-image">
-                <%= link_to doctor_profile_path(current_doctor.id) do %>
-                    <%= image_tag current_doctor.avatar.url(:medium), :class => "profile-image" %>
+                <%= link_to doctor_profile_path(doctor.id) do %>
+                    <%= image_tag doctor.avatar.url(:medium), :class => "profile-image" %>
                 <% end %>
-                <p>Welcome <%= current_doctor.title %> <%= current_doctor.first_name %></p>
+                <p>Welcome <%= doctor.title %> <%= doctor.first_name %></p>
             </li>
             <li>
                 <img src="<%= asset_path( 'icons/profile.svg' ) %>" class="sidebar-icon" />
-                <%= link_to "Doctor Profile", doctor_profile_path(current_doctor.id) %>
+                <%= link_to "Doctor Profile", doctor_profile_path(doctor.id) %>
             </li>
             <div id="refer">
                 <li>

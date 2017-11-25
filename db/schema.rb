@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171123022013) do
+ActiveRecord::Schema.define(version: 20171125192928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -200,9 +200,26 @@ ActiveRecord::Schema.define(version: 20171123022013) do
   create_table "patient_reviews", force: :cascade do |t|
     t.text     "review"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "doctor_id"
+    t.string   "lga"
+    t.string   "religion"
+    t.string   "education"
+    t.string   "occupation"
+    t.text     "hpi"
+    t.text     "medical_history"
+    t.text     "surgical_history"
+    t.text     "drug_history"
+    t.text     "drug_reaction"
+    t.text     "allergic_reaction"
+    t.text     "blood_transfusions"
+    t.text     "family_history"
+    t.string   "smoking"
+    t.string   "recent_travel"
+    t.string   "travel_destination"
+    t.string   "sexual_history"
+    t.string   "religion_detailed"
   end
 
   add_index "patient_reviews", ["doctor_id"], name: "index_patient_reviews_on_doctor_id", using: :btree

@@ -394,3 +394,5 @@ LOG:  redo is not required
 LOG:  MultiXact member wraparound protections are now enabled
 LOG:  autovacuum launcher started
 LOG:  database system is ready to accept connections
+ERROR:  syntax error at or near "<=" at character 137
+STATEMENT:  SELECT "consultations".* FROM "consultations" WHERE "consultations"."doctor_id" = $1 AND (date_and_time >= '2017-11-25 00:00:00.000000' <= AND status ='accepted')

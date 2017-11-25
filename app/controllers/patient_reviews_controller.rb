@@ -12,8 +12,17 @@ class PatientReviewsController < ApplicationController
 
 	def new
 		@user = User.find(params[:user_id])
-		@user_name = @user.first_name + " " + @user.last_name
+		@latest_patient_review = @user.patient_reviews.last if @user.patient_reviews
 		@review = PatientReview.new
+
+		@lgas = ["Agege", "Ajeromi Ifelodun", "Alimosho", "Amuwo-Odofin", "Apapa", "Badagry", "Kosofe", "Mushin", "Oshodi Isolo", "Ojo",
+			"Ikorodu", "Surulere", "Ifako-Ijaye", "Shomolu", "Lagos Mainland", "Ikeja", "Eti-osa", "Lagos Island", "Epe", "Ibeju Lekki"]
+
+		@religions = ["Christian", "Buddhist", "Hindu", "Jewish", "Muslim", "Sikh", "Traditional (Please state below)", "Any other religion (Please state below)", "No Religion"]
+
+		@education = ["None", "High School (SSCE)", "OND (Ordinary National Diploma)" ,"NCE (Nigeria Certificate in Education)", "Diploma", "HND (Higher National Diploma)", "Bachelors", "Honors", "Masters", "Doctorate"]
+
+		@occupation= ["Academic", "Accounting/Finance", "Admin/Secretarial", "Advertising", "Architect/Design"]
 	end
 
 	def create
@@ -38,7 +47,9 @@ class PatientReviewsController < ApplicationController
 	private
 
 	def patient_review_params
-		params.require(:patient_review).permit(:review, :doctor_id)
+		params.require(:patient_review).permit(:review, :doctor_id, :lga, :religion, :religion_detailed, :occupation,
+			:education, :hpi, :medical_history, :drug_history, :family_history, :surgical_history, :drug_reaction,
+			:allergic_reaction, :blood_transfusions, :smoking, :recent_travel, :travel_destination, :sexual_history)
 	end
 
 end

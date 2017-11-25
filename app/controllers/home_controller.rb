@@ -6,7 +6,8 @@ class HomeController < ApplicationController
 		elsif doctor_signed_in?
 			@doctor = current_doctor
 			date = Date.today
-			@upcoming_appointments = @doctor.consultations.where('date_and_time >= ? AND status =?', Time.zone.now.beginning_of_day, "accepted")
+			@upcoming_appointments = @doctor.consultations.where('date_and_time >= ? AND date_and_time <= ? AND status =?', Time.zone.now.beginning_of_day, Time.zone.now.end_of_day, "accepted")
+			@appointment_requests = @doctor.consultations.where('status = ?', 'pending')
 		end
 	end
 	

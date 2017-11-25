@@ -43,6 +43,7 @@ class ConsultationController < ApplicationController
 			@consultation.doctor_id = consultation_params[:professional]
 			@consultation.date_and_time = Time.new(@consultation.date.year, @consultation.date.month, @consultation.date.day,
   									   			   @consultation.time.hour, @consultation.time.min).to_datetime
+			@consultation.status = :pending
 			if @consultation.save
 				redirect_to consultation_payment_path(@consultation)
 			else

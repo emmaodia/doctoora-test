@@ -1,3 +1,8 @@
+<% if doctor_signed_in? %>
+	<h4> Make records of this consultation using the link below:</h4>
+	<%= link_to "Consultation Notes", new_user_patient_review_path(params[:user_id]), target: "_blank" %>
+<% end %>
+
 <div>
 	<iframe src="https://appear.in/<%= @consultation.room_name %>" width="800" height="640" frameborder="0"></iframe>
 </div>
@@ -6,6 +11,6 @@
 	<% if user_signed_in? %>
 		<%= link_to "End Consultation", consultation_index_path, :class => "end-consultation-link btn btn-block" %>
 	<% elsif doctor_signed_in? %>
-		<%= link_to "End Consultation", new_user_patient_review_path(params[:user_id]), :class => "end-consultation-link btn btn-block" %>
+		<%= link_to "End Consultation", new_user_patient_review_path(params[:user_id]), :class => "end-consultation-link btn btn-block", target: "_blank" %>
 	<% end %>
 </div>
