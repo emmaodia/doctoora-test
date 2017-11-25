@@ -2,92 +2,14 @@
 
 	<h3> User @review for <a href="profile/<%= @review_user_id %>"><%= get_patient_name @review_user_id %></a></h3>
 
-	<!-- too lazy & pressed for time to (figure out how to) iterate -->
-	<div class="panel panel-body">
-		<h4>Local Govt</h4>
-		<p><%= @review.lga %></p>
-	</div>
-
-	<div class="panel panel-body">
-		<h4>Religion</h4>
-		<p><%= @review.religion %></p>
-	</div>
-
-	<div class="panel panel-body">
-		<h4>Religion(Detailed)</h4>
-		<p><%= @review.religion_detailed %></p>
-	</div>
-
-	<div class="panel panel-body">
-		<h4>Occupation</h4>
-		<p><%= @review.occupation %></p>
-	</div>
-
-	<div class="panel panel-body">
-		<h4>Education</h4>
-		<p><%= @review.education %></p>
-	</div>
-
-	<div class="panel panel-body">
-		<h4>HPI</h4>
-		<p><%= @review.hpi %></p>
-	</div>
-
-	<div class="panel panel-body">
-		<h4>Medical History</h4>
-		<p><%= @review.medical_history %></p>
-	</div>
-
-	<div class="panel panel-body">
-		<h4>Drug History</h4>
-		<p><%= @review.drug_history %></p>
-	</div>
-
-	<div class="panel panel-body">
-		<h4>Family History</h4>
-		<p><%= @review.family_history %></p>
-	</div>
-
-	<div class="panel panel-body">
-		<h4>Surgical History</h4>
-		<p><%= @review.surgical_history %></p>
-	</div>
-
-	<div class="panel panel-body">
-		<h4>Drug Reaction</h4>
-		<p><%= @review.drug_reaction %></p>
-	</div>
-
-	<div class="panel panel-body">
-		<h4>Allergic Reaction</h4>
-		<p><%= @review.allergic_reaction %></p>
-	</div>
-
-	<div class="panel panel-body">
-		<h4>Blood Transfusions</h4>
-		<p><%= @review.blood_transfusions %></p>
-	</div>
-
-	<div class="panel panel-body">
-		<h4>Smoking</h4>
-		<p><%= @review.smoking %></p>
-	</div>
-
-	<div class="panel panel-body">
-		<h4>Recent Travel</h4>
-		<p><%= @review.recent_travel %></p>
-	</div>
-
-	<div class="panel panel-body">
-		<h4>Travel Destination</h4>
-		<p><%= @review.travel_destination %></p>
-	</div>
-
-	<div class="panel panel-body">
-		<h4>Sexual History</h4>
-		<p><%= @review.sexual_history %></p>
-	</div>
-
+	<% @review.attributes.each do |attr_name, attr_value| %>
+		<% unless attr_name.eql?('id') || attr_name.eql?('review') %>
+			<div class="panel panel-body">
+				<%= attr_name %>: <%= attr_value %>
+			</div>
+		<% end %>
+	<% end %>
+	
 	<div class="panel panel-body">
 		<%= link_to "Go Back", patient_reviews_path, :class => "btn btn-primary" %>
 	</div>
