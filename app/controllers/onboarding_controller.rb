@@ -8,6 +8,9 @@ class OnboardingController < ApplicationController
 		@user = User.find(current_user)
 		@user.bmi = ((onboarding_params[:weight].to_i/onboarding_params[:height].to_f)/onboarding_params[:height].to_f)
     	@user.update(onboarding_params)
+
+    	Wallet.create(user_id: @user.id, balance: 0)
+
     	redirect_to onboarding_new_additional_info_path
 	end
 
