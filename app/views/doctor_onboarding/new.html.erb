@@ -21,12 +21,19 @@
 
 		<div class="form-group">
 			<%= f.label :specialization, :class => "control-label" %>
-			<%= f.select :specialization, ["Medical", "Fitness", "Nutrition"], :class => "form-control"%>
+			<%= f.select :specialization, ["Clinical", "Non-Clinical"], :class => "form-control"%>
 		</div>
 
-		<div class="form-group">
-			<%= f.label :specialty, :class => "control-label" %>
-			<%= f.select :specialty, @specialty_list, :class => "form-control"%>
+		<div class="specialty-group">
+			<div class="form-group non_clinical_specialty_list">
+				<%= f.label :specialty, :class => "control-label" %>
+				<%= f.select :specialty, @non_clinical_specialty_list, :class => "form-control"%>
+			</div>
+
+			<div class="form-group clinical_specialty_list">
+				<%= f.label :specialty, :class => "control-label" %>
+				<%= f.select :specialty, @clinical_specialty_list, :class => "form-control"%>
+			</div>
 		</div>
 
 		<h3>Location</h3>
@@ -64,6 +71,8 @@
 </div>
 
 <script>
+	var c = $('.clinical_specialty_list').detach();
+
 	$('input:file').change(function(){
 		var file = this.files[0];
 			if(file.size > 10000000){
@@ -74,4 +83,14 @@
 				$(':input[type="submit"]').prop('disabled', false);
 			}
 	});
+
+	$('#doctor_specialization').change(function(){
+		if($(this).val() == "Non-Clinical"){
+			$('.specialty-group').append(nc);
+			c = $('.clinical_specialty_list').detach();
+    	} else if($(this).val() == "Clinical") {
+    		$('.specialty-group').append(c);
+    		nc = $('.non_clinical_specialty_list').detach();
+		}
+	})
 </script>

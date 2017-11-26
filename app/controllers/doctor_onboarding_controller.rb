@@ -3,10 +3,12 @@ class DoctorOnboardingController < ApplicationController
 	def new
 		@doctor = Doctor.find(current_doctor.id)
 		
-		@specialty_list = ["Aesthetic Practitioner", "Cardiologist", "Cardiothoracic Surgery", "Dental", "Dermatology", 
+		@clinical_specialty_list = ["Aesthetic Practitioner", "Cardiologist", "Cardiothoracic Surgery", "Dental", "Dermatology", 
 		"General Practitioner", "General Surgery", "Haematology", "Mental Health General Practitioner", "Nephrology", "Neurology", "Neurosurgery",
 		"Obstetrics and Gynecology", "Oncology", "Orthopaedic Surgery", "Paediatric Oncology", "Paediatric Surgery",
 		"Paediatrics", "Psychiatry", "Renal Surgery", "Respirology", "Urology"]
+
+		@non_clinical_specialty_list = ["Yoga"]
 	end
 
 	def create
