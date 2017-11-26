@@ -465,6 +465,11 @@ button {
 .conversation {
     list-style-type: none
 }
+/*
+.message-image {
+    min-width: 500px;
+    min-height: 500px;
+}*/
 
 /* ADMIN */
 .admin-patient, .admin-doctor {
