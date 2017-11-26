@@ -75,7 +75,7 @@
 								<p><b>Time: </b><%= appointment.date_and_time.strftime("%I:%M %p") %></p>
 							</div>
 							<% if !appointment.patient_reviews.empty? %>
-								<%= link_to "view consultation review", patient_reviews_path %>
+								<%= link_to "view consultation review", patient_review_path(appointment.patient_reviews.first.id) %>
 							<% else %>
 								<%= link_to "review this consultation", new_user_patient_review_path(appointment.user_id, appointment.id) %>
 							<% end %>
