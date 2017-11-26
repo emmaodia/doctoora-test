@@ -12,17 +12,17 @@ class CareTeamController < ApplicationController
 	def search_results
 		if current_user && current_user.care_team
 			@care_team = CareTeam.find_by_user_id(current_user.id)
+		else
+			care_team = CareTeam.new(user_id: current_user.id)
+			care_team.save
 		end
+
 		
 		@doctors = Doctor.search(params[:location], params[:specialization])
 	end
 
 	def add_doctor
 		care_team = CareTeam.find_by_user_id current_user.id
-		if care_team == nil
-			care_team = CareTeam.new(user_id: current_user.id)
-			care_team.save
-		end
 
 		doctor_id = params[:doctor_id]
 
@@ -53,6 +53,12 @@ class CareTeamController < ApplicationController
 	end
 
 	def reject_care_team_request
+		care_team_request = CareTeamDoctorStatus.find params[:request_id]
+		care_team_request.joined = nil
+		care_team_request.save
+
+		care_team = CareTeam.find care_team_request.care_team_id
+
 		flash[:notice] = "You have successfully rejected the care team request"
 		notify! care_team.user_id, current_doctor.id, "Unfortunately doctor has rejected your care team request:", "You have rejected a care team request",
 				"/care", "/doctors/#{current_doctor.id}/care"
