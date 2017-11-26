@@ -16,6 +16,7 @@
 <div class="row">
 	<% @clinics.each do |clinic| %>
 		<div class="panel panel-body">
+			<%= image_tag clinic.image.url %>
 			<h3><%= clinic.name %></h3>
 			<p><%= clinic.address %></p>
 			<p><%= clinic.town %></p>

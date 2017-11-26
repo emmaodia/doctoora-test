@@ -4,9 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :consultations
+  has_many :consultations, dependent: :destroy
   has_many :messages, as: :messageable
-  has_many :transactions
+  has_many :transactions, dependent: :nullify
   has_many :patient_reviews, dependent: :destroy
   has_many :notifications, dependent: :destroy
   has_one :care_team, dependent: :destroy

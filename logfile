@@ -402,3 +402,12 @@ ERROR:  cached plan must not change result type
 STATEMENT:  SELECT "patient_reviews".* FROM "patient_reviews" WHERE "patient_reviews"."user_id" = $1
 ERROR:  cached plan must not change result type
 STATEMENT:  SELECT "messages".* FROM "messages" WHERE "messages"."conversation_id" = $1  ORDER BY "messages"."created_at" DESC
+ERROR:  update or delete on table "users" violates foreign key constraint "fk_rails_eb9663633d" on table "consultations"
+DETAIL:  Key (id)=(10) is still referenced from table "consultations".
+STATEMENT:  DELETE FROM "users" WHERE "users"."id" = $1
+ERROR:  update or delete on table "users" violates foreign key constraint "fk_rails_77364e6416" on table "transactions"
+DETAIL:  Key (id)=(10) is still referenced from table "transactions".
+STATEMENT:  DELETE FROM "users" WHERE "users"."id" = $1
+ERROR:  update or delete on table "users" violates foreign key constraint "fk_rails_eb9663633d" on table "consultations"
+DETAIL:  Key (id)=(10) is still referenced from table "consultations".
+STATEMENT:  DELETE FROM "users" WHERE "users"."id" = $1
