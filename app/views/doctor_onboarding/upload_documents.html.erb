@@ -5,7 +5,7 @@
 	<%= form_for @doctor, url: doctor_onboarding_create_path, method: :post do |f| %>
 			
 		<div class="form-group">
-			<%= f.label "Degree Certification", :class => "control-label" %>
+			<%= f.label "Professional Certification", :class => "control-label" %>
 			<%= f.file_field :mdcn, :class => "form-control", :required => true %>
 		</div>
 
