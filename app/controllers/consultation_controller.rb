@@ -91,6 +91,10 @@ class ConsultationController < ApplicationController
 			Transaction.create!(user_id: current_user.id, doctor_id: @consultation.professional.to_i, amount: amount, purpose: :insurance, status: :processing)
 			flash[:notice] = "Thank you #{current_user.first_name}. Your consultation request has been sent and will be verified."
 			redirect_to root_path
+		elsif payment_method == "Pay In Clinic"
+			Transaction.create!(user_id: current_user.id, doctor_id: @consultation.professional.to_i, amount: amount, purpose: :pay_in_clinic, status: :processing)
+			flash[:notice] = "Thank you #{current_user.first_name}. Your consultation request has been sent and will be verified."
+			redirect_to root_path
 		end
 	end
 
