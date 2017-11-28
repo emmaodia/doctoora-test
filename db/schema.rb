@@ -165,9 +165,9 @@ ActiveRecord::Schema.define(version: 20171128163147) do
     t.string   "specialty"
     t.boolean  "verified"
     t.string   "title",                  default: ""
-    t.integer  "registration_fee"
-    t.integer  "consultation_fee"
-    t.integer  "clinic_visit_fee"
+    t.integer  "registration_fee",       default: 0
+    t.integer  "consultation_fee",       default: 0
+    t.integer  "clinic_visit_fee",       default: 0
   end
 
   add_index "doctors", ["email"], name: "index_doctors_on_email", unique: true, using: :btree
