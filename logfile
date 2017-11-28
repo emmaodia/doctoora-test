@@ -411,3 +411,10 @@ STATEMENT:  DELETE FROM "users" WHERE "users"."id" = $1
 ERROR:  update or delete on table "users" violates foreign key constraint "fk_rails_eb9663633d" on table "consultations"
 DETAIL:  Key (id)=(10) is still referenced from table "consultations".
 STATEMENT:  DELETE FROM "users" WHERE "users"."id" = $1
+LOG:  using stale statistics instead of current ones because stats collector is not responding
+ERROR:  cached plan must not change result type
+STATEMENT:  SELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = $1  ORDER BY "doctors"."id" ASC LIMIT 1
+ERROR:  cached plan must not change result type
+STATEMENT:  SELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = $1 LIMIT 1
+ERROR:  cached plan must not change result type
+STATEMENT:  SELECT  "doctors".* FROM "doctors" WHERE "doctors"."email" = $1  ORDER BY "doctors"."id" ASC LIMIT 1

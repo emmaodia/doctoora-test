@@ -37,7 +37,8 @@ class DoctorOnboardingController < ApplicationController
 
 	def onboarding_params
 		params.require(:doctor).permit(:dob, :gender, :ethnicity, :specialization, :specialty, 
-									   :house, :town, :postcode, :country, :avatar)
+									   :house, :town, :postcode, :country, :avatar, :registration_fee,
+									   :consultation_fee, :clinic_visit_fee)
 	end
 
 	def doctor_params
