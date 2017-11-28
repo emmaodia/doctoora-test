@@ -78,22 +78,23 @@ class ConsultationController < ApplicationController
 	end
 
 	def payment
-		@consultation = Consultation.find(params[:id])
+		consultation = Consultation.find(params[:id])
+		doctor = Doctor.find(consultation.professional.to_i)
 
-		payment_method = @consultation.payment_method
-		amount = 5000
+		payment_method = consultation.payment_method
+		amount = doctor.consultation_fee
 
 		if payment_method == "Credit Card"
-			current_user.transactions.create(amount: amount, plan_id: nil, status: :processing, doctor_id: @consultation.professional.to_i, purpose: :consultation)
+			current_user.transactions.create(amount: amount, plan_id: nil, status: :processing, doctor_id: doctor.id, purpose: :consultation)
 			redirect_to initialize_transaction amount, current_user.email
 		elsif payment_method == "Doctoora Wallet"
 			redirect_to pay_from_wallet_path(amount)
 		elsif payment_method == "Insurance"
-			Transaction.create!(user_id: current_user.id, doctor_id: @consultation.professional.to_i, amount: amount, purpose: :insurance, status: :processing)
+			Transaction.create!(user_id: current_user.id, doctor_id: doctor.id, amount: amount, purpose: :insurance, status: :processing)
 			flash[:notice] = "Thank you #{current_user.first_name}. Your consultation request has been sent and will be verified."
 			redirect_to root_path
 		elsif payment_method == "Pay In Clinic"
-			Transaction.create!(user_id: current_user.id, doctor_id: @consultation.professional.to_i, amount: amount, purpose: :pay_in_clinic, status: :processing)
+			Transaction.create!(user_id: current_user.id, doctor_id: doctor.id, amount: amount, purpose: :pay_in_clinic, status: :processing)
 			flash[:notice] = "Thank you #{current_user.first_name}. Your consultation request has been sent and will be verified."
 			redirect_to root_path
 		end

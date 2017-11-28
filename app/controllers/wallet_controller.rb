@@ -20,7 +20,7 @@ class WalletController < ApplicationController
 		wallet_balance = wallet.balance
 		amount = params[:amount].to_i
 		if wallet_balance >= amount
-			flash[:notice] = "Transaction successful"
+			flash[:notice] = "Transaction successful. You have paid ₦#{amount}."
 			wallet.balance -= amount
 			wallet.save
 			redirect_to root_path
