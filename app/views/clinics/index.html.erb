@@ -21,6 +21,7 @@
 			<p><%= clinic.address %></p>
 			<p><%= clinic.town %></p>
 			<p><%= clinic.phone %></p>
+			<p>Rental Cost: <%= clinic.rental_cost %></p>
 			<br>
 			<p><%= link_to "edit clinic", edit_clinic_path(clinic) %>
 			<p><%= link_to "delete clinic", clinic_path(clinic), method: :delete, data: { confirm: "Are you sure?" } %></p>
