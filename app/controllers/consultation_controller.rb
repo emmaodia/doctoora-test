@@ -37,8 +37,7 @@ class ConsultationController < ApplicationController
 
 		if is_doctor_booked? doctor, consultation_params
 			flash[:notice] = "#{doctor.title} #{doctor.first_name} #{doctor.last_name} is already booked for this time"
-			@consultation = current_user.consultations.new
-			render 'new'
+			redirect_to :back
 		else
 			@consultation = current_user.consultations.new(consultation_params)
 			@consultation.doctor_id = consultation_params[:professional]
@@ -49,8 +48,7 @@ class ConsultationController < ApplicationController
 				redirect_to consultation_payment_path(@consultation)
 			else
 				flash[:notice] = "There was an error creating your consultation"
-				@consultation = current_user.consultations.new
-				render 'new'
+				redirect_to :back
 			end
 		end
 	end
