@@ -92,6 +92,8 @@ Rails.application.routes.draw do
   resources :wallet, only: [:show]
   get '/wallet/pay/:amount' => "wallet#pay_from_wallet", as: :pay_from_wallet
   post '/wallet/:user_id/top_up' => "wallet#top_up", as: :top_up
+
+  put '/doctor/:id/toggle' => "doctor_profile#toggle_availability", as: :toggle_availability
   # Example resource route with options:
   #   resources :products do
   #     member do

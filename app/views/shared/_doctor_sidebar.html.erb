@@ -3,9 +3,17 @@
 <% if doctor.verified %>
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
-            <!-- <li>
-               <img src="<%= asset_path( 'icons/online.svg' ) %>" class="sidebar-icon" /><p>Status: Available</p>
-            </li> -->
+            <li>
+                <% if doctor.available %>
+                    <%= form_for doctor, url: toggle_availability_path(doctor), method: :put do |f| %>
+                        <% f.submit "Status: Available", :class => "btn btn-success btn-block", :id => "toggle-off" %>
+                    <% end %>
+                <% else %>
+                    <%= form_for doctor, url: toggle_availability_path(doctor), method: :put do |f| %>
+                        <% f.submit "Status: Unavailable", :class => "btn btn-danger btn-block toggle-btn", :id => "toggle-on" %>
+                    <% end %>
+                <% end %>
+            </li>
             <li>
             	<a href="/" class="selected icon-home">
                     <img src="<%= asset_path( 'icons/home.svg' ) %>" class="sidebar-icon" /><p>HOME</p>

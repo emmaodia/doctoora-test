@@ -267,6 +267,14 @@ button {
 }
 /* Home Page */
 
+#toggle-off:hover {
+    background-color: #e74c3c;
+    border: 0;
+}
+#toggle-on:hover {
+    background-color: #2ecc71;
+    border: 0;
+}
 .card-image {
     width: 100%;
 }

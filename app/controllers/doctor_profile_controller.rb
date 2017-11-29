@@ -27,6 +27,13 @@ class DoctorProfileController < ApplicationController
     	redirect_to :back
 	end
 
+	def toggle_availability
+		@doctor = Doctor.find params[:id]
+		@doctor.available = !@doctor.available
+		@doctor.save
+		redirect_to :back
+	end
+
 	def doctor_profile_params
 		params.require(:doctor).permit(:dob, :gender, :specialization, :specialty, 
 			:ethnicity, :house, :town, :postcode, :country, :avatar, :registration_fee,

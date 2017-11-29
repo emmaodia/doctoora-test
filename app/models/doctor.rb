@@ -32,8 +32,8 @@ class Doctor < ActiveRecord::Base
     where("lower(specialization) LIKE ? and lower(town) LIKE ?", "%#{specialization}".downcase, "%#{location}".downcase)
   end
 
-  def self.get_professional_type type
-    where("specialization = ?", type)
+  def self.get_available_professionals_of_type type
+    where("specialization = ? AND available = ?", type, true)
   end
 
   private
