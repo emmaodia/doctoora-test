@@ -476,3 +476,7 @@ button {
 .admin-patient, .admin-doctor {
     margin: 2em 0;
 }
+
+.col-md-4 img {
+    max-width: 100%
+}

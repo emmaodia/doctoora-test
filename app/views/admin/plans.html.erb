@@ -4,19 +4,19 @@
 
 <h2>Marketplace Items</h2>
 
-<%= link_to "add item", new_plan_path %>
+<%= link_to "add product", new_plan_path %>
 
 <div class="row">
 	<div class="panel panel-default">
-		<div class="panel-body col-md-4">
-			<% @plans.each do |plan| %>
-				<img src=<%= plan.image %> width="500px"/>
+		<% @plans.each do |plan| %>
+			<div class="panel-body col-md-4">
+				<img src=<%= plan.image.url(:medium) %>/>
 				<h4><%= plan.title %></h4>
 				<h5><%= plan.category %></h5>
 				<p><%= plan.description %></p>
 				<p>₦<%= plan.price %></p>
-			<% end %>
-		</div>
+			</div>
+		<% end %>
 	</div>
 </div>
 
