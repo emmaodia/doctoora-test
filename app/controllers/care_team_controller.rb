@@ -24,12 +24,14 @@ class CareTeamController < ApplicationController
 	def add_doctor
 		care_team = CareTeam.find_by_user_id current_user.id
 
-		doctor_id = params[:doctor_id]
+		doctor = Doctor.find params[:doctor_id]
 
-		send_doctor_care_team_request care_team.id, doctor_id
+		make_payment "Doctoora Wallet", doctor.registration_fee, doctor.id, "care team", "Care team transaction successful"
+
+		send_doctor_care_team_request care_team.id, doctor.id
 		#notification and flash message sent in through this function (below)
 
-		redirect_to care_path
+		# redirect_to care_path
 	end
 
 	def doctor
