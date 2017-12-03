@@ -90,6 +90,7 @@
 
 <script>
 	var c = $('.clinical_specialty_list').detach();
+	var nc = $('.non_clinical_specialty_list').detach();
 
 	$('input:file').change(function(){
 		var file = this.files[0];
@@ -101,6 +102,14 @@
 				$(':input[type="submit"]').prop('disabled', false);
 			}
 	});
+
+	if($('#doctor_specialization').val() == "Clinical"){
+		$('.non_clinical_specialty_list').detach();
+		$('.specialty-group').append(c);
+	} else {
+		$('.clinical_specialty_list').detach();
+		$('.specialty-group').append(nc);
+	}
 
 	$('#doctor_specialization').change(function(){
 		if($(this).val() == "Non-Clinical"){

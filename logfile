@@ -422,3 +422,11 @@ ERROR:  cached plan must not change result type
 STATEMENT:  SELECT  "clinics".* FROM "clinics" WHERE "clinics"."id" = $1 LIMIT 1
 ERROR:  cached plan must not change result type
 STATEMENT:  SELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = $1 LIMIT 1
+LOG:  using stale statistics instead of current ones because stats collector is not responding
+LOG:  using stale statistics instead of current ones because stats collector is not responding
+LOG:  using stale statistics instead of current ones because stats collector is not responding
+LOG:  using stale statistics instead of current ones because stats collector is not responding
+LOG:  using stale statistics instead of current ones because stats collector is not responding
+LOG:  using stale statistics instead of current ones because stats collector is not responding
+LOG:  using stale statistics instead of current ones because stats collector is not responding
+LOG:  using stale statistics instead of current ones because stats collector is not responding
