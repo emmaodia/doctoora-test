@@ -16,7 +16,12 @@ class WalletController < ApplicationController
 	end
 
 	def pay_from_wallet
-		wallet = current_user.wallet
+		if current_user
+			wallet = current_user.wallet
+		elsif current_doctor
+			wallet = current_doctor.wallet
+		end
+		
 		wallet_balance = wallet.balance
 		amount = params[:amount].to_i
 		if wallet_balance >= amount

@@ -9,6 +9,29 @@ class PlansController < ApplicationController
 		end
 	end
 
+	def clinics
+		@clinics = Clinic.all
+	end
+
+	def book_clinic
+		@clinic = Clinic.find params[:id]
+		@clinic_rental = ClinicRental.new
+	end
+
+	def rent_clinic
+		clinic = Clinic.find params[:id]
+
+		make_payment_dr "Doctoora Wallet", clinic.rental_cost, current_doctor.id, "clinic rental"
+
+		@clinic_rental = ClinicRental.new(clinic_rental_params)
+
+		if @clinic_rental.save
+			flash[:notice] = "Thank you, you have successfully booked #{clinic.name}"
+		else
+			flash[:notice] = "Clinic could not be rented"
+		end
+	end
+
 	def purchase
 		amount = Plan.find(params[:id]).price
 		if user_signed_in?
@@ -45,6 +68,12 @@ class PlansController < ApplicationController
 			flash[:notice] = "Wallet successfully topped up"
 		end
 		redirect_to root_path
+	end
+
+	private
+
+	def clinic_rental_params
+		params.require(:clinic_rental).permit(:date, :time, :payment_method)
 	end
 
 end

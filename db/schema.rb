@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171129102450) do
+ActiveRecord::Schema.define(version: 20171204164508) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,20 @@ ActiveRecord::Schema.define(version: 20171129102450) do
   end
 
   add_index "care_teams", ["user_id"], name: "index_care_teams_on_user_id", using: :btree
+
+  create_table "clinic_rentals", force: :cascade do |t|
+    t.integer  "clinic_id"
+    t.integer  "transaction_id"
+    t.date     "date"
+    t.time     "time"
+    t.datetime "date_and_time"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "payment_method"
+  end
+
+  add_index "clinic_rentals", ["clinic_id"], name: "index_clinic_rentals_on_clinic_id", using: :btree
+  add_index "clinic_rentals", ["transaction_id"], name: "index_clinic_rentals_on_transaction_id", using: :btree
 
   create_table "clinics", force: :cascade do |t|
     t.string   "name"
@@ -330,6 +344,8 @@ ActiveRecord::Schema.define(version: 20171129102450) do
   add_foreign_key "care_team_doctor_statuses", "care_teams"
   add_foreign_key "care_team_doctor_statuses", "doctors"
   add_foreign_key "care_teams", "users"
+  add_foreign_key "clinic_rentals", "clinics"
+  add_foreign_key "clinic_rentals", "transactions"
   add_foreign_key "consultations", "clinics"
   add_foreign_key "consultations", "doctors"
   add_foreign_key "consultations", "users"

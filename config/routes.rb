@@ -54,6 +54,9 @@ Rails.application.routes.draw do
   get '/plans' => "plans#index"
   get '/plan/:id/purchase' => "plans#purchase", as: :purchase_plan
   get 'plans/confirm' => 'plans#confirm_plan'
+  get 'plans/clinics' => 'plans#clinics'
+  get 'plans/clinic/:id/book' => 'plans#book_clinic', as: :book_clinic
+  post 'plans/clinic/rent/:id' => 'plans#rent_clinic', as: :rent_clinic
 
   resources :doctor_consultation
   post 'consultation/:id/accept' => "doctor_consultation#accept_consultation", as: :accept_consultation

@@ -82,7 +82,7 @@ class ConsultationController < ApplicationController
 		payment_method = consultation.payment_method
 		amount = doctor.consultation_fee
 
-		if payment_method == "Credit Card"
+		if payment_method == "Pay With Card"
 			current_user.transactions.create(amount: amount, plan_id: nil, status: :processing, doctor_id: doctor.id, purpose: :consultation)
 			redirect_to initialize_transaction amount, current_user.email
 		elsif payment_method == "Doctoora Wallet"

@@ -1,0 +1,14 @@
+<div>
+	<h2> Clinics To Rent (20-minute sessions)</h2>
+	<% @clinics.each do |clinic| %>
+		<div class="col-md-6 panel panel-default">
+			<img src=<%= clinic.image %> width="200px"/>
+			<h4><%= clinic.name %></h4>
+			<p><%= clinic.address %></p>
+			<p><%= clinic.town %></p>
+			<p><%= clinic.phone %></p>
+			<p>₦<%= clinic.rental_cost%></p>
+			<%= link_to "Book Clinic", book_clinic_path(clinic) %>
+		</div>
+	<% end %>
+</div>
