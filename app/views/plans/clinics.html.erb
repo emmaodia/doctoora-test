@@ -2,7 +2,7 @@
 	<h2> Clinics To Rent (20-minute sessions)</h2>
 	<% @clinics.each do |clinic| %>
 		<div class="col-md-6 panel panel-default">
-			<img src=<%= clinic.image %> width="200px"/>
+			<img src=<%= clinic.image %> width="100%"/>
 			<h4><%= clinic.name %></h4>
 			<p><%= clinic.address %></p>
 			<p><%= clinic.town %></p>

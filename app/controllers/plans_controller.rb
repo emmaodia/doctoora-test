@@ -21,7 +21,7 @@ class PlansController < ApplicationController
 	def rent_clinic
 		clinic = Clinic.find params[:id]
 
-		make_payment_dr "Doctoora Wallet", clinic.rental_cost, current_doctor.id, "clinic rental"
+		make_payment_dr clinic_rental_params[:payment_method], clinic.rental_cost, current_doctor.id, "transaction"
 
 		@clinic_rental = ClinicRental.new(clinic_rental_params)
 

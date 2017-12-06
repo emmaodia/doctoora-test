@@ -41,7 +41,7 @@ class Doctor < ActiveRecord::Base
     "Obstetrics and Gynecology", "Oncology", "Orthopaedic Surgery", "Paediatric Oncology", "Paediatric Surgery",
     "Paediatrics", "Psychiatry", "Renal Surgery", "Respirology", "Urology"]
 
-  NON_CLINICAL_SPECIALTY_LIST = ["Dance Aerobics", "Swimming", "Yoga", "Martial Arts", "Dietetics", "Lifestyle Counseling", "Sex Therapy"]
+  NON_CLINICAL_SPECIALTY_LIST = ["Dance Aerobics", "Swimming", "Yoga", "Martial Arts", "Dietetics", "Lifestyle Counseling", "Sex Therapy", "Nursing"]
 
   private
 

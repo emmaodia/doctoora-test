@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
   	def make_payment_dr payment_method, amount, doctor_id, reason_for_payment, success_message="transaction successful!"
   		if payment_method == "Pay With Card"
 			current_doctor.transactions.create(amount: amount, plan_id: nil, status: :processing, purpose: reason_for_payment)
-			redirect_to initialize_transaction amount, current_user.email
+			redirect_to initialize_transaction amount, current_doctor.email
 		elsif payment_method == "Doctoora Wallet"
 			current_doctor.transactions.create(amount: amount, plan_id: nil, status: :processing, purpose: reason_for_payment)
 			redirect_to pay_from_wallet_path(amount)
