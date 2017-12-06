@@ -6,7 +6,7 @@ class DoctorOnboardingController < ApplicationController
 		
 		@clinical_specialty_list = Doctor::CLINICAL_SPECIALTY_LIST
 
-		@non_clinical_specialty_list = Doctor.::NON_CLINICAL_SPECIALTY_LIST
+		@non_clinical_specialty_list = Doctor::NON_CLINICAL_SPECIALTY_LIST
 	end
 
 	def create
