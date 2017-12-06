@@ -12,12 +12,11 @@ class CareTeamController < ApplicationController
 	def search_results
 		if current_user && current_user.care_team
 			@care_team = CareTeam.find_by_user_id(current_user.id)
-		else
-			care_team = CareTeam.new(user_id: current_user.id)
-			care_team.save
+		elsif current_user
+			@care_team = CareTeam.new(user_id: current_user.id)
+			@care_team.save
 		end
 
-		
 		@doctors = Doctor.search(params[:location], params[:specialization])
 	end
 
