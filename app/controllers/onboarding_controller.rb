@@ -1,6 +1,7 @@
 class OnboardingController < ApplicationController
 
 	def new
+		@lgas = User::LGAS
 		@user = User.find(current_user.id)
 	end
 

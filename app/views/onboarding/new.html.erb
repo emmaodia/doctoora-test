@@ -33,12 +33,7 @@
 
 		<div class="form-group">
 			<%= f.label :town, :class => "control-label" %>
-			<%= f.text_field :town, :class => "form-control", :placeholder => "Required" %>
-		</div>
-
-		<div class="form-group">
-			<%= f.label :postcode, :class => "control-label" %>
-			<%= f.text_field :postcode, :class => "form-control", :placeholder => "Leave Blank if None" %>
+			<%= f.select :town, @lgas, :class => "form-control", :placeholder => "Required" %>
 		</div>
 
 		<div class="form-group">

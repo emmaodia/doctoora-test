@@ -8,6 +8,7 @@ class ProfileController < ApplicationController
 	end
 
 	def edit
+		@lgas = User::LGAS
 		@user_profile = User.find(params[:id])
 	end
 

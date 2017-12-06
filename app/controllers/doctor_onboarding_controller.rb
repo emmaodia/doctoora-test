@@ -1,6 +1,7 @@
 class DoctorOnboardingController < ApplicationController
 
 	def new
+		@lgas = User::LGAS
 		@doctor = Doctor.find(current_doctor.id)
 		
 		@clinical_specialty_list = ["Aesthetic Practitioner", "Cardiologist", "Cardiothoracic Surgery", "Dental", "Dermatology", 

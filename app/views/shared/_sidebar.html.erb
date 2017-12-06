@@ -1,3 +1,4 @@
+<% user = current_user %>
 <div id="sidebar-wrapper">
     <ul class="sidebar-nav">
         <li id="consultation-link">
@@ -9,21 +10,21 @@
         	</a>
         </li>
         <li id="sidebar-image">
-            <%= link_to profile_path(current_user.id) do %>
-                <%= image_tag current_user.avatar.url(:medium), :class => "profile-image" %>
+            <%= link_to profile_path(user) do %>
+                <%= image_tag user.avatar.url(:medium), :class => "profile-image" %>
             <% end %>
-            <p>Welcome <%= current_user.first_name %></p>
+            <p>Welcome <%= user.first_name %></p>
         </li>
         <li>
             <img src="<%= asset_path( 'icons/profile.svg' ) %>" class="sidebar-icon" />
-            <%= link_to "Patient Profile", profile_path(current_user.id) %>
+            <%= link_to "Patient Profile", profile_path(user) %>
         </li>
         <li>
             <img src="<%= asset_path( 'icons/Topics.svg' ) %>" class="sidebar-icon" />
             <%= link_to "Appointments", consultation_index_path %>
         </li>
         <li>
-            <% if unread_messages? current_user.id %>
+            <% if unread_messages? user.id %>
                 <img src="<%= asset_path( 'icons/message-with-notification.svg' ) %>" class="sidebar-icon" />
                 <%= link_to "Messages", conversations_path %>
             <% else %>
@@ -40,7 +41,7 @@
             <%= link_to "Care Team", care_path %>
         </li>
         <li>
-            <%= link_to "Wallet", wallet_path(doctor) %></h3>
+            <%= link_to "Wallet", wallet_path(user) %></h3>
         </li>
 
         <div id="refer">

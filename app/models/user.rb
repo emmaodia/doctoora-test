@@ -21,4 +21,7 @@ class User < ActiveRecord::Base
   def vaccinations=(vaccinations)
     vaccinations.reject(&:blank?)
   end
+
+  LGAS = ["Agege", "Ajeromi Ifelodun", "Alimosho", "Amuwo-Odofin", "Apapa", "Badagry", "Kosofe", "Mushin", "Oshodi Isolo", "Ojo",
+    "Ikorodu", "Surulere", "Ifako-Ijaye", "Shomolu", "Lagos Mainland", "Ikeja", "Eti-osa", "Lagos Island", "Epe", "Ibeju Lekki"]
 end
