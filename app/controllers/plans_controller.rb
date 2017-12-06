@@ -23,7 +23,7 @@ class PlansController < ApplicationController
 
 		make_payment_dr clinic_rental_params[:payment_method], clinic.rental_cost, current_doctor.id, "transaction"
 
-		@clinic_rental = ClinicRental.new(clinic_rental_params)
+		@clinic_rental = current_doctor.clinic_rentals.new(clinic_rental_params)
 		@clinic_rental.clinic_id = clinic.id
 
 		if @clinic_rental.save

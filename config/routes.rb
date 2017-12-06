@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   get 'admin/insurance' => 'admin#insurance', as: :admin_insurance
   post 'admin/insurance/:id/complete' => 'admin#complete_insurance_payment', as: :complete_insurance_payment
 
+  get 'admin/clinic_rentals' => 'admin#clinic_rentals', as: :admin_clinic_rentals
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

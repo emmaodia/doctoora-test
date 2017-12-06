@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171204164508) do
+ActiveRecord::Schema.define(version: 20171206193941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,9 +76,11 @@ ActiveRecord::Schema.define(version: 20171204164508) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.string   "payment_method"
+    t.integer  "doctor_id"
   end
 
   add_index "clinic_rentals", ["clinic_id"], name: "index_clinic_rentals_on_clinic_id", using: :btree
+  add_index "clinic_rentals", ["doctor_id"], name: "index_clinic_rentals_on_doctor_id", using: :btree
   add_index "clinic_rentals", ["transaction_id"], name: "index_clinic_rentals_on_transaction_id", using: :btree
 
   create_table "clinics", force: :cascade do |t|
@@ -345,6 +347,7 @@ ActiveRecord::Schema.define(version: 20171204164508) do
   add_foreign_key "care_team_doctor_statuses", "doctors"
   add_foreign_key "care_teams", "users"
   add_foreign_key "clinic_rentals", "clinics"
+  add_foreign_key "clinic_rentals", "doctors"
   add_foreign_key "clinic_rentals", "transactions"
   add_foreign_key "consultations", "clinics"
   add_foreign_key "consultations", "doctors"

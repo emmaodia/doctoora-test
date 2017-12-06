@@ -71,6 +71,10 @@ class AdminController < ApplicationController
 		redirect_to admin_insurance_path
 	end
 
+	def clinic_rentals
+		@clinic_rentals = ClinicRental.all.order(date: :asc)
+	end
+
 	private
 
 	def plan_params

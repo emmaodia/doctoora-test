@@ -69,4 +69,9 @@ module ApplicationHelper
 		return clinic.name + " " + clinic.address
 	end
 
+	def get_clinic_name clinic_id
+		return Clinic.find(clinic_id).name
+	end
+
+
 end
