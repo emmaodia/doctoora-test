@@ -5,7 +5,7 @@
 
 <% @patients.each do |patient| %>
 	<div>
-		<img src=<%= patient.avatar %>/>
+		<img src=<%= patient.avatar.url(:medium) %>/>
 		<a href="/profile/<%= patient.id %>"><h4><%= patient.first_name %> <%= patient.last_name %></h4></a>
 		<button class="view-record btn btn-primary" value="<%= patient.id %>">View Records</button>
 		<%= link_to "View Profile", profile_path(patient), :class => "btn btn-primary" %>
