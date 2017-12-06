@@ -7,11 +7,8 @@ class DoctorProfileController < ApplicationController
 	def edit
 		@doctor_profile = Doctor.find(params[:id])
 		@lgas = User::LGAS
-		@clinical_specialty_list = ["Aesthetic Practitioner", "Cardiologist", "Cardiothoracic Surgery", "Dental", "Dermatology", 
-		"General Practitioner", "General Surgery", "Haematology", "Mental Health General Practitioner", "Nephrology", "Neurology", "Neurosurgery",
-		"Obstetrics and Gynecology", "Oncology", "Orthopaedic Surgery", "Paediatric Oncology", "Paediatric Surgery",
-		"Paediatrics", "Psychiatry", "Renal Surgery", "Respirology", "Urology"]
-		@non_clinical_specialty_list = ["Dance Aerobics", "Swimming", "Yoga", "Martial Arts", "Dietetics", "Lifestyle Counseling", "Sex Therapy"]
+		@clinical_specialty_list = Doctor::CLINICAL_SPECIALTY_LIST
+		@non_clinical_specialty_list = Doctor::NON_CLINICAL_SPECIALTY_LIST
 	end
 
 	def update

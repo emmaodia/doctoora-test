@@ -28,13 +28,20 @@ class Doctor < ActiveRecord::Base
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
   validates_attachment_size :avatar, less_than: 2.megabytes
 
-  def self.search location, specialization
-    where("lower(specialization) LIKE ? and lower(town) LIKE ?", "%#{specialization}".downcase, "%#{location}".downcase)
+  def self.search location, specialization, specialty
+    where("lower(specialization) = ? and lower(town) = ? and lower(specialty) = ?", "#{specialization}".downcase, "#{location}".downcase, "#{specialty}".downcase)
   end
 
   def self.get_available_professionals_of_type type
     where("specialization = ? AND available = ?", type, true)
   end
+
+  CLINICAL_SPECIALTY_LIST = ["Aesthetic Practitioner", "Cardiologist", "Cardiothoracic Surgery", "Dental", "Dermatology", 
+    "General Practitioner", "General Surgery", "Haematology", "Mental Health General Practitioner", "Nephrology", "Neurology", "Neurosurgery",
+    "Obstetrics and Gynecology", "Oncology", "Orthopaedic Surgery", "Paediatric Oncology", "Paediatric Surgery",
+    "Paediatrics", "Psychiatry", "Renal Surgery", "Respirology", "Urology"]
+
+  NON_CLINICAL_SPECIALTY_LIST = ["Dance Aerobics", "Swimming", "Yoga", "Martial Arts", "Dietetics", "Lifestyle Counseling", "Sex Therapy"]
 
   private
 

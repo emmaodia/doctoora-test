@@ -7,6 +7,10 @@ class CareTeamController < ApplicationController
 				@care_team_doctors << Doctor.find(doctor_id)
 			end
 		end
+		@lgas = User::LGAS
+		@specialization = ["Clinical", "Non-Clinical"]
+		@clinical_specialty_list = Doctor::CLINICAL_SPECIALTY_LIST
+		@non_clinical_specialty_list = Doctor::NON_CLINICAL_SPECIALTY_LIST
 	end
 
 	def search_results
@@ -17,7 +21,7 @@ class CareTeamController < ApplicationController
 			@care_team.save
 		end
 
-		@doctors = Doctor.search(params[:location], params[:specialization])
+		@doctors = Doctor.search(params[:location], params[:specialization], params[:specialty])
 	end
 
 	def add_doctor

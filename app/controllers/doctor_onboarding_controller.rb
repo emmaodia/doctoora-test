@@ -4,12 +4,9 @@ class DoctorOnboardingController < ApplicationController
 		@lgas = User::LGAS
 		@doctor = Doctor.find(current_doctor.id)
 		
-		@clinical_specialty_list = ["Aesthetic Practitioner", "Cardiologist", "Cardiothoracic Surgery", "Dental", "Dermatology", 
-		"General Practitioner", "General Surgery", "Haematology", "Mental Health General Practitioner", "Nephrology", "Neurology", "Neurosurgery",
-		"Obstetrics and Gynecology", "Oncology", "Orthopaedic Surgery", "Paediatric Oncology", "Paediatric Surgery",
-		"Paediatrics", "Psychiatry", "Renal Surgery", "Respirology", "Urology"]
+		@clinical_specialty_list = Doctor::CLINICAL_SPECIALTY_LIST
 
-		@non_clinical_specialty_list = ["Dance Aerobics", "Swimming", "Yoga", "Martial Arts", "Dietetics", "Lifestyle Counseling", "Sex Therapy"]
+		@non_clinical_specialty_list = Doctor.::NON_CLINICAL_SPECIALTY_LIST
 	end
 
 	def create
