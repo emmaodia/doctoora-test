@@ -2,12 +2,20 @@ class WalletController < ApplicationController
 	include PaystackHelper
 
 	def show
-		@user = User.find params[:id]
+		if current_user
+			@user = User.find params[:id]
+		else
+			@user = Doctor.find params[:id]
+		end
 		@transaction = @user.transactions.new
 	end
 
 	def top_up
-		@user = User.find params[:user_id]
+		if current_user
+			@user = User.find params[:user_id]
+		else
+			@user = Doctor.find params[:user_id]
+		end
 
 		@transaction = @user.transactions.new(transaction_params)
 		@transaction.save

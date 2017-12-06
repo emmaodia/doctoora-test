@@ -1,5 +1,9 @@
 <div>
-	<%= link_to "back to your profile", profile_path(@user) %>
+	<% if user_signed_in? %>
+		<%= link_to "back to your profile", profile_path(@user) %>
+	<% elsif doctor_signed_in? %>
+		<%= link_to "back to your profile", doctor_profile_path(@user) %>
+	<% end %>
 </div>
 
 <div>
