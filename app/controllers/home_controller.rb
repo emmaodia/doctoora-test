@@ -3,6 +3,9 @@ class HomeController < ApplicationController
 	def index
 		if user_signed_in?
 			@cards = Card.where('page = ?', 'Home')
+			@user = current_user
+			@past_appointments = Consultation.where("date_and_time <= ? AND user_id = ?", Time.now, @user.id)
+			@upcoming_appointments = Consultation.where("date_and_time >= ? AND user_id = ?", Time.now, @user.id)
 		elsif doctor_signed_in?
 			@doctor = current_doctor
 			date = Date.today

@@ -1,5 +1,45 @@
 <% if user_signed_in? %>
 	<div class="row">
+		<h1> Upcoming Appointments <span style="font-size: 14px"><%= link_to "(view your calendar)", consultation_index_path %></span></h1>
+		<% if @upcoming_appointments == [] %>
+			<p>You have no upcoming appointments. <a href="/consultation/type">Book a consultation
+			today</a></p>
+		<% else %>
+			<% @upcoming_appointments.each do |appointment| %>
+				<div class="panel panel-default col-md-6">
+					<div class="panel-heading">
+						<h3><%= appointment.tool %></h3>
+					</div>
+					<div class="panel-body">
+						<p><b>Doctor:</b> <%= get_doctor_name appointment.professional %></p>
+						<p><b>Date: </b><%= appointment.date_and_time.to_date.to_formatted_s(:long) %></p>
+						<p><b>Time: </b><%= appointment.date_and_time.strftime("%I:%M %p") %></p>
+					</div>
+				</div>	
+			<% end %>
+		<% end %>
+
+		<h1>Past Appointments</h1>
+
+		<% if @past_appointments == [] %>
+			<p>You have no past appointments. <a href="/consultation/type">Book your first consultation on Doctoora today</a></p>
+		<% else %>
+			<% @past_appointments.each do |appointment| %>
+				<div class="panel panel-default col-md-6">
+					<div class="panel-heading">
+						<h3><%= appointment.tool %></h3>
+					</div>
+					<div class="panel-body">
+						<p><b>Doctor:</b> <%= get_doctor_name appointment.professional %></p>
+						<p><b>Date: </b><%= appointment.date_and_time.to_date.to_formatted_s(:long) %></p>
+						<p><b>Time: </b><%= appointment.date_and_time.strftime("%I:%M %p") %></p>
+					</div>
+				</div>	
+			<% end %>
+		<% end %>
+	</div>
+	<div class="row">
+		<h1> Health Information </h1>
 		<% @cards.each do |card| %>
 			<div class="panel panel-body col-md-4">
 				<a href=<%= card.link %>>
