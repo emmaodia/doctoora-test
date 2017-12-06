@@ -29,7 +29,7 @@ class AdminController < ApplicationController
 		doctor = Doctor.find(params[:id])
 		doctor.verified = true
 		doctor.save
-		flash["notice"] = "Doctor has now been verified"
+		flash["notice"] = "Professional has now been verified"
 		redirect_to verify_doctors_path
 	end
 
