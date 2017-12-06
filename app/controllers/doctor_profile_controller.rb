@@ -10,7 +10,7 @@ class DoctorProfileController < ApplicationController
 		"General Practitioner", "General Surgery", "Haematology", "Mental Health General Practitioner", "Nephrology", "Neurology", "Neurosurgery",
 		"Obstetrics and Gynecology", "Oncology", "Orthopaedic Surgery", "Paediatric Oncology", "Paediatric Surgery",
 		"Paediatrics", "Psychiatry", "Renal Surgery", "Respirology", "Urology"]
-		@non_clinical_specialty_list = ["Dance Aerobics", "Swimming", "Yoga", "Martial Arts", "Dietetics", "Lifestyle Counseling"]
+		@non_clinical_specialty_list = ["Dance Aerobics", "Swimming", "Yoga", "Martial Arts", "Dietetics", "Lifestyle Counseling", "Sex Therapy"]
 	end
 
 	def update
