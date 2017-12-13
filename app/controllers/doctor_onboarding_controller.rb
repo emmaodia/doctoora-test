@@ -12,6 +12,9 @@ class DoctorOnboardingController < ApplicationController
 	def create
 		@doctor = Doctor.find(current_doctor)
     	@doctor.update(onboarding_params)
+
+    	Wallet.create(doctor_id: @doctor.id, balance: 0)
+    	
     	redirect_to root_path
 	end
 
