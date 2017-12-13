@@ -31,9 +31,9 @@ class ConversationsController < ApplicationController
  		end
 
  		if doctor_signed_in?
- 			@conversation.messages.create(body: params[:body], user_class: "Doctor", user_id: current_doctor.id)
+ 			@conversation.messages.create(body: params[:body], image: params[:conversation][:image], user_class: "Doctor", user_id: current_doctor.id)
  		elsif user_signed_in?
- 			@conversation.messages.create(body: params[:body], user_class: "Patient", user_id: current_user.id)
+ 			@conversation.messages.create(body: params[:body], image: params[:conversation][:image], user_class: "Patient", user_id: current_user.id)
  		end
 
  		redirect_to conversations_path
