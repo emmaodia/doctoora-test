@@ -267,6 +267,11 @@ button {
 }
 /* Home Page */
 
+#doc_wallet_balance {
+    color: green;
+    margin-right: 1em;
+}
+
 #toggle-off:hover {
     background-color: #e74c3c;
     border: 0;

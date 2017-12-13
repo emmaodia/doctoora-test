@@ -60,6 +60,9 @@
 		</div>
 	<% else %>
 		<div>
+			<h4>Your Wallet Balance: <span id="doc_wallet_balance">₦<%= number_with_delimiter(@wallet_balance, :delimiter => ',') %></span> <%= link_to "Top Up Wallet", top_up_path(@doctor) %></h4>
+		</div>
+		<div>
 			<h1>Today's Confirmed Appointments</h1>
 			<% if @upcoming_appointments == [] %>
 				<p>You have no appointments scheduled for today. <a href="/doctor_consultation">View your calendar.</a></p>
