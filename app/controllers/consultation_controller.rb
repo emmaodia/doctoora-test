@@ -101,7 +101,7 @@ class ConsultationController < ApplicationController
 	private
 
 	def consultation_params
-		params.require(:consultation).permit(:discipline, :address, :service, :tool, :date, :time, :end_time, :professional, :clinic_id, :payment_method)
+		params.require(:consultation).permit(:discipline, :address, :service, :tool, :date, :time, :end_time, :professional, :clinic_id, :payment_method, :user_notes)
 	end
 
 	def is_doctor_booked? doctor, current_consultation

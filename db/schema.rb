@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171213140609) do
+ActiveRecord::Schema.define(version: 20171213152322) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(version: 20171213140609) do
     t.datetime "date_and_time"
     t.integer  "clinic_id"
     t.string   "payment_method"
+    t.text     "user_notes"
   end
 
   add_index "consultations", ["clinic_id"], name: "index_consultations_on_clinic_id", using: :btree
@@ -130,6 +131,10 @@ ActiveRecord::Schema.define(version: 20171213140609) do
     t.boolean  "sender_unread_messages", default: true
     t.string   "sender_class"
     t.string   "recipient_class",        default: "Patient"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "doctors", force: :cascade do |t|

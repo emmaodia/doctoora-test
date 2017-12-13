@@ -6,7 +6,7 @@
 
 		<div class="form-group">
 			<%= f.label "Choose a consultation type", :class => "control-label" %>
-			<%= f.select :tool, ["Video Call", "Clinic Visit", "Home Visit", "Phone Call"], :class => "form-control" %>
+			<%= f.select :tool, ["Video Call", "Clinic Visit", "Home Visit"], :class => "form-control" %>
 		</div>
 
 		<div class="form-group address-box">
@@ -41,6 +41,11 @@
 		</div>
 
 		<div class="form-group">
+			<%= f.label "What complaints do you have (reason for booking consultation)? Please be as detailed as you can.", :class => "control-label" %>
+			<%= f.text_area :user_notes, :class => "form-control" %>
+		</div>
+
+		<div class="form-group">
 			<%= f.label "Choose an available professional", :class => "control-label" %>
 			<%= f.select :professional, @doctors.collect {|d| [ d.title + " " + d.first_name + " " + d.last_name + " (" + d.specialty + ")", d.id ] }, :class => "form-control", required: true %>
 		</div>
@@ -50,7 +55,7 @@
 			<%= f.select :payment_method, ["Pay With Card", "Doctoora Wallet", "Insurance", "Pay In Clinic"], :class => "form-control" %>
 		</div>
 
-		<%= f.submit "Continue", :class => "btn btn-primary" %>
+		<%= f.submit "Continue", :class => "btn btn-primary", data: { confirm: "Are you sure you want to create this consultation?" } %>
 
 	<% end %>
 
