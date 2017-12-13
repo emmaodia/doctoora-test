@@ -171,8 +171,13 @@
 		</div>
 
 		<div class="form-group">
+			<%= f.label "Alcohol Consumption", :class => "control-label" %>
+			<%= f.select :alcohol_consumption, ["Daily", "Once a week", "Socially", "Never"], value: @user.alcohol_consumption, :class => "form-control"%>
+		</div>
+
+		<div class="form-group">
 			<%= f.label "Recently Travlled?", :class => "control-label" %>
-			<%= f.select :recent_travel, ["Yes", "No"], value: @user.tobacco, :class => "form-control"%>
+			<%= f.select :recent_travel, ["Yes", "No"], :class => "form-control"%>
 		</div>
 
 		<p> If yes for travel</p>
