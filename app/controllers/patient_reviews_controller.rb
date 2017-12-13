@@ -55,7 +55,8 @@ class PatientReviewsController < ApplicationController
 	def patient_review_params
 		params.require(:patient_review).permit(:review, :doctor_id, :consultation_id, :lga, :religion, :religion_detailed, :occupation,
 			:education, :hpi, :medical_history, :drug_history, :family_history, :surgical_history, :drug_reaction,
-			:allergic_reaction, :blood_transfusions, :smoking, :recent_travel, :travel_destination, :sexual_history)
+			:allergic_reaction, :blood_transfusions, :smoking, :recent_travel, :travel_destination, :sexual_history, :chief_complaint,
+			:associated_complaint_1, :associated_complaint_2, :associated_complaint_3)
 	end
 
 end

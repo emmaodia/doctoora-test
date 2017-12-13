@@ -1,6 +1,6 @@
 <div class="col-md-12">
 
-	<h3> User @review for <a href="profile/<%= @review_user_id %>"><%= get_patient_name @review_user_id %></a></h3>
+	<h3> User review for <a href="profile/<%= @review_user_id %>"><%= get_patient_name @review_user_id %></a></h3>
 
 	<% @review.attributes.each do |attr_name, attr_value| %>
 		<% unless attr_name.eql?('id') || attr_name.eql?('review') %>

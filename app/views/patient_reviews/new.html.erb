@@ -81,8 +81,28 @@
 		<h4> Symptoms </h4>
 
 		<div class="form-group">
-			<%= f.label :hpi, :class => "control-label" %>
+			<%= f.label "History of Presenting Illness", :class => "control-label" %>
 			<%= f.text_area :hpi, :class => "form-control"%>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :chief_complaint, :class => "control-label" %>
+			<%= f.text_field :chief_complaint, :class => "form-control"%>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :associated_complaint_1, :class => "control-label" %>
+			<%= f.text_field :associated_complaint_1, :class => "form-control"%>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :associated_complaint_2, :class => "control-label" %>
+			<%= f.text_field :associated_complaint_2, :class => "form-control"%>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :associated_complaint_3, :class => "control-label" %>
+			<%= f.text_field :associated_complaint_3, :class => "form-control"%>
 		</div>
 
 		<h4> Medical History </h4>
