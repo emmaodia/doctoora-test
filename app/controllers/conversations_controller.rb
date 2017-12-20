@@ -32,8 +32,12 @@ class ConversationsController < ApplicationController
 
  		if doctor_signed_in?
  			@conversation.messages.create(body: params[:body], image: params[:conversation][:image], user_class: "Doctor", user_id: current_doctor.id)
+ 			@conversation.unread_messages = true
+ 			@conversation.save
  		elsif user_signed_in?
  			@conversation.messages.create(body: params[:body], image: params[:conversation][:image], user_class: "Patient", user_id: current_user.id)
+ 			@conversation.sender_unread_messages = true
+ 			@conversation.save
  		end
 
  		redirect_to conversations_path

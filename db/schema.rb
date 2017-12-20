@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171213152322) do
+ActiveRecord::Schema.define(version: 20171220062415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -127,8 +127,8 @@ ActiveRecord::Schema.define(version: 20171213152322) do
     t.integer  "recipient_id"
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
-    t.boolean  "unread_messages",        default: true
-    t.boolean  "sender_unread_messages", default: true
+    t.boolean  "unread_messages",        default: false
+    t.boolean  "sender_unread_messages", default: false
     t.string   "sender_class"
     t.string   "recipient_class",        default: "Patient"
     t.string   "image_file_name"
