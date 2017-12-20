@@ -209,6 +209,10 @@ button {
     margin-left: .5em;
 }
 
+/*.selected {
+    background-color: #f3904c;
+}*/
+
 /* Notification Sidebar */
 
 .notification_image {
