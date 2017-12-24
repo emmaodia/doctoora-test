@@ -15,7 +15,7 @@ class DoctorOnboardingController < ApplicationController
 
     	Wallet.create(doctor_id: @doctor.id, balance: 0)
     	
-    	redirect_to root_path
+    	redirect_to doctor_onboarding_new_upload_documents_path
 	end
 
 	def upload_documents

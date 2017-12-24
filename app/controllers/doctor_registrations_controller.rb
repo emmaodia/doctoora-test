@@ -4,7 +4,7 @@ class DoctorRegistrationsController < Devise::RegistrationsController
   def after_sign_up_path_for(resource)
     resource.verified = false
     resource.save
-    doctor_onboarding_new_upload_documents_path
+    new_doctor_onboarding_path
   end
 
   private
