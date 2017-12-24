@@ -90,12 +90,13 @@ button {
     height: 100%;
     margin-left: -250px;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: scroll;
     background: url("/gradient.png");
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
+    padding-bottom: 6em;
 }
 
 #sidebar-image {
@@ -207,6 +208,11 @@ button {
 .glyphicon-home {
     padding-top: .5em;
     margin-left: .5em;
+}
+
+#glyphs {
+    margin-top: 1em;
+    height: 150px;
 }
 
 /*.selected {
