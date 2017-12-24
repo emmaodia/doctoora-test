@@ -127,6 +127,19 @@
 				</div>
 			<% end %>
 		</div>
+
+		<div class="row">
+			<h1> Trending Topics </h1>
+			<% @cards.each do |card| %>
+				<div class="panel panel-body col-md-4">
+					<a href=<%= card.link %>>
+						<img src=<%= card.image %> class="card-image" />
+						<h3><%= card.title %></a></h3>
+					</a>
+					<p><%= card.body %></p>
+				</div>
+			<% end %>
+		</div>
 	<% end %>
 <% elsif admin_signed_in? %>
 	<div>
