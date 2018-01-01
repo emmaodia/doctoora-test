@@ -359,6 +359,10 @@ button {
     color: #c76c4e;
 }
 
+.admin-home {
+    font-size: 30px;
+}
+
 /*Sign In/Up page */
 .access-form {
     margin-top: 5em;

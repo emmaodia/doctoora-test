@@ -1,5 +1,9 @@
 <div>
-	<%= link_to "return to search", care_path %>
+	<% if user_signed_in? %>
+		<%= link_to "return to search", care_path %>
+	<% elsif doctor_signed_in? %>
+		<%= link_to "return to search", doctor_care_team_path(current_doctor) %>
+	<% end %>
 </div>
 
 <% if user_signed_in? %>
