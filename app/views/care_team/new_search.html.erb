@@ -1,7 +1,8 @@
 <div>
 	<div style="margin-left: 2em">
 		<div>
-			<h2> Doctor Search </h2>
+			<h2> Health Professional Search </h2>
+			<p>Input search criteria in order to find a health professional near you</p>
 			<%= form_tag(care_path, :method => "post") do %>
 
 				<div class="form-group">
@@ -22,7 +23,7 @@
 
 					<div class="form-group clinical_specialty_list">
 						<%= label_tag 'specialty' %>
-						<%= select_tag :specialty, options_for_select(@clinical_specialty_list), :class => "form-control search-form" %>
+						<%= select_tag :specialty, options_for_select(@clinical_specialty_list), :class => "form-control search-form", include_blank: true %>
 					</div>
 				</div>
 

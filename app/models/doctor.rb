@@ -29,8 +29,25 @@ class Doctor < ActiveRecord::Base
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
   validates_attachment_size :avatar, less_than: 2.megabytes
 
-  def self.search location, specialization, specialty
-    where("lower(specialization) = ? and lower(town) = ? and lower(specialty) = ?", "#{specialization}".downcase, "#{location}".downcase, "#{specialty}".downcase)
+  def self.search town, specialization, specialty
+    #i will find a way to automate this function ejo
+    if town == '' && specialization == '' && specialty == ''
+      self.all
+    elsif town == '' && specialization == ''
+      where("lower(specialty) = ?", "#{specialty}".downcase)
+    elsif town == '' && specialty == ''
+      where("lower(specialization) = ?", "#{specialization}".downcase)
+    elsif specialty == '' && specialization == ''
+      where("lower(town) = ?", "#{town}".downcase)
+    elsif town == ''
+      where("lower(specialty) = ? and lower(specialization) = ?", "#{specialty}".downcase, "#{specialization}".downcase )
+    elsif specialty == ''
+      where("lower(town) = ? and lower(specialization) = ?", "#{town}".downcase, "#{specialization}".downcase)
+    elsif specialization == ''
+      where("lower(specialty) = ? and lower(town) = ?", "#{specialty}".downcase, "#{town}".downcase)
+    else
+      where("lower(specialization) = ? and lower(town) = ? and lower(specialty) = ?", "#{specialization}".downcase, "#{town}".downcase, "#{specialty}".downcase)
+    end
   end
 
   def self.get_available_professionals_of_type type
