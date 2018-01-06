@@ -29,6 +29,9 @@ Rails.application.routes.draw do
 
   get 'admin/clinic_rentals' => 'admin#clinic_rentals', as: :admin_clinic_rentals
 
+  get 'admin/products/categories' => 'admin#product_categories', as: :admin_product_categories
+  get 'admin/products/categories/new' => 'admin#new_product_category', as: :new_product_category
+  post 'admin/products/categories/add' => 'admin#add_product_category', as: :add_product_category
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -75,10 +75,32 @@ class AdminController < ApplicationController
 		@clinic_rentals = ClinicRental.all.order(date: :asc)
 	end
 
+	def product_categories
+		@categories = ProductCategory.all
+	end
+
+	def new_product_category
+		@category = ProductCategory.new
+	end
+
+	def add_product_category
+		@category = ProductCategory.new(product_category_params)
+		if @category.save
+			flash["notice"] = "Category created"
+			redirect_to admin_product_categories_path
+		else
+			flash["notice"] = "Category could not be created"
+			redirect_to :back
+		end
+	end
+
 	private
 
 	def plan_params
 		params.require(:plan).permit(:title, :description, :price, :category, :image)
 	end
 
+	def product_category_params
+		params.require(:product_category).permit(:name)
+	end
 end

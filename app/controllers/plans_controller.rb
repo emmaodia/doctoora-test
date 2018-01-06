@@ -25,7 +25,7 @@ class PlansController < ApplicationController
 
 		@clinic_rental = current_doctor.clinic_rentals.new(clinic_rental_params)
 		@clinic_rental.date_and_time = Time.new(@clinic_rental.date.year, @clinic_rental.date.month, @clinic_rental.date.day,
-  									   			   @clinic_rental.time.hour, @clinic_rental.time.min).to_datetime
+  									   			@clinic_rental.time.hour, @clinic_rental.time.min).to_datetime
 		@clinic_rental.clinic_id = clinic.id
 
 		if @clinic_rental.save
