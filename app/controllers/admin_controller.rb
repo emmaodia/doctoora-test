@@ -39,10 +39,12 @@ class AdminController < ApplicationController
 
 	def new_plan
 		@plan = Plan.new
+		@categories = ProductCategory.all.map(&:name)
 	end
 
 	def create_plan
-		plan = Plan.new(plan_params)
+		category = ProductCategory.find_by_name(params[:plan][:product_category])
+		plan = category.plans.new(plan_params)
 		if plan.save
 			flash["notice"] = "Plan successfully created"
 			redirect_to admin_plans_path
@@ -92,6 +94,10 @@ class AdminController < ApplicationController
 			flash["notice"] = "Category could not be created"
 			redirect_to :back
 		end
+	end
+
+	def category_products
+		@products = ProductCategory.find_by_name(params[:category_name]).plans
 	end
 
 	private

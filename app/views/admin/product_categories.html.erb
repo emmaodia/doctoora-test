@@ -7,8 +7,10 @@
 	
 <div>
 	<div class="panel panel-body">
-		<%= @categories.each do |category| %>
-			<h3><%= category.name %></h3>
+		<% @categories.each do |category| %>
+			<% cat_name = category.name %>
+			<h3><%= cat_name %></h3>
+			<%= link_to "view products", category_products_path(cat_name) %>
 		<% end %>
 	</div>
 </div>

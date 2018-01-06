@@ -1,0 +1,20 @@
+<div>
+	<%= link_to "admin home", admin_path, :class => "admin-home" %>
+</div>
+
+<div>
+	<ul>
+	<% @products.each do |product| %>
+		<li>
+			<h2><%= product.title %></h2>
+			<p><%= product.description %></p>
+		</li>
+	<% end %>
+	</ul>
+</div>
+
+<style>
+  #activity-wrapper {
+    display: none;
+  }
+</style>
