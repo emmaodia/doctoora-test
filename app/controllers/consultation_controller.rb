@@ -80,7 +80,7 @@ class ConsultationController < ApplicationController
 		doctor = Doctor.find(consultation.professional.to_i)
 
 		payment_method = consultation.payment_method
-		amount = doctor.consultation_fee
+		amount = get_consultation_fee doctor, consultation
 
 		if payment_method == "Pay With Card"
 			current_user.transactions.create(amount: amount, plan_id: nil, status: :processing, doctor_id: doctor.id, purpose: :consultation)
@@ -117,6 +117,16 @@ class ConsultationController < ApplicationController
 			end
 		end
 		return false
+	end
+
+	def get_consultation_fee doctor, consultation
+		if consultation.tool == "Video Call"
+			return doctor.video_consultation_fee
+		elsif consultation.tool == "Home Visit"
+			return doctor.home_consultation_fee
+		elsif consultation.tool == "Clinic Visit"
+			return doctor.clinic_visit_fee
+		end
 	end
 
 end
