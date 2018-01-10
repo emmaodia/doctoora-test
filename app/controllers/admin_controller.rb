@@ -18,11 +18,14 @@ class AdminController < ApplicationController
 	end
 
 	def notifications
-		@notifications = AdminNotification.all
+		@notifications = AdminNotification.where('noted = ?', false)
 	end
 
 	def noted
-		AdminNotification.find(params[:id]).delete
+		notification = AdminNotification.find(params[:id])
+		notification.noted = true
+		notification.save
+
 		redirect_to :back
 	end
 

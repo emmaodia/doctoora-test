@@ -16,7 +16,7 @@ class HomeController < ApplicationController
 			@past_appointments = @doctor.consultations.where('date_and_time < ?', Time.zone.now.beginning_of_day)
 		end
 
-		@admin_notifications_count = AdminNotification.count
+		@admin_notifications_count = AdminNotification.where('noted = ?', false).count
 	end
 	
 	def knowledgebase
