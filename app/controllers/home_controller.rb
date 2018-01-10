@@ -15,6 +15,8 @@ class HomeController < ApplicationController
 			@appointment_requests = @doctor.consultations.where('status = ?', 'pending')
 			@past_appointments = @doctor.consultations.where('date_and_time < ?', Time.zone.now.beginning_of_day)
 		end
+
+		@admin_notifications_count = AdminNotification.count
 	end
 	
 	def knowledgebase
@@ -25,14 +27,23 @@ class HomeController < ApplicationController
 	end
 
 	def refer
-		flash[:notice] = "Thank you for your referral! An email has been sent to #{params[:email]}"
-		if current_user.first_name && current_user.last_name
+		email = params[:email]
+		flash[:notice] = "Thank you for your referral! An email has been sent to #{email}"
+		if current_user && (current_user.first_name && current_user.last_name)
 			username = current_user.first_name + " " + current_user.last_name
+		elsif current_doctor && (current_doctor.first_name && current_doctor.last_name)
+			username = current_doctor.first_name + " " + current_doctor.last_name
 		else
 			username = "a Doctoora User"
 		end
-		mail = UserMailer.refer_email username, params[:email]
+		mail = UserMailer.refer_email username, email
 		mail.deliver_now
+
+		if current_user
+			notify_admin! "New user referral for #{email}", "Patient", current_user.id
+		elsif current_doctor
+			notify_admin! "New user referral for #{email}", "Doctor", current_doctor.id
+		end
 
 		redirect_to '/'
 	end

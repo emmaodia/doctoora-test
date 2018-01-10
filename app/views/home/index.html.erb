@@ -145,6 +145,8 @@
 	<div>
 		<h1>Welcome, Admin</h1>
 
+		<h4><%= link_to "Notifications (#{@admin_notifications_count})", admin_notifications_path %></h4>
+		<br>
 		<p><%= link_to "Verify Health Professionals", verify_doctors_path %></p>
 		<p><%= link_to "Products", admin_plans_path %></p>
 		<p><%= link_to "Product Categories", admin_product_categories_path %></p>

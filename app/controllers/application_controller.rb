@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
 			dr_notification_msg: dr_notification_text, link: link, dr_link: dr_link)
   	end
 
+  	def notify_admin! notification_text, user_class, user_id
+  		AdminNotification.create!(notification_text: notification_text, user_class: user_class, user_id: user_id)
+  	end
+
   	def make_payment payment_method, amount, doctor_id, reason_for_payment, success_message="transaction successful!"
   		if payment_method == "Pay With Card"
 			current_user.transactions.create(amount: amount, plan_id: nil, status: :processing, doctor_id: doctor_id, purpose: reason_for_payment)

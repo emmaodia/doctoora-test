@@ -17,6 +17,10 @@ class AdminController < ApplicationController
 		end
 	end
 
+	def notifications
+		@notifications = AdminNotification.all
+	end
+
 	def verify_doctors
 		@doctors = Doctor.where("verified = false")
 	end
