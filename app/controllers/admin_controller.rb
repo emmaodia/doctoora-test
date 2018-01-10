@@ -21,6 +21,11 @@ class AdminController < ApplicationController
 		@notifications = AdminNotification.all
 	end
 
+	def noted
+		AdminNotification.find(params[:id]).delete
+		redirect_to :back
+	end
+
 	def verify_doctors
 		@doctors = Doctor.where("verified = false")
 	end

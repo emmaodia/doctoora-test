@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   get 'admin/products/categories/:category_name/products' => 'admin#category_products', as: :category_products
 
   get 'admin/notifications' => 'admin#notifications', as: :admin_notifications
+  post 'admin/notification/:id/noted' => 'admin#noted', as: :admin_noted
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

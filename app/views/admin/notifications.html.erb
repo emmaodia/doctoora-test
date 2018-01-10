@@ -1,0 +1,26 @@
+<div>
+	<%= link_to "admin home", admin_path, :class => "admin-home" %>
+</div>
+
+<div>
+	<ul>
+		<% @notifications.each do |notification| %>
+			<li>
+				<p><%= notification.notification_text %></p>
+				<p>Referred by:</p>
+				<% if notification.user_class == "Patient" %>
+					<p><%= get_patient_name notification.user_id %> (Patient)</p>
+				<% elsif notification.user_class == "Doctor" %>
+					<p><%= get_doctor_name notification.user_id %> (Doctor)</p>
+				<% end %>
+				<p><%= time_ago_in_words(notification.created_at) %> ago <%= link_to admin_noted_path(notification), method: :post do %><i class="glyphicon glyphicon-remove-circle"></i><% end %></p>
+			</li>
+		<% end %>
+	</ul>
+</div>
+	
+<style>
+  #activity-wrapper {
+    display: none;
+  }
+</style>
