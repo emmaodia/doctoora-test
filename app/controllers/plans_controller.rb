@@ -63,7 +63,7 @@ class PlansController < ApplicationController
 		elsif transaction.purpose == "purchase"
 			user.plan_id = transaction.plan_id
 			user.save
-			flash[:notice] = "You have successfully purchased a plan"
+			flash[:notice] = "You have successfully purchased the product"
 		elsif transaction.purpose == "topup"
 			wallet = user.wallet
 			wallet.balance += transaction.amount

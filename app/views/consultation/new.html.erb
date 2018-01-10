@@ -11,7 +11,7 @@
 
 		<div class="form-group address-box">
 			<%= f.label "Your Address", :class => "control-label" %>
-			<%= f.text_area :address, :class => "form-control", required: true %>
+			<%= f.text_area :address, :class => "form-control" %>
 		</div>
 
 		<div class="form-group clinic-options">
@@ -42,7 +42,7 @@
 
 		<div class="form-group">
 			<%= f.label "What complaints do you have (reason for booking consultation)? Please be as detailed as you can.", :class => "control-label" %>
-			<%= f.text_area :user_notes, :class => "form-control", required: true %>
+			<%= f.text_area :user_notes, :class => "form-control", required: true, placeholder: "This is a required field" %>
 		</div>
 
 		<div class="form-group">
