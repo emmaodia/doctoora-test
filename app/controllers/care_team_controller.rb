@@ -40,6 +40,10 @@ class CareTeamController < ApplicationController
 	def doctor
 		@care_team_requests = CareTeamDoctorStatus.where("joined = ? AND doctor_id = ?", false, params[:id])
 		@doctor_care_teams = CareTeamDoctorStatus.where("joined = ? AND doctor_id = ?", true, params[:id])
+		@lgas = User::LGAS
+		@specialization = ["Clinical", "Non-Clinical"]
+		@clinical_specialty_list = Doctor::CLINICAL_SPECIALTY_LIST
+		@non_clinical_specialty_list = Doctor::NON_CLINICAL_SPECIALTY_LIST
 	end
 
 	def accept_care_team_request

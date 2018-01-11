@@ -1,16 +1,30 @@
-<div style="height: 100px">
+<div>
 	<h2> Health Professional Search </h2>
-	<%= form_tag(care_path, :method => "post", :class => "navbar-form navbar-left") do %>
+	<p>Input search criteria in order to find a health professional near you</p>
+	<%= form_tag(care_path, :method => "post") do %>
 
 		<div class="form-group">
 			<%= label_tag 'location' %>
-			<%= text_field_tag :location, params[:location], :class => "form-control search-form" %>
+			<%= select_tag :location, options_for_select(@lgas), :class => "form-control search-form", include_blank: true %>
 		</div>
 
 		<div class="form-group">
 			<%= label_tag 'specialization' %>
-			<%= text_field_tag :specialization, params[:specialization], :class => "form-control search-form" %>
+			<%= select_tag :specialization, options_for_select(@specialization), :class => "form-control search-form", :id => "doctor_specialization", include_blank: true %>
 		</div>
+
+		<div class="specialty-group">
+			<div class="form-group non_clinical_specialty_list">
+				<%= label_tag 'specialty' %>
+				<%= select_tag :specialty, options_for_select(@non_clinical_specialty_list), :class => "form-control search-form", include_blank: true %>
+			</div>
+
+			<div class="form-group clinical_specialty_list">
+				<%= label_tag 'specialty' %>
+				<%= select_tag :specialty, options_for_select(@clinical_specialty_list), :class => "form-control search-form", include_blank: true %>
+			</div>
+		</div>
+
 
 		<div class="form-group">
 			<button type="submit" class="btn btn-primary">Search</button>
@@ -70,3 +84,26 @@
 		</li>
 	</ul>
 <% end %>
+
+<script>
+	var c = $('.clinical_specialty_list').detach();
+	var nc = $('.non_clinical_specialty_list').detach();
+
+	if($('#doctor_specialization').val() == "Clinical"){
+		$('.non_clinical_specialty_list').detach();
+		$('.specialty-group').append(c);
+	} else {
+		$('.clinical_specialty_list').detach();
+		$('.specialty-group').append(nc);
+	}
+
+	$('#doctor_specialization').change(function(){
+		if($(this).val() == "Non-Clinical"){
+			$('.specialty-group').append(nc);
+			c = $('.clinical_specialty_list').detach();
+    	} else if($(this).val() == "Clinical") {
+    		$('.specialty-group').append(c);
+    		nc = $('.non_clinical_specialty_list').detach();
+		}
+	})
+</script> 
