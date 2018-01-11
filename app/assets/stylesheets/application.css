@@ -436,7 +436,7 @@ button {
 }
 
 /* Consultation Form */
-.address-box, .clinic-options {
+.address-box, .clinic-options, .insurance-providers {
     display: none;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;

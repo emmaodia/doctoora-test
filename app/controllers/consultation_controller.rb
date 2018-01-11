@@ -29,10 +29,13 @@ class ConsultationController < ApplicationController
 			@doctors = Doctor.get_available_professionals_of_type @specialization
 		end
 
+		@insurance_providers = InsuranceProvider.all.map(&:name)
+
 		@clinics = Clinic.all
 	end
 
 	def create
+		p params
 		doctor = Doctor.find(consultation_params[:professional])
 
 		if is_doctor_booked? doctor, consultation_params
@@ -88,7 +91,8 @@ class ConsultationController < ApplicationController
 		elsif payment_method == "Doctoora Wallet"
 			redirect_to pay_from_wallet_path(amount)
 		elsif payment_method == "Insurance"
-			Transaction.create!(user_id: current_user.id, doctor_id: doctor.id, amount: amount, purpose: :insurance, status: :processing)
+			insurance_provider_id = InsuranceProvider.find_by_name(consultation.insurance_provider).id
+			Transaction.create!(user_id: current_user.id, doctor_id: doctor.id, amount: amount, purpose: :insurance, status: :processing, insurance_provider_id: insurance_provider_id)
 			flash[:notice] = "Thank you #{current_user.first_name}. Your consultation request has been sent and will be verified."
 			redirect_to root_path
 		elsif payment_method == "Pay In Clinic"
@@ -101,7 +105,7 @@ class ConsultationController < ApplicationController
 	private
 
 	def consultation_params
-		params.require(:consultation).permit(:discipline, :address, :service, :tool, :date, :time, :end_time, :professional, :clinic_id, :payment_method, :user_notes)
+		params.require(:consultation).permit(:discipline, :address, :service, :tool, :date, :time, :end_time, :professional, :clinic_id, :payment_method, :user_notes, :insurance_provider)
 	end
 
 	def is_doctor_booked? doctor, current_consultation

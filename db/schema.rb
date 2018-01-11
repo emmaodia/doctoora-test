@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180111162128) do
+ActiveRecord::Schema.define(version: 20180111170408) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,8 +123,8 @@ ActiveRecord::Schema.define(version: 20180111162128) do
     t.time     "time"
     t.time     "end_time"
     t.string   "professional"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
     t.integer  "user_id"
     t.string   "status"
     t.integer  "doctor_id"
@@ -134,6 +134,7 @@ ActiveRecord::Schema.define(version: 20180111162128) do
     t.integer  "clinic_id"
     t.string   "payment_method"
     t.text     "user_notes"
+    t.string   "insurance_provider", default: "placeholder field"
   end
 
   add_index "consultations", ["clinic_id"], name: "index_consultations_on_clinic_id", using: :btree
