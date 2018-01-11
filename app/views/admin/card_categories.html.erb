@@ -1,0 +1,22 @@
+<div>
+	<%= link_to "admin home", admin_path, :class => "admin-home" %>
+</div>
+
+<%= link_to "add card category", new_card_category_path %>
+	
+	
+<div>
+	<div class="panel panel-body">
+		<% @categories.each do |category| %>
+			<% cat_name = category.name %>
+			<h3><%= cat_name %></h3>
+			<%= link_to "view cards", category_cards_path(cat_name) %>
+		<% end %>
+	</div>
+</div>
+
+<style>
+  #activity-wrapper {
+    display: none;
+  }
+</style>
