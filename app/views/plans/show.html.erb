@@ -1,0 +1,14 @@
+<%= link_to "Back to Products Page", plans_path %>
+<h2> <%= @category.name %></h2>
+
+<div>
+	<% @plans.each do |plan| %>
+		<div class="col-md-6 panel panel-default">
+			<img src=<%= plan.image %> width="200px"/>
+			<h4><%= plan.title %></h4>
+			<p><%= plan.description %></p>
+			<p>₦<%= plan.price %></p>
+			<%= link_to "Buy Item", purchase_plan_path(plan) %>
+		</div>
+	<% end %>
+</div>

@@ -7,6 +7,12 @@ class PlansController < ApplicationController
 		elsif doctor_signed_in?
 			@plans = Plan.where('category = ?', 'Doctor')
 		end
+		@categories = ProductCategory.all
+	end
+
+	def show
+		@category = ProductCategory.find(params[:id])
+		@plans = @category.plans.all
 	end
 
 	def clinics
