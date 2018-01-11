@@ -3,6 +3,7 @@ class AdminController < ApplicationController
 	before_action :authenticate_admin!, except: [:render_activation_form, :activate]
 
 	def index
+		@admin_notifications_count = AdminNotification.where('noted = ?', false).count
 	end
 
 	def render_activation_form
