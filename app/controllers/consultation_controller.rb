@@ -35,7 +35,6 @@ class ConsultationController < ApplicationController
 	end
 
 	def create
-		p params
 		doctor = Doctor.find(consultation_params[:professional])
 
 		if is_doctor_booked? doctor, consultation_params
@@ -72,10 +71,11 @@ class ConsultationController < ApplicationController
 	end
 
 	def destroy
-		@consultation = consultation.find(params[:id])
+		@consultation = Consultation.find(params[:id])
     	@consultation.destroy
+    	notify! current_user.id, @consultation.doctor_id, "You have cancelled the consultation with", "Your consultation with the following patient has been cancelled: ", "/consultation", "/doctor_consultation"
     	flash[:notice] = "Your consultation has been deleted successfully"
-    	redirect_to consultation_index_path
+    	redirect_to(:back)
 	end
 
 	def payment
