@@ -26,6 +26,9 @@ Rails.application.routes.draw do
 
   get 'admin/insurance' => 'admin#insurance', as: :admin_insurance
   post 'admin/insurance/:id/complete' => 'admin#complete_insurance_payment', as: :complete_insurance_payment
+  get 'admin/insurance/providers' => 'admin#insurance_providers', as: :admin_insurance_providers
+  get 'admin/insurance/provider/new' => 'admin#new_insurance_provider', as: :admin_new_insurance_provider
+  post 'admin/insurance/providers/create' => 'admin#create_insurance_provider', as: :admin_create_insurance_provider
 
   get 'admin/clinic_rentals' => 'admin#clinic_rentals', as: :admin_clinic_rentals
 

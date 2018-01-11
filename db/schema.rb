@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180111152716) do
+ActiveRecord::Schema.define(version: 20180111162128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -217,6 +217,12 @@ ActiveRecord::Schema.define(version: 20180111152716) do
   add_index "doctors", ["email"], name: "index_doctors_on_email", unique: true, using: :btree
   add_index "doctors", ["reset_password_token"], name: "index_doctors_on_reset_password_token", unique: true, using: :btree
 
+  create_table "insurance_providers", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "messages", force: :cascade do |t|
     t.text     "body"
     t.integer  "conversation_id"
@@ -315,13 +321,15 @@ ActiveRecord::Schema.define(version: 20180111152716) do
     t.integer  "plan_id"
     t.integer  "user_id"
     t.string   "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
     t.integer  "doctor_id"
     t.string   "purpose"
+    t.integer  "insurance_provider_id"
   end
 
   add_index "transactions", ["doctor_id"], name: "index_transactions_on_doctor_id", using: :btree
+  add_index "transactions", ["insurance_provider_id"], name: "index_transactions_on_insurance_provider_id", using: :btree
   add_index "transactions", ["user_id"], name: "index_transactions_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
@@ -401,6 +409,7 @@ ActiveRecord::Schema.define(version: 20180111152716) do
   add_foreign_key "patient_reviews", "users"
   add_foreign_key "plans", "product_categories"
   add_foreign_key "transactions", "doctors"
+  add_foreign_key "transactions", "insurance_providers"
   add_foreign_key "transactions", "users"
   add_foreign_key "users", "plans"
   add_foreign_key "wallets", "doctors"

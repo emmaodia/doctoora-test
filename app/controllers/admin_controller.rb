@@ -79,6 +79,25 @@ class AdminController < ApplicationController
 		@transactions = Transaction.where('purpose = ? AND status = ?', 'insurance', 'processing')
 	end
 
+	def insurance_providers
+		@insurance_providers = InsuranceProvider.all
+	end
+
+	def new_insurance_provider
+		@provider = InsuranceProvider.new
+	end
+
+	def create_insurance_provider
+		@provider = InsuranceProvider.new(insurance_provider_params)
+		if @provider.save
+			flash[:notice] = "Insurance Provider saved"
+			redirect_to admin_insurance_providers_path
+		else
+			flash[:notice] = "There was a problem creating the insurance provider"
+			render 'new_insurance_provider'
+		end
+	end
+
 	def complete_insurance_payment
 		transaction = Transaction.find params[:id]
 		transaction.status = :complete
@@ -148,5 +167,9 @@ class AdminController < ApplicationController
 
 	def card_category_params
 		params.require(:card_category).permit(:name)
+	end
+
+	def insurance_provider_params
+		params.require(:insurance_provider).permit(:name)
 	end
 end
