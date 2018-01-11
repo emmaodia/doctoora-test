@@ -23,6 +23,11 @@
 			<%= f.label "Page", :class => "control-label" %>
 			<%= f.select :page, ["Home", "Knowledgebase"], :class => "form-control", placeholder: "You can expand this by dragging the lines on the bottom right" %>
 		</div>
+
+		<div class="form-group">
+			<%= f.label "Card Category", :class => "control-label" %>
+			<%= f.select :card_category, @categories, :class => "form-control" %>
+		</div>
 		
 		<div class="form-group">
 			<%= f.label "Image", :class => "control-label" %>

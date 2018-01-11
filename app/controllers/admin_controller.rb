@@ -112,6 +112,29 @@ class AdminController < ApplicationController
 		@products = ProductCategory.find_by_name(params[:category_name]).plans
 	end
 
+	def card_categories
+		@categories = CardCategory.all
+	end
+
+	def new_card_category
+		@category = CardCategory.new
+	end
+
+	def add_card_category
+		@category = CardCategory.new(card_category_params)
+		if @category.save
+			flash["notice"] = "Category created"
+			redirect_to admin_card_categories_path
+		else
+			flash["notice"] = "Category could not be created"
+			redirect_to :back
+		end
+	end
+
+	def category_cards
+		@cards = CardCategory.find_by_name(params[:category_name]).cards
+	end
+
 	private
 
 	def plan_params
@@ -120,5 +143,9 @@ class AdminController < ApplicationController
 
 	def product_category_params
 		params.require(:product_category).permit(:name)
+	end
+
+	def card_category_params
+		params.require(:card_category).permit(:name)
 	end
 end

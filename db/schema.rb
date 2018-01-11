@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180110034704) do
+ActiveRecord::Schema.define(version: 20180111152716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,12 @@ ActiveRecord::Schema.define(version: 20180110034704) do
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
+  create_table "card_categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "cards", force: :cascade do |t|
     t.string   "link"
     t.text     "body"
@@ -54,7 +60,10 @@ ActiveRecord::Schema.define(version: 20180110034704) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.string   "page"
+    t.integer  "card_category_id"
   end
+
+  add_index "cards", ["card_category_id"], name: "index_cards_on_card_category_id", using: :btree
 
   create_table "care_team_doctor_statuses", force: :cascade do |t|
     t.integer  "care_team_id"
@@ -374,6 +383,7 @@ ActiveRecord::Schema.define(version: 20180110034704) do
   add_index "wallets", ["doctor_id"], name: "index_wallets_on_doctor_id", using: :btree
   add_index "wallets", ["user_id"], name: "index_wallets_on_user_id", using: :btree
 
+  add_foreign_key "cards", "card_categories"
   add_foreign_key "care_team_doctor_statuses", "care_teams"
   add_foreign_key "care_team_doctor_statuses", "doctors"
   add_foreign_key "care_teams", "users"

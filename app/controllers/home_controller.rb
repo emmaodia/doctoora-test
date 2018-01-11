@@ -17,6 +17,8 @@ class HomeController < ApplicationController
 		end
 
 		@admin_notifications_count = AdminNotification.where('noted = ?', false).count
+
+		@card_categories = CardCategory.all
 	end
 	
 	def knowledgebase

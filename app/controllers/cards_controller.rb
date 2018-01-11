@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
 
-	before_action :authenticate_admin!
+	before_action :authenticate_admin!, except: [:show_category]
 
 	def index
 		@cards = Card.all
@@ -8,10 +8,12 @@ class CardsController < ApplicationController
 
 	def new
 		@card = Card.new
+		@categories = CardCategory.all.map(&:name)
 	end
 	
 	def create
-		@card = Card.new(card_params)
+		category = CardCategory.find_by_name(params[:card][:card_category])
+		@card = category.cards.new(card_params)
 
 		if @card.save
 			flash[:notice] = "Card created"
@@ -20,6 +22,11 @@ class CardsController < ApplicationController
 			flash[:notice] = "Problem creating card"
 			render 'new'
 		end
+	end
+
+	def show_category
+		@category = CardCategory.find(params[:id])
+		@cards = @category.cards.all
 	end
 
 	def edit

@@ -4,4 +4,5 @@ class Card < ActiveRecord::Base
   	validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
   	# validates_attachment_size :image, less_than: 2.megabytes
 
+  	belongs_to :card_category
 end

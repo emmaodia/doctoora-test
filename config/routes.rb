@@ -34,6 +34,11 @@ Rails.application.routes.draw do
   post 'admin/products/categories/add' => 'admin#add_product_category', as: :add_product_category
   get 'admin/products/categories/:category_name/products' => 'admin#category_products', as: :category_products
 
+  get 'admin/cards/categories' => 'admin#card_categories', as: :admin_card_categories
+  get 'admin/cards/categories/new' => 'admin#new_card_category', as: :new_card_category
+  post 'admin/cards/categories/add' => 'admin#add_card_category', as: :add_card_category
+  get 'admin/cards/categories/:category_name/cards' => 'admin#category_cards', as: :category_cards
+
   get 'admin/notifications' => 'admin#notifications', as: :admin_notifications
   post 'admin/notification/:id/noted' => 'admin#noted', as: :admin_noted
 
@@ -101,6 +106,7 @@ Rails.application.routes.draw do
   resources :clinics
 
   resources :cards
+  get 'cards/categories/:id' => 'cards#show_category', as: :show_card_category
 
   resources :wallet, only: [:show]
   get '/wallet/pay/:amount' => "wallet#pay_from_wallet", as: :pay_from_wallet
