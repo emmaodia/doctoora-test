@@ -6,13 +6,14 @@ class HomeController < ApplicationController
 		if user_signed_in?
 			@user = current_user
 			@past_appointments = Consultation.where("date_and_time <= ? AND user_id = ?", Time.now, @user.id)
-			@upcoming_appointments = Consultation.where("date_and_time >= ? AND user_id = ?", Time.now, @user.id)
+			@upcoming_appointments = Consultation.where("date_and_time >= ? AND user_id = ? AND status = ?", Time.now, @user.id, "accepted")
+			@appointment_requests = Consultation.where("date_and_time >= ? AND user_id = ? AND status = ?", Time.now, @user.id, "pending")
 		elsif doctor_signed_in?
 			@doctor = current_doctor
 			date = Date.today
 			@wallet_balance = Wallet.find_by_doctor_id(@doctor.id).balance
 			@upcoming_appointments = @doctor.consultations.where('date_and_time >= ? AND date_and_time <= ? AND status =?', Time.zone.now.beginning_of_day, Time.zone.now.end_of_day, "accepted")
-			@appointment_requests = @doctor.consultations.where('status = ?', 'pending')
+			@appointment_requests = @doctor.consultations.where('status = ? AND date_and_time >= ?', 'pending', Time.now)
 			@past_appointments = @doctor.consultations.where('date_and_time < ?', Time.zone.now.beginning_of_day)
 		end
 
