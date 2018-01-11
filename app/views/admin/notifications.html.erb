@@ -7,7 +7,7 @@
 		<% @notifications.each do |notification| %>
 			<li>
 				<p><%= notification.notification_text %></p>
-				<p>Referred by:</p>
+				<p>Done by:</p>
 				<% if notification.user_class == "Patient" %>
 					<p><%= get_patient_name notification.user_id %> (Patient)</p>
 				<% elsif notification.user_class == "Doctor" %>

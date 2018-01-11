@@ -27,6 +27,8 @@ class DoctorConsultationController < ApplicationController
 		notify! consultation.user_id, consultation.doctor_id, "Your consultation booking has been rejected by", 
 		"You have rejected a consultation for", "/consultation", "doctor_consultation" #notify before doctor set to nil
 
+		notify_admin! "Consultation ID #{consultation.id} has been rejected by Doctor.", "Doctor", current_doctor.id
+
 		consultation.doctor_id = nil
 		consultation.save
 
