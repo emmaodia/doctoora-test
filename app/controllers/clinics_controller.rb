@@ -8,6 +8,8 @@ class ClinicsController < ApplicationController
 
 	def new
 		@clinic = Clinic.new
+		@lgas = User::LGAS
+		@states = User::STATES
 	end
 
 	def create

@@ -15,8 +15,13 @@
 		</div>
 
 		<div class="form-group">
-			<%= f.label "Town/City", :class => "control-label" %>
-			<%= f.text_field :town, :class => "form-control" %>
+			<%= f.label :state, :class => "control-label" %>
+			<%= f.select :state, @states, :class => "form-control" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.label "Local Government Area", :class => "control-label" %>
+			<%= f.select :town, @lgas, :class => "form-control" %>
 		</div>
 
 		<div class="form-group">
@@ -26,7 +31,10 @@
 
 		<div class="form-group">
 			<%= f.label "Rental Cost", :class => "control-label" %>
-			<%= f.text_field :rental_cost, :class => "form-control", :placeholder => "₦" %>
+			<div clas="input-group">
+				<span class="input-group-addon">₦</span>
+				<%= f.number_field :rental_cost, :class => "form-control" %>
+			</div>
 		</div>
 
 		<div class="form-group">
