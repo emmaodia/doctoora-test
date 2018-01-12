@@ -1,7 +1,11 @@
 class HomeController < ApplicationController
 
 	def index
-		@cards = Card.where('page = ?', 'Home')
+		if user_signed_in? 
+			@cards = Card.where('page = ?', 'Home - Patient') 
+		elsif doctor_signed_in?
+			@cards = Card.where('page = ?', 'Home - Health Professional')
+		end
 		
 		if user_signed_in?
 			@user = current_user
