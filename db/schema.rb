@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180112164759) do
+ActiveRecord::Schema.define(version: 20180112212058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -215,6 +215,7 @@ ActiveRecord::Schema.define(version: 20180112164759) do
     t.integer  "clinic_consultation_fee", default: 0
     t.integer  "video_consultation_fee",  default: 0
     t.string   "state"
+    t.integer  "unread_messages",         default: 0
   end
 
   add_index "doctors", ["email"], name: "index_doctors_on_email", unique: true, using: :btree
@@ -378,6 +379,7 @@ ActiveRecord::Schema.define(version: 20180112164759) do
     t.string   "phone"
     t.string   "exercise"
     t.string   "state"
+    t.integer  "unread_messages",        default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

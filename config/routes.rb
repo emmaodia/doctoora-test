@@ -80,7 +80,7 @@ Rails.application.routes.draw do
   post 'consultation/:id/accept' => "doctor_consultation#accept_consultation", as: :accept_consultation
   post 'consultation/:id/reject' => "doctor_consultation#reject_consultation", as: :reject_consultation
 
-  resources :conversations do
+  resources :conversations, except: :new do
     resources :messages
   end
 
@@ -116,6 +116,9 @@ Rails.application.routes.draw do
   post '/wallet/:user_id/top_up' => "wallet#top_up", as: :top_up
 
   put '/doctor/:id/toggle' => "doctor_profile#toggle_availability", as: :toggle_availability
+
+  get 'conversations/select/type' => 'conversations#type_select', as: :conversations_type_select
+  get '/conversation/new/:type' => "conversations#new", as: :new_conversation
   # Example resource route with options:
   #   resources :products do
   #     member do

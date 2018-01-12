@@ -24,7 +24,7 @@
             <%= link_to "Appointments", consultation_index_path %>
         </li>
         <li>
-            <% if unread_messages? user.id %>
+            <% if unread_messages? %>
                 <img src="<%= asset_path( 'icons/message-with-notification.svg' ) %>" class="sidebar-icon" />
                 <%= link_to "Messages", conversations_path %>
             <% else %>

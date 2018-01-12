@@ -39,28 +39,13 @@ module ApplicationHelper
 		return current_doctor.id == params[:id].to_i
 	end
 
-	def unread_messages? id
-		if current_doctor
-			conversations = Conversation.where("sender_id=?", current_doctor.id)
+	def unread_messages?
 
-			conversations.all.each do |conversation|
-				if conversation.sender_unread_messages == true
-					return true
-				end
-			end
-
-		elsif current_user
-			conversations = Conversation.where("recipient_id=?", current_user.id)
-
-			conversations.all.each do |conversation|
-				if conversation.unread_messages == true
-					return true
-				end
-			end
-
+		if user_signed_in?
+			current_user.unread_messages > 0 ? true : false
+		elsif doctor_signed_in?
+			current_doctor.unread_messages > 0 ? true : false
 		end
-			
-		return false
 
 	end
 
