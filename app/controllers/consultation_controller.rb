@@ -82,23 +82,10 @@ class ConsultationController < ApplicationController
 		consultation = Consultation.find(params[:id])
 		doctor = Doctor.find(consultation.professional.to_i)
 
-		payment_method = consultation.payment_method
 		amount = get_consultation_fee doctor, consultation
 
-		if payment_method == "Pay With Card"
-			current_user.transactions.create(amount: amount, plan_id: nil, status: :processing, doctor_id: doctor.id, purpose: :consultation)
-			redirect_to initialize_transaction amount, current_user.email
-		elsif payment_method == "Doctoora Wallet"
-			redirect_to pay_from_wallet_path(amount)
-		elsif payment_method == "Insurance"
-			insurance_provider_id = InsuranceProvider.find_by_name(consultation.insurance_provider).id
-			Transaction.create!(user_id: current_user.id, doctor_id: doctor.id, amount: amount, purpose: :insurance, status: :processing, insurance_provider_id: insurance_provider_id)
-			flash[:notice] = "Thank you #{current_user.first_name}. Your consultation request has been sent and will be verified."
-			redirect_to root_path
-		elsif payment_method == "Pay In Clinic"
-			Transaction.create!(user_id: current_user.id, doctor_id: doctor.id, amount: amount, purpose: :pay_in_clinic, status: :processing)
-			flash[:notice] = "Thank you #{current_user.first_name}. Your consultation request has been sent and will be verified."
-			redirect_to root_path
+		if make_payment consultation.payment_method, amount, doctor.id, "consultation", "Consultation successfully booked." == true
+			notify_consultation_booked doctor.id
 		end
 	end
 
@@ -133,4 +120,7 @@ class ConsultationController < ApplicationController
 		end
 	end
 
+	def notify_consultation_booked doctor_id
+		notify! current_user.id, doctor_id, "You have requested a consultation with", "You have received a new consultation request from", "/consultation", "/doctor_consultation"
+	end
 end

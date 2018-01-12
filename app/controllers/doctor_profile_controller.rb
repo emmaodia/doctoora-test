@@ -36,7 +36,7 @@ class DoctorProfileController < ApplicationController
 	def doctor_profile_params
 		params.require(:doctor).permit(:dob, :gender, :specialization, :specialty, 
 			:ethnicity, :house, :town, :state, :postcode, :country, :avatar, :registration_fee,
-			:consultation_fee, :clinic_visit_fee)
+			:home_consultation_fee, :video_consultation_fee, :clinic_visit_fee)
 	end
 
 end
