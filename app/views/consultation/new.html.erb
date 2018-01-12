@@ -60,7 +60,7 @@
 			<%= f.select :insurance_provider, @insurance_providers, :class => "form-control" %>
 		</div>
 
-		<%= f.submit "Continue", :class => "btn btn-primary", data: { confirm: "Are you sure you want to create this consultation?" } %>
+		<%= f.submit "Continue", :class => "btn btn-primary submit-btn", data: { confirm: "Are you sure you want to create this consultation?" } %>
 
 	<% end %>
 
@@ -97,5 +97,13 @@
     		$('.insurance-providers').css('display', 'none');
     	}
     })
+
+    $('.submit-btn').click(function(){
+    	alert(composeConsultationDetails());
+    })
+
+    function composeConsultationDetails(){
+    	return "REVIEW: Consultation Type: " + $('#consultation_tool').val() + " Price: TBA"
+    }
 
 </script>
