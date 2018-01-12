@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180112212058) do
+ActiveRecord::Schema.define(version: 20180112222448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -291,6 +291,19 @@ ActiveRecord::Schema.define(version: 20180112212058) do
     t.string   "associated_complaint_2"
     t.string   "associated_complaint_3"
     t.string   "alcohol_consumption"
+    t.integer  "temperature"
+    t.integer  "pulse_rate"
+    t.text     "physical_exam"
+    t.text     "mental_exam"
+    t.text     "problems_list"
+    t.string   "differential_diagnosis"
+    t.string   "investigations"
+    t.string   "final_diagnosis"
+    t.text     "comment"
+    t.string   "prescription_name"
+    t.string   "prescription_dosage"
+    t.string   "prescription_regimen"
+    t.string   "prescription_duration"
   end
 
   add_index "patient_reviews", ["consultation_id"], name: "index_patient_reviews_on_consultation_id", using: :btree

@@ -30,15 +30,30 @@ class PatientReviewsController < ApplicationController
 		user_id = params[:user_id]
 		user = User.find user_id
 		patient_review = user.patient_reviews.new(patient_review_params)
-
 		if patient_review.save
-			flash[:notice] = "Review submitted for patient"
-			notify! user_id, current_doctor.id, "You have received a new patient review from",
-			"You have successfully submitted a new patient review for", "/profile/<%= user_id %>", "/patient_reviews"
-			redirect_to root_path
+			redirect_to patient_review_examination_findings_path(patient_review)
 		else
 			flash[:notice] = "Your patient review could not be submitted"
 			redirect_to 'new'
+		end
+	end
+
+	def examination_findings
+		@review = PatientReview.find(params[:id])
+	end
+
+	def submit_examination_findings
+		review = PatientReview.find(params[:id])
+		review.update(examination_findings_params)
+
+		if review.save
+			flash[:notice] = "Review submitted for patient"
+			notify! review.user_id, current_doctor.id, "You have received a patient review from",
+			"You have successfully submitted a patient review for", "/profile/<%= user_id %>", "/patient_reviews"
+			redirect_to root_path
+		else
+			flash[:notice] = "Problem encountered submitting review"
+			render 'new'
 		end
 	end
 
@@ -57,6 +72,11 @@ class PatientReviewsController < ApplicationController
 			:education, :hpi, :medical_history, :drug_history, :family_history, :surgical_history, :drug_reaction,
 			:allergic_reaction, :blood_transfusions, :smoking, :recent_travel, :travel_destination, :sexual_history, :chief_complaint,
 			:associated_complaint_1, :associated_complaint_2, :associated_complaint_3, :alcohol_consumption)
+	end
+
+	def examination_findings_params
+		params.require(:patient_review).permit(:temperature, :pulse_rate, :physical_exam, :mental_exam, :problems_list, :differential_diagnosis,
+			:investigations, :final_diagnosis, :comment, :prescription_name, :prescription_dosage, :prescription_regimen, :prescription_duration)
 	end
 
 end

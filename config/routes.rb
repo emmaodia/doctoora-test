@@ -89,6 +89,8 @@ Rails.application.routes.draw do
   end
 
   get '/user/:user_id/consultation/:consultation_id/review' => "patient_reviews#new", as: :new_user_patient_review
+  get '/review/:id/findings' => "patient_reviews#examination_findings", as: :patient_review_examination_findings
+  post '/review/:id/findings' => "patient_reviews#submit_examination_findings", as: :submit_examination_findings
 
   resources :patient_reviews, only: [:index, :show]
 
