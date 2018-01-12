@@ -2,6 +2,7 @@ class DoctorOnboardingController < ApplicationController
 
 	def new
 		@lgas = User::LGAS
+		@states = User::STATES
 		@doctor = Doctor.find(current_doctor.id)
 		
 		@clinical_specialty_list = Doctor::CLINICAL_SPECIALTY_LIST
@@ -38,7 +39,7 @@ class DoctorOnboardingController < ApplicationController
 
 	def onboarding_params
 		params.require(:doctor).permit(:dob, :gender, :ethnicity, :specialization, :specialty, 
-									   :house, :town, :postcode, :country, :avatar, :registration_fee,
+									   :house, :state, :town, :postcode, :country, :avatar, :registration_fee,
 									   :home_consultation_fee, :video_consultation_fee, :clinic_visit_fee)
 	end
 
