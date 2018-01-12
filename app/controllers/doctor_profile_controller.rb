@@ -7,6 +7,7 @@ class DoctorProfileController < ApplicationController
 	def edit
 		@doctor_profile = Doctor.find(params[:id])
 		@lgas = User::LGAS
+		@states = User::STATES
 		@clinical_specialty_list = Doctor::CLINICAL_SPECIALTY_LIST
 		@non_clinical_specialty_list = Doctor::NON_CLINICAL_SPECIALTY_LIST
 	end
@@ -34,7 +35,7 @@ class DoctorProfileController < ApplicationController
 
 	def doctor_profile_params
 		params.require(:doctor).permit(:dob, :gender, :specialization, :specialty, 
-			:ethnicity, :house, :town, :postcode, :country, :avatar, :registration_fee,
+			:ethnicity, :house, :town, :state, :postcode, :country, :avatar, :registration_fee,
 			:consultation_fee, :clinic_visit_fee)
 	end
 
