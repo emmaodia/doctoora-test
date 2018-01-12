@@ -13,9 +13,9 @@ class ConversationsController < ApplicationController
 
  	def type_select
  		if doctor_signed_in?
- 			@user_classes = ["Patient", "Doctor", "Admin"]
+ 			@user_classes = ["Patient", "Doctor"]
  		elsif user_signed_in?
- 			@user_classes = ["Doctor", "Admin"]
+ 			@user_classes = ["Doctor"]
  		end
  	end
 
