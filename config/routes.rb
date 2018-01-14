@@ -72,7 +72,7 @@ Rails.application.routes.draw do
   get '/plans/:id' => "plans#show", as: :view_product_category
   get '/plan/:id/purchase' => "plans#purchase", as: :purchase_plan
   get 'plans/confirm' => 'plans#confirm_plan'
-  get 'plans/clinics' => 'plans#clinics'
+  get 'plans/view/clinics' => 'plans#clinics', as: :view_clinics
   get 'plans/clinic/:id/book' => 'plans#book_clinic', as: :book_clinic
   post 'plans/clinic/rent/:id' => 'plans#rent_clinic', as: :rent_clinic
 
