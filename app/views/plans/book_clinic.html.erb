@@ -16,6 +16,11 @@
 			<%= f.select :payment_method, ["Pay With Card", "Doctoora Wallet", "Insurance", "Pay In Clinic"], :class => "form-control" %>
 		</div>
 
+		<div class="form-group insurance-providers">
+			<%= f.label :insurance_provider, :class => "control-label" %>
+			<%= f.select :insurance_provider, @insurance_providers, :class => "form-control" %>
+		</div>
+
 		<%= f.submit "Book", :class => "btn btn-primary" %>
 	<% end %>
 </div>
@@ -25,4 +30,12 @@
     	format: "dd/mm/yyyy",
     	startDate: '0'
     });
+
+    $('#clinic_rental_payment_method').change(function(){
+    	if($(this).val() == 'Insurance'){
+    		$('.insurance-providers').css('display', 'block');
+    	} else {
+    		$('.insurance-providers').css('display', 'none');
+    	}
+    })
 </script>

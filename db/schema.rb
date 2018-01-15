@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180112222448) do
+ActiveRecord::Schema.define(version: 20180115114323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,10 +91,11 @@ ActiveRecord::Schema.define(version: 20180112222448) do
     t.date     "date"
     t.time     "time"
     t.datetime "date_and_time"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.string   "payment_method"
     t.integer  "doctor_id"
+    t.string   "insurance_provider"
   end
 
   add_index "clinic_rentals", ["clinic_id"], name: "index_clinic_rentals_on_clinic_id", using: :btree

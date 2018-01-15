@@ -22,6 +22,7 @@ class PlansController < ApplicationController
 	def book_clinic
 		@clinic = Clinic.find params[:id]
 		@clinic_rental = ClinicRental.new
+		@insurance_providers = InsuranceProvider.all.map(&:name)
 	end
 
 	def rent_clinic
@@ -36,6 +37,7 @@ class PlansController < ApplicationController
 
 		if @clinic_rental.save
 			flash[:notice] = "Thank you, you have successfully booked #{clinic.name}"
+			notify_admin! "New clinic rental", "Doctor", current_doctor.id
 		else
 			flash[:notice] = "Clinic could not be rented"
 		end
@@ -82,7 +84,7 @@ class PlansController < ApplicationController
 	private
 
 	def clinic_rental_params
-		params.require(:clinic_rental).permit(:date, :time, :payment_method)
+		params.require(:clinic_rental).permit(:date, :time, :payment_method, :insurance_provider)
 	end
 
 end
