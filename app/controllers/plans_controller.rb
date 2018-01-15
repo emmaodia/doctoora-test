@@ -15,6 +15,27 @@ class PlansController < ApplicationController
 		@plans = @category.plans.all
 	end
 
+	def edit
+		@plan = Plan.find(params[:id])
+		@categories = ProductCategory.all.map(&:name)
+	end
+
+	def update
+		@plan = Plan.find(params[:id])
+		@plan.update(plan_params)
+		@plan.product_category_id = ProductCategory.find_by_name(params[:plan][:product_category]).id
+		@plan.save
+		flash[:notice] = "Product edited successfully"
+		redirect_to admin_plans_path
+	end
+
+	def destroy
+		@plan = Plan.find(params[:id])
+		@plan.destroy
+		flash[:notice] = "Product deleted successfully"
+		redirect_to admin_plans_path
+	end
+
 	def clinics
 		@clinics = Clinic.all
 	end
@@ -85,6 +106,10 @@ class PlansController < ApplicationController
 
 	def clinic_rental_params
 		params.require(:clinic_rental).permit(:date, :time, :payment_method, :insurance_provider)
+	end
+
+	def plan_params
+		params.require(:plan).permit(:title, :description, :price, :type, :category, :image)
 	end
 
 end
