@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-	<div class="row">
+	<div class="row house">
 		<h1> Upcoming Appointments <span style="font-size: 14px"><%= link_to "(view your calendar)", consultation_index_path %></span></h1>
 		<% if @upcoming_appointments == [] %>
 			<p>You have no upcoming appointments. <a href="/consultation/type">Book a consultation
@@ -18,7 +18,7 @@
 
 							<p class="consultation-delete"><%= link_to "cancel appointment", consultation_path(appointment), method: :delete, data: { confirm: "Are you sure you want to delete this consultation?" }, :class => "consultation-delete-link" %></p>
 						</div>
-					</div>	
+					</div>
 				<% end %>
 			</div>
 		<% end %>
@@ -41,7 +41,7 @@
 
 							<p class="consultation-delete"><%= link_to "cancel appointment request", consultation_path(appointment), method: :delete, data: { confirm: "Are you sure you want to cancel this consultation request?" }, :class => "consultation-delete-link" %></p>
 						</div>
-					</div>	
+					</div>
 				<% end %>
 			</div>
 		<% end %>
@@ -63,7 +63,7 @@
 							<p><b>Date: </b><%= appointment.date_and_time.to_date.to_formatted_s(:long) %></p>
 							<p><b>Time: </b><%= appointment.date_and_time.strftime("%I:%M %p") %></p>
 						</div>
-					</div>	
+					</div>
 				<% end %>
 			</div>
 		<% end %>
@@ -118,7 +118,7 @@
 
 								<p class="consultation-delete"><%= link_to "cancel appointment", consultation_path(appointment), method: :delete, data: { confirm: "Are you sure you want to delete this consultation?" }, :class => "consultation-delete-link" %></p>
 							</div>
-						</div>	
+						</div>
 					<% end %>
 				</div>
 			<% end %>

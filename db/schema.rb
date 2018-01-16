@@ -116,7 +116,6 @@ ActiveRecord::Schema.define(version: 20180111170408) do
   end
 
   create_table "consultations", force: :cascade do |t|
-    t.string   "discipline"
     t.string   "service"
     t.string   "tool"
     t.date     "date"
@@ -300,7 +299,6 @@ ActiveRecord::Schema.define(version: 20180111170408) do
     t.integer  "price"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
-    t.string   "type"
     t.string   "category"
     t.string   "image_file_name"
     t.string   "image_content_type"
