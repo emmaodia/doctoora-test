@@ -1,0 +1,18 @@
+.well{
+  background: #d3d8d4 !important;
+  box-shadow: 0px 0px 8px 0px #000000 !important;
+}
+.inner-well{
+  background-color: white;
+  border-radius: .5em;
+  padding-bottom: .5em;
+}
+
+.inner-well h3{
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.inner-well h3, .inner-well p, .btn-patients{
+  padding-left: .5em;
+  padding-top: .5em;
+}
