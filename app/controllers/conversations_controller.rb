@@ -23,7 +23,7 @@ class ConversationsController < ApplicationController
  		params[:type].capitalize!
 
  		if params[:type] == "Doctor"
- 			@doctors = Doctor.where("verified=?", true)
+ 			@doctors = Doctor.where("verified=? AND id!=?", true, current_doctor.id)
  			@message_to_doctor = true
  		elsif params[:type] == "Patient"
  			@patients = User.all
