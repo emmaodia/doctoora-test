@@ -22,7 +22,7 @@ class HomeController < ApplicationController
 			@doctor = current_doctor
 			date = Date.today
 			@wallet_balance = Wallet.find_by_doctor_id(@doctor.id).balance
-			@upcoming_appointments = @doctor.consultations.where('date_and_time >= ? AND date_and_time <= ? AND status =?', Time.zone.now.beginning_of_day, Time.zone.now.end_of_day, "accepted")
+			@upcoming_appointments = @doctor.consultations.where('date_and_time >= ? AND date_and_time <= ? AND status =? AND completed = ?', Time.zone.now.beginning_of_day, Time.zone.now.end_of_day, "accepted", false).order(date: :desc)
 			@appointment_requests = @doctor.consultations.where('status = ? AND date_and_time >= ?', 'pending', Time.now)
 			@past_appointments = @doctor.consultations.where('date_and_time < ?', Time.zone.now.beginning_of_day).limit(5)
 		end

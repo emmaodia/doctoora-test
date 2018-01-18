@@ -13,6 +13,11 @@ class PatientReviewsController < ApplicationController
 	def new
 		@user = User.find(params[:user_id])
 		@consultation_id = params[:consultation_id]
+
+		consultation = Consultation.find @consultation_id
+		consultation.completed = true
+		consultation.save
+		
 		@latest_patient_review = @user.patient_reviews.last if @user.patient_reviews
 		@review = PatientReview.new
 

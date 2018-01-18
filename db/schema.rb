@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180115123057) do
+ActiveRecord::Schema.define(version: 20180118120114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -138,6 +138,7 @@ ActiveRecord::Schema.define(version: 20180115123057) do
     t.string   "payment_method"
     t.text     "user_notes"
     t.string   "insurance_provider", default: "placeholder field"
+    t.boolean  "completed",          default: false
   end
 
   add_index "consultations", ["clinic_id"], name: "index_consultations_on_clinic_id", using: :btree
