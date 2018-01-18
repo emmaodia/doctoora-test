@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180118145350) do
+ActiveRecord::Schema.define(version: 20180118163036) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,6 +103,19 @@ ActiveRecord::Schema.define(version: 20180118145350) do
   add_index "clinic_rentals", ["doctor_id"], name: "index_clinic_rentals_on_doctor_id", using: :btree
   add_index "clinic_rentals", ["transaction_id"], name: "index_clinic_rentals_on_transaction_id", using: :btree
 
+  create_table "clinic_reviews", force: :cascade do |t|
+    t.integer  "cleanliness"
+    t.integer  "customer_service"
+    t.integer  "noise_level"
+    t.integer  "comfort"
+    t.integer  "overall"
+    t.integer  "clinic_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "clinic_reviews", ["clinic_id"], name: "index_clinic_reviews_on_clinic_id", using: :btree
+
   create_table "clinics", force: :cascade do |t|
     t.string   "name"
     t.text     "address"
@@ -159,6 +172,24 @@ ActiveRecord::Schema.define(version: 20180118145350) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
   end
+
+  create_table "doctor_reviews", force: :cascade do |t|
+    t.date     "date"
+    t.integer  "explanation_clarity"
+    t.integer  "courtesy"
+    t.integer  "listening"
+    t.integer  "punctuality"
+    t.integer  "overall"
+    t.integer  "doctor_id"
+    t.integer  "user_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "consultation_id"
+  end
+
+  add_index "doctor_reviews", ["consultation_id"], name: "index_doctor_reviews_on_consultation_id", using: :btree
+  add_index "doctor_reviews", ["doctor_id"], name: "index_doctor_reviews_on_doctor_id", using: :btree
+  add_index "doctor_reviews", ["user_id"], name: "index_doctor_reviews_on_user_id", using: :btree
 
   create_table "doctors", force: :cascade do |t|
     t.string   "email"
@@ -438,9 +469,13 @@ ActiveRecord::Schema.define(version: 20180118145350) do
   add_foreign_key "clinic_rentals", "clinics"
   add_foreign_key "clinic_rentals", "doctors"
   add_foreign_key "clinic_rentals", "transactions"
+  add_foreign_key "clinic_reviews", "clinics"
   add_foreign_key "consultations", "clinics"
   add_foreign_key "consultations", "doctors"
   add_foreign_key "consultations", "users"
+  add_foreign_key "doctor_reviews", "consultations"
+  add_foreign_key "doctor_reviews", "doctors"
+  add_foreign_key "doctor_reviews", "users"
   add_foreign_key "messages", "conversations"
   add_foreign_key "notifications", "doctors"
   add_foreign_key "notifications", "users"

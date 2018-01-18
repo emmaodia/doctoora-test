@@ -2,7 +2,7 @@ class ConsultationController < ApplicationController
 	include PaystackHelper
 
 	def index
-		@consultations = current_user.consultations.where("status = ?", "accepted").order(date: :desc)
+		@consultations = current_user.consultations.where("status = ? AND completed = ?", "accepted", false).order(date: :desc)
 	end
 
 	def type_select

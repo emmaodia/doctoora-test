@@ -1,0 +1,41 @@
+<div>
+
+	<h2>Review for <%= get_doctor_name @doctor_id %></h2>
+	<h4>Consultation held on <%= @consultation_date %></h4>
+
+	<p>With 1 being the lowest and 5 being the highest, kindly rate the health professional based on the following
+	criteria</p>
+
+	<%= form_for @doctor_review do |f| %>
+		<div class="form-group">
+			<%= f.label "Clarity of explanation", :class => "control-label" %>
+			<%= f.select :explanation_clarity, @rating_scale, :class => "form-control" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.label "Courtesy and Respect", :class => "control-label" %>
+			<%= f.select :courtesy, @rating_scale, :class => "form-control" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.label "Listening carefully", :class => "control-label" %>
+			<%= f.select :listening, @rating_scale, :class => "form-control" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.label "Punctuality", :class => "control-label" %>
+			<%= f.select :punctuality, @rating_scale, :class => "form-control" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.label "Overall quality of service", :class => "control-label" %>
+			<%= f.select :overall, @rating_scale, :class => "form-control" %>
+		</div>
+
+		<%= f.hidden_field :doctor_id, value: @doctor_id %>
+		<%= f.hidden_field :user_id, value: @user_id %>
+		<%= f.hidden_field :consultation_id, value: @consultation_id %>
+
+		<%= f.submit "Submit Review", :class => "btn btn-success btn-block" %>
+	<% end %>
+</div>

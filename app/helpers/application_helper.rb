@@ -58,14 +58,4 @@ module ApplicationHelper
 		return Clinic.find(clinic_id).name
 	end
 
-	def get_consultation_fee doctor, consultation
-		if consultation.tool == "Video Call"
-			return doctor.video_consultation_fee
-		elsif consultation.tool == "Home Visit"
-			return doctor.home_consultation_fee
-		elsif consultation.tool == "Clinic Visit"
-			return doctor.clinic_visit_fee
-		end
-	end
-
 end

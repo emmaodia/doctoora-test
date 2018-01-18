@@ -4,6 +4,7 @@ class Consultation < ActiveRecord::Base
 
 	has_many :patient_reviews
 	has_many :prescriptions
+	has_many :doctor_reviews
 
 	def start_time
         self.date #this is for the simple_calendar, refer to documentation: https://github.com/excid3/simple_calendar

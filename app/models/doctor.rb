@@ -22,6 +22,7 @@ class Doctor < ActiveRecord::Base
   has_many :notifications
   has_many :transactions
   has_many :clinic_rentals
+  has_many :doctor_reviews
 
   has_one :wallet, dependent: :destroy
 

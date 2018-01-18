@@ -9,7 +9,7 @@
 
 <div>
 	<% if user_signed_in? %>
-		<%= link_to "End Consultation", consultation_index_path, :class => "end-consultation-link btn btn-block" %>
+		<%= link_to "End Consultation", new_doctor_review_path(@consultation.doctor_id, @consultation.id), :class => "end-consultation-link btn btn-block" %>
 	<% elsif doctor_signed_in? %>
 		<%= link_to "End Consultation", new_user_patient_review_path(params[:user_id], @consultation.id), :class => "end-consultation-link btn btn-block", target: "_blank" %>
 	<% end %>

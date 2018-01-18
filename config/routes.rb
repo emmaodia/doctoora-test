@@ -125,6 +125,10 @@ Rails.application.routes.draw do
 
   get 'conversations/select/type' => 'conversations#type_select', as: :conversations_type_select
   get '/conversation/new/:type' => "conversations#new", as: :new_conversation
+
+  get 'doctor/:doctor_id/review/consultation/:consultation_id' => "doctor_reviews#new", as: :new_doctor_review
+
+  resources :doctor_reviews, only: [:create]
   # Example resource route with options:
   #   resources :products do
   #     member do
