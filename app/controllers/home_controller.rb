@@ -1,11 +1,5 @@
 class HomeController < ApplicationController
 
-	before_action :allow_iframe_requests
-
-	def allow_iframe_requests
-		response.headers.delete('X-Frame-Options')
-	end
-
 	def index
 		if user_signed_in? 
 			@cards = Card.where('page = ?', 'Home - Patient') 
