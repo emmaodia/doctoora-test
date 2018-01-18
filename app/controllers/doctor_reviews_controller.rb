@@ -11,11 +11,16 @@ class DoctorReviewsController < ApplicationController
 
 	def create
 		@doctor_review = DoctorReview.new(review_params)
+		consultation = Consultation.find @doctor_review.consultation_id
 
 		if @doctor_review.save
 			flash[:notice] = "Thanks. Your health professional review has been saved"
 			notify! current_user.id, @doctor_review.doctor_id, "You have submitted a new health professional review", "You have received a new review", "/", "/"
-			redirect_to root_path
+			if consultation.tool == "Clinic Visit"
+				redirect_to clinic_review_path(consultation.clinic_id)
+			else
+				redirect_to root_path
+			end
 		else
 			flash[:notice] = "There has been a problem submitting your review"
 			render 'new'

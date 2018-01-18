@@ -1,0 +1,37 @@
+<div>
+
+	<h2> Health Facility Review form for <%= @clinic.name %></h2>
+
+	<%= form_for @clinic_review do |f| %>
+
+		<div class="form-group">
+			<%= f.label "Cleanliness", :class => "control-label" %>
+			<%= f.select :cleanliness, @rating_scale, :class => "form-control" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.label "Customer Service", :class => "control-label" %>
+			<%= f.select :customer_service, @rating_scale, :class => "form-control" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.label "Noise Level", :class => "control-label" %>
+			<%= f.select :noise_level, @rating_scale, :class => "form-control" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.label "Comfort", :class => "control-label" %>
+			<%= f.select :comfort, @rating_scale, :class => "form-control" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.label "Overall", :class => "control-label" %>
+			<%= f.select :overall, @rating_scale, :class => "form-control" %>
+		</div>
+
+		<%= f.hidden_field :user_id, value: @user_id %>
+		<%= f.hidden_field :clinic_id, value: @clinic_id %>
+
+	<% end %>
+
+</div>

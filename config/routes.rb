@@ -69,7 +69,7 @@ Rails.application.routes.draw do
   resources :consultation, except: :new
 
   get '/plans' => "plans#index"
-  get '/plans/:id' => "plans#show", as: :view_product_category
+  get '/plans/category/:id' => "plans#show", as: :view_product_category
   get '/plan/:id/purchase' => "plans#purchase", as: :purchase_plan
   get 'plans/confirm' => 'plans#confirm_plan'
   get 'plans/view/clinics' => 'plans#clinics', as: :view_clinics
@@ -127,8 +127,11 @@ Rails.application.routes.draw do
   get '/conversation/new/:type' => "conversations#new", as: :new_conversation
 
   get 'doctor/:doctor_id/review/consultation/:consultation_id' => "doctor_reviews#new", as: :new_doctor_review
+  get 'clinic/:clinic_id/review' => "clinic_reviews#new", as: :clinic_review
 
   resources :doctor_reviews, only: [:create]
+
+  resources :clinic_reviews, only: [:create]
   # Example resource route with options:
   #   resources :products do
   #     member do

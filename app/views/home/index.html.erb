@@ -84,7 +84,7 @@
 			<div class="panel panel-body col-md-4">
 				<a href=<%= card.link %>>
 					<% if card.video_url %>
-						<iframe src="<%= card.video_url %>"></iframe>
+						<iframe src="<%= card.video_url %>" frameborder=0></iframe>
 					<% else %>
 						<img src=<%= card.image %> class="card-image" />
 					<% end %>
@@ -190,7 +190,7 @@
 				<div class="panel panel-body col-md-4">
 					<a href=<%= card.link %>>
 						<% if card.video_url %>
-							<iframe src="<%= card.video_url %>"></iframe>
+							<iframe src="<%= card.video_url %>" frameborder="0"></iframe>
 						<% else %>
 							<img src=<%= card.image %> class="card-image" />
 						<% end %>
