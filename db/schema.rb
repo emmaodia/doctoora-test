@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180118120114) do
+ActiveRecord::Schema.define(version: 20180118132239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -268,8 +268,8 @@ ActiveRecord::Schema.define(version: 20180118120114) do
   create_table "patient_reviews", force: :cascade do |t|
     t.text     "review"
     t.integer  "user_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.integer  "doctor_id"
     t.string   "lga"
     t.string   "religion"
@@ -294,7 +294,7 @@ ActiveRecord::Schema.define(version: 20180118120114) do
     t.string   "associated_complaint_2"
     t.string   "associated_complaint_3"
     t.string   "alcohol_consumption"
-    t.integer  "temperature"
+    t.float    "temperature"
     t.integer  "pulse_rate"
     t.text     "physical_exam"
     t.text     "mental_exam"
@@ -303,10 +303,12 @@ ActiveRecord::Schema.define(version: 20180118120114) do
     t.string   "investigations"
     t.string   "final_diagnosis"
     t.text     "comment"
-    t.string   "prescription_name"
-    t.string   "prescription_dosage"
-    t.string   "prescription_regimen"
-    t.string   "prescription_duration"
+    t.string   "blood_pressure"
+    t.integer  "respiratory_rate"
+    t.string   "differential_diagnosis_2"
+    t.string   "differential_diagnosis_3"
+    t.string   "differential_diagnosis_4"
+    t.string   "differential_diagnosis_5"
   end
 
   add_index "patient_reviews", ["consultation_id"], name: "index_patient_reviews_on_consultation_id", using: :btree
@@ -329,6 +331,24 @@ ActiveRecord::Schema.define(version: 20180118120114) do
   end
 
   add_index "plans", ["product_category_id"], name: "index_plans_on_product_category_id", using: :btree
+
+  create_table "prescriptions", force: :cascade do |t|
+    t.string   "name"
+    t.string   "dosage"
+    t.string   "regimen"
+    t.string   "duration"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "patient_review_id"
+    t.integer  "consultation_id"
+    t.integer  "user_id"
+    t.integer  "doctor_id"
+  end
+
+  add_index "prescriptions", ["consultation_id"], name: "index_prescriptions_on_consultation_id", using: :btree
+  add_index "prescriptions", ["doctor_id"], name: "index_prescriptions_on_doctor_id", using: :btree
+  add_index "prescriptions", ["patient_review_id"], name: "index_prescriptions_on_patient_review_id", using: :btree
+  add_index "prescriptions", ["user_id"], name: "index_prescriptions_on_user_id", using: :btree
 
   create_table "product_categories", force: :cascade do |t|
     t.string   "name"
@@ -430,6 +450,10 @@ ActiveRecord::Schema.define(version: 20180118120114) do
   add_foreign_key "patient_reviews", "doctors"
   add_foreign_key "patient_reviews", "users"
   add_foreign_key "plans", "product_categories"
+  add_foreign_key "prescriptions", "consultations"
+  add_foreign_key "prescriptions", "doctors"
+  add_foreign_key "prescriptions", "patient_reviews"
+  add_foreign_key "prescriptions", "users"
   add_foreign_key "transactions", "doctors"
   add_foreign_key "transactions", "insurance_providers"
   add_foreign_key "transactions", "users"

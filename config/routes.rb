@@ -94,7 +94,9 @@ Rails.application.routes.draw do
   get '/review/:id/findings' => "patient_reviews#examination_findings", as: :patient_review_examination_findings
   post '/review/:id/findings' => "patient_reviews#submit_examination_findings", as: :submit_examination_findings
 
-  resources :patient_reviews, only: [:index, :show]
+  resources :patient_reviews, only: [:index, :show] do
+    resources :prescription, only: [:new, :create]
+  end
 
   get '/knowledgebase' => 'home#knowledgebase'
   get 'refer' => 'home#render_refer_form'

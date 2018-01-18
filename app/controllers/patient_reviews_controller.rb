@@ -52,10 +52,7 @@ class PatientReviewsController < ApplicationController
 		review.update(examination_findings_params)
 
 		if review.save
-			flash[:notice] = "Review submitted for patient"
-			notify! review.user_id, current_doctor.id, "You have received a patient review from",
-			"You have successfully submitted a patient review for", "/profile/<%= user_id %>", "/patient_reviews"
-			redirect_to root_path
+			redirect_to new_patient_review_prescription_path(review.id)
 		else
 			flash[:notice] = "Problem encountered submitting review"
 			render 'new'
@@ -80,8 +77,9 @@ class PatientReviewsController < ApplicationController
 	end
 
 	def examination_findings_params
-		params.require(:patient_review).permit(:temperature, :pulse_rate, :physical_exam, :mental_exam, :problems_list, :differential_diagnosis,
-			:investigations, :final_diagnosis, :comment, :prescription_name, :prescription_dosage, :prescription_regimen, :prescription_duration)
+		params.require(:patient_review).permit(:temperature, :blood_pressure, :pulse_rate, :respiratory_rate, :physical_exam, :mental_exam, :problems_list, :differential_diagnosis,
+			:differential_diagnosis_2, :differential_diagnosis_3, :differential_diagnosis_4, :differential_diagnosis_5, 
+			:investigations, :final_diagnosis, :comment)
 	end
 
 end
