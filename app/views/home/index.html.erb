@@ -83,7 +83,11 @@
 		<% @cards.each do |card| %>
 			<div class="panel panel-body col-md-4">
 				<a href=<%= card.link %>>
-					<img src=<%= card.image %> class="card-image" />
+					<% if card.video_url %>
+						<iframe src="<%= card.video_url %>"></iframe>
+					<% else %>
+						<img src=<%= card.image %> class="card-image" />
+					<% end %>
 					<h3><%= card.title %></a></h3>
 				</a>
 				<p><%= card.body %></p>
@@ -185,7 +189,11 @@
 			<% @cards.each do |card| %>
 				<div class="panel panel-body col-md-4">
 					<a href=<%= card.link %>>
-						<img src=<%= card.image %> class="card-image" />
+						<% if card.video_url %>
+							<iframe src="<%= card.video_url %>"></iframe>
+						<% else %>
+							<img src=<%= card.image %> class="card-image" />
+						<% end %>
 						<h3><%= card.title %></a></h3>
 					</a>
 					<p><%= card.body %></p>
