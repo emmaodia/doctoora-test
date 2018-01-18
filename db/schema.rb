@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180118132239) do
+ActiveRecord::Schema.define(version: 20180118145350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -162,11 +162,11 @@ ActiveRecord::Schema.define(version: 20180118132239) do
 
   create_table "doctors", force: :cascade do |t|
     t.string   "email"
-    t.string   "encrypted_password",      default: "",   null: false
+    t.string   "encrypted_password",     default: "",   null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",           default: 0,    null: false
+    t.integer  "sign_in_count",          default: 0,    null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -180,8 +180,8 @@ ActiveRecord::Schema.define(version: 20180118132239) do
     t.string   "town"
     t.string   "postcode"
     t.string   "country"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.string   "mdcn_file_name"
     t.string   "mdcn_content_type"
     t.integer  "mdcn_file_size"
@@ -209,16 +209,14 @@ ActiveRecord::Schema.define(version: 20180118132239) do
     t.string   "specialization"
     t.string   "specialty"
     t.boolean  "verified"
-    t.string   "title",                   default: ""
-    t.integer  "registration_fee",        default: 0
-    t.integer  "consultation_fee",        default: 0
-    t.integer  "clinic_visit_fee",        default: 0
-    t.boolean  "available",               default: true
-    t.integer  "home_consultation_fee",   default: 0
-    t.integer  "clinic_consultation_fee", default: 0
-    t.integer  "video_consultation_fee",  default: 0
+    t.string   "title",                  default: ""
+    t.integer  "registration_fee",       default: 0
+    t.integer  "clinic_visit_fee",       default: 0
+    t.boolean  "available",              default: true
+    t.integer  "home_consultation_fee",  default: 0
+    t.integer  "video_consultation_fee", default: 0
     t.string   "state"
-    t.integer  "unread_messages",         default: 0
+    t.integer  "unread_messages",        default: 0
   end
 
   add_index "doctors", ["email"], name: "index_doctors_on_email", unique: true, using: :btree
