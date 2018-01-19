@@ -77,31 +77,51 @@ class PlansController < ApplicationController
 	end
 
 	def confirm_plan
+
 		if user_signed_in?
 			transaction = Transaction.where(user_id: current_user.id).last
+
+			transaction.status = :complete
+			transaction.save
+
+			user = User.find(current_user.id)
+
+			if transaction.purpose == "clinic_rental"
+				#redirected here from clinic_rental_controller#payment
+				flash[:notice] = "Thank you. Your clinic_rental request has been sent and will be verified"
+				notify! current_user.id, transaction.doctor_id, "You have requested a clinic_rental with",
+				"You have received a new clinic_rental request from", "/clinic_rental", "/doctor_clinic_rental"
+			elsif transaction.purpose == "purchase"
+				user.plan_id = transaction.plan_id
+				user.save
+				flash[:notice] = "You have successfully purchased the product"
+			elsif transaction.purpose == "topup"
+				wallet = user.wallet
+				wallet.balance += transaction.amount
+				wallet.save
+				flash[:notice] = "Wallet successfully topped up"
+			end
+
 		elsif doctor_signed_in?
-			transaction = Transaction.where(doctor_id: current_doctor.id).last
-		end
+			transaction = Transaction.where(user_id: current_doctor.id).last
 
-		transaction.status = :complete
-		transaction.save
+			transaction.status = :complete
+			transaction.save
 
-		user = User.find(current_user.id)
+			doctor = Doctor.find(current_doctor.id)
 
-		if transaction.purpose == "clinic_rental"
-			#redirected here from clinic_rental_controller#payment
-			flash[:notice] = "Thank you. Your clinic_rental request has been sent and will be verified"
-			notify! current_user.id, transaction.doctor_id, "You have requested a clinic_rental with",
-			"You have received a new clinic_rental request from", "/clinic_rental", "/doctor_clinic_rental"
-		elsif transaction.purpose == "purchase"
-			user.plan_id = transaction.plan_id
-			user.save
-			flash[:notice] = "You have successfully purchased the product"
-		elsif transaction.purpose == "topup"
-			wallet = user.wallet
-			wallet.balance += transaction.amount
-			wallet.save
-			flash[:notice] = "Wallet successfully topped up"
+			if transaction.purpose == "clinic_rental"
+				#redirected here from clinic_rental_controller#payment
+				flash[:notice] = "Thank you. Your clinic_rental request has been sent and will be verified"
+			elsif transaction.purpose == "purchase"
+				flash[:notice] = "You have successfully purchased the product"
+			elsif transaction.purpose == "topup"
+				wallet = doctor.wallet
+				wallet.balance += transaction.amount
+				wallet.save
+				flash[:notice] = "Wallet successfully topped up"
+			end
+			
 		end
 		redirect_to root_path
 	end
