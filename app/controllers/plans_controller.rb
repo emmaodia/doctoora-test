@@ -78,6 +78,8 @@ class PlansController < ApplicationController
 
 	def confirm_plan
 
+		#DRY this out
+
 		if user_signed_in?
 			transaction = Transaction.where(user_id: current_user.id).last
 
@@ -103,7 +105,7 @@ class PlansController < ApplicationController
 			end
 
 		elsif doctor_signed_in?
-			transaction = Transaction.where(user_id: current_doctor.id).last
+			transaction = Transaction.where(doctor_id: current_doctor.id).last
 
 			transaction.status = :complete
 			transaction.save
@@ -121,7 +123,7 @@ class PlansController < ApplicationController
 				wallet.save
 				flash[:notice] = "Wallet successfully topped up"
 			end
-			
+
 		end
 		redirect_to root_path
 	end
