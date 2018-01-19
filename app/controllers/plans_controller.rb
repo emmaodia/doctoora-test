@@ -77,7 +77,11 @@ class PlansController < ApplicationController
 	end
 
 	def confirm_plan
-		transaction = Transaction.where(user_id: current_user.id).last
+		if user_signed_in?
+			transaction = Transaction.where(user_id: current_user.id).last
+		elsif doctor_signed_in?
+			transaction = Transaction.where(doctor_id: current_doctor.id).last
+		end
 
 		transaction.status = :complete
 		transaction.save

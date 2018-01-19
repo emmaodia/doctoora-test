@@ -24,8 +24,8 @@
 		</div>
 
 		<%= f.hidden_field :user_id, value: @user_id %>
-		<%= f.hidden_field :user_id, value: @doctor_id %>
-		<%= f.hidden_field :user_id, value: @consultation_id %>
+		<%= f.hidden_field :doctor_id, value: @doctor_id %>
+		<%= f.hidden_field :consultation_id, value: @consultation_id %>
 
 		<%= f.submit "Add Additional Prescription To This", :class => "btn btn-block btn-success" %>
 		<%= f.submit "Add This As Final Prescription", :class => "btn btn-block btn-success" %>
