@@ -73,7 +73,7 @@ class ConsultationController < ApplicationController
 	def destroy
 		@consultation = Consultation.find(params[:id])
     	@consultation.destroy
-    	notify! current_user.id, @consultation.doctor_id, "You have cancelled the consultation with", "Your consultation with the following patient has been cancelled: ", "/consultation", "/doctor_consultation"
+    	notify! @consultation.user_id, @consultation.doctor_id, "You have cancelled the consultation with", "Your consultation with the following patient has been cancelled: ", "/consultation", "/doctor_consultation"
     	flash[:notice] = "Your consultation has been deleted successfully"
     	redirect_to(:back)
 	end
