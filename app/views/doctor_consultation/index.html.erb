@@ -1,42 +1,44 @@
-<h1> Your Confirmed Consultations </h1>
+<div class="center">
+	<h1> Your Confirmed Consultations </h1>
 
-<div>
-	<%= month_calendar events: @consultations do |date, consultations| %>
-	  <%= date %>
+	<div>
+		<%= month_calendar events: @consultations do |date, consultations| %>
+		  <%= date %>
 
-	  <% consultations.each do |consultation| %>
-	    <div class="patient-appointment">
-	    	<%= consultation.time.strftime("%H:%M") %> <button class="link-button" value="<%= consultation.id %>"><%= get_patient_name(consultation.user_id) %></button>
-	    </div>
+		  <% consultations.each do |consultation| %>
+		    <div class="patient-appointment">
+		    	<%= consultation.time.strftime("%H:%M") %> <button class="link-button" value="<%= consultation.id %>"><%= get_patient_name(consultation.user_id) %></button>
+		    </div>
 
-	    <div id="consultation-<%= consultation.id%>" class="patient-records">
-			<p><%= consultation.tool %></p>
-			<% if consultation.status == "pending" %>
-				<p><span><%=link_to "approve", accept_consultation_path(consultation.id), method: :post %></span>  <span><%= link_to "reject", reject_consultation_path(consultation.id), method: :post %></span></p>
-				<p>
-			<% elsif consultation.status != "pending" && consultation.tool == "Video Call" && consultation.date_and_time.today? %>
-				<%= link_to "Start Consultation", consultation_path(consultation, :user_id => consultation.user_id)%>
-			<% elsif consultation.status != "pending" && consultation.tool == "Video Call" %>
-				<p>Video call on day of consultation</p>
-			<% elsif consultation.status && consultation.tool == "Phone Call" %>
-				<p><i class="glyphicon glyphicon-earphone" style="color: #333; font-size: 15px"></i> <%= user_phone_number consultation.user_id %></p>
-			<% elsif consultation.status != "pending" && consultation.tool == "Clinic Visit" %>
-				<%= get_clinic_address consultation.clinic_id %>
-			<% else %>
-				<p>Begin the consultation using the desired method</p>
-			<% end %>
-			<p><%= consultation.service %></p>
-			</p>
-		</div>
-	  <% end %>
-	<% end %>
+		    <div id="consultation-<%= consultation.id%>" class="patient-records">
+				<p><%= consultation.tool %></p>
+				<% if consultation.status == "pending" %>
+					<p><span><%=link_to "approve", accept_consultation_path(consultation.id), method: :post %></span>  <span><%= link_to "reject", reject_consultation_path(consultation.id), method: :post %></span></p>
+					<p>
+				<% elsif consultation.status != "pending" && consultation.tool == "Video Call" && consultation.date_and_time.today? %>
+					<%= link_to "Start Consultation", consultation_path(consultation, :user_id => consultation.user_id)%>
+				<% elsif consultation.status != "pending" && consultation.tool == "Video Call" %>
+					<p>Video call on day of consultation</p>
+				<% elsif consultation.status && consultation.tool == "Phone Call" %>
+					<p><i class="glyphicon glyphicon-earphone" style="color: #333; font-size: 15px"></i> <%= user_phone_number consultation.user_id %></p>
+				<% elsif consultation.status != "pending" && consultation.tool == "Clinic Visit" %>
+					<%= get_clinic_address consultation.clinic_id %>
+				<% else %>
+					<p>Begin the consultation using the desired method</p>
+				<% end %>
+				<p><%= consultation.service %></p>
+				</p>
+			</div>
+		  <% end %>
+		<% end %>
 
+	</div>
+
+	<script>
+		var consultationID;
+		$('.link-button').click(function(){
+			consultationID = $(this).val();
+			$('#consultation-'+consultationID).toggle();
+		})
+	</script>
 </div>
-
-<script>
-	var consultationID;
-	$('.link-button').click(function(){
-		consultationID = $(this).val();
-		$('#consultation-'+consultationID).toggle();
-	})
-</script>

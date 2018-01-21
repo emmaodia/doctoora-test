@@ -1,9 +1,9 @@
-<div class="col-md-6 onboarding-form">
+<div class="col-md-6 onboarding-form center">
 
 	<h2>Upload Your Documents - PDFs</h2>
 
 	<%= form_for @doctor, url: doctor_onboarding_create_path, method: :post do |f| %>
-			
+
 		<div class="form-group">
 			<%= f.label "Professional Certification (Annual Practice License/MDCN License)", :class => "control-label" %>
 			<%= f.file_field :mdcn, :class => "form-control", :required => true %>
