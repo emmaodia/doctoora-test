@@ -1,98 +1,91 @@
 <div class="col-md-8 profile">
+	<div class="well">
+		<div class="inner-well">
+			<div class="table-responsive">
+				<table class="table">
+					<thead>
+						<tr>
+							<% if my_profile? %>
+								<th><%= link_to "edit", edit_profile_path(@user) %></th>
+							<% end %>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Name</td>
+							<td><%= @user.first_name %> <%= @user.last_name %></td>
+						</tr>
+						<tr>
+							<td>Gender</td>
+							<td><%= @user.gender %></td>
+						</tr>
+						<tr>
+							<td>Date of birth</td>
+							<td><%= @user.dob %></td>
+						</tr>
+						<tr>
+							<td>Ethnicity</td>
+							<td><%= @user.ethnicity %></td>
+						</tr>
+						<tr>
+							<td>Phone Number</td>
+							<td><%= @user.phone %></td>
+						</tr>
+						<tr>
+							<td>Height</td>
+							<td><%= @user.height %></td>
+						</tr>
+						<tr>
+							<td>Weight</td>
+							<td><%= @user.weight %></td>
+						</tr>
+						<tr>
+							<td>BMI</td>
+							<td>
+								<% if @user.bmi %>
+									<%= @user.bmi.round(2) %>
+								<% else %>
+									<p> N/A </p>
+								<% end %>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
 
-	<div class="table-responsive">
-		<table class="table">
-			<thead>
-				<tr>
-					<% if my_profile? %>
-						<th><%= link_to "edit", edit_profile_path(@user) %></th>
-					<% end %>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>Name</td>
-					<td><%= @user.first_name %> <%= @user.last_name %></td>
-				</tr>
-				<tr>
-					<td>Gender</td>
-					<td><%= @user.gender %></td>
-				</tr>
-				<tr>
-					<td>Date of birth</td>
-					<td><%= @user.dob %></td>
-				</tr>
-				<tr>
-					<td>Ethnicity</td>
-					<td><%= @user.ethnicity %></td>
-				</tr>
-				<tr>
-					<td>Phone Number</td>
-					<td><%= @user.phone %></td>
-				</tr>
-				<tr>
-					<td>Height</td>
-					<td><%= @user.height %></td>
-				</tr>
-				<tr>
-						<td>LGA</td>
-						<td><%= @user.town %></td>
-					</tr>
-					<tr>
-						<td>State</td>
-						<td><%= @user.state %></td>
-					<tr>
-				<tr>
-					<td>Weight</td>
-					<td><%= @user.weight %></td>
-				</tr>
-				<tr>
-					<td>BMI</td>
-					<td>
-						<% if @user.bmi %>
-							<%= @user.bmi.round(2) %>
-						<% else %>
-							<p> N/A </p>
-						<% end %>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-
-	<div>
-		<h3>Existing Conditions</h3>
-		<p>Conditions that affect or have affected more than
-		one person in your family</p>
-		<p><%= @user.conditions if @user.conditions%></p>
-		<%= link_to_if my_profile?, "Add", edit_profile_path(@user), :class => "btn btn-primary" %>
-
-		<h3>Long lasting Conditions</h3>
-		<%= link_to_if my_profile?, "Add", edit_profile_path(@user), :class => "btn btn-primary" %>
-	</div>
-
-	<div>
-		<h3>Vaccination</h3>
-		<p>To the best of your knowledge what vaccinations have you had, from childhood till now?</p>
-		<% if @user.vaccinations && @user.vaccinations != ""%>
-			<% @user.vaccinations.each do |vacc| %>
-				<p><%= vacc %></p>
+		<div class="inner-well">
+			<h3>Existing Conditions</h3>
+			<p>Conditions that affect or have affected more than
+			one person in your family</p>
+			<p><%= @user.conditions if @user.conditions%></p>
+			<%= link_to_if my_profile?, "Add", edit_profile_path(@user), :class => "btn btn-primary" %>
+			<h3>Long lasting Conditions</h3>
+			<%= link_to_if my_profile?, "Add", edit_profile_path(@user), :class => "btn btn-primary" %>
+		</div>
+  
+		<div class="inner-well">
+			<h3>Vaccination</h3>
+			<p>To the best of your knowledge what vaccinations have you had, from childhood till now?</p>
+			<% if @user.vaccinations && @user.vaccinations != ""%>
+				<% @user.vaccinations.each do |vacc| %>
+					<p><%= vacc %></p>
+				<% end %>
 			<% end %>
-		<% end %>
-		<%= link_to_if my_profile?, "Add", edit_profile_path(@user), :class => "btn btn-primary" %>
-	</div>
+			<%= link_to_if my_profile?, "Add", edit_profile_path(@user), :class => "btn btn-primary" %>
+		</div>
 
-	<div>
-		<h3>Allergies</h3>
-		<%= link_to_if my_profile?, "Add", edit_profile_path(@user), :class => "btn btn-primary" %>
-	</div>
+		<div class="inner-well">
+			<h3>Allergies</h3>
+			<%= link_to_if my_profile?, "Add", edit_profile_path(@user), :class => "btn btn-primary" %>
+		</div>
 
-	<div>
-		<h3>Medication</h3>
-		<p><%= @user.medication if @user.medication%></p>
-		<%= link_to_if my_profile?, "Add", edit_profile_path(@user), :class => "btn btn-primary" %>
+		<div class="inner-well">
+			<h3>Medication</h3>
+			<p><%= @user.medication if @user.medication%></p>
+			<%= link_to_if my_profile?, "Add", edit_profile_path(@user), :class => "btn btn-primary" %>
+		</div>
 	</div>
-
 	<div>
 		<h3>Patient Reviews</h3>
 		<ul>

@@ -30,7 +30,7 @@ button {
 .link-button{
      background:none!important;
      color:inherit;
-     border:none; 
+     border:none;
      padding:0!important;
      font: inherit;
      /*border is optional*/
@@ -200,10 +200,6 @@ button {
 	margin-left: 2.5em;
 }
 
-#consultation-link {
-    background-color: #4692ce;
-    color: #fff;
-}
 
 .glyphicon-home {
     padding-top: .5em;
@@ -230,7 +226,7 @@ button {
 .notification ul {
     list-style-type: none;
     padding-left: 0;
-} 
+}
 
 .notification ul li {
     margin-bottom: 1em;
@@ -247,10 +243,19 @@ button {
 }
 /* Navbar */
 
+.house, .profile{
+  margin-left: 2%;
+  margin-right: 2%;
+}
 #bootstrap-overrides .navbar {
-	background: #D2D7D3;
-    border-radius: 0;
-    margin-left: 75px;
+  overflow: hidden;
+  z-index: 500;
+  background-color: #D2D7D3;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  border-radius: 0;
+  margin-left: 75px;
 }
 
 #bootstrap-overrides .navbar-nav li a, #bootstrap-overrides .navbar-nav li p {
@@ -272,7 +277,9 @@ button {
 
 #plans {
     background-color: #4692ce;
-} #plans a:hover {
+    box-shadow:  0px 0px 8px 0px #000000;
+}
+#plans a:hover {
     cursor: pointer;
 }
 /* Home Page */
@@ -299,6 +306,12 @@ button {
     border: 0;
 }
 
+.main-area {
+    margin-top: 6em;
+}
+.home-content {
+    margin-top: -6em;
+}
 
 .search-form {
 	width: 100%;
@@ -432,35 +445,6 @@ button {
     padding-top: 50px;
 }
 
-/* Consultation Show Page */
-.end-consultation-link {
-    background-color: #cf6e4d;
-    color: #fff;
-    margin: 1.5em 0;
-} .end-consultation-link2 {
-    background-color: #cf6e4d;
-    color: #fff;
-    margin-bottom: 1.5em;
-}
-
-/* Consultation Form */
-.address-box, .clinic-options, .insurance-providers {
-    display: none;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-}
-
-/* Doctor Consultation Page */
-.patient-appointment {
-    font-weight: bold;
-    color: #c76c4e;
-}
-
-.link-button:hover {
-    border-bottom:2px solid #c76c4e; 
-}
 
 /* Messaging */
 .message-body:hover {
@@ -513,6 +497,7 @@ button {
 .col-md-4 img {
     max-width: 100%
 }
+
 
 .card-image {
     width: 100%;

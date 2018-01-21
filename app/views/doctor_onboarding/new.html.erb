@@ -1,9 +1,9 @@
-<div class="col-md-6 col onboarding-form">
+<div class="col-md-6 col onboarding-form center">
 
 	<h2>Let's build a profile</h2>
 
 	<%= form_for @doctor, url: doctor_onboarding_index_path, html: { multipart: true }, method: :post do |f| %>
-			
+
 		<div class="form-group">
 			<%= f.label :date_of_birth, :class => "control-label" %>
 			<%= f.date_select :dob, :start_year => Date.current.year, :end_year => 1920, :class => "form-control"%>

@@ -1,0 +1,33 @@
+/* Consultation Show Page */
+.end-consultation-link {
+    background-color: #cf6e4d;
+    color: #fff;
+    margin: 1.5em 0;
+} .end-consultation-link2 {
+    background-color: #cf6e4d;
+    color: #fff;
+    margin-bottom: 1.5em;
+}
+
+/* Consultation Form */
+.address-box, .clinic-options, .insurance-providers {
+    display: none;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+/* Doctor Consultation Page */
+.patient-appointment {
+    font-weight: bold;
+    color: #c76c4e;
+}
+
+.link-button:hover {
+    border-bottom:2px solid #c76c4e;
+}
+#consultation-link {
+    background-color: #4692ce;
+    color: #fff;
+}
