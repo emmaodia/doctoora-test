@@ -6,7 +6,7 @@
             <li>
                 <% if doctor.available %>
                     <%= form_for doctor, url: toggle_availability_path(doctor), method: :put do |f| %>
-                        <% f.submit "Status: Available", :class => "btn btn-success btn-block", :id => "toggle-off" %>
+                        <% f.submit "Status: Available", :class => "btn btn-success btn-block toggle-btn", :id => "toggle-off" %>
                     <% end %>
                 <% else %>
                     <%= form_for doctor, url: toggle_availability_path(doctor), method: :put do |f| %>

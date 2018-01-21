@@ -312,6 +312,9 @@ button {
 .home-content {
     margin-top: -6em;
 }
+.toggle-btn {
+    margin-left: 0
+}
 
 .search-form {
 	width: 100%;
