@@ -1,53 +1,51 @@
-<div>
-	<div style="margin-left: 2em">
-		<div>
-			<h2> Health Professional Search </h2>
-			<p>Input search criteria in order to find a health professional near you</p>
-			<%= form_tag(care_path, :method => "post") do %>
+<div style="margin-left: 2em">
+	<div>
+		<h2> Health Professional Search </h2>
+		<p>Input search criteria in order to find a health professional near you</p>
+		<%= form_tag(care_path, :method => "post") do %>
 
-				<div class="form-group">
-					<%= label_tag 'location' %>
-					<%= select_tag :location, options_for_select(@lgas), :class => "form-control search-form", include_blank: true %>
+			<div class="form-group">
+				<%= label_tag 'location' %>
+				<%= select_tag :location, options_for_select(@lgas), :class => "form-control search-form", include_blank: true %>
+			</div>
+
+			<div class="form-group">
+				<%= label_tag 'specialization' %>
+				<%= select_tag :specialization, options_for_select(@specialization), :class => "form-control search-form", :id => "doctor_specialization", include_blank: true %>
+			</div>
+
+			<div class="specialty-group">
+				<div class="form-group non_clinical_specialty_list">
+					<%= label_tag 'specialty' %>
+					<%= select_tag :specialty, options_for_select(@non_clinical_specialty_list), :class => "form-control search-form", include_blank: true %>
 				</div>
 
-				<div class="form-group">
-					<%= label_tag 'specialization' %>
-					<%= select_tag :specialization, options_for_select(@specialization), :class => "form-control search-form", :id => "doctor_specialization", include_blank: true %>
+				<div class="form-group clinical_specialty_list">
+					<%= label_tag 'specialty' %>
+					<%= select_tag :specialty, options_for_select(@clinical_specialty_list), :class => "form-control search-form", include_blank: true %>
 				</div>
-
-				<div class="specialty-group">
-					<div class="form-group non_clinical_specialty_list">
-						<%= label_tag 'specialty' %>
-						<%= select_tag :specialty, options_for_select(@non_clinical_specialty_list), :class => "form-control search-form", include_blank: true %>
-					</div>
-
-					<div class="form-group clinical_specialty_list">
-						<%= label_tag 'specialty' %>
-						<%= select_tag :specialty, options_for_select(@clinical_specialty_list), :class => "form-control search-form", include_blank: true %>
-					</div>
-				</div>
+			</div>
 
 
-				<div class="form-group">
-					<button type="submit" class="btn btn-primary">Search</button>
-				</div>
-			<% end %>
-		</div>
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary">Search</button>
+			</div>
+		<% end %>
+	</div>
 
-		<div>
-			<h2> Your Care Team </h2>
-			<% if @care_team_doctors.length == 0 %>
-				<p>You have no health professionals in your care team. Request a health professional join today by using the form above</p>
-			<% end %>
-			<% @care_team_doctors.each do |doctor| %>
-				<div>
-					<%= image_tag doctor.avatar.url(:medium), :class => "profile-image" %>
-					<a href="/doctor_profile/<%= doctor.id %>"><h4><%= doctor.title %> <%= doctor.first_name %> <%= doctor.last_name %></h4></a>
-					<p><%= doctor.specialization %></p>
-					<p><%= doctor.specialty %></p>
-				</div>
-			<% end %>
-		</div>
+	<div>
+		<h2> Your Care Team </h2>
+		<% if @care_team_doctors.length == 0 %>
+			<p>You have no health professionals in your care team. Request a health professional join today by using the form above</p>
+		<% end %>
+		<% @care_team_doctors.each do |doctor| %>
+			<div>
+				<%= image_tag doctor.avatar.url(:medium), :class => "profile-image" %>
+				<a href="/doctor_profile/<%= doctor.id %>"><h4><%= doctor.title %> <%= doctor.first_name %> <%= doctor.last_name %></h4></a>
+				<p><%= doctor.specialization %></p>
+				<p><%= doctor.specialty %></p>
+			</div>
+		<% end %>
 	</div>
 </div>
 

@@ -1,56 +1,58 @@
-<div>
-	<%= link_to "admin home", admin_path, :class => "admin-home" %>
+<div class="center">
+	<div>
+		<%= link_to "admin home", admin_path, :class => "admin-home" %>
+	</div>
+
+	<h2> <%= get_doctor_name @doctor.id %></h2>
+	<h3><a href="mailto:<%= @doctor.email %>"><%= @doctor.email %></a></h3>
+
+	<div>
+		<div>
+			<h3>Professional Certificate</h3>
+			<% if file_uploaded? @doctor.mdcn_file_name %>
+				<iframe src="<%= serve_over_https @doctor.mdcn.url %>" width="800px" height="950px"></iframe>
+			<% else %>
+				<p style="color: red"> File has not been uploaded </p>
+			<% end %>
+		</div>
+
+		<div>
+			<h3>NYSC Certificate</h3>
+			<% if file_uploaded? @doctor.nysc_file_name %>
+				<iframe src="<%= serve_over_https @doctor.nysc.url %>" width="800px" height="950px"></iframe>
+			<% else %>
+				<p style="color: red"> File has not been uploaded </p>
+			<% end %>
+		</div>
+
+		<div>
+			<h3>University Certificate</h3>
+			<% if file_uploaded? @doctor.uni_cert_file_name %>
+				<iframe src="<%= serve_over_https @doctor.uni_cert.url %>" width="800px" height="950px"></iframe>
+			<% else %>
+				<p style="color: red"> File has not been uploaded </p>
+			<% end %>
+		</div>
+
+		<div>
+			<h3>Proof of ID</h3>
+			<% if file_uploaded? @doctor.id_proof_file_name %>
+				<iframe src="<%= serve_over_https @doctor.id_proof.url %>" width="800px" height="950px"></iframe>
+			<% else %>
+				<p style="color: red"> File has not been uploaded </p>
+			<% end %>
+		</div>
+	</div>
+
+	<%= link_to verify_path, method: :post do%>
+		<button class="btn btn-success btn-block" style="color: white;">
+			Verify Doctor
+		</button>
+	<% end %>
+
+	<style>
+	  #activity-wrapper {
+	    display: none;
+	  }
+	</style>	
 </div>
-
-<h2> <%= get_doctor_name @doctor.id %></h2>
-<h3><a href="mailto:<%= @doctor.email %>"><%= @doctor.email %></a></h3>
-
-<div>
-	<div>
-		<h3>Professional Certificate</h3>
-		<% if file_uploaded? @doctor.mdcn_file_name %>
-			<iframe src="<%= serve_over_https @doctor.mdcn.url %>" width="800px" height="950px"></iframe>
-		<% else %>
-			<p style="color: red"> File has not been uploaded </p>
-		<% end %>
-	</div>
-
-	<div>
-		<h3>NYSC Certificate</h3>
-		<% if file_uploaded? @doctor.nysc_file_name %>
-			<iframe src="<%= serve_over_https @doctor.nysc.url %>" width="800px" height="950px"></iframe>
-		<% else %>
-			<p style="color: red"> File has not been uploaded </p>
-		<% end %>
-	</div>
-
-	<div>
-		<h3>University Certificate</h3>
-		<% if file_uploaded? @doctor.uni_cert_file_name %>
-			<iframe src="<%= serve_over_https @doctor.uni_cert.url %>" width="800px" height="950px"></iframe>
-		<% else %>
-			<p style="color: red"> File has not been uploaded </p>
-		<% end %>
-	</div>
-
-	<div>
-		<h3>Proof of ID</h3>
-		<% if file_uploaded? @doctor.id_proof_file_name %>
-			<iframe src="<%= serve_over_https @doctor.id_proof.url %>" width="800px" height="950px"></iframe>
-		<% else %>
-			<p style="color: red"> File has not been uploaded </p>
-		<% end %>
-	</div>
-</div>
-
-<%= link_to verify_path, method: :post do%>
-	<button class="btn btn-success btn-block" style="color: white;">
-		Verify Doctor
-	</button>
-<% end %>
-
-<style>
-  #activity-wrapper {
-    display: none;
-  }
-</style>
