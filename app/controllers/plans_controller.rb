@@ -15,6 +15,27 @@ class PlansController < ApplicationController
 		@plans = @category.plans.all
 	end
 
+	def edit
+		@plan = Plan.find(params[:id])
+		@categories = ProductCategory.all.map(&:name)
+	end
+
+	def update
+		@plan = Plan.find(params[:id])
+		@plan.update(plan_params)
+		@plan.product_category_id = ProductCategory.find_by_name(params[:plan][:product_category]).id
+		@plan.save
+		flash[:notice] = "Product edited successfully"
+		redirect_to admin_plans_path
+	end
+
+	def destroy
+		@plan = Plan.find(params[:id])
+		@plan.destroy
+		flash[:notice] = "Product deleted successfully"
+		redirect_to admin_plans_path
+	end
+
 	def clinics
 		@clinics = Clinic.all
 	end
@@ -22,6 +43,7 @@ class PlansController < ApplicationController
 	def book_clinic
 		@clinic = Clinic.find params[:id]
 		@clinic_rental = ClinicRental.new
+		@insurance_providers = InsuranceProvider.all.map(&:name)
 	end
 
 	def rent_clinic
@@ -36,6 +58,7 @@ class PlansController < ApplicationController
 
 		if @clinic_rental.save
 			flash[:notice] = "Thank you, you have successfully booked #{clinic.name}"
+			notify_admin! "New clinic rental", "Doctor", current_doctor.id
 		else
 			flash[:notice] = "Clinic could not be rented"
 		end
@@ -82,7 +105,11 @@ class PlansController < ApplicationController
 	private
 
 	def clinic_rental_params
-		params.require(:clinic_rental).permit(:date, :time, :payment_method)
+		params.require(:clinic_rental).permit(:date, :time, :payment_method, :insurance_provider)
+	end
+
+	def plan_params
+		params.require(:plan).permit(:title, :description, :price, :type, :category, :image)
 	end
 
 end

@@ -32,13 +32,18 @@
 		</div>
 
 		<div class="form-group">
-			<%= f.label :town, :class => "control-label" %>
-			<%= f.select :town, @lgas, :class => "form-control", :placeholder => "Required" %>
+			<%= f.label :country, :class => "control-label" %>
+			<%= f.country_select :country, priority_countries: ["NG"] %>
 		</div>
 
 		<div class="form-group">
-			<%= f.label :country, :class => "control-label" %>
-			<%= f.country_select :country%>
+			<%= f.label :state, :class => "control-label" %>
+			<%= f.select :state, @states, :class => "form-control", :placeholder => "Required", :required => true %>
+		</div>
+
+		<div class="form-group">
+			<%= f.label "Local Government Area", :class => "control-label" %>
+			<%= f.select :town, @lgas, :class => "form-control", :placeholder => "Required" %>
 		</div>
 
 		<h3> Health Profile </h3>

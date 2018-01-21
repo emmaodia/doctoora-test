@@ -1,7 +1,7 @@
 class DoctorConsultationController < ApplicationController
 
 	def index
-		@consultations = current_doctor.consultations.all
+		@consultations = current_doctor.consultations.where('completed = ?', false).order(time: :asc)
 	end
 
 	def accept_consultation

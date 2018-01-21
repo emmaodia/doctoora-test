@@ -497,3 +497,8 @@ button {
 .col-md-4 img {
     max-width: 100%
 }
+
+
+.card-image {
+    width: 100%;
+}

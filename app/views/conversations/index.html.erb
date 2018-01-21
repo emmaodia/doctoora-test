@@ -1,5 +1,5 @@
 <div>
-	<%= link_to "start a new conversation", new_conversation_path %>
+	<%= link_to "start a new conversation", conversations_type_select_path %>
 </div>
 
 <ul>
@@ -7,7 +7,7 @@
 		<div class="messaging-main-area">
 			<div class="message-body">
 				<%= link_to conversation_path(conversation) do%>
-					<h4><%= get_sender conversation %></h4>
+					<h4><%= get_sender_or_recipient conversation %></h4>
 					<p><%= conversation.messages.last.body %></p>
 					<p><%= conversation.messages.last.created_at.strftime("%m/%d/%y at %l:%M %p") %></p>
 				<% end %>

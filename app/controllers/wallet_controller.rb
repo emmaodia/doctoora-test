@@ -37,9 +37,11 @@ class WalletController < ApplicationController
 			wallet.balance -= amount
 			wallet.save
 			redirect_to root_path
+			return true
 		else
 			flash[:notice] = "There are insufficient funds in your wallet"
 			redirect_to root_path
+			return false
 		end
 	end
 

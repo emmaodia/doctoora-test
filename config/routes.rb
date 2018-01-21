@@ -69,18 +69,20 @@ Rails.application.routes.draw do
   resources :consultation, except: :new
 
   get '/plans' => "plans#index"
-  get '/plans/:id' => "plans#show", as: :view_product_category
+  get '/plans/category/:id' => "plans#show", as: :view_product_category
   get '/plan/:id/purchase' => "plans#purchase", as: :purchase_plan
   get 'plans/confirm' => 'plans#confirm_plan'
-  get 'plans/clinics' => 'plans#clinics'
+  get 'plans/view/clinics' => 'plans#clinics', as: :view_clinics
   get 'plans/clinic/:id/book' => 'plans#book_clinic', as: :book_clinic
   post 'plans/clinic/rent/:id' => 'plans#rent_clinic', as: :rent_clinic
+  
+  resources :plans, only: [:edit, :update, :destroy]
 
   resources :doctor_consultation
   post 'consultation/:id/accept' => "doctor_consultation#accept_consultation", as: :accept_consultation
   post 'consultation/:id/reject' => "doctor_consultation#reject_consultation", as: :reject_consultation
 
-  resources :conversations do
+  resources :conversations, except: :new do
     resources :messages
   end
 
@@ -89,8 +91,12 @@ Rails.application.routes.draw do
   end
 
   get '/user/:user_id/consultation/:consultation_id/review' => "patient_reviews#new", as: :new_user_patient_review
+  get '/review/:id/findings' => "patient_reviews#examination_findings", as: :patient_review_examination_findings
+  post '/review/:id/findings' => "patient_reviews#submit_examination_findings", as: :submit_examination_findings
 
-  resources :patient_reviews, only: [:index, :show]
+  resources :patient_reviews, only: [:index, :show] do
+    resources :prescription, only: [:new, :create]
+  end
 
   get '/knowledgebase' => 'home#knowledgebase'
   get 'refer' => 'home#render_refer_form'
@@ -116,6 +122,16 @@ Rails.application.routes.draw do
   post '/wallet/:user_id/top_up' => "wallet#top_up", as: :top_up
 
   put '/doctor/:id/toggle' => "doctor_profile#toggle_availability", as: :toggle_availability
+
+  get 'conversations/select/type' => 'conversations#type_select', as: :conversations_type_select
+  get '/conversation/new/:type' => "conversations#new", as: :new_conversation
+
+  get 'doctor/:doctor_id/review/consultation/:consultation_id' => "doctor_reviews#new", as: :new_doctor_review
+  get 'clinic/:clinic_id/review' => "clinic_reviews#new", as: :clinic_review
+
+  resources :doctor_reviews, only: [:create]
+
+  resources :clinic_reviews, only: [:create]
   # Example resource route with options:
   #   resources :products do
   #     member do

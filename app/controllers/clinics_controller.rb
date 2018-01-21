@@ -8,6 +8,8 @@ class ClinicsController < ApplicationController
 
 	def new
 		@clinic = Clinic.new
+		@lgas = User::LGAS
+		@states = User::STATES
 	end
 
 	def create
@@ -47,7 +49,7 @@ class ClinicsController < ApplicationController
 	private
 
 	def clinic_params
-		params.require(:clinic).permit(:name, :address, :phone, :town, :image, :rental_cost)
+		params.require(:clinic).permit(:name, :address, :phone, :town, :state, :image, :rental_cost)
 	end
 
 end

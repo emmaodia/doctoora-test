@@ -26,10 +26,12 @@ class ApplicationController < ActionController::Base
 			current_user.transactions.create(amount: amount, plan_id: nil, status: :processing, doctor_id: doctor_id, purpose: reason_for_payment)
 			flash[:notice] = success_message
 			redirect_to root_path
+			return true
 		elsif payment_method == "Pay In Clinic"
 			current_user.transactions.create(amount: amount, plan_id: nil, status: :processing, doctor_id: doctor_id, purpose: reason_for_payment)
 			flash[:notice] = success_message
 			redirect_to root_path
+			return true
 		end
   	end
 
@@ -39,7 +41,7 @@ class ApplicationController < ActionController::Base
 			redirect_to initialize_transaction amount, current_doctor.email
 		elsif payment_method == "Doctoora Wallet"
 			current_doctor.transactions.create(amount: amount, plan_id: nil, status: :processing, purpose: reason_for_payment)
-			redirect_to pay_from_wallet_path(amount)
+			redirect_to pay_from_wallet_path(amount, reason_for_payment)
 		elsif payment_method == "Insurance"
 			current_doctor.transactions.create(amount: amount, plan_id: nil, status: :processing, purpose: reason_for_payment)
 			flash[:notice] = success_message

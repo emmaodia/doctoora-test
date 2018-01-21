@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180111170408) do
+ActiveRecord::Schema.define(version: 20180118164646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20180111170408) do
     t.datetime "image_updated_at"
     t.string   "page"
     t.integer  "card_category_id"
+    t.string   "video_url"
   end
 
   add_index "cards", ["card_category_id"], name: "index_cards_on_card_category_id", using: :btree
@@ -91,15 +92,31 @@ ActiveRecord::Schema.define(version: 20180111170408) do
     t.date     "date"
     t.time     "time"
     t.datetime "date_and_time"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.string   "payment_method"
     t.integer  "doctor_id"
+    t.string   "insurance_provider"
   end
 
   add_index "clinic_rentals", ["clinic_id"], name: "index_clinic_rentals_on_clinic_id", using: :btree
   add_index "clinic_rentals", ["doctor_id"], name: "index_clinic_rentals_on_doctor_id", using: :btree
   add_index "clinic_rentals", ["transaction_id"], name: "index_clinic_rentals_on_transaction_id", using: :btree
+
+  create_table "clinic_reviews", force: :cascade do |t|
+    t.integer  "cleanliness"
+    t.integer  "customer_service"
+    t.integer  "noise_level"
+    t.integer  "comfort"
+    t.integer  "overall"
+    t.integer  "clinic_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "user_id"
+  end
+
+  add_index "clinic_reviews", ["clinic_id"], name: "index_clinic_reviews_on_clinic_id", using: :btree
+  add_index "clinic_reviews", ["user_id"], name: "index_clinic_reviews_on_user_id", using: :btree
 
   create_table "clinics", force: :cascade do |t|
     t.string   "name"
@@ -113,6 +130,7 @@ ActiveRecord::Schema.define(version: 20180111170408) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "rental_cost",        default: 0
+    t.string   "state"
   end
 
   create_table "consultations", force: :cascade do |t|
@@ -134,6 +152,7 @@ ActiveRecord::Schema.define(version: 20180111170408) do
     t.string   "payment_method"
     t.text     "user_notes"
     t.string   "insurance_provider", default: "placeholder field"
+    t.boolean  "completed",          default: false
   end
 
   add_index "consultations", ["clinic_id"], name: "index_consultations_on_clinic_id", using: :btree
@@ -155,13 +174,31 @@ ActiveRecord::Schema.define(version: 20180111170408) do
     t.datetime "image_updated_at"
   end
 
+  create_table "doctor_reviews", force: :cascade do |t|
+    t.date     "date"
+    t.integer  "explanation_clarity"
+    t.integer  "courtesy"
+    t.integer  "listening"
+    t.integer  "punctuality"
+    t.integer  "overall"
+    t.integer  "doctor_id"
+    t.integer  "user_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "consultation_id"
+  end
+
+  add_index "doctor_reviews", ["consultation_id"], name: "index_doctor_reviews_on_consultation_id", using: :btree
+  add_index "doctor_reviews", ["doctor_id"], name: "index_doctor_reviews_on_doctor_id", using: :btree
+  add_index "doctor_reviews", ["user_id"], name: "index_doctor_reviews_on_user_id", using: :btree
+
   create_table "doctors", force: :cascade do |t|
     t.string   "email"
-    t.string   "encrypted_password",      default: "",   null: false
+    t.string   "encrypted_password",     default: "",   null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",           default: 0,    null: false
+    t.integer  "sign_in_count",          default: 0,    null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -175,8 +212,8 @@ ActiveRecord::Schema.define(version: 20180111170408) do
     t.string   "town"
     t.string   "postcode"
     t.string   "country"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.string   "mdcn_file_name"
     t.string   "mdcn_content_type"
     t.integer  "mdcn_file_size"
@@ -204,14 +241,14 @@ ActiveRecord::Schema.define(version: 20180111170408) do
     t.string   "specialization"
     t.string   "specialty"
     t.boolean  "verified"
-    t.string   "title",                   default: ""
-    t.integer  "registration_fee",        default: 0
-    t.integer  "consultation_fee",        default: 0
-    t.integer  "clinic_visit_fee",        default: 0
-    t.boolean  "available",               default: true
-    t.integer  "home_consultation_fee",   default: 0
-    t.integer  "clinic_consultation_fee", default: 0
-    t.integer  "video_consultation_fee",  default: 0
+    t.string   "title",                  default: ""
+    t.integer  "registration_fee",       default: 0
+    t.integer  "clinic_visit_fee",       default: 0
+    t.boolean  "available",              default: true
+    t.integer  "home_consultation_fee",  default: 0
+    t.integer  "video_consultation_fee", default: 0
+    t.string   "state"
+    t.integer  "unread_messages",        default: 0
   end
 
   add_index "doctors", ["email"], name: "index_doctors_on_email", unique: true, using: :btree
@@ -261,8 +298,8 @@ ActiveRecord::Schema.define(version: 20180111170408) do
   create_table "patient_reviews", force: :cascade do |t|
     t.text     "review"
     t.integer  "user_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.integer  "doctor_id"
     t.string   "lga"
     t.string   "religion"
@@ -287,6 +324,21 @@ ActiveRecord::Schema.define(version: 20180111170408) do
     t.string   "associated_complaint_2"
     t.string   "associated_complaint_3"
     t.string   "alcohol_consumption"
+    t.float    "temperature"
+    t.integer  "pulse_rate"
+    t.text     "physical_exam"
+    t.text     "mental_exam"
+    t.text     "problems_list"
+    t.string   "differential_diagnosis"
+    t.string   "investigations"
+    t.string   "final_diagnosis"
+    t.text     "comment"
+    t.string   "blood_pressure"
+    t.integer  "respiratory_rate"
+    t.string   "differential_diagnosis_2"
+    t.string   "differential_diagnosis_3"
+    t.string   "differential_diagnosis_4"
+    t.string   "differential_diagnosis_5"
   end
 
   add_index "patient_reviews", ["consultation_id"], name: "index_patient_reviews_on_consultation_id", using: :btree
@@ -308,6 +360,24 @@ ActiveRecord::Schema.define(version: 20180111170408) do
   end
 
   add_index "plans", ["product_category_id"], name: "index_plans_on_product_category_id", using: :btree
+
+  create_table "prescriptions", force: :cascade do |t|
+    t.string   "name"
+    t.string   "dosage"
+    t.string   "regimen"
+    t.string   "duration"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "patient_review_id"
+    t.integer  "consultation_id"
+    t.integer  "user_id"
+    t.integer  "doctor_id"
+  end
+
+  add_index "prescriptions", ["consultation_id"], name: "index_prescriptions_on_consultation_id", using: :btree
+  add_index "prescriptions", ["doctor_id"], name: "index_prescriptions_on_doctor_id", using: :btree
+  add_index "prescriptions", ["patient_review_id"], name: "index_prescriptions_on_patient_review_id", using: :btree
+  add_index "prescriptions", ["user_id"], name: "index_prescriptions_on_user_id", using: :btree
 
   create_table "product_categories", force: :cascade do |t|
     t.string   "name"
@@ -373,6 +443,8 @@ ActiveRecord::Schema.define(version: 20180111170408) do
     t.string   "last_name"
     t.string   "phone"
     t.string   "exercise"
+    t.string   "state"
+    t.integer  "unread_messages",        default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -397,9 +469,14 @@ ActiveRecord::Schema.define(version: 20180111170408) do
   add_foreign_key "clinic_rentals", "clinics"
   add_foreign_key "clinic_rentals", "doctors"
   add_foreign_key "clinic_rentals", "transactions"
+  add_foreign_key "clinic_reviews", "clinics"
+  add_foreign_key "clinic_reviews", "users"
   add_foreign_key "consultations", "clinics"
   add_foreign_key "consultations", "doctors"
   add_foreign_key "consultations", "users"
+  add_foreign_key "doctor_reviews", "consultations"
+  add_foreign_key "doctor_reviews", "doctors"
+  add_foreign_key "doctor_reviews", "users"
   add_foreign_key "messages", "conversations"
   add_foreign_key "notifications", "doctors"
   add_foreign_key "notifications", "users"
@@ -407,6 +484,10 @@ ActiveRecord::Schema.define(version: 20180111170408) do
   add_foreign_key "patient_reviews", "doctors"
   add_foreign_key "patient_reviews", "users"
   add_foreign_key "plans", "product_categories"
+  add_foreign_key "prescriptions", "consultations"
+  add_foreign_key "prescriptions", "doctors"
+  add_foreign_key "prescriptions", "patient_reviews"
+  add_foreign_key "prescriptions", "users"
   add_foreign_key "transactions", "doctors"
   add_foreign_key "transactions", "insurance_providers"
   add_foreign_key "transactions", "users"

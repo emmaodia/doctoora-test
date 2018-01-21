@@ -1,0 +1,13 @@
+<div class="col-md-12">
+	<h2>Who would you like to message?</h2>
+
+	<div class="row">
+		<% @user_classes.each do |user_class| %>
+				<%= link_to new_conversation_path(user_class.downcase) do %>
+					<div class="col-md-3 specialization-link">
+						<p><%= user_class %></p>
+					</div>
+				<% end %>
+		<% end %>
+	</div>
+</div>

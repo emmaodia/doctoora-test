@@ -16,7 +16,7 @@
 
 		<div class="form-group clinic-options">
 			<%= f.label "Preferred Clinic", :class => "control-label" %>
-			<%= f.select :clinic_id, @clinics.collect {|c| [ c.name + " " + c.address, c.id ] }, :class => "form-control", required: true, :class => "form-control", required: true %>
+			<%= f.select :clinic_id, @clinics.collect {|c| [ c.name + " " + c.address, c.id ] }, :class => "form-control", required: true %>
 		</div>
 
 		<% if @specialization == nil %>
@@ -47,7 +47,7 @@
 
 		<div class="form-group">
 			<%= f.label "Choose an available professional", :class => "control-label" %>
-			<%= f.select :professional, @doctors.collect {|d| [ d.title + " " + d.first_name + " " + d.last_name + " (" + d.specialty + ")", d.id ] }, :class => "form-control", required: true %>
+			<%= f.select :professional, @doctors.collect {|d| [ d.title + " " + d.first_name + " " + d.last_name + " (" + d.specialty + ")" + " Video Call: ₦" + d.home_consultation_fee.to_s + " Clinic Visit: ₦" + d.clinic_visit_fee.to_s + " Home Visit: ₦" + d.home_consultation_fee.to_s, d.id ] }, :class => "form-control", required: true %>
 		</div>
 
 		<div class="form-group">
@@ -60,7 +60,7 @@
 			<%= f.select :insurance_provider, @insurance_providers, :class => "form-control" %>
 		</div>
 
-		<%= f.submit "Continue", :class => "btn btn-primary", data: { confirm: "Are you sure you want to create this consultation?" } %>
+		<%= f.submit "Continue", :class => "btn btn-primary submit-btn", data: { confirm: "Are you sure you want to create this consultation?" } %>
 
 	<% end %>
 
@@ -97,5 +97,15 @@
     		$('.insurance-providers').css('display', 'none');
     	}
     })
+
+
+</script>
+    // $('.submit-btn').click(function(){
+    // 	alert(composeConsultationDetails());
+    // })
+
+    // function composeConsultationDetails(){
+    // 	return "REVIEW: Consultation Type: " + $('#consultation_tool').val()
+    // }
 
 </script>

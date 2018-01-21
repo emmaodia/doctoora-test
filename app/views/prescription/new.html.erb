@@ -1,0 +1,34 @@
+<div>
+
+	<h2> New Prescription </h2>
+	<%= form_for [@patient_review, @prescription], url: patient_review_prescription_index_path do |f| %>
+
+		<div class="form-group">
+			<%= f.label :name, :class => "control-label" %>
+			<%= f.text_field :name, :class => "form-control" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :dosage, :class => "control-label" %>
+			<%= f.text_field :dosage, :class => "form-control" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :regimen, :class => "control-label" %>
+			<%= f.text_field :regimen, :class => "form-control" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.label :duration, :class => "control-label" %>
+			<%= f.text_field :duration, :class => "form-control" %>
+		</div>
+
+		<%= f.hidden_field :user_id, value: @user_id %>
+		<%= f.hidden_field :user_id, value: @doctor_id %>
+		<%= f.hidden_field :user_id, value: @consultation_id %>
+
+		<%= f.submit "Add Additional Prescription To This", :class => "btn btn-block btn-success" %>
+		<%= f.submit "Add This As Final Prescription", :class => "btn btn-block btn-success" %>
+	<% end %>
+
+</div>

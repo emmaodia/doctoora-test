@@ -9,6 +9,11 @@
 			<p> Rented by: <a href="/doctor_profile/<%= rental.doctor_id %>"><%= get_doctor_name rental.doctor_id %></a></p>
 			<p> Date: <%= rental.date.strftime("%m/%d/%y") %> </p>
 			<p> Time: <%= rental.time.strftime("%H:%M") %></p>
+			<% payment_method = rental.payment_method %>
+			<p> Payment Method: <%= payment_method %> </p>
+			<% if payment_method == "Insurance" %>
+				<p>Insurance Provider: <%= rental.insurance_provider %></p>
+			<% end %>
 		</div>
 	<% end %>
 </div>
