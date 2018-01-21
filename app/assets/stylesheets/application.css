@@ -306,6 +306,12 @@ button {
     border: 0;
 }
 
+.main-area {
+    margin-top: 6em;
+}
+.home-content {
+    margin-top: -6em;
+}
 
 .search-form {
 	width: 100%;
