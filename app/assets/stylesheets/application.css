@@ -284,13 +284,6 @@ button {
 }
 /* Home Page */
 
-.consultation-delete {
-    padding-top: 2.5em;
-}
-
-.consultation-delete-link {
-    color: #cf6e4d;
-}
 
 #doc_wallet_balance {
     color: green;
