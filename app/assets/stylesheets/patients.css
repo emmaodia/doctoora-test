@@ -10,6 +10,10 @@
   border-radius: .5em;
 }
 
+.house h2, .cal {
+  text-align: center;
+}
+
 .app-heading h3{
   padding: .5em;
   text-align: center;
