@@ -2,9 +2,9 @@
 	<div class="center">
 		<% if user_signed_in? %>
 			<div class="row house">
-				<h2> Upcoming Appointments<span style="font-size: 14px" ><%= link_to "(view your calendar)", consultation_index_path %></span></h2>
+				<h2> Upcoming Appointments<span style="font-size: 14px" ><%= link_to "View Your Calendar", consultation_index_path, class: 'btn btn-default' %></span></h2>
 				<% if @upcoming_appointments == [] %>
-					<p>You have no upcoming appointments. <a href="/consultation/type">Book a consultation
+					<p>You have no upcoming appointments. <a href="/consultation/type" class="btn btn-default">Book a consultation
 					today</a></p>
 				<% else %>
 					<div class="row">

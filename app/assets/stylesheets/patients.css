@@ -10,10 +10,6 @@
   border-radius: .5em;
 }
 
-.house h2, .cal {
-  text-align: center;
-}
-
 .app-heading h3{
   padding: .5em;
   text-align: center;
@@ -35,8 +31,6 @@
   font-size: 1em !important;
   transition: color 2s, font-size 2s; !important;
 }
-
-
 
 .inner-well{
   background-color: white;
