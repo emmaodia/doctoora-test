@@ -9,7 +9,7 @@
 				<thead>
 					<tr>
 						<% if my_doctor_profile? %>
-							<th><%= link_to "edit", edit_doctor_profile_path(current_doctor.id) %></th>
+							<th><%= link_to "edit", edit_doctor_profile_path(current_doctor.id), class: 'btn btn-info' %></th>
 						<% end %>
 					</tr>
 				</thead>
@@ -65,7 +65,7 @@
 			</table>
 		</div>
 
-		<%= link_to "Edit Professional Profile" , edit_doctor_profile_path(current_doctor.id) if my_doctor_profile? %>
+		<%= link_to "Edit Professional Profile" , edit_doctor_profile_path(current_doctor.id), class: 'btn btn-info' if my_doctor_profile? %>
 	</div>
 
 	<div>
@@ -78,7 +78,7 @@
 
 		<p>Proof of Identity: <%= verified_doc_file_uploaded? @doctor.id_proof_file_name %></p>
 
-		<%= link_to "Edit Certificates", doctor_onboarding_new_upload_documents_path if my_doctor_profile? %>
+		<%= link_to "Edit Certificates", doctor_onboarding_new_upload_documents_path, class: 'btn btn-info' if my_doctor_profile? %>
 	</div>
 <% else %>
 
