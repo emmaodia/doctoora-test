@@ -1,0 +1,8 @@
+.wallet, .wallet-btn{
+  float: right;
+}
+.consultation-review, .approval{
+  border-top: 1px solid white;
+  text-align: center;
+  padding-top: 1.5em;
+}
