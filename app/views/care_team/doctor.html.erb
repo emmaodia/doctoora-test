@@ -1,6 +1,6 @@
 <div>
-	<h2> Health Professional Search </h2>
-	<p>Input search criteria in order to find a health professional near you</p>
+	<h2> Health Provider Search </h2>
+	<p>Input search criteria in order to find a health provider near you</p>
 	<%= form_tag(care_path, :method => "post") do %>
 
 		<div class="form-group">
@@ -41,7 +41,7 @@
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<a href="/profile/<%= team_user_id %>"><h3><%= get_patient_name team_user_id %></a>'s care team</h3>
-				<h4>Health Professionals in this care team</h4>
+				<h4>Health Providers in this care team</h4>
 				<% team.doctor_ids.each do |id| %>
 					<% doctor = get_doctor_info id %>
 					<a href="/doctor_profile/<%= id %>"><h4><%= get_doctor_name id %></h4></a>
@@ -69,7 +69,7 @@
 					<h3><a href="/profile/<%= @care_team_user[:id]%>"><%= @care_team_user[:name] %></a>'s care team</h3>
 					<div>
 						<% team = get_care_team request.care_team_id %>
-						<h4> Health Professionals in this care team</h4>
+						<h4> Health Providers in this care team</h4>
 						<% team.doctor_ids.each do |id| %>
 							<% doctor = get_doctor_info id %>
 							<a href="/doctor_profile/<%= id %>"><h4><%= get_doctor_name id %></h4></a>

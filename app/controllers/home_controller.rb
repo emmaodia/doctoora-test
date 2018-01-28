@@ -35,6 +35,7 @@ class HomeController < ApplicationController
 
 	def refer
 		email = params[:email]
+		ref_name = params[:name]
 		flash[:notice] = "Thank you for your referral! An email has been sent to #{email}"
 		if current_user && (current_user.first_name && current_user.last_name)
 			username = current_user.first_name + " " + current_user.last_name
@@ -47,9 +48,9 @@ class HomeController < ApplicationController
 		mail.deliver_now
 
 		if current_user
-			notify_admin! "New user referral for #{email}", "Patient", current_user.id
+			notify_admin! "New user referral for #{email}. Referee name: #{ref_name}", "Patient", current_user.id
 		elsif current_doctor
-			notify_admin! "New user referral for #{email}", "Doctor", current_doctor.id
+			notify_admin! "New user referral for #{email}. Referee name: #{ref_name}", "Doctor", current_doctor.id
 		end
 
 		redirect_to '/'

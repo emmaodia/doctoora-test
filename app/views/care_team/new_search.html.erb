@@ -1,7 +1,7 @@
 <div style="margin-left: 2em">
 	<div>
-		<h2> Health Professional Search </h2>
-		<p>Input search criteria in order to find a health professional near you</p>
+		<h2> Health Provider Search </h2>
+		<p>Input search criteria in order to find a health provider near you</p>
 		<%= form_tag(care_path, :method => "post") do %>
 
 			<div class="form-group">
@@ -36,7 +36,7 @@
 	<div>
 		<h2> Your Care Team </h2>
 		<% if @care_team_doctors.length == 0 %>
-			<p>You have no health professionals in your care team. Request a health professional join today by using the form above</p>
+			<p>You have no health providers in your care team. Request a health provider join today by using the form above</p>
 		<% end %>
 		<% @care_team_doctors.each do |doctor| %>
 			<div>

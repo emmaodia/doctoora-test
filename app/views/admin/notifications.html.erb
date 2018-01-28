@@ -11,7 +11,7 @@
 				<% if notification.user_class == "Patient" %>
 					<p><%= get_patient_name notification.user_id %> (Patient)</p>
 				<% elsif notification.user_class == "Doctor" %>
-					<p><%= get_doctor_name notification.user_id %> (Health Professional)</p>
+					<p><%= get_doctor_name notification.user_id %> (Health Provider)</p>
 				<% end %>
 				<p><%= time_ago_in_words(notification.created_at) %> ago <%= link_to admin_noted_path(notification), method: :post do %><i class="glyphicon glyphicon-remove-circle"></i><% end %></p>
 			</li>

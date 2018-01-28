@@ -14,8 +14,8 @@ class DoctorReviewsController < ApplicationController
 		consultation = Consultation.find @doctor_review.consultation_id
 
 		if @doctor_review.save
-			flash[:notice] = "Thanks. Your health professional review has been saved"
-			notify! current_user.id, @doctor_review.doctor_id, "You have submitted a new health professional review", "You have received a new review", "/", "/"
+			flash[:notice] = "Thanks. Your health provider review has been saved"
+			notify! current_user.id, @doctor_review.doctor_id, "You have submitted a new health provider review", "You have received a new review", "/", "/"
 			if consultation.tool == "Clinic Visit"
 				redirect_to clinic_review_path(consultation.clinic_id)
 			else
