@@ -20,7 +20,7 @@
 
 		<div class="form-group">
 			<%= f.label :blood_pressure, :class => "control-label" %>
-			<%= f.select :blood_pressure, ["Systolic", "Diastolic"], :class => "form-control" %>
+			<%= f.text_field :blood_pressure, placeholder: "Systolic/Diastolic mmHg", :class => "form-control" %>
 		</div>
 
 		<div class="form-group">
