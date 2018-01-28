@@ -108,57 +108,56 @@
 					<p><%= link_to "edit certificates", doctor_onboarding_new_upload_documents_path %></p>
 				</div>
 			<% else %>
-				<div class="wallet">
-					<h4>Your Wallet Balance: <span id="doc_wallet_balance">₦<%= number_with_delimiter(@wallet_balance, :delimiter => ',') %></span></h4>
-						<h4 class="wallet-btn"><%= link_to "Top Up Wallet", top_up_path(@doctor),class: 'btn btn-default' %></h4>
+
+				<div class="pending-requests">
+					<% if !@appointment_requests.empty? %>
+						<h4 class="pending-header">Appointment Requests</h4>
+							<% @appointment_requests.each do |request| %>
+							<div class="req-container">
+								<div class="date-time">
+									<p><b><%= request.date_and_time.to_date.to_formatted_s(:long) %></b></p>
+									<p><b><%= request.date_and_time.strftime("%I:%M %p") %></b></p>
+								</div>
+								<div class="info">
+									<p><b><%= get_patient_name request.user_id %></b> (<span><%= request.tool %></span>)</p>
+									<p><%= request.user_notes %></p>
+									<p class="approval"><span><%=link_to "Approve", accept_consultation_path(request.id), method: :post,class:'approve' %></span> | <span><%= link_to "Reject", reject_consultation_path(request.id), method: :post, class: 'reject' %></span></p>
+								</div>
+							</div>
+							<% end %>
+					<% end %>
 				</div>
-				<div>
-					<h2>Today's Confirmed Appointments</h2>
+
+				<div class="today-app">
+					<h4 class="today-header">Today's Appointments</h4>
 					<% if @upcoming_appointments == [] %>
 						<p>You have no appointments scheduled for today.</p>
 						 <a class="btn btn-default" href="/doctor_consultation">View your calendar.</a>
 					<% else %>
 						<div class="row">
 							<% @upcoming_appointments.each do |appointment| %>
-								<div class="app-well col-md-5">
-									<div class="app-heading">
-										<h3><%= get_patient_name appointment.user_id %></h3>
+								<div class="app-container">
+									<div class="date-time">
+										<p><b><%= request.date_and_time.to_date.to_formatted_s(:long) %></b></p>
+										<p><b><%= request.date_and_time.strftime("%I:%M %p") %></b></p>
 									</div>
-									<div class="app-body">
-										<p><b>Tool:</b> <%= appointment.tool %></p>
-										<p><b>Date: </b><%= appointment.date_and_time.to_date.to_formatted_s(:long) %></p>
-										<p><b>Time: </b><%= appointment.date_and_time.strftime("%I:%M %p") %></p>
-
-										<p class="consultation-delete"><%= link_to "cancel appointment", consultation_path(appointment), method: :delete, data: { confirm: "Are you sure you want to delete this consultation?" }, :class => "consultation-delete-link btn btn-danger" %></p>
+									<div class="info">
+										<p><b><%= get_patient_name request.user_id %></b> (<span><%= request.tool %></span>)</p>
+										<p><%= request.user_notes %></p>
+										<p class="consultation-delete"><%= link_to "Cancel Appointment", consultation_path(appointment), method: :delete, data: { confirm: "Are you sure you want to delete this consultation?" }, :class => "consultation-delete-link reject" %></p>
+									</div>
 									</div>
 								</div>
 							<% end %>
-						</div>
 					<% end %>
 				</div>
 
 
-				<% if !@appointment_requests.empty? %>
-					<h2>Pending Appointment Requests</h2>
-					<div class="row">
-						<% @appointment_requests.each do |request| %>
-							<div class="app-well col-md-5">
-								<div class="app-heading">
-									<h3><%= get_patient_name request.user_id %></h3>
-								</div>
-								<div class="app-body">
-									<p><b>Tool:</b> <%= request.tool %></p>
-									<p><b>Date: </b><%= request.date_and_time.to_date.to_formatted_s(:long) %></p>
-									<p><b>Time: </b><%= request.date_and_time.strftime("%I:%M %p") %></p>
-									<p><b>Reason for Consultation: </b><%= request.user_notes %></p>
-									<div>
-										<p class="approval"><span><%=link_to "Approve", accept_consultation_path(request.id), method: :post, class: 'btn btn-primary' %></span>  <span><%= link_to "Reject", reject_consultation_path(request.id), method: :post, class: 'btn btn-danger' %></span></p>
-									</div>
-								</div>
-							</div>
-						<% end %>
-					</div>
-				<% end %>
+			<div class="wallet">
+				<h4>Your Wallet Balance: <span id="doc_wallet_balance">₦<%= number_with_delimiter(@wallet_balance, :delimiter => ',') %></span></h4>
+					<h4 class="wallet-btn"><%= link_to "Top Up Wallet", top_up_path(@doctor),class: 'btn btn-default' %></h4>
+			</div>
+
 
 
 				<% if !@past_appointments.empty? %>
