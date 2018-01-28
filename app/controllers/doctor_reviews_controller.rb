@@ -30,7 +30,7 @@ class DoctorReviewsController < ApplicationController
 	private
 
 	def review_params
-		params.require(:doctor_review).permit(:explanation_clarity, :courtesy, :listening, :punctuality, 
+		params.require(:doctor_review).permit(:explanation_clarity, :courtesy, :listening, :punctuality, :overall, 
 			:doctor_id, :user_id, :consultation_id)
 	end
 end

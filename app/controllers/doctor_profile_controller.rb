@@ -2,6 +2,15 @@ class DoctorProfileController < ApplicationController
 
 	def show
 		@doctor = Doctor.find(params[:id] || current_doctor.id)
+
+		reviews = @doctor.doctor_reviews.all
+		reviews_length = reviews.length
+
+		@overall = reviews.collect(&:overall).sum.to_f/reviews_length
+		@explanation_clarity = reviews.collect(&:explanation_clarity).sum.to_f/reviews_length
+		@courtesy = reviews.collect(&:courtesy).sum.to_f/reviews_length
+		@listening = reviews.collect(&:listening).sum.to_f/reviews_length
+		@punctuality = reviews.collect(&:punctuality).sum.to_f/reviews_length
 	end
 
 	def edit
