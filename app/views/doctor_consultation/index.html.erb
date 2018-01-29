@@ -19,10 +19,13 @@
 					<%= link_to "Start Consultation", consultation_path(consultation, :user_id => consultation.user_id)%>
 				<% elsif consultation.status != "pending" && consultation.tool == "Video Call" %>
 					<p>Video call on day of consultation</p>
-				<% elsif consultation.status && consultation.tool == "Phone Call" %>
-					<p><i class="glyphicon glyphicon-earphone" style="color: #333; font-size: 15px"></i> <%= user_phone_number consultation.user_id %></p>
 				<% elsif consultation.status != "pending" && consultation.tool == "Clinic Visit" %>
 					<%= get_clinic_address consultation.clinic_id %>
+					<% if consultation.date_and_time.today? %>
+						<%= link_to "Start Consultation", new_user_patient_review_path(consultation.user_id, consultation.id)%>
+					<% end %>
+				<% elsif consultation.tool == "Home Visit" && consultation.date_and_time.today? %>
+					<%= link_to "Start Consultation", new_user_patient_review_path(consultation.user_id, consultation.id)%>
 				<% else %>
 					<p>Begin the consultation using the desired method</p>
 				<% end %>
