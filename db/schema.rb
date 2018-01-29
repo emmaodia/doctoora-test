@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180118164646) do
+ActiveRecord::Schema.define(version: 20180129161516) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -134,6 +134,7 @@ ActiveRecord::Schema.define(version: 20180118164646) do
   end
 
   create_table "consultations", force: :cascade do |t|
+    t.string   "discipline"
     t.string   "service"
     t.string   "tool"
     t.date     "date"
@@ -339,6 +340,8 @@ ActiveRecord::Schema.define(version: 20180118164646) do
     t.string   "differential_diagnosis_3"
     t.string   "differential_diagnosis_4"
     t.string   "differential_diagnosis_5"
+    t.integer  "systolic"
+    t.integer  "diastolic"
   end
 
   add_index "patient_reviews", ["consultation_id"], name: "index_patient_reviews_on_consultation_id", using: :btree
@@ -351,6 +354,7 @@ ActiveRecord::Schema.define(version: 20180118164646) do
     t.integer  "price"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.string   "type"
     t.string   "category"
     t.string   "image_file_name"
     t.string   "image_content_type"

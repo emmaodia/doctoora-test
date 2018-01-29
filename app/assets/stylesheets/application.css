@@ -509,3 +509,8 @@ button {
 .card-image {
     width: 100%;
 }
+
+#bootstrap-overrides .reduced_length {
+    width: 150px;
+    display: inline-block;
+}

@@ -50,6 +50,7 @@ class PatientReviewsController < ApplicationController
 	def submit_examination_findings
 		review = PatientReview.find(params[:id])
 		review.update(examination_findings_params)
+		review.blood_pressure = examination_findings_params[:systolic].to_s + "/" + examination_findings_params[:diastolic].to_s + " mmHg"
 
 		if review.save
 			redirect_to new_patient_review_prescription_path(review.id)
@@ -77,7 +78,7 @@ class PatientReviewsController < ApplicationController
 	end
 
 	def examination_findings_params
-		params.require(:patient_review).permit(:temperature, :blood_pressure, :pulse_rate, :respiratory_rate, :physical_exam, :mental_exam, :problems_list, :differential_diagnosis,
+		params.require(:patient_review).permit(:temperature, :systolic, :diastolic, :pulse_rate, :respiratory_rate, :physical_exam, :mental_exam, :problems_list, :differential_diagnosis,
 			:differential_diagnosis_2, :differential_diagnosis_3, :differential_diagnosis_4, :differential_diagnosis_5, 
 			:investigations, :final_diagnosis, :comment)
 	end
