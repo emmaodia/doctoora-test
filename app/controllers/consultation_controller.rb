@@ -42,15 +42,20 @@ class ConsultationController < ApplicationController
 			redirect_to :back
 		else
 			@consultation = current_user.consultations.new(consultation_params)
-			@consultation.doctor_id = consultation_params[:professional]
 			@consultation.date_and_time = Time.new(@consultation.date.year, @consultation.date.month, @consultation.date.day,
   									   			   @consultation.time.hour, @consultation.time.min).to_datetime
-			@consultation.status = :pending
-			if @consultation.save
-				redirect_to consultation_payment_path(@consultation)
-			else
-				flash[:notice] = "There was an error creating your consultation"
+			if @consultation.date_and_time < DateTime.now
+				flash[:notice] = "Please update consultation time. You cannot create a consultation in the past"
 				redirect_to :back
+			else
+				@consultation.doctor_id = consultation_params[:professional]
+				@consultation.status = :pending
+				if @consultation.save
+					redirect_to consultation_payment_path(@consultation)
+				else
+					flash[:notice] = "There was an error creating your consultation"
+					redirect_to :back
+				end
 			end
 		end
 	end
