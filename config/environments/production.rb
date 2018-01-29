@@ -77,10 +77,9 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { :host => 'doctoora-prod.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'doctoora-staging.herokuapp.com' }
 
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :smtp
 
   config.paperclip_defaults = {
     storage: :s3,
@@ -97,16 +96,16 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default :charset => "utf-8"
 
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
+    address: "mail.doctoora.com.ng",
     port: 587,
-    domain: ENV["GMAIL_DOMAIN"],
+    domain: ENV["EMAIL_DOMAIN"],
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: ENV["GMAIL_USERNAME"],
-    password: ENV["GMAIL_PASSWORD"]
+    user_name: ENV["EMAIL_USERNAME"],
+    password: ENV["EMAIL_PASSWORD"],
+    openssl_verify_mode: "none"
   }
 end
