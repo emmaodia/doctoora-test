@@ -91,6 +91,7 @@ class ConsultationController < ApplicationController
 
 		if make_payment consultation.payment_method, amount, doctor.id, "consultation", "Consultation successfully booked." == true
 			notify_consultation_booked doctor.id
+			flash[:notice] = "Consultation Request sent"
 		end
 	end
 
