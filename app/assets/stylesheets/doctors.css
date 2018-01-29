@@ -61,7 +61,7 @@
   box-shadow: 3px 3px 3px -3px #999, 3px 3px 3px -3px #999, -3px 3px 3px -3px #999
 }
 
-.req-container, .app-container, .past-container{
+.req-container, .app-container, .past-container, .today-container{
   display: grid;
   grid-template-columns: 1fr 3fr;
 }
