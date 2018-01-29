@@ -1,77 +1,78 @@
 <div class="col-md-12 home-content">
-	<div class="center">
-		<% if user_signed_in? %>
-			<div class="row house">
-				<h2> Upcoming Appointments<span style="font-size: 14px" ><%= link_to "View Your Calendar", consultation_index_path, class: 'btn btn-default' %></span></h2>
-				<% if @upcoming_appointments == [] %>
-					<p>You have no upcoming appointments. <a href="/consultation/type" class="btn btn-default">Book a consultation
-					today</a></p>
-				<% else %>
-					<div class="row">
-						<% @upcoming_appointments.each do |appointment| %>
-							<div class="app-well col-md-5">
-								<div class="app-heading">
-									<h3><%= appointment.tool %></h3>
+		<div class="center">
+			<div class="home-container">
+				<% if user_signed_in? %>
+					<div class="row house">
+						<h2> Upcoming Appointments<span style="font-size: 14px" ><%= link_to "View Your Calendar", consultation_index_path, class: 'btn btn-default' %></span></h2>
+						<% if @upcoming_appointments == [] %>
+						<p>You have no upcoming appointments. <a href="/consultation/type" class="btn btn-default">Book a consultation
+						today</a></p>
+					<% else %>
+						<div class="row">
+							<% @upcoming_appointments.each do |appointment| %>
+								<div class="app-well col-md-5">
+									<div class="app-heading">
+										<h3><%= appointment.tool %></h3>
+									</div>
+									<div class="app-body">
+										<p><b>Doctor:</b> <%= get_doctor_name appointment.professional %></p>
+										<p><b>Date: </b><%= appointment.date_and_time.to_date.to_formatted_s(:long) %></p>
+										<p><b>Time: </b><%= appointment.date_and_time.strftime("%I:%M %p") %></p>
+								    <p><b>Reason for Consultation: </b><%= appointment.user_notes %></p>
+
+										<p class="consultation-delete"><%= link_to "cancel appointment", consultation_path(appointment), method: :delete, data: { confirm: "Are you sure you want to delete this consultation?" }, :class => "consultation-delete-link btn btn-danger" %></p>
+									</div>
 								</div>
-								<div class="app-body">
-									<p><b>Doctor:</b> <%= get_doctor_name appointment.professional %></p>
-									<p><b>Date: </b><%= appointment.date_and_time.to_date.to_formatted_s(:long) %></p>
-									<p><b>Time: </b><%= appointment.date_and_time.strftime("%I:%M %p") %></p>
-							    <p><b>Reason for Consultation: </b><%= appointment.user_notes %></p>
+							<% end %>
+						</div>
+					<% end %>
 
-									<p class="consultation-delete"><%= link_to "cancel appointment", consultation_path(appointment), method: :delete, data: { confirm: "Are you sure you want to delete this consultation?" }, :class => "consultation-delete-link btn btn-danger" %></p>
+					<h2> Appointment Requests </h2>
+
+
+					<% if @appointment_requests == [] %>
+						<p>You have no appointment requests.</p>
+					<% else %>
+						<div class="row">
+							<% @appointment_requests.each do |appointment| %>
+								<div class="app-well col-md-5">
+									<div class="app-heading">
+										<h3><%= appointment.tool %></h3>
+									</div>
+									<div class="app-body">
+										<p><b>Doctor:</b> <%= get_doctor_name appointment.professional %></p>
+										<p><b>Date: </b><%= appointment.date_and_time.to_date.to_formatted_s(:long) %> | <b>Time: </b><%= appointment.date_and_time.strftime("%I:%M %p") %></p>
+										<p><b>Reason for Consultation: </b><%= appointment.user_notes %></p>
+
+										<p class="consultation-delete"><%= link_to "Cancel Request", consultation_path(appointment), method: :delete, data: { confirm: "Are you sure you want to cancel this consultation request?" }, :class => "consultation-delete-link btn btn-danger" %></p>
+									</div>
 								</div>
-							</div>
-						<% end %>
-					</div>
-				<% end %>
-
-				<h2> Appointment Requests </h2>
+							<% end %>
+						</div>
+					<% end %>
 
 
-				<% if @appointment_requests == [] %>
-					<p>You have no appointment requests.</p>
-				<% else %>
-					<div class="row">
-						<% @appointment_requests.each do |appointment| %>
-							<div class="app-well col-md-5">
-								<div class="app-heading">
-									<h3><%= appointment.tool %></h3>
+					<h2>Past Appointments</h2>
+
+					<% if @past_appointments == [] %>
+						<p>You have no past appointments. <a href="/consultation/type">Book your first consultation on Doctoora today</a></p>
+					<% else %>
+						<div class="row">
+							<% @past_appointments.each do |appointment| %>
+								<div class="app-well col-md-5">
+									<div class="app-heading">
+										<h3><%= appointment.tool %></h3>
+									</div>
+									<div class="app-body">
+										<p><b>Doctor:</b> <%= get_doctor_name appointment.professional %></p>
+										<p><b>Date: </b><%= appointment.date_and_time.to_date.to_formatted_s(:long) %></p>
+										<p><b>Time: </b><%= appointment.date_and_time.strftime("%I:%M %p") %></p>
+									</div>
 								</div>
-								<div class="app-body">
-									<p><b>Doctor:</b> <%= get_doctor_name appointment.professional %></p>
-									<p><b>Date: </b><%= appointment.date_and_time.to_date.to_formatted_s(:long) %> | <b>Time: </b><%= appointment.date_and_time.strftime("%I:%M %p") %></p>
-									<p><b>Reason for Consultation: </b><%= appointment.user_notes %></p>
-
-									<p class="consultation-delete"><%= link_to "Cancel Request", consultation_path(appointment), method: :delete, data: { confirm: "Are you sure you want to cancel this consultation request?" }, :class => "consultation-delete-link btn btn-danger" %></p>
-								</div>
-							</div>
-						<% end %>
-					</div>
-				<% end %>
-
-
-				<h2>Past Appointments</h2>
-
-				<% if @past_appointments == [] %>
-					<p>You have no past appointments. <a href="/consultation/type">Book your first consultation on Doctoora today</a></p>
-				<% else %>
-					<div class="row">
-						<% @past_appointments.each do |appointment| %>
-							<div class="app-well col-md-5">
-								<div class="app-heading">
-									<h3><%= appointment.tool %></h3>
-								</div>
-								<div class="app-body">
-									<p><b>Doctor:</b> <%= get_doctor_name appointment.professional %></p>
-									<p><b>Date: </b><%= appointment.date_and_time.to_date.to_formatted_s(:long) %></p>
-									<p><b>Time: </b><%= appointment.date_and_time.strftime("%I:%M %p") %></p>
-								</div>
-							</div>
-						<% end %>
-					</div>
-				<% end %>
-			</div>
+							<% end %>
+						</div>
+					<% end %>
+				</div>
 
 			<div class="row">
 				<h2>Trending Topics</h2>
@@ -154,37 +155,36 @@
 
 
 			<div class="wallet">
-				<h4>Your Wallet Balance: <span id="doc_wallet_balance">₦<%= number_with_delimiter(@wallet_balance, :delimiter => ',') %></span></h4>
-					<h4 class="wallet-btn"><%= link_to "Top Up Wallet", top_up_path(@doctor),class: 'btn btn-default' %></h4>
+				<h4 class="wallet-header">Wallet</h4>
+				<p>Available:</p>
+					<h1 id="doc_wallet_balance">₦<%= number_with_delimiter(@wallet_balance, :delimiter => ',') %></h1>
+					<h4 class="wallet-btn"><%= link_to "Top Up Wallet", top_up_path(@doctor),class: 'btn btn-info' %></h4>
 			</div>
 
 
-
+			<div class="past-app">
 				<% if !@past_appointments.empty? %>
-					<h2> Past Appointments </h2>
-					<div class="row">
+				<h4 class="past-header"> Past Appointments</h4>
 						<% @past_appointments.each do |appointment | %>
-							<div class="app-well col-md-5">
-								<div class="app-heading">
-									<h3><%= get_patient_name appointment.user_id %></h3>
+							<div class="past-container">
+								<div class="date-time">
+									<p><b><%= appointment.date_and_time.to_date.to_formatted_s(:long) %></b></p>
+									<p><b><%= appointment.date_and_time.strftime("%I:%M %p") %></b></p>
 								</div>
-								<div class="app-body">
-									<p><b>Tool:</b> <%= appointment.tool %></p>
-									<p><b>Date: </b><%= appointment.date_and_time.to_date.to_formatted_s(:long) %></p>
-									<p><b>Time: </b><%= appointment.date_and_time.strftime("%I:%M %p") %></p>
+								<div class="info">
+									<p><b><%= get_patient_name appointment.user_id %></b> (<span><%= appointment.tool %></span>)</p>
+									<% if !appointment.patient_reviews.empty? %>
+										<p class="consultation-review "><%= link_to "view consultation review", patient_review_path(appointment.patient_reviews.first.id),class: 'approve' %></p>
+									<% else %>
+										<p class="consultation-review "><%= link_to "Review This Consultation", new_user_patient_review_path(appointment.user_id, appointment.id),class: 'approve' %></p>
+									<% end %>
 								</div>
-								<% if !appointment.patient_reviews.empty? %>
-									<p class="consultation-review "><%= link_to "view consultation review", patient_review_path(appointment.patient_reviews.first.id),class: 'btn btn-success' %></p>
-								<% else %>
-									<p class="consultation-review "><%= link_to "Review This Consultation", new_user_patient_review_path(appointment.user_id, appointment.id),class: 'btn btn-success' %></p>
-								<% end %>
 							</div>
 						<% end %>
-					</div>
 				<% end %>
 			<% end %>
-
-
+		</div>
+	</div>
 			<div class="row">
 				<h2> Trending Topics </h2>
 				<div class="row">
