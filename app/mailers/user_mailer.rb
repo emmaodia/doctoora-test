@@ -1,6 +1,6 @@
 class UserMailer < ApplicationMailer
 
-	default from: 'chidumaga@gmail.com'
+	default from: ENV.fetch("GMAIL_USERNAME")
 
 	def refer_email username, email
 		@username = username
