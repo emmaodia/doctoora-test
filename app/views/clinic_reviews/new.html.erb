@@ -1,6 +1,6 @@
 <div>
 
-	<h2> Health Facility Review form for <%= @clinic.name %></h2>
+	<h2> Health Facility Review form for <%= @clinic_name %></h2>
 
 	<%= form_for @clinic_review do |f| %>
 
@@ -31,6 +31,8 @@
 
 		<%= f.hidden_field :user_id, value: @user_id %>
 		<%= f.hidden_field :clinic_id, value: @clinic_id %>
+
+		<%= f.submit "Submit Review", :class => "btn btn-success btn-block" %>
 
 	<% end %>
 

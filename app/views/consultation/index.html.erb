@@ -12,10 +12,14 @@
 		    <div id="consultation-<%= consultation.id%>" class="patient-records">
 				<p><%= consultation.service %></p>
 				<p><%= consultation.tool %></p>
-				<% if consultation.status != "pending" && consultation.tool == "Video Call" && consultation.date_and_time.today? %>
+				<% if consultation.status != "pending" && consultation.tool == "Video Call" && consultation.date_and_time.today? && consultation.completed == false %>
 					<%= link_to "Start Consultation", consultation_path(consultation)%>
 				<% elsif consultation.tool == "Clinic Visit" %>
 					<%= get_clinic_address consultation.clinic_id %>
+				<% elsif consultation.completed == true %>
+					<% if consultation.doctor_reviews.empty? %>
+						<%= link_to "Review Consultation", new_doctor_review_path(consultation.doctor_id, consultation.id), :class => "consultation-delete-link" %>
+					<% end %>
 				<% end %>
 
 				<p class="consultation-delete"><%= link_to "delete", consultation_path(consultation), method: :delete, data: { confirm: "Are you sure you want to delete this consultation?" }, :class => "consultation-delete-link" %></p>
