@@ -21,6 +21,10 @@ class PrescriptionController < ApplicationController
 				flash[:notice] = "Prescription Added and Review submitted for patient"
 				notify! @patient_review.user_id, current_doctor.id, "You have received a patient review from",
 				"You have successfully submitted a patient review for", "/profile/<%= @patient_review.user_id %>", "/patient_reviews"
+
+				prescriptions = Prescription.where('patient_review_id=?', @prescription.patient_review_id)
+
+				notify_admin! [prescriptions].to_s, "Doctor", @prescription.doctor_id
 				redirect_to root_path
 			end
 		else
@@ -33,5 +37,9 @@ class PrescriptionController < ApplicationController
 
 	def prescription_params
 		params.require(:prescription).permit(:name, :dosage, :regimen, :duration, :user_id, :consultation_id, :doctor_id)
+	end
+
+	def admin_prescription_notification
+
 	end
 end
