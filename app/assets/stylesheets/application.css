@@ -243,10 +243,10 @@ button {
 }
 /* Navbar */
 
-.doctor-container,.patient-container, .profile{
+/*.doctor-container,.patient-container, .profile{
   margin-left: 2%;
   margin-right: 2%;
-}
+}*/
 #bootstrap-overrides .navbar {
   overflow: hidden;
   z-index: 500;

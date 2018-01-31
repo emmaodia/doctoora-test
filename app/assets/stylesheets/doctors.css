@@ -1,4 +1,4 @@
-.home-container{
+.home-container, .patient-cards{
   width: 60em;
   display: grid;
   grid-template-columns: 18em 18em 18em;
