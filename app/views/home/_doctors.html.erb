@@ -84,30 +84,7 @@
     </div>
     <% end %>
   </div>
+</div>
 
   
-  <div class="row">
-    <h2> Trending Topics </h2>
-    <div class="row">
-    <h4 style="margin-left: 1em">View by Category: </h4>
-    <% @card_categories.each do |category| %>
-      <div class="col-md-3">
-        <%= link_to category.name, show_card_category_path(category) %>
-      </div>
-    <% end %>
-    </div>
-    <% @cards.each do |card| %>
-      <div class="panel panel-body col-md-4">
-        <a href=<%= card.link %>>
-          <% if card.video_url %>
-            <iframe src="<%= card.video_url %>" frameborder="0"></iframe>
-          <% else %>
-            <img src=<%= card.image %> class="card-image" />
-          <% end %>
-          <h3><%= card.title %></a></h3>
-        </a>
-        <p><%= card.body %></p>
-      </div>
-    <% end %>
-  </div>
-</div>
+  <%= render 'cards' %>

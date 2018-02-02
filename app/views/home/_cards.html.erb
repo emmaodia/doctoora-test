@@ -1,0 +1,29 @@
+<div class="row">
+
+  <h2 class="cards-heading pending-header">Trending Topics</h2>
+  <h4>View by Category: </h4>
+  <% @card_categories.each do |category| %>
+    <div>
+      <%= link_to category.name, show_card_category_path(category) %>
+    </div>
+  <% end %>
+  
+  <div class="row">
+    <% @cards.each do |card| %>
+      <div class="today-app col-md-4">
+        <a href=<%= card.link %>>
+          <h3 class="today-header card-heading"><%= card.title %></a></h3>
+          <% if card.video_url %>
+            <iframe src="<%= card.video_url %>" frameborder="0"></iframe>
+          <% else %>
+            <img src=<%= card.image %> class="card-image" />
+          <% end %>
+        </a>
+        <div class="today-container">
+          <p><%= card.body %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+</div>

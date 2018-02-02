@@ -2,7 +2,7 @@
   width: 60em;
   display: grid;
   grid-template-columns: 18em 18em 18em;
-  grid-template-rows: 18em 25em;
+  /*grid-template-rows: 18em 25em;*/
   grid-gap: 1em;
 }
 

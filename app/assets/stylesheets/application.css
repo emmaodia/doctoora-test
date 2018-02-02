@@ -377,3 +377,14 @@ button {
     width: 150px;
     display: inline-block;
 }
+
+/* CARDS */
+.cards-heading {
+    text-align:center;
+    margin: 2em;
+}
+
+.card-heading {
+    color: white;
+    margin-bottom: 0.5em;
+}
