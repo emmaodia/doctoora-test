@@ -1,0 +1,91 @@
+<div class="patient-container">
+  <div class="patient-cards">
+    <div class="pending-requests">
+      <h4 class="pending-header">Appointment Requests</h4>
+      <% if @appointment_requests == [] %>
+        <p>You have no appointment requests.</p>
+      <% else %>
+        <% @appointment_requests.each do |appointment| %>
+          <div class="req-container">
+            <div class="date-time">
+              <p><b><%= appointment.date_and_time.to_date.to_formatted_s(:long) %> | <b>Time: </b><%= appointment.date_and_time.strftime("%I:%M %p") %></b></p>
+              <p><b><%= appointment.date_and_time.strftime("%I:%M %p") %></b></p>
+            </div>
+            <div class="app-body">
+              <p><b>Doctor:</b> <%= get_doctor_name appointment.professional %>(<span><%= appointment.tool %></span>)</p>
+              <p><%= appointment.user_notes %></p>
+              <p class="consultation-delete"><%= link_to "Cancel Request", consultation_path(appointment), method: :delete, data: { confirm: "Are you sure you want to cancel this consultation request?" }, :class => "consultation-delete-link reject" %></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="today-app">
+      <h4 class="today-header">Today's Appointments</h4>
+      <% if @upcoming_appointments == [] %>
+        <p>You have no upcoming appointments.</p>
+        <a href="/consultation/type" class="btn btn-default">Book a consultation today</a>
+    <% else %>
+      <% @upcoming_appointments.each do |appointment| %>
+        <div class="today-container">
+          <div class="date-time">
+            <p><b><%= appointment.date_and_time.to_date.to_formatted_s(:long) %></b></p>
+            <p><b><%= appointment.date_and_time.strftime("%I:%M %p") %></b></p>
+            <h3></h3>
+          </div>
+          <div class="info">
+            <p><b><%= get_doctor_name appointment.professional %></b>(<span><%= appointment.tool %></span>)</p>
+            <p><%= appointment.user_notes %></p>
+            <p class="consultation-delete"><%= link_to "Cancel Appointment", consultation_path(appointment), method: :delete, data: { confirm: "Are you sure you want to delete this consultation?" }, :class => "consultation-delete-link reject" %></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="past-app">
+    <h4 class="past-header"> Past Appointments</h4>
+  <% if @past_appointments == [] %>
+    <p>You have no past appointments. <a href="/consultation/type">Book your first consultation on Doctoora today</a></p>
+  <% else %>
+      <% @past_appointments.each do |appointment| %>
+        <div class="past-container">
+          <div class="date-time">
+            <p><b><%= appointment.date_and_time.to_date.to_formatted_s(:long) %></b></p>
+            <p><b><%= appointment.date_and_time.strftime("%I:%M %p") %></b></p>
+          </div>
+          <div class="info">
+            <p><b><%= get_doctor_name appointment.professional %></b>(<span><%= appointment.tool %></span>)</p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="row">
+  <h2>Trending Topics</h2>
+  <div class="row">
+  <h4 style="margin-left: 2em">View by Category: </h4>
+  <% @card_categories.each do |category| %>
+    <div class="col-md-3">
+      <%= link_to category.name, show_card_category_path(category) %>
+    </div>
+
+  <% end %>
+  </div>
+  <% @cards.each do |card| %>
+  <div class="panel panel-body col-md-4">
+    <a href=<%= card.link %>>
+      <% if card.video_url %>
+        <iframe src="<%= card.video_url %>" frameborder="0"></iframe>
+      <% else %>
+        <img src=<%= card.image %> class="card-image" />
+      <% end %>
+      <h3><%= card.title %></a></h3>
+    </a>
+    <p><%= card.body %></p>
+  </div>
+  <% end %>
+  </div>
+</div>

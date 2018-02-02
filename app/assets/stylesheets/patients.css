@@ -1,7 +1,27 @@
-.well{
+.well {
   background: #d3d8d4 !important;
   box-shadow: 0px 0px 8px 0px #000000 !important;
 }
+
+.app-well{
+  background : #ddd !important;
+  width: 21em !important;
+  margin:2em;
+  border-radius: .5em;
+}
+
+.app-heading h3{
+  padding: .5em;
+  text-align: center;
+  border-bottom: 1px solid white;
+}
+.consultation-delete{
+  border-top: 1px solid white;
+  text-align: center;
+  padding-top: 1.5em;
+}
+
+
 .inner-well{
   background-color: white;
   border-radius: .5em;
