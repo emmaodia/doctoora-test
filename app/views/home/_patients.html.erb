@@ -57,6 +57,9 @@
           </div>
           <div class="info">
             <p><b><%= get_doctor_name appointment.professional %></b>(<span><%= appointment.tool %></span>)</p>
+            <% if appointment.doctor_reviews.empty? %>
+              <%= link_to "Review Consultation", new_doctor_review_path(appointment.doctor_id, appointment.id), :class => "consultation-delete-link" %>
+            <% end %>
           </div>
         </div>
       <% end %>
