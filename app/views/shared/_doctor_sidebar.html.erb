@@ -3,67 +3,70 @@
 <% if doctor.verified %>
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
-            <li>
-                <% if doctor.available %>
-                    <%= form_for doctor, url: toggle_availability_path(doctor), method: :put do |f| %>
-                        <% f.submit "Status: Available", :class => "btn btn-success btn-block toggle-btn", :id => "toggle-off" %>
+            <div class="rectangle">
+                <li>
+                    <% if doctor.available %>
+                        <%= form_for doctor, url: toggle_availability_path(doctor), method: :put do |f| %>
+                            <% f.submit "Status: Available", :class => "btn btn-success btn-block toggle-btn", :id => "toggle-off" %>
+                        <% end %>
+                    <% else %>
+                        <%= form_for doctor, url: toggle_availability_path(doctor), method: :put do |f| %>
+                            <% f.submit "Status: Unavailable", :class => "btn btn-danger btn-block toggle-btn", :id => "toggle-on" %>
+                        <% end %>
                     <% end %>
-                <% else %>
-                    <%= form_for doctor, url: toggle_availability_path(doctor), method: :put do |f| %>
-                        <% f.submit "Status: Unavailable", :class => "btn btn-danger btn-block toggle-btn", :id => "toggle-on" %>
+                </li>
+            
+                <li>
+                	<a href="/" class="selected icon-home">
+                        <img src="<%= asset_path( 'icons/home.svg' ) %>" class="sidebar-icon" /><p>HOME</p>
+                    </a>
+                </li>
+                <li id="sidebar-image">
+                    <%= link_to doctor_profile_path(doctor.id) do %>
+                        <%= image_tag doctor.avatar.url(:medium), :class => "profile-image" %>
                     <% end %>
-                <% end %>
-            </li>
-            <li>
-            	<a href="/" class="selected icon-home">
-                    <img src="<%= asset_path( 'icons/home.svg' ) %>" class="sidebar-icon" /><p>HOME</p>
-                </a>
-            </li>
-            <li id="sidebar-image">
-                <%= link_to doctor_profile_path(doctor.id) do %>
-                    <%= image_tag doctor.avatar.url(:medium), :class => "profile-image" %>
-                <% end %>
-                <p>Welcome <%= doctor.title %> <%= doctor.first_name %></p>
-            </li>
-            <li>
-                <img src="<%= asset_path( 'icons/profile.svg' ) %>" class="sidebar-icon" />
-                <%= link_to "Profile", doctor_profile_path(doctor.id) %>
-            </li>
-            <li>
-                <img src="<%= asset_path( 'icons/Topics.svg' ) %>" class="sidebar-icon" />
-                <%= link_to "Rentals", view_clinics_path %>
-            </li>
-            <li>
-                <img src="<%= asset_path( 'icons/Topics.svg' ) %>" class="sidebar-icon" />
-                <%= link_to "Appointments", doctor_consultation_index_path %>
-            </li>
-            <li>
-                <% if unread_messages? %>
-                    <img src="<%= asset_path( 'icons/message-with-notification.svg' ) %>" class="sidebar-icon" />
-                    <%= link_to "Messages", conversations_path %>
-                <% else %>
-                    <img src="<%= asset_path( 'icons/message.svg' ) %>" class="sidebar-icon" />
-                    <%= link_to "Messages", conversations_path %>
-                <% end %>
-            </li>
-            <li>
-                <img src="<%= asset_path( 'icons/Family.svg' ) %>" class="sidebar-icon" />
-                <%= link_to "Patients", patient_reviews_path %>
-            </li>
-            <li>
-                <img src="<%= asset_path( 'icons/careteam.svg' ) %>" class="sidebar-icon" />
-                <%= link_to "Care Team", doctor_care_team_path(doctor) %>
-            </li>
-            <li>
-                <img src="<%= asset_path( 'icons/careteam.svg' ) %>" class="sidebar-icon" />
-                <%= link_to "Wallet", wallet_path(doctor) %></h3>
-            </li>
-        
-            <div id="refer">
-            	<li>
-            		<img src="<%= asset_path( 'icons/refer.svg' ) %>" class="sidebar-icon" />
-                    <%= link_to "Refer Someone", refer_path %>
-            	</li>
+                    <p>Welcome <%= doctor.title %> <%= doctor.first_name %></p>
+                </li>
+                <li>
+                    <img src="<%= asset_path( 'icons/profile.svg' ) %>" class="sidebar-icon" />
+                    <%= link_to "Profile", doctor_profile_path(doctor.id) %>
+                </li>
+                <li>
+                    <img src="<%= asset_path( 'icons/Topics.svg' ) %>" class="sidebar-icon" />
+                    <%= link_to "Rentals", view_clinics_path %>
+                </li>
+                <li>
+                    <img src="<%= asset_path( 'icons/Topics.svg' ) %>" class="sidebar-icon" />
+                    <%= link_to "Appointments", doctor_consultation_index_path %>
+                </li>
+                <li>
+                    <% if unread_messages? %>
+                        <img src="<%= asset_path( 'icons/message-with-notification.svg' ) %>" class="sidebar-icon" />
+                        <%= link_to "Messages", conversations_path %>
+                    <% else %>
+                        <img src="<%= asset_path( 'icons/message.svg' ) %>" class="sidebar-icon" />
+                        <%= link_to "Messages", conversations_path %>
+                    <% end %>
+                </li>
+                <li>
+                    <img src="<%= asset_path( 'icons/Family.svg' ) %>" class="sidebar-icon" />
+                    <%= link_to "Patients", patient_reviews_path %>
+                </li>
+                <li>
+                    <img src="<%= asset_path( 'icons/careteam.svg' ) %>" class="sidebar-icon" />
+                    <%= link_to "Care Team", doctor_care_team_path(doctor) %>
+                </li>
+                <li>
+                    <img src="<%= asset_path( 'icons/careteam.svg' ) %>" class="sidebar-icon" />
+                    <%= link_to "Wallet", wallet_path(doctor) %></h3>
+                </li>
+            
+                <div id="refer">
+                	<li>
+                		<img src="<%= asset_path( 'icons/refer.svg' ) %>" class="sidebar-icon" />
+                        <%= link_to "Refer Someone", refer_path %>
+                	</li>
+                </div>
             </div>
 
             <div id="glyphs">
