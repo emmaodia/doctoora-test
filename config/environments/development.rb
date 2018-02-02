@@ -60,7 +60,7 @@ Rails.application.configure do
   config.action_mailer.default :charset => "utf-8"
 
   config.action_mailer.smtp_settings = {
-    address: "mail.doctoora.com.ng",
+    address: "uk11.easy-internet.co.uk",
     port: 587,
     domain: ENV.fetch("EMAIL_DOMAIN"),
     authentication: "plain",
