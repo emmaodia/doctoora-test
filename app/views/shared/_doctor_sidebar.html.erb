@@ -84,36 +84,39 @@
 <% else %>
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
-            <li>
-                <a href="/" class="selected icon-home">
-                    <img src="<%= asset_path( 'icons/home.svg' ) %>" class="sidebar-icon" /><p>HOME</p>
-                </a>
-            </li>
-            <li id="sidebar-image">
-                <%= link_to doctor_profile_path(doctor.id) do %>
-                    <%= image_tag doctor.avatar.url(:medium), :class => "profile-image" %>
-                <% end %>
-                <p>Welcome <%= doctor.title %> <%= doctor.first_name %></p>
-            </li>
-            <li>
-                <img src="<%= asset_path( 'icons/profile.svg' ) %>" class="sidebar-icon" />
-                <%= link_to "Professional Profile", doctor_profile_path(doctor.id) %>
-            </li>
-            <div id="refer">
+            <div class="rectangle">
                 <li>
-                    <img src="<%= asset_path( 'icons/refer.svg' ) %>" class="sidebar-icon" />
-                    <%= link_to "Refer Someone", refer_path %>
+                    <a href="/" class="selected icon-home">
+                        <img src="<%= asset_path( 'icons/home.svg' ) %>" class="sidebar-icon" /><p>HOME</p>
+                    </a>
                 </li>
-            </div>
-
-            <div id="glyphs">
-                <% if doctor_signed_in? %>
-                    <li><%= link_to destroy_doctor_session_path, method: :delete do%>
-                        <span class="glyphicon glyphicon-off"></span>
-                    <% end %>   
+                <li id="sidebar-image">
+                    <%= link_to doctor_profile_path(doctor.id) do %>
+                        <%= image_tag doctor.avatar.url(:medium), :class => "profile-image" %>
+                    <% end %>
+                    <p>Welcome <%= doctor.title %> <%= doctor.first_name %></p>
+                </li>
+                <li>
+                    <img src="<%= asset_path( 'icons/profile.svg' ) %>" class="sidebar-icon" />
+                    <%= link_to "Professional Profile", doctor_profile_path(doctor.id) %>
+                </li>
+                <div id="refer">
+                    <li>
+                        <img src="<%= asset_path( 'icons/refer.svg' ) %>" class="sidebar-icon" />
+                        <%= link_to "Refer Someone", refer_path %>
                     </li>
-                <% end %>
-                <li><i class="glyphicon glyphicon-blackboard"></i></li>
+                </div>
+
+                <div id="glyphs">
+                    <% if doctor_signed_in? %>
+                        <li><%= link_to destroy_doctor_session_path, method: :delete do%>
+                            <img src="<%= asset_path( 'icons/logout.png' ) %>" class="sidebar-icon" />
+                        <% end %>   
+                        </li>
+                    <% end %>
+                        <li><a href="https://www.doctoora.com/contact-us" target="_blank"><img src="<%= asset_path( 'icons/faq.png' ) %>" class="sidebar-icon" /></a>
+                        </li>
+                </div>
             </div>
         </ul>
     </div>
