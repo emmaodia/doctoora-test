@@ -66,7 +66,7 @@ Rails.application.configure do
     authentication: "plain",
     enable_starttls_auto: true,
     user_name: ENV.fetch("EMAIL_USERNAME"),
-    password: ENV.fetch("EMAIL_PASSWORD"),
+    password: ENV.fetch("EMAIL_PASSWORD")
   }
 
 end
