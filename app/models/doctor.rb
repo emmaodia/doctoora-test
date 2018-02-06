@@ -18,15 +18,16 @@ class Doctor < ActiveRecord::Base
 
   has_many :consultations, dependent: :destroy
   has_many :messages, as: :messageable
-  has_many :patient_reviews
-  has_many :notifications
-  has_many :transactions
-  has_many :clinic_rentals
-  has_many :doctor_reviews
+  has_many :patient_reviews, dependent: :nullify
+  has_many :notifications, dependent: :destroy
+  has_many :transactions, dependent: :nullify
+  has_many :clinic_rentals, dependent: :nullify
+  has_many :doctor_reviews, dependent: :destroy
+  has_many :care_team_doctor_statuses, dependent: :destroy
 
   has_one :wallet, dependent: :destroy
 
-  has_many :prescriptions
+  has_many :prescriptions, dependent: :nullify
 
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
