@@ -2,6 +2,7 @@ class RegistrationsController < Devise::RegistrationsController
   protected
 
   def after_sign_up_path_for(resource)
+    UserMailer.sign_up_confirmation_email(resource.email).deliver_now
     new_onboarding_path
   end
 

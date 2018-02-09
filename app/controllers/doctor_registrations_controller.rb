@@ -2,6 +2,7 @@ class DoctorRegistrationsController < Devise::RegistrationsController
   protected
 
   def after_sign_up_path_for(resource)
+    UserMailer.sign_up_confirmation_email(resource.email).deliver_now
     resource.verified = false
     resource.save
     new_doctor_onboarding_path

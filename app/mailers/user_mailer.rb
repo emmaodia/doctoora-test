@@ -12,5 +12,8 @@ class UserMailer < ApplicationMailer
 		mail(to: email, subject: "New notification from Doctoora")
 	end
 
+	def sign_up_confirmation_email email
+		mail(to: email, subject: "Thank you for signing up for Doctoora")
+	end
 
 end
