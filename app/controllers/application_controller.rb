@@ -6,9 +6,12 @@ class ApplicationController < ActionController::Base
 
   	protected
 
-  	def notify! user_id, notifier_id, notification_text, dr_notification_text, link, dr_link
+  	def notify! user_id, notifier_id, notification_text, dr_notification_text, link, dr_link, email_content="You have received a new notification on Doctoora"
 		Notification.create!(user_id: user_id, doctor_id: notifier_id, notification: notification_text,
 			dr_notification_msg: dr_notification_text, link: link, dr_link: dr_link)
+
+		UserMailer.notification_email(email_content, User.find(user_id).email).deliver_now
+		UserMailer.notification_email(email_content, Doctor.find(notifier_id).email).deliver_now
   	end
 
   	def notify_admin! notification_text, user_class, user_id

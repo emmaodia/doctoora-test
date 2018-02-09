@@ -86,18 +86,7 @@
 			<%= link_to_if my_profile?, "Add", edit_profile_path(@user), :class => "btn btn-primary" %>
 		</div>
 	</div>
-	<div>
-		<h3>Patient Reviews</h3>
-		<ul>
-			<% @patient_reviews.each do |review| %>
-				<li>
-					<h5><%= review.created_at.strftime("%d/%m/%y") %></h5>
-					<p><%= get_doctor_name(review.doctor_id) %></p>
-					<p><%= review.review %></p>
-				</li>
-			<% end %>
-		</ul>
-	</div>
+
 
 	<div>
 		<h3><%= link_to "View Your Wallet", wallet_path(@user), class: 'btn btn-lg btn-info' if my_profile? %></h3>

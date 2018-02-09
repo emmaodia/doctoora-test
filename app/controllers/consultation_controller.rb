@@ -90,7 +90,7 @@ class ConsultationController < ApplicationController
 		amount = get_consultation_fee doctor, consultation
 
 		if make_payment consultation.payment_method, amount, doctor.id, "consultation", "Consultation successfully booked." == true
-			notify_consultation_booked doctor.id
+			notify! current_user.id, doctor.id, "You have requested a consultation with", "You have received a new consultation request from", "/consultation", "/doctor_consultation", "There has been a new consultation request created"
 			flash[:notice] = "Consultation Request sent"
 		end
 	end
@@ -124,9 +124,5 @@ class ConsultationController < ApplicationController
 		elsif consultation.tool == "Clinic Visit"
 			return doctor.clinic_visit_fee
 		end
-	end
-
-	def notify_consultation_booked doctor_id
-		notify! current_user.id, doctor_id, "You have requested a consultation with", "You have received a new consultation request from", "/consultation", "/doctor_consultation"
 	end
 end
