@@ -10,7 +10,7 @@
   
   <div class="row">
     <% @cards.each do |card| %>
-      <div class="today-app col-md-4">
+      <div class="today-app col-md-6">
         <a href=<%= card.link %>>
           <h3 class="today-header card-heading"><%= card.title %></a></h3>
           <% if card.video_url %>
