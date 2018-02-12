@@ -62,6 +62,8 @@ class ConsultationController < ApplicationController
 
 	def show
 		@consultation = Consultation.find(params[:id])
+		UserMailer.notification_email("Your consultation on Doctoora has started. To join, use the link below: http://appear.in/#{@consultation.room_name}", User.find(@consultation.user_id).email).deliver_now
+		UserMailer.notification_email("Your consultation on Doctoora has started. To join, use the link below: http://appear.in/#{@consultation.room_name}", Doctor.find(@consultation.doctor_id).email).deliver_now
 	end
 
 	def edit
