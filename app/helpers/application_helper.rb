@@ -1,13 +1,22 @@
 module ApplicationHelper
 
 	def get_doctor_name id
-		doctor = Doctor.find(id)
-		return doctor.title + " " + doctor.first_name + " " + doctor.last_name
+		#find_by_id returns nil if record not found as opposed to .find() which errors
+		doctor = Doctor.find_by_id id
+		if doctor
+			return doctor.title + " " + doctor.first_name + " " + doctor.last_name
+		else
+			return "[deleted]"
+		end
 	end
 
 	def get_patient_name id
-		patient = User.find(id)
-		return patient.first_name + " " + patient.last_name
+		patient = User.find_by_id id
+		if patient
+			return patient.first_name + " " + patient.last_name
+		else
+			return "[deleted]"
+		end
 	end
 	
 	def greet
