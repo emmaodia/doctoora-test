@@ -1,4 +1,12 @@
 <div class="patient-container">
+  <div>
+    <% @notifications.each do |notification| %>
+      <div class="alert alert-info" role="alert">
+        <p><%= notification.notification %> <%= get_doctor_name notification.doctor_id %></p>
+        <%= link_to noted_path(notification), method: :post do %><i class="glyphicon glyphicon-remove-circle"></i><% end %></p>
+      </div>
+    <% end %>
+  </div>
   <div class="patient-cards">
     <div class="pending-requests">
       <h4 class="pending-header">Appointment Requests</h4>

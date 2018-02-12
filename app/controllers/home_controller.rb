@@ -14,6 +14,14 @@ class HomeController < ApplicationController
 			@past_appointments = Consultation.where("user_id = ? AND completed = ?", @user.id, true).limit(5).order(date: :desc)
 			@upcoming_appointments = Consultation.where("date_and_time >= ? AND user_id = ? AND status = ? AND completed = ?", Time.now, @user.id, "accepted", false)
 			@appointment_requests = Consultation.where("date_and_time >= ? AND user_id = ? AND status = ?", Time.now, @user.id, "pending")
+
+			@notifications = []
+			@user.notifications.each do |notification|
+				if(!notification.user_noted && (notification.notification.include? "approved"))
+					@notifications << notification
+				end
+			end
+
 		elsif doctor_signed_in?
 			@doctor = current_doctor
 			date = Date.today
