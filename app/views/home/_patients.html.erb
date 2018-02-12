@@ -65,6 +65,14 @@
       <% end %>
     <% end %>
   </div>
+
+  <div class="wallet">
+    <h4 class="wallet-header">Wallet</h4>
+    <p><b>Available:</b></p>
+      <h1 id="doc_wallet_balance">₦<%= number_with_delimiter(@wallet_balance, :delimiter => ',') %></h1>
+      <h4 class="wallet-btn"><%= link_to "Top Up Wallet", wallet_path(@user),class: 'btn btn-info' %></h4>
+  </div>
+
 </div>
 
 <%= render 'cards' %>

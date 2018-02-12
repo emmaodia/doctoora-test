@@ -10,6 +10,7 @@ class HomeController < ApplicationController
 		#DRY
 		if user_signed_in?
 			@user = current_user
+			@wallet_balance = Wallet.find_by_user_id(@user.id).balance
 			@past_appointments = Consultation.where("user_id = ? AND completed = ?", @user.id, true).limit(5).order(date: :desc)
 			@upcoming_appointments = Consultation.where("date_and_time >= ? AND user_id = ? AND status = ? AND completed = ?", Time.now, @user.id, "accepted", false)
 			@appointment_requests = Consultation.where("date_and_time >= ? AND user_id = ? AND status = ?", Time.now, @user.id, "pending")
