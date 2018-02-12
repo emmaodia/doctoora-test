@@ -31,6 +31,7 @@ class CardsController < ApplicationController
 
 	def edit
 		@card = Card.find(params[:id])
+		@categories = CardCategory.all.map(&:name)
 	end
 
 	def update
