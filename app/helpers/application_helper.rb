@@ -50,11 +50,29 @@ module ApplicationHelper
 
 	def unread_messages?
 
-		if user_signed_in?
-			current_user.unread_messages > 0 ? true : false
-		elsif doctor_signed_in?
-			current_doctor.unread_messages > 0 ? true : false
+		if current_doctor
+			id = current_doctor.id
+			conversations = Conversation.where("(sender_id=? AND sender_class=?) OR (recipient_id=? AND recipient_class=?)", id, "Doctor", id, "Doctor")
+
+			conversations.all.each do |conversation|
+				if conversation.sender_unread_messages == true
+					return true
+				end
+			end
+
+		elsif current_user
+			id = current_user.id
+			conversations = Conversation.where("(recipient_id=? AND recipient_class=?) OR (sender_id=? AND sender_class=?)", id, "Patient", id, "Patient")
+
+			conversations.all.each do |conversation|
+				if conversation.unread_messages == true
+					return true
+				end
+			end
+
 		end
+			
+		return false
 
 	end
 

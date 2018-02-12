@@ -61,12 +61,12 @@ class ConversationsController < ApplicationController
 
  		if doctor_signed_in?
  			@conversation.messages.create(body: params[:body], image: params[:conversation][:image], user_class: "Doctor", user_id: current_doctor.id)
- 			current_doctor.unread_messages += 1
- 			current_doctor.save
+ 			@conversation.unread_messages = true
+ 			@conversation.save
  		elsif user_signed_in?
  			@conversation.messages.create(body: params[:body], image: params[:conversation][:image], user_class: "Patient", user_id: current_user.id)
- 			current_user.unread_messages += 1
- 			current_user.save
+ 			@conversation.sender_unread_messages = true
+ 			@conversation.save
  		end
 
  		redirect_to conversations_path
@@ -77,11 +77,11 @@ class ConversationsController < ApplicationController
 		@messages = @conversation.messages.order(created_at: :desc)
 
 		if user_signed_in?
-			current_user.unread_messages -= 1
-			current_user.save
+			@conversation.unread_messages = false
+        	@conversation.save
 		elsif doctor_signed_in?
-			current_doctor.unread_messages -= 1
-			current_doctor.save
+			@conversation.sender_unread_messages = false
+        	@conversation.save
 		end
 
 		@message = @conversation.messages.new
