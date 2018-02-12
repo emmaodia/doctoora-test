@@ -10,11 +10,11 @@ class Doctor < ActiveRecord::Base
   has_attached_file :post_nysc
   has_attached_file :id_proof
 
-  validates_attachment_content_type :mdcn, content_type: 'application/pdf'
-  validates_attachment_content_type :nysc, content_type: 'application/pdf'
-  validates_attachment_content_type :uni_cert, content_type: 'application/pdf'
-  validates_attachment_content_type :post_nysc, content_type: 'application/pdf'
-  validates_attachment_content_type :id_proof, content_type: 'application/pdf'
+  validates_attachment_content_type :mdcn, content_type: ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']
+  validates_attachment_content_type :nysc, content_type: ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']
+  validates_attachment_content_type :uni_cert, content_type: ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']
+  validates_attachment_content_type :post_nysc, content_type: ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']
+  validates_attachment_content_type :id_proof, content_type: ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']
 
   has_many :consultations, dependent: :destroy
   has_many :messages, as: :messageable
