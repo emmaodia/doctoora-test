@@ -60,7 +60,9 @@ class Doctor < ActiveRecord::Base
   CLINICAL_SPECIALTY_LIST = ["Aesthetic Practitioner", "Cardiologist", "Cardiothoracic Surgery", "Dental", "Dermatology", 
     "General Practitioner", "General Surgery", "Haematology", "Mental Health General Practitioner", "Nephrology", "Neurology", "Neurosurgery",
     "Obstetrics and Gynecology", "Oncology", "Orthopaedic Surgery", "Paediatric Oncology", "Paediatric Surgery",
-    "Paediatrics", "Psychiatry", "Renal Surgery", "Respirology", "Urology"]
+    "Paediatrics", "Psychiatry", "Renal Surgery", "Respirology", "Urology", "Rheumatology", "Endoscopy", "Geriatrics", "Ophthalmology", "Otorhinolaryngology",
+    "Endocrinology", "Hepatology", "Neonatology", "Plastic Surgery", "Pulmunology", "Sports Medicine", "Vascular Surgery", "Allergology", "Child Psychiatry", 
+    "Internal Medicine", "Occupational Medicine", "Physical Medicine and Rehabilitation", "Radiation Oncology"].sort!
 
   NON_CLINICAL_SPECIALTY_LIST = ["Dance Aerobics", "Swimming", "Yoga", "Martial Arts", "Dietetics", "Lifestyle Counseling", "Sex Therapy", "Nursing"]
 
