@@ -8,11 +8,11 @@
         <% @appointment_requests.each do |appointment| %>
           <div class="req-container">
             <div class="date-time">
-              <p><b><%= appointment.date_and_time.to_date.to_formatted_s(:long) %> | <b>Time: </b><%= appointment.date_and_time.strftime("%I:%M %p") %></b></p>
+              <p><b><%= appointment.date_and_time.to_date.to_formatted_s(:long) %></b></p>
               <p><b><%= appointment.date_and_time.strftime("%I:%M %p") %></b></p>
             </div>
-            <div class="app-body">
-              <p><b>Doctor:</b> <%= get_doctor_name appointment.professional %>(<span><%= appointment.tool %></span>)</p>
+            <div class="info">
+              <p><b><%= get_doctor_name appointment.professional %></b>(<span><%= appointment.tool %></span>)</p>
               <p><%= appointment.user_notes %></p>
               <p class="consultation-delete"><%= link_to "Cancel Request", consultation_path(appointment), method: :delete, data: { confirm: "Are you sure you want to cancel this consultation request?" }, :class => "consultation-delete-link reject" %></p>
             </div>
