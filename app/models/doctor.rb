@@ -10,11 +10,11 @@ class Doctor < ActiveRecord::Base
   has_attached_file :post_nysc
   has_attached_file :id_proof
 
-  validates_attachment_content_type :mdcn, content_type: 'application/pdf'
-  validates_attachment_content_type :nysc, content_type: 'application/pdf'
-  validates_attachment_content_type :uni_cert, content_type: 'application/pdf'
-  validates_attachment_content_type :post_nysc, content_type: 'application/pdf'
-  validates_attachment_content_type :id_proof, content_type: 'application/pdf'
+  validates_attachment_content_type :mdcn, content_type: ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']
+  validates_attachment_content_type :nysc, content_type: ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']
+  validates_attachment_content_type :uni_cert, content_type: ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']
+  validates_attachment_content_type :post_nysc, content_type: ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']
+  validates_attachment_content_type :id_proof, content_type: ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']
 
   has_many :consultations, dependent: :destroy
   has_many :messages, as: :messageable
@@ -60,7 +60,9 @@ class Doctor < ActiveRecord::Base
   CLINICAL_SPECIALTY_LIST = ["Aesthetic Practitioner", "Cardiologist", "Cardiothoracic Surgery", "Dental", "Dermatology", 
     "General Practitioner", "General Surgery", "Haematology", "Mental Health General Practitioner", "Nephrology", "Neurology", "Neurosurgery",
     "Obstetrics and Gynecology", "Oncology", "Orthopaedic Surgery", "Paediatric Oncology", "Paediatric Surgery",
-    "Paediatrics", "Psychiatry", "Renal Surgery", "Respirology", "Urology"]
+    "Paediatrics", "Psychiatry", "Renal Surgery", "Respirology", "Urology", "Rheumatology", "Endoscopy", "Geriatrics", "Ophthalmology", "Otorhinolaryngology",
+    "Endocrinology", "Hepatology", "Neonatology", "Plastic Surgery", "Pulmunology", "Sports Medicine", "Vascular Surgery", "Allergology", "Child Psychiatry", 
+    "Internal Medicine", "Occupational Medicine", "Physical Medicine and Rehabilitation", "Radiation Oncology"].sort!
 
   NON_CLINICAL_SPECIALTY_LIST = ["Dance Aerobics", "Swimming", "Yoga", "Martial Arts", "Dietetics", "Lifestyle Counseling", "Sex Therapy", "Nursing"]
 

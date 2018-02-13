@@ -13,7 +13,7 @@
       <div class="today-app col-md-6">
         <a href=<%= card.link %>>
           <h3 class="today-header card-heading"><%= card.title %></a></h3>
-          <% if card.video_url %>
+          <% if card.video_url != "" %>
             <iframe src="<%= card.video_url %>" frameborder="0"></iframe>
           <% else %>
             <img src=<%= card.image %> class="card-image" />

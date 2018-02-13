@@ -15,13 +15,23 @@
 		</div>
 
 		<div class="form-group">
+			<%= f.label "Video Embed URL", :class => "control-label" %>
+			<%= f.text_field :video_url, :class => "form-control", placeholder: "Make sure to paste embed URL, not watch URL" %>
+		</div>
+
+		<div class="form-group">
 			<%= f.label "Body", :class => "control-label" %>
-			<%= f.text_area :body, :class => "form-control" %>
+			<%= f.text_area :body, :class => "form-control", placeholder: "You can expand this by dragging the lines on the bottom right" %>
 		</div>
 		
 		<div class="form-group">
 			<%= f.label "Page", :class => "control-label" %>
-			<%= f.select :page, ["Home", "Knowledgebase"], :class => "form-control", placeholder: "You can expand this by dragging the lines on the bottom right" %>
+			<%= f.select :page, ["Home - Health Professional", "Home - Patient", "Knowledgebase"], :class => "form-control" %>
+		</div>
+
+		<div class="form-group">
+			<%= f.label "Card Category", :class => "control-label" %>
+			<%= f.select :card_category, @categories, :class => "form-control" %>
 		</div>
 		
 		<div class="form-group">

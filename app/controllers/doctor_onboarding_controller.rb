@@ -30,8 +30,8 @@ class DoctorOnboardingController < ApplicationController
 		if doctor.save
 			redirect_to root_path
 		else
-			flash[:notice] = "There was an error saving your information"
-			render 'upload_documents'
+			flash[:notice] = "There was an error uploading your documents. Please ensure files are PDF or Word documents"
+			redirect_to :back
 		end
 	end
 

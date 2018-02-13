@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   LGAS = ["N/A", "Agege", "Ajeromi Ifelodun", "Alimosho", "Amuwo-Odofin", "Apapa", "Badagry", "Kosofe", "Mushin", "Oshodi Isolo", "Ojo",
     "Ikorodu", "Surulere", "Ifako-Ijaye", "Shomolu", "Lagos Mainland", "Ikeja", "Eti-osa", "Lagos Island", "Epe", "Ibeju Lekki"]
 
-  STATES = ['Lagos', 'Abia', 'Adamawa', 'Anambra', 'Akwa Ibom', 'Bauchi', 'Bayelsa', 'Benue', 'Borno', 'Cross River', 'Delta', 'Ebonyi', 'Enugu',
+  STATES = ['N/A', 'Lagos', 'Abia', 'Adamawa', 'Anambra', 'Akwa Ibom', 'Bauchi', 'Bayelsa', 'Benue', 'Borno', 'Cross River', 'Delta', 'Ebonyi', 'Enugu',
     'Edo', 'Ekiti', 'FCT', 'Gombe', 'Imo', 'Jigawa', 'Kaduna', 'Kano', 'Katsina', 'Kebbi', 'Kogi', 'Kwara', 'Nasarawa', 'Niger', 'Ogun',
     'Ondo', 'Osun', 'Oyo', 'Plateau', 'Rivers', 'Sokoto', 'Taraba', 'Yobe', 'Zamfara'].freeze
 end
