@@ -1,84 +1,113 @@
 <div>
-	<h2>Patient Review Examination Findings</h2>
+	<h2 class="text-center">Patient Review Examination Findings</h2>
 
 	<%= form_for @review, url: submit_examination_findings_path(@review), method: :post do |f| %>
 
-		<div class="form-group">
-			<%= f.label :temperature, :class => "control-label" %>
-			<%= f.number_field :temperature, :class => "form-control", step: :any %>
+		<div class="form-group row">
+			<div class="col-md-2 col-md-offset-2">
+				<%= f.label :temperature, :class => "control-label" %>
+				<%= f.number_field :temperature, :class => "form-control", step: :any %>
+			</div>
+			<div class="col-md-2">
+				<%= f.label "Pulse Rate (BPM)", :class => "control-label" %>
+				<%= f.number_field :pulse_rate, :class => "form-control"%>
+			</div>
+			<div class="col-md-3">
+				<%= f.label "Respiratory Rate (CPM)", :class => "control-label" %>
+				<%= f.number_field :respiratory_rate, :class => "form-control"%>
+			</div>
 		</div>
 
-		<div class="form-group">
-			<%= f.label "Pulse Rate (BPM)", :class => "control-label" %>
-			<%= f.number_field :pulse_rate, :class => "form-control"%>
+		<div class="form-group row">
+			<div class="col-md-8 col-md-offset-2">
+				<%= f.label "Blood Pressure", :class => "control-label" %>
+				<br>
+				Systolic: <%= f.number_field :systolic, :class => "form-control reduced_length" %> Diastolic : <%= f.number_field :diastolic, :class => "form-control reduced_length" %>  mmHg
+			</div>
 		</div>
 
-		<div class="form-group">
-			<%= f.label "Respiratory Rate (CPM)", :class => "control-label" %>
-			<%= f.number_field :respiratory_rate, :class => "form-control"%>
+		<div class="form-group row">
+			<div class="col-md-8 col-md-offset-2">
+				<%= f.label :physical_exam, :class => "control-label" %>
+				<%= f.text_area :physical_exam, :class => "form-control"%>
+			</div>
 		</div>
 
-		<div class="form-group">
-			<%= f.label "Blood Pressure", :class => "control-label" %>
-			<br>
-			Systolic: <%= f.number_field :systolic, :class => "form-control reduced_length" %> / Diastolic : <%= f.number_field :diastolic, :class => "form-control reduced_length" %>  mmHg
+		<div class="form-group row">
+			<div class="col-md-8 col-md-offset-2">
+				<%= f.label :mental_exam, :class => "control-label" %>
+				<%= f.text_area :mental_exam, :class => "form-control"%>
+			</div>
 		</div>
 
-		<div class="form-group">
-			<%= f.label :physical_exam, :class => "control-label" %>
-			<%= f.text_area :physical_exam, :class => "form-control"%>
+
+		<div class="form-group row">
+			<div class="col-md-8 col-md-offset-2">
+				<%= f.label :problems_list, :class => "control-label" %>
+				<%= f.text_area :problems_list, :class => "form-control"%>
+			</div>
 		</div>
 
-		<div class="form-group">
-			<%= f.label :mental_exam, :class => "control-label" %>
-			<%= f.text_area :mental_exam, :class => "form-control"%>
+
+		<div class="form-group row">
+			<div class="col-md-8 col-md-offset-2">
+				<%= f.label :differential_diagnosis, :class => "control-label" %>
+				<%= f.text_field :differential_diagnosis, :class => "form-control"%>
+			</div>
 		</div>
 
-		<div class="form-group">
-			<%= f.label :problems_list, :class => "control-label" %>
-			<%= f.text_area :problems_list, :class => "form-control"%>
+		<div class="form-group row">
+			<div class="col-md-8 col-md-offset-2">
+				<%= f.label :differential_diagnosis_2, :class => "control-label" %>
+				<%= f.text_field :differential_diagnosis_2, :class => "form-control"%>
+			</div>
 		</div>
 
-		<div class="form-group">
-			<%= f.label :differential_diagnosis, :class => "control-label" %>
-			<%= f.text_field :differential_diagnosis, :class => "form-control"%>
+
+		<div class="form-group row">
+			<div class="col-md-8 col-md-offset-2">
+				<%= f.label :differential_diagnosis_3, :class => "control-label" %>
+				<%= f.text_field :differential_diagnosis_3, :class => "form-control"%>
+			</div>
 		</div>
 
-		<div class="form-group">
-			<%= f.label :differential_diagnosis_2, :class => "control-label" %>
-			<%= f.text_field :differential_diagnosis_2, :class => "form-control"%>
+		<div class="form-group row">
+			<div class="col-md-8 col-md-offset-2">
+				<%= f.label :differential_diagnosis_4, :class => "control-label" %>
+				<%= f.text_field :differential_diagnosis_4, :class => "form-control"%>
+			</div>
 		</div>
 
-		<div class="form-group">
-			<%= f.label :differential_diagnosis_3, :class => "control-label" %>
-			<%= f.text_field :differential_diagnosis_3, :class => "form-control"%>
+		<div class="form-group row">
+			<div class="col-md-8 col-md-offset-2">
+				<%= f.label :differential_diagnosis_5, :class => "control-label" %>
+				<%= f.text_field :differential_diagnosis_5, :class => "form-control"%>
+			</div>
 		</div>
 
-		<div class="form-group">
-			<%= f.label :differential_diagnosis_4, :class => "control-label" %>
-			<%= f.text_field :differential_diagnosis_4, :class => "form-control"%>
+		<div class="form-group row">
+			<div class="col-md-8 col-md-offset-2">
+				<%= f.label :investigations, :class => "control-label" %>
+				<%= f.text_field :investigations, :class => "form-control"%>
+			</div>
 		</div>
 
-		<div class="form-group">
-			<%= f.label :differential_diagnosis_5, :class => "control-label" %>
-			<%= f.text_field :differential_diagnosis_5, :class => "form-control"%>
+		<div class="form-group row">
+			<div class="col-md-8 col-md-offset-2">
+				<%= f.label :final_diagnosis, :class => "control-label" %>
+				<%= f.text_field :final_diagnosis, :class => "form-control"%>
+			</div>
 		</div>
 
-		<div class="form-group">
-			<%= f.label :investigations, :class => "control-label" %>
-			<%= f.text_field :investigations, :class => "form-control"%>
+		<div class="form-group row">
+			<div class="col-md-8 col-md-offset-2">
+				<%= f.label :comment, :class => "control-label" %>
+				<%= f.text_area :comment, :class => "form-control"%>
+			</div>
 		</div>
 
-		<div class="form-group">
-			<%= f.label :final_diagnosis, :class => "control-label" %>
-			<%= f.text_field :final_diagnosis, :class => "form-control"%>
+		<div class="text-center">
+			<%= f.submit "Go To Prescriptions", :class => "btn btn-success" %>
 		</div>
-
-		<div class="form-group">
-			<%= f.label :comment, :class => "control-label" %>
-			<%= f.text_area :comment, :class => "form-control"%>
-		</div>
-
-		<%= f.submit "Go To Prescriptions", :class => "btn btn-block btn-success" %>
 	<% end %>
 </div>

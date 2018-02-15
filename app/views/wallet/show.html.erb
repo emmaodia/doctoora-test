@@ -1,14 +1,16 @@
 <div>
 	<% if user_signed_in? %>
-		<%= link_to "back to your profile", profile_path(@user) %>
+		<%= link_to "Back to profile", profile_path(@user) %>
 	<% elsif doctor_signed_in? %>
-		<%= link_to "back to your profile", doctor_profile_path(@user) %>
+		<%= link_to "Back to profile", doctor_profile_path(@user) %>
 	<% end %>
 </div>
 
-<div>
-	<h3> Your Wallet </h3>
-	<p>Wallet Balance: ₦ <%= @user.wallet.balance %></p>
+<div class="wallet">
+	<h4 class="wallet-header"> Your Wallet </h4>
+	<p>Wallet Balance: </p>
+		<h1 id="doc_wallet_balance">₦ <%= @user.wallet.balance %></h1>
+</div>
 
 	<div class="col-md-4" style="margin-left: 0">
 		<h4>Top Up Your Wallet</h4>
@@ -21,5 +23,3 @@
 			</div>
 		<% end %>
 	</div>
-
-</div>
